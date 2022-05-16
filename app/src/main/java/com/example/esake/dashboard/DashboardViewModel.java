@@ -1,4 +1,4 @@
-package com.example.esake.ui.dashboard;
+package com.example.esake.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

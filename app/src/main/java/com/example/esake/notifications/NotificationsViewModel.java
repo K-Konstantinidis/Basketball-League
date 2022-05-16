@@ -1,4 +1,4 @@
-package com.example.esake.ui.notifications;
+package com.example.esake.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,4 +1,4 @@
-package com.example.esake.ui;
+package com.example.esake;
 
 public enum PlayerPosition
 {

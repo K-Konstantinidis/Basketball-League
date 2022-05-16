@@ -1,4 +1,4 @@
-package com.example.esake.ui.dashboard;
+package com.example.esake.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,7 +1,6 @@
-package com.example.esake.ui;
+package com.example.esake;
 
-public class PlayerStats
-{
+public class PlayerStats {
 	// Points
 	private int freethrows_in;
 	private int freethrows_out;
@@ -23,13 +22,10 @@ public class PlayerStats
 	
 	private Game played_game;
 	
-	
-	
 	public PlayerStats(Game played_game) {
 		this.played_game = played_game;
 	}
-	
-	
+
 	// Point adding functions
 	public void addFreeThrowIn() 	{ ++freethrows_in; }
 	public void addFreeThrowOut()	{ ++freethrows_out; }
@@ -172,6 +168,4 @@ public class PlayerStats
 		
 		return (tmp_rating > 0) ? tmp_rating : 0;
 	}
-	
-	
 }
