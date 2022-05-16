@@ -8,8 +8,7 @@ public class Team
 	private String code;
 	private City city;
 	private ArrayList<Player> players;
-	
-	
+
 	// Constructors
 	
 	public Team() {

@@ -9,11 +9,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.esake.databinding.ActivityMainBinding;
+import com.example.esake.ui.City;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private City city = new City("testcode","testname");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
