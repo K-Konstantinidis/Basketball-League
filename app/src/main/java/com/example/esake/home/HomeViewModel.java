@@ -1,4 +1,4 @@
-package com.example.esake.ui.home;
+package com.example.esake.home;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

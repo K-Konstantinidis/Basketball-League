@@ -1,4 +1,4 @@
-package com.example.esake.ui.home;
+package com.example.esake.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

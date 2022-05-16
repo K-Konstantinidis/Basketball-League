@@ -1,4 +1,4 @@
-package com.example.esake.ui.notifications;
+package com.example.esake.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

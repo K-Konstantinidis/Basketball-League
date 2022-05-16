@@ -1,9 +1,8 @@
-package com.example.esake.ui;
+package com.example.esake;
 
 import java.util.ArrayList;
 
-public class Team
-{
+public class Team {
 	private String name;
 	private String code;
 	private City city;

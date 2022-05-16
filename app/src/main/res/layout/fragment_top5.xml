@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".top5">
+    tools:context=".Top5Fragment">
 
     <TextView
         android:id="@+id/text_top5"
