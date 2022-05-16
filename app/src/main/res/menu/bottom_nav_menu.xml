@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_baseline_sports_basketball_24"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_leagueTable"
+        android:icon="@drawable/ic_baseline_emoji_events_24"
+        android:title="@string/title_league_table" />
+
+    <item
+        android:id="@+id/navigation_teamStats"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="@string/title_team_stats" />
+
+    <item
+        android:id="@+id/navigation_playerStats"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="@string/title_player_stats" />
+
+    <item
+        android:id="@+id/navigation_top5"
+        android:icon="@drawable/ic_baseline_looks_5_24"
+        android:title="@string/title_top5" />
+</menu>
