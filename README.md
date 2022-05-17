@@ -6,7 +6,7 @@ criticism, comment, news reporting, teaching, scholarship, education and researc
 Fair use is a use permitted by copyright statute that might otherwise be infringing."
 ```
 We do not own or are affiliated with <a href="http://www.esake.gr/">ΕΣΑΚΕ</a> or the <a href="https://www.basket.gr/">Hellenic Basketball Federation (E.O.K.)</a>, any of the teams, 
-team images, player images and we only provide images and names contained in the <a href="http://www.esake.gr/">Greek Basket League (GBL)</a> 
+team images, player images, and we only provide images and names contained in the <a href="http://www.esake.gr/">Greek Basket League (GBL)</a> 
 as part of a **_university project_** to make it more realistic. 
 
 If you are the owner of a team in this app, a player who appears in the app, someone from ΕΣΑΚΕ or someone form the Hellenic Basketball Federation (E.O.K.)
