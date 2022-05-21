@@ -1,3 +1,5 @@
+*.ffs_batch
+*.ffs_db
 *.iml
 .gradle
 /local.properties
