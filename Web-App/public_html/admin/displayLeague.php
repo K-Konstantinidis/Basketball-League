@@ -154,8 +154,7 @@ $err_msg = 'Ενα μήνυμα σφάλματος';
 		</div>
 			
 		<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-			<a href="./" class="btn btn-secondary mt-5 me-3 btn-single-line" role="button">Αρχική</a>
-			<button type="button" class="btn btn-success mt-5 me-3">Κλήρωση Πρωταθλήματος</button>
+			<a href="./" class="btn btn-secondary mt-5 me-3" role="button">Αρχική</a>
 		</div>
 
 		<br><br>
