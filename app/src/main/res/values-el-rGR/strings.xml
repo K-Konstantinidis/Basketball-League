@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ESAKE</string>
+    <string name="title_home">Αγώνες</string>
+    <string name="title_league_table">Βαθμολογία</string>
+    <string name="title_team_stats">Ομαδικά Στατιστικά</string>
+    <string name="title_player_stats">Ατομικά Στατιστικά</string>
+    <string name="title_top5">Καλύτερη 5-άδα</string>
+    <string name="title_games_stats_manager">Αγώνες</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Κωδικός</string>
+    <string name="prompt_username">Όνομα Χρήστη</string>
+    <string name="prompt_name">Όνομα</string>
+    <string name="prompt_surname">Επίθετο</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Καλοσήρθατε !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login">"Σύνδεση"</string>
+    <string name="loginPage">"Σύνδεση"</string>
+    <string name="forgot_password">"Ξεχάσατε τον κωδικό σας;"</string>
+    <string name="no_account">"Δεν έχετε λογαριασμό;"</string>
+    <string name="have_account">Έχετε ήδη λογαριασμό;</string>
+    <string name="signup">Εγγραφή</string>
+    <string name="signupPage">Δημιουργία Λογαριασμού</string>
+    <string name="we_will_see">"Login failed"</string>
+    <string name="we_will_see2">"Login failed"</string>
+    <string name="choose_user_type">Επιλέξτε Τύπο Χρήστη</string>
+    <string name="stats_manager">Υπεύθυνος Στατιστικών</string>
+    <string name="user">Φίλαθλος</string>
+    <string name="logo">Το λογότυπο της εφαρμογής</string>
+    <string name="title_activity_login2">LoginActivity2</string>
+</resources>

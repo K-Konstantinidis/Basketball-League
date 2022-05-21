@@ -1,10 +1,35 @@
 <resources>
     <string name="app_name">ESAKE</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_league_table">League Table</string>
     <string name="title_team_stats">Team Stats</string>
     <string name="title_player_stats">Player Stats</string>
     <string name="title_top5">Top 5</string>
+    <string name="title_games_stats_manager">Games</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_surname">Surname</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login">"Log In"</string>
+    <string name="loginPage">"Log In"</string>
+    <string name="forgot_password">"Forgot your password?"</string>
+    <string name="no_account">"Register Here"</string>
+    <string name="have_account">Login Here</string>
+    <string name="signup">Sign Up</string>
+    <string name="signupPage">Create An Account</string>
+    <string name="we_will_see">"Login failed"</string>
+    <string name="we_will_see2">"Login failed"</string>
+    <string name="choose_user_type">Choose User Type</string>
+    <string name="stats_manager">Stats Manager</string>
+    <string name="user">User</string>
+    <string name="logo">The app logo</string>
+    <string name="title_activity_login2">LoginActivity2</string>
 </resources>

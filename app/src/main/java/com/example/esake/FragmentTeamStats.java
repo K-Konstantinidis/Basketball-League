@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PlayerStatsFragment#newInstance} factory method to
+ * Use the {@link FragmentTeamStats#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PlayerStatsFragment extends Fragment {
+public class FragmentTeamStats extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class PlayerStatsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PlayerStatsFragment() {
+    public FragmentTeamStats() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class PlayerStatsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PlayerStatsFragment.
+     * @return A new instance of fragment FragmentTeamStats.
      */
     // TODO: Rename and change types and number of parameters
-    public static PlayerStatsFragment newInstance(String param1, String param2) {
-        PlayerStatsFragment fragment = new PlayerStatsFragment();
+    public static FragmentTeamStats newInstance(String param1, String param2) {
+        FragmentTeamStats fragment = new FragmentTeamStats();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +59,6 @@ public class PlayerStatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_stats, container, false);
+        return inflater.inflate(R.layout.fragment_team_stats, container, false);
     }
 }

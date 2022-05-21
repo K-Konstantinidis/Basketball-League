@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link LeagueTableFragment#newInstance} factory method to
+ * Use the {@link FragmentLeagueTable#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LeagueTableFragment extends Fragment {
+public class FragmentLeagueTable extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class LeagueTableFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public LeagueTableFragment() {
+    public FragmentLeagueTable() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class LeagueTableFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LeagueTableFragment.
+     * @return A new instance of fragment FragmentLeagueTable.
      */
     // TODO: Rename and change types and number of parameters
-    public static LeagueTableFragment newInstance(String param1, String param2) {
-        LeagueTableFragment fragment = new LeagueTableFragment();
+    public static FragmentLeagueTable newInstance(String param1, String param2) {
+        FragmentLeagueTable fragment = new FragmentLeagueTable();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
