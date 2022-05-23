@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_home_user">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.esake.home.HomeFragment"
+        android:id="@+id/navigation_home_user"
+        android:name="com.example.esake.FragmentUserHome"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_user" />
 
     <fragment
         android:id="@+id/navigation_leagueTable"
@@ -32,8 +32,8 @@
         android:label="@string/title_top5"
         tools:layout="@layout/fragment_top5" />
     <fragment
-        android:id="@+id/navigation_games_stats_manager"
-        android:name="com.example.esake.FragmentGamesStatsManager"
-        android:label="@string/title_games_stats_manager"
-        tools:layout="@layout/fragment_games_stats_manager" />
+        android:id="@+id/navigation_home_stats_manager"
+        android:name="com.example.esake.StatsManagerHome.HomeFragment"
+        android:label="@string/title_home_stats_manager"
+        tools:layout="@layout/fragment_home_stats_manager" />
 </navigation>

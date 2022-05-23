@@ -5,7 +5,7 @@
     <string name="title_team_stats">Team Stats</string>
     <string name="title_player_stats">Player Stats</string>
     <string name="title_top5">Top 5</string>
-    <string name="title_games_stats_manager">Games</string>
+    <string name="title_home_stats_manager">Games</string>
     <string name="title_activity_login">Login</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -13,7 +13,8 @@
     <string name="prompt_name">Name</string>
     <string name="prompt_surname">Surname</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="action_sign_up_short">Sign Up</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -32,4 +33,5 @@
     <string name="user">User</string>
     <string name="logo">The app logo</string>
     <string name="title_activity_login2">LoginActivity2</string>
+    <string name="continue_as_user">Continue As User</string>
 </resources>

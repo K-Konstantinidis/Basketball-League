@@ -24,13 +24,11 @@ import android.widget.Toast;
 
 import com.example.esake.R;
 import com.example.esake.databinding.ActivityLoginAdminBinding;
-import com.example.esake.databinding.ActivityLoginUserBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginAdminBinding binding_admin;
-    private ActivityLoginUserBinding binding_user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

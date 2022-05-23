@@ -12,6 +12,19 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.login.LoginActivity">
 
+    <ImageView
+        android:id="@+id/esakeLogoLogInAdmin"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04"
+        app:srcCompat="@drawable/esake_logo" />
+
     <TextView
         android:id="@+id/text_LogIn"
         android:layout_width="wrap_content"
@@ -20,16 +33,16 @@
         android:textColor="@color/primary_color"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/esakeLogoLogInAdmin"
+        app:layout_constraintVertical_bias="0.07" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
         android:autofillHints="testHints"
         android:background="@drawable/signinup_buttons_border"
         android:drawableStart="@drawable/custom_username_icon"
@@ -42,15 +55,17 @@
         android:paddingLeft="12dp"
         android:paddingEnd="12dp"
         android:selectAllOnFocus="true"
+        android:textColorHint="@color/hints"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/text_LogIn"
+        app:layout_constraintVertical_bias="0.1" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:autofillHints="testHints"
         android:background="@drawable/signinup_buttons_border"
         android:drawableStart="@drawable/custom_password_icon"
@@ -65,43 +80,45 @@
         android:paddingLeft="12dp"
         android:paddingEnd="12dp"
         android:selectAllOnFocus="true"
+        android:textColorHint="@color/hints"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.08" />
 
     <Button
         android:id="@+id/button_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
         android:background="@drawable/rounded_button_for_login"
         android:enabled="false"
-        android:textAllCaps="false"
-        android:textSize="18sp"
         android:text="@string/login"
+        android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:backgroundTint="@color/primary_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.22"
+        app:layout_constraintVertical_bias="0.2"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
-    <ProgressBar
-        android:id="@+id/loading"
+    <TextView
+        android:id="@+id/ContinueAsUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
+        android:layout_marginTop="35dp"
+        android:text="@string/continue_as_user"
+        android:textAllCaps="false"
+        android:textColor="@color/continueAsUser"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        app:layout_constraintVertical_bias="0.005" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

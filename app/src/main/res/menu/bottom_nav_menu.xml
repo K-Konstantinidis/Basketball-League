@@ -2,27 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_baseline_sports_basketball_24"
+        android:id="@+id/navigation_home_user"
+        android:icon="@drawable/ic_basketball_court_24"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_leagueTable"
-        android:icon="@drawable/ic_baseline_emoji_events_24"
+        android:icon="@drawable/ic_trophy_24"
         android:title="@string/title_league_table" />
 
     <item
         android:id="@+id/navigation_teamStats"
-        android:icon="@drawable/ic_baseline_people_24"
+        android:icon="@drawable/ic_team_24"
         android:title="@string/title_team_stats" />
 
     <item
         android:id="@+id/navigation_playerStats"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_basketball_jersey_24"
         android:title="@string/title_player_stats" />
 
     <item
         android:id="@+id/navigation_top5"
-        android:icon="@drawable/ic_baseline_looks_5_24"
+        android:icon="@drawable/five"
         android:title="@string/title_top5" />
 </menu>

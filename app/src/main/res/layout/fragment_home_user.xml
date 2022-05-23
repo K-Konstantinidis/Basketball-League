@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentGamesStatsManager">
+    tools:context=".FragmentUserHome">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_games_stats_manager" />
+        android:text="@string/title_home" />
 
 </FrameLayout>

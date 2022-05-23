@@ -1,4 +1,4 @@
-package com.example.esake.home;
+package com.example.esake.StatsManagerHome;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

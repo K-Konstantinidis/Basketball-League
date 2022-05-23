@@ -6,7 +6,6 @@
     <string name="title_team_stats">Ομαδικά Στατιστικά</string>
     <string name="title_player_stats">Ατομικά Στατιστικά</string>
     <string name="title_top5">Καλύτερη 5-άδα</string>
-    <string name="title_games_stats_manager">Αγώνες</string>
     <string name="title_activity_login">Login</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Κωδικός</string>
@@ -14,7 +13,7 @@
     <string name="prompt_name">Όνομα</string>
     <string name="prompt_surname">Επίθετο</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in_short">Sign In</string>
     <string name="welcome">"Καλοσήρθατε !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -33,4 +32,7 @@
     <string name="user">Φίλαθλος</string>
     <string name="logo">Το λογότυπο της εφαρμογής</string>
     <string name="title_activity_login2">LoginActivity2</string>
+    <string name="action_sign_up_short">Sign Up</string>
+    <string name="continue_as_user">Συνεχίστε Σαν Χρήστης</string>
+    <string name="title_home_stats_manager">Αγώνες</string>
 </resources>

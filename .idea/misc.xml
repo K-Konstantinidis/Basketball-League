@@ -3,6 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_baseline_mail_24_focused.xml" value="0.1165" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_baseline_password_24_focused.xml" value="0.1165" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_baseline_people_24.xml" value="0.1165" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1165" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_baseline_sports_basketball_24.xml" value="0.2595" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_baseline_username_24_focused.xml" value="0.1165" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_basketball_court_24.xml" value="0.2595" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/ic_esake_vertical_rgb_web_negative.xml" value="0.123" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/rounded_buttons_for_index_page.xml" value="0.167" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/drawable/signinup_buttons_border.xml" value="0.228" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/activity_index_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/activity_login_admin.xml" value="0.1" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/activity_login_user.xml" value="0.264" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/activity_signup_user.xml" value="0.264" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_games_stats_manager.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_home.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_home_stats_manager.xml" value="0.2" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_home_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_league_table.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_team_stats.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/layout/fragment_top5.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League-mobileApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.167" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/Basketball-League/src/main/res/layout/fragment_dashboard.xml" value="0.3809064609450338" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2595" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/drawable/custom_input.xml" value="0.1415" />
@@ -61,5 +85,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.25416666666666665" />
+      </ProjectState>
+    </option>
   </component>
 </project>
