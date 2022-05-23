@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+require_once '../../resources/config.php';
+
+$currPage = 'createTeam';
 
 // If the user is not logged in, he gets redirected at the loggin page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
