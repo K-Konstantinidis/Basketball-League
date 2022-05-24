@@ -10,7 +10,6 @@
         android:name="com.example.esake.FragmentUserHome"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_user" />
-
     <fragment
         android:id="@+id/navigation_leagueTable"
         android:name="com.example.esake.FragmentLeagueTable"

@@ -34,4 +34,12 @@
     <string name="logo">The app logo</string>
     <string name="title_activity_login2">LoginActivity2</string>
     <string name="continue_as_user">Continue As User</string>
+    <string name="spinner">spinner</string>
+    <string name="top5_rating">Rating</string>
+    <string name="top5_player_name">Player 1</string>
+    <string name="top5_player_position">PG</string>
+    <string name="top5_player_rating">5</string>
+    <string name="top5_position">Position</string>
+    <string name="top5_name">Player Name</string>
+    <string name="top5_player_image">Player Image</string>
 </resources>

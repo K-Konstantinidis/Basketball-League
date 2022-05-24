@@ -35,4 +35,12 @@
     <string name="action_sign_up_short">Sign Up</string>
     <string name="continue_as_user">Συνεχίστε Σαν Χρήστης</string>
     <string name="title_home_stats_manager">Αγώνες</string>
+    <string name="spinner">spinner</string>
+    <string name="top5_rating">Βαθμολογία</string>
+    <string name="top5_player_name">Παίκτης 1</string>
+    <string name="top5_player_rating">5</string>
+    <string name="top5_position">Θέση</string>
+    <string name="top5_name">Όνομα Παίκτη</string>
+    <string name="top5_player_position">PG</string>
+    <string name="top5_player_image">Φωτογραφία Παίκτη</string>
 </resources>
