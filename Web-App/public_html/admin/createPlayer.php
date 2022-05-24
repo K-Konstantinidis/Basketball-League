@@ -1,18 +1,24 @@
 <?php
 
 session_start();
+require_once '../../resources/config.php';
+
+// Required for the navigation bar to load properly
+$currPage = 'createPlayer';
 
 // If the user is not logged in, he gets redirected at the loggin page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../loggin/?r=true');
+	header('Location: ../login/?lr');
 	die();
 }
 
 // Use these to display errors
 $err = $suc = false;
-$err_msg = 'Ενα μήνυμα σφάλματος';
+$err_msg = 'Ένα μήνυμα σφάλματος';
+$suc_msg = 'Ο παίκτης <strong>' . /*$_POST['playerNameGR'] .*/ '</strong> δημιουργήθηκε επιτυχώς';
 
-$playerName_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
+// Use them to indicate errors on the input field
+$playerNameGR_err = $playerSurnameGR_err = $playerNameEN_err = $playerSurnameEN_err = $playerPos_err = $playerTeam_err = $playerImg_err = false;
 
 ?>
 
@@ -25,64 +31,18 @@ $playerName_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
 		<meta name="description" content="">
 		<title>ΕΣΑΚΕ App - Δημιουργία Παίκτη</title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+		<!-- Bootstrap and other required CSS -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/base.css"/>
+		<link rel="stylesheet" href="./css/createPlayer.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
-		<style>
-			li{
-				margin-left: 10px;
-			}
-
-			@media (max-width: 505px) {
-				.btn-single-line {
-					padding: 18px;
-				}
-			}
-
-			@media (max-width: 767px) {
-				.div-spacer {
-					margin-top: 20px;
-				}
-			}
-		</style>
   	</head>
 
 	<body class="d-flex flex-column h-100">
 	
 		<header>
 			<!-- Fixed navbar -->
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<div class="container-fluid">
-				<a class="navbar-brand" href="#">ΕΣΑΚΕ Managment App</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav me-auto mb-2 mb-md-0">
-					
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="./">Αρχική</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./createLeague.php">Δημιουργία Πρωταθλήματος</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./createTeam.php">Δημιουργία Ομάδας</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Δημιουργία Παίκτη</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./drawLeague.php">Κλήρωση Πρωταθλήματος</a>
-					</li>
-					
-					</ul>
-					<form class="d-flex" action="../logout.php">
-						<button class="btn btn-outline-danger" type="submit">Αποσύνδεση</button>
-					</form>
-				</div>
-				</div>
-			</nav>
+			<?php require_once ADMIN_NAVIGATION ?>
 		</header>
 
 		<!-- Begin page content -->
@@ -91,7 +51,6 @@ $playerName_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
 			<br>
 			<h1 class="mt-5">Δημιουργία Παίκτη</h1>
 			<p class="lead">Συμπληρώστε τα ακόλουθα πεδία για να δημιουργήσετε έναν νέο παίκτη.</p>
-			
 			<br>
 
 			<?php
@@ -105,18 +64,36 @@ $playerName_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
 				if($suc) {
 					echo '<div class="alert alert-success fade show" role="alert">';
 					echo '<strong>Επιτυχία!</strong><br>';
-					echo 'Ο παίκτης <strong>' . $_POST['playerName'] . '</strong> δημιουργήθηκε επιτυχώς.';
+					echo $suc_msg . '.';
 					echo '</div><br>';
 				}
 			?>
 
-			<form action="" method="POST">
-				<div class="form-floating">
-					<input type="text" class="form-control <?php echo ($playerName_err) ? ' is-invalid' : '' ?>" id="playerName" placeholder="">
-					<label for="playerName">Όνομα Παίκτη</label>
+			<form method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+				<!-- Name (in Greek) -->
+				<div class="form-floating mb-5">
+					<input type="text" class="form-control <?php echo ($playerNameGR_err) ? ' is-invalid' : '' ?>" id="playerNameGR" placeholder="">
+					<label for="playerNameGR">Όνομα Παίκτη (Ελληνικά)</label>
+				</div>
+				<!-- Surname (in Greek) -->
+				<div class="form-floating mb-5">
+					<input type="text" class="form-control <?php echo ($playerSurnameGR_err) ? ' is-invalid' : '' ?>" id="playerSurnameGR" placeholder="">
+					<label for="playerSurnameGR">Επώνυμο Παίκτη (Ελληνικά)</label>
 				</div>
 
-				<div class="mt-5">
+				<!-- Name (in English) -->
+				<div class="form-floating mb-5">
+					<input type="text" class="form-control <?php echo ($playerNameEN_err) ? ' is-invalid' : '' ?>" id="playerNameEN" placeholder="">
+					<label for="playerNameEN">Όνομα Παίκτη (Αγγλικά)</label>
+				</div>
+				<!-- Surname (in English) -->
+				<div class="form-floating mb-5">
+					<input type="text" class="form-control <?php echo ($playerSurnameEN_err) ? ' is-invalid' : '' ?>" id="playerSurnameEN" placeholder="">
+					<label for="playerSurnameEN">Επώνυμο Παίκτη (Αγγλικά)</label>
+				</div>
+
+				<!-- Player Position -->
+				<div class="mb-5">
 					<label class="mb-1" for="playerPos">Θέση Παίκτη</label>
 					<select class="form-select <?php echo ($playerPos_err) ? ' is-invalid' : '' ?>" id="playerPos">
 						<option selected="" disabled="" value="">Επιλέξτε...</option>
@@ -124,7 +101,8 @@ $playerName_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
 					</select>
 				</div>
 
-				<div class="mt-5">
+				<!-- Player Team -->
+				<div class="mb-5">
 					<label class="mb-1" for="playerTeam">Ομάδα Παίκτη</label>
 					<select class="form-select <?php echo ($playerTeam_err) ? ' is-invalid' : '' ?>" id="playerTeam">
 						<option selected="" disabled="" value="">Επιλέξτε...</option>
@@ -132,30 +110,26 @@ $playerName_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
 					</select>
 				</div>
 
-				<label for="playerImg" class="mt-5">Φωτογραφία Παίκτη</label>
-				<input type="file" class="form-control mt-3 <?php echo ($playerImg_err) ? ' is-invalid' : '' ?>" id="playerImg" accept="image/*">
-				
-				<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-					<a href="./" class="btn btn-secondary mt-5 me-3 btn-single-line" role="button">Αρχική</a>
-					<button type="button" class="btn btn-danger mt-5 me-3">Εκκαθάριση Φόρμας</button>
-					<button type="button" class="btn btn-success mt-5 me-3">Καταχώριση Παίκτη</button>
+				<!-- Player Image Selection -->
+				<div class="mb-5">
+					<label for="playerImg">Φωτογραφία Παίκτη</label>
+					<input type="file" class="form-control mt-1 <?php echo ($playerImg_err) ? ' is-invalid' : '' ?>" id="playerImg" accept="image/*">
 				</div>
-
+				
+				<!-- Buttons -->
+				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-5">
+					<a href="./" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
+					<button type="button" class="btn btn-danger me-3">Εκκαθάριση Φόρμας</button>
+					<button type="submit" class="btn btn-success me-3">Καταχώριση Παίκτη</button>
+				</div>
 			</form>
 
-
-			<br>
-			<br>
 		</div>
 		</main>
 
 		<!-- Footer -->
-		<footer class="footer mt-auto py-3 bg-dark">
-			<div class="container">
-				<span class="text-muted">Εργασία Εξαμήνου, Ανάπτυξη Εφαρμογών για Κινητές Συσκευές - 6ο Εξάμηνο.</span><br>
-				<span class="text-muted">&copy; Copyright Ομάδα 1, 2021-2022 .</span>
-			</div>
-		</footer>
+		<?php require_once MAIN_FOOTER ?>
+		
 	</body>
 	
 </html>

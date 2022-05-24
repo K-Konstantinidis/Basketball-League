@@ -1,16 +1,20 @@
 <?php
 
 session_start();
+require_once '../../resources/config.php';
+
+// Required for the navigation bar to load properly
+$currPage = 'displayLeague';
 
 // If the user is not logged in, he gets redirected at the loggin page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../loggin/?r=true');
+	header('Location: ../login/?lr');
 	die();
 }
 
 // Use these to display errors
-$err = $suc = false;
-$err_msg = 'Ενα μήνυμα σφάλματος';
+$err = false;
+$err_msg = 'Ένα μήνυμα σφάλματος';
 
 ?>
 
@@ -23,66 +27,25 @@ $err_msg = 'Ενα μήνυμα σφάλματος';
 		<meta name="description" content="">
 		<title>ΕΣΑΚΕ App - Προβολή Πρωταθλήματος</title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet"/>
-		<link rel="stylesheet" href="./bootstrap-image-checkbox.css">
+		<!-- Bootstrap and other required CSS -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/base.css"/>
+		<link rel="stylesheet" href="./css/displayLeague.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
-		<style>
-			li{
-				margin-left: 10px;
-			}
-
-			@media (max-width: 767px) {
-				.div-spacer {
-					margin-top: 20px;
-				}
-			}
-		</style>
   	</head>
 
 	<body class="d-flex flex-column h-100">
 	
 		<header>
 			<!-- Fixed navbar -->
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<div class="container-fluid">
-				<a class="navbar-brand" href="#">ΕΣΑΚΕ Managment App</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav me-auto mb-2 mb-md-0">
-					
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="./">Αρχική</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./createLeague.php">Δημιουργία Πρωταθλήματος</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./createTeam.php">Δημιουργία Ομάδας</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="./createPlayer.php">Δημιουργία Παίκτη</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="./drawLeague.php">Κλήρωση Πρωταθλήματος</a>
-					</li>
-					
-					</ul>
-					<form class="d-flex" action="../logout.php">
-						<button class="btn btn-outline-danger" type="submit">Αποσύνδεση</button>
-					</form>
-				</div>
-				</div>
-			</nav>
+			<?php require_once ADMIN_NAVIGATION ?>
 		</header>
 
 		<!-- Begin page content -->
 		<main>
 		<div class="container">
 			<br>
-			<h1 class="mt-5">Κλήρωση Πρωταθλήματος</h1>
+			<h1 class="mt-5">Προβολή Πρωταθλήματος</h1>
 			<p class="lead">Οι παρακάτω ομάδες συμμετέχουν στο πρωτάθλημα:</p>
 			<br>
 
@@ -94,79 +57,48 @@ $err_msg = 'Ενα μήνυμα σφάλματος';
 					echo '</div><br>';
 				}
 
-				if($suc) {
-					echo '<div class="alert alert-success fade show" role="alert">';
-					echo '<strong>Επιτυχία!</strong><br>';
-					echo 'Το πρωτάθλημα δημιουργήθηκε επιτυχώς.';
+				if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+					// TODO
+					// Display the league.
+
+					echo '<div class="row align-self-center">';
+						echo '<div class="col-md-4 text-center">';
+						
+						for($league_num = 0; $league_num <= 999; ++$league_num) {
+							echo '<div class="border p-3 m-3">';
+								echo '<h5>Αγωνιστική ' . $league_num . '</h5>';
+								echo '<hr>';
+								echo '<span>Team A - Team B</span><br>';
+								echo '<span>Team A - Team B</span><br>';
+								echo '<span>Team A - Team B</span><br>';
+								echo '<span>Team A - Team B</span><br>';
+								echo '<span>Team A - Team B</span><br>';
+							echo '</div>';
+						}
+							
+						echo '</div>';
+					echo '</div>';
+				}
+				else {
+					echo '<div class="alert alert-warning fade show" role="alert">';
+					echo '<strong>Προσοχή!</strong><br>';
+					echo 'Δεν ορίσθηκε αγωνιστική προς εμφάνιση.';
 					echo '</div><br>';
 				}
 			?>
-
-			<div class="row align-self-center">
-				<div class="col-md-4 text-center">
-					<div class="border p-3 m-3">
-						<h5>Αγωνιστική ΧΥΖ</h5>
-						<hr>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-					</div>
-				</div>
-				
-				<!-- Remove these START -->
-				<div class="col-md-4 text-center">
-					<div class="border p-3 m-3">
-						<h5>Αγωνιστική ΧΥΖ</h5>
-						<hr>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-					</div>
-				</div>
-				<div class="col-md-4 text-center">
-					<div class="border p-3 m-3">
-						<h5>Αγωνιστική ΧΥΖ</h5>
-						<hr>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-					</div>
-				</div>
-				<div class="col-md-4 text-center">
-					<div class="border p-3 m-3">
-						<h5>Αγωνιστική ΧΥΖ</h5>
-						<hr>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-						<span>Team A - Team B</span><br>
-					</div>
-				</div>
-				<!-- Remove these END -->
-			</div>
 		</div>
 			
 		<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-			<a href="./" class="btn btn-secondary mt-5 me-3" role="button">Αρχική</a>
+			<a href="./" class="btn btn-secondary mb-5 me-3" role="button">Αρχική</a>
 		</div>
 
 		<br><br>
+
 		</main>
 
 		<!-- Footer -->
-		<footer class="footer mt-auto py-3 bg-dark">
-			<div class="container">
-				<span class="text-muted">Εργασία Εξαμήνου, Ανάπτυξη Εφαρμογών για Κινητές Συσκευές - 6ο Εξάμηνο.</span><br>
-				<span class="text-muted">&copy; Copyright Ομάδα 1, 2021-2022 .</span>
-			</div>
-		</footer>
+		<?php require_once MAIN_FOOTER ?>
+
 	</body>
 	
 </html>
