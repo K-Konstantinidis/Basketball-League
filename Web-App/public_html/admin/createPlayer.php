@@ -3,19 +3,22 @@
 session_start();
 require_once '../../resources/config.php';
 
+// Required for the navigation bar to load properly
 $currPage = 'createPlayer';
 
 // If the user is not logged in, he gets redirected at the loggin page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ' . DIR_LOGIN . '?r');
+	header('Location: ../login/?lr');
 	die();
 }
 
 // Use these to display errors
 $err = $suc = false;
-$err_msg = 'Ενα μήνυμα σφάλματος';
+$err_msg = 'Ένα μήνυμα σφάλματος';
+$suc_msg = 'Ο παίκτης <strong>' . /*$_POST['playerNameGR'] .*/ '</strong> δημιουργήθηκε επιτυχώς';
 
-$playerNameGR_err = $playerNameEN_err = $playerPos_err = $playerImg_err = $playerTeam_err = false;
+// Use them to indicate errors on the input field
+$playerNameGR_err = $playerSurnameGR_err = $playerNameEN_err = $playerSurnameEN_err = $playerPos_err = $playerTeam_err = $playerImg_err = false;
 
 ?>
 
@@ -28,32 +31,18 @@ $playerNameGR_err = $playerNameEN_err = $playerPos_err = $playerImg_err = $playe
 		<meta name="description" content="">
 		<title>ΕΣΑΚΕ App - Δημιουργία Παίκτη</title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+		<!-- Bootstrap and other required CSS -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/base.css"/>
+		<link rel="stylesheet" href="./css/createPlayer.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
-		<style>
-			li{
-				margin-left: 10px;
-			}
-
-			@media (max-width: 505px) {
-				.btn-single-line {
-					padding: 18px;
-				}
-			}
-
-			@media (max-width: 767px) {
-				.div-spacer {
-					margin-top: 20px;
-				}
-			}
-		</style>
   	</head>
 
 	<body class="d-flex flex-column h-100">
 	
 		<header>
-			<?php require_once MAIN_NAVIGATION ?>
+			<!-- Fixed navbar -->
+			<?php require_once ADMIN_NAVIGATION ?>
 		</header>
 
 		<!-- Begin page content -->
@@ -62,7 +51,6 @@ $playerNameGR_err = $playerNameEN_err = $playerPos_err = $playerImg_err = $playe
 			<br>
 			<h1 class="mt-5">Δημιουργία Παίκτη</h1>
 			<p class="lead">Συμπληρώστε τα ακόλουθα πεδία για να δημιουργήσετε έναν νέο παίκτη.</p>
-			
 			<br>
 
 			<?php
@@ -76,24 +64,32 @@ $playerNameGR_err = $playerNameEN_err = $playerPos_err = $playerImg_err = $playe
 				if($suc) {
 					echo '<div class="alert alert-success fade show" role="alert">';
 					echo '<strong>Επιτυχία!</strong><br>';
-					echo 'Ο παίκτης <strong>' . $_POST['playerName'] . '</strong> δημιουργήθηκε επιτυχώς.';
+					echo $suc_msg . '.';
 					echo '</div><br>';
 				}
-
-				echo ROOT_PATH;
 			?>
 
-			<form action="" method="POST">
+			<form method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>">
 				<!-- Name (in Greek) -->
 				<div class="form-floating mb-5">
 					<input type="text" class="form-control <?php echo ($playerNameGR_err) ? ' is-invalid' : '' ?>" id="playerNameGR" placeholder="">
 					<label for="playerNameGR">Όνομα Παίκτη (Ελληνικά)</label>
 				</div>
+				<!-- Surname (in Greek) -->
+				<div class="form-floating mb-5">
+					<input type="text" class="form-control <?php echo ($playerSurnameGR_err) ? ' is-invalid' : '' ?>" id="playerSurnameGR" placeholder="">
+					<label for="playerSurnameGR">Επώνυμο Παίκτη (Ελληνικά)</label>
+				</div>
 
 				<!-- Name (in English) -->
 				<div class="form-floating mb-5">
 					<input type="text" class="form-control <?php echo ($playerNameEN_err) ? ' is-invalid' : '' ?>" id="playerNameEN" placeholder="">
-					<label for="playerNameEN">Όνομα Παίκτη (Λατινικά)</label>
+					<label for="playerNameEN">Όνομα Παίκτη (Αγγλικά)</label>
+				</div>
+				<!-- Surname (in English) -->
+				<div class="form-floating mb-5">
+					<input type="text" class="form-control <?php echo ($playerSurnameEN_err) ? ' is-invalid' : '' ?>" id="playerSurnameEN" placeholder="">
+					<label for="playerSurnameEN">Επώνυμο Παίκτη (Αγγλικά)</label>
 				</div>
 
 				<!-- Player Position -->
@@ -133,6 +129,7 @@ $playerNameGR_err = $playerNameEN_err = $playerPos_err = $playerImg_err = $playe
 
 		<!-- Footer -->
 		<?php require_once MAIN_FOOTER ?>
+		
 	</body>
 	
 </html>

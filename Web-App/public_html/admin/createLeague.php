@@ -3,17 +3,19 @@
 session_start();
 require_once '../../resources/config.php';
 
+// Required for the navigation bar to load properly
 $currPage = 'createLeague';
 
-// If the user is not logged in, he gets redirected at the loggin page.
+// If the user is not logged in, he gets redirected at the login page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../loggin/?r=true');
+	header('Location: ../login/?lr');
 	die();
 }
 
 // Use these to display errors
 $err = $suc = false;
-$err_msg = 'Ενα μήνυμα σφάλματος';
+$err_msg = 'Ένα μήνυμα σφάλματος';
+$suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυχία';
 
 ?>
 
@@ -26,34 +28,18 @@ $err_msg = 'Ενα μήνυμα σφάλματος';
 		<meta name="description" content="">
 		<title>ΕΣΑΚΕ App - Δημιουργία Πρωταθλήματος</title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet"/>
-		<link rel="stylesheet" href="./bootstrap-image-checkbox.css">
+		<!-- Bootstrap and other required CSS -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/base.css"/>
+		<link rel="stylesheet" href="./css/createLeague.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
-		<style>
-			li{
-				margin-left: 10px;
-			}
-
-			@media (max-width: 767px) {
-				.btn-single-line {
-					padding: 18px;
-				}
-			}
-
-			@media (max-width: 767px) {
-				.div-spacer {
-					margin-top: 20px;
-				}
-			}
-		</style>
-  	</head>
+	</head>
 
 	<body class="d-flex flex-column h-100">
 	
 		<header>
 			<!-- Fixed navbar -->
-			<?php require_once MAIN_NAVIGATION ?>
+			<?php require_once ADMIN_NAVIGATION ?>
 		</header>
 
 		<!-- Begin page content -->
@@ -75,7 +61,7 @@ $err_msg = 'Ενα μήνυμα σφάλματος';
 				if($suc) {
 					echo '<div class="alert alert-success fade show" role="alert">';
 					echo '<strong>Επιτυχία!</strong><br>';
-					echo 'Το πρωτάθλημα δημιουργήθηκε επιτυχώς.';
+					echo $suc_msg . '.';
 					echo '</div><br>';
 				}
 			?>
@@ -156,6 +142,6 @@ $err_msg = 'Ενα μήνυμα σφάλματος';
 
 		<!-- Footer -->
 		<?php require_once MAIN_FOOTER ?>
+
 	</body>
-	
 </html>

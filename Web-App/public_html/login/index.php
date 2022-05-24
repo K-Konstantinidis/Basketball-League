@@ -11,7 +11,7 @@ $user_logged_out = false;
 
 if($_SERVER["REQUEST_METHOD"] == "GET") {
 	// Check if the user was redirected
-	if(isset($_GET["r"]) && $_GET["r"] === 'true') {
+	if(isset($_GET["lr"])) {
 		$user_redirected = true;
 	}
 
