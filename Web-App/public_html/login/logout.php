@@ -5,6 +5,6 @@
 		unset($_SESSION['logged_in']);
 	}
 
-	header('Location: ./loggin/?r=loggout');
+	header('Location: ./?lo');
 	exit;
 ?>

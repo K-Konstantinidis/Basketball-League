@@ -1,40 +1,86 @@
 <?php
 
 session_start();
+require_once '../../resources/config.php';
 
-// Display an alert message, if prompted from another page
-$user_redirected = false;
-
-// Display an alert message, if logged out successfuly
-$user_logged_out = false;
-
-
-if($_SERVER["REQUEST_METHOD"] == "GET") {
-	// Check if the user was redirected
-	if(isset($_GET["lr"])) {
-		$user_redirected = true;
-	}
-
-	// Check if the user logged out
-	if(isset($_GET["r"]) && $_GET["r"] === 'loggout') {
-		$user_logged_out = true;
-	}
-
-
-	// Used for debugging!
-	if(isset($_GET["l"]) && $_GET["l"] === 'true') {
-		$_SESSION['logged_in'] = true;
-	}
-	else {
-		if(isset($_GET["l"]) && isset($_SESSION['logged_in'])) {
-			unset($_SESSION['logged_in']);
-		}
-	}
+// If the user already logged in, he gets redirected at the admin page.
+if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
+	header('Location: ../admin/');
+	die();
 }
 
-// Loggin code
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+// Any errors that may occur during login
+$login_err = '';
 
+// Login code
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$username = $password = '';
+	$username_err = $password_err = $login_err = '';
+
+	// Get the username
+	if(empty(trim($_POST['username']))) {
+		$username_err = 'Παρακαλώ, εισάγετε όνομα χρήστη';
+	}
+	else {
+		$username = trim($_POST['username']);
+	}
+
+	// Get the password
+	if(empty(trim($_POST['password']))) {
+		$password_err = 'Παρακαλώ, εισάγετε συνθηματικό';
+	}
+	else {
+		$password = trim($_POST['password']);
+	}
+
+	if(empty($username_err) && empty($password_err)) {
+		$link = connectDB();
+		$sql = 'SELECT username, password FROM user WHERE username = ?';
+		
+		if($stmt = $link->prepare($sql)) {
+			// Bind and set the prepared statement
+			$stmt->bind_param('s', $param_username);
+			$param_username = $username;
+
+			if($stmt->execute()) {
+				$stmt->store_result();
+
+				if($stmt->num_rows == 1) {
+					$stmt->bind_result($username, $hashed_password);
+
+					// Get the results
+					if($stmt->fetch()) {
+						//Correct credentials
+						if(strcmp(hash('sha256', $password), $hashed_password) === 0) {
+							session_start();
+							$_SESSION['logged_in'] = true;
+							$_SESSION['user'] = $username;
+							header('Location: ../../');
+						}
+						else {
+							// Password is invalid, display a generic error message
+							$login_err = 'Λάθος όνομα χρήστη ή κωδικός';
+						}
+					}
+					else {
+						// Failed to fetch the results
+						$login_err = 'Κάτι πήγε λάθος. Προσπαθήστε ξανά αργότερα';
+					}
+				}
+				else {
+					// Username doesn't exist, display a generic error message
+					$login_err = 'Λάθος όνομα χρήστη ή κωδικός';
+				}
+			}
+			else {
+				// Failed to execute the prepared statement
+				$login_err = 'Κάτι πήγε λάθος. Προσπαθήστε ξανά αργότερα';
+			}
+
+			$stmt->close();
+			$link->close();
+		}
+	}
 }
 
 ?>
@@ -42,61 +88,57 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!doctype html>
 <html lang="el">
 	<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="ESAKE Loggin Page">
-	<title>ΕΣΑΚΕ - Σύνδεση</title>
+		<!-- Website settings -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="ESAKE Loggin Page">
+		<title>ΕΣΑΚΕ - Σύνδεση</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
-
-	<style>
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width: 768px) {
-			.bd-placeholder-img-lg {
-				font-size: 3.5rem;
-			}
-		}
-	</style>
-
-	
-	<!-- Custom styles for this template -->
-	<link href="signin.css" rel="stylesheet">
+		<!-- Bootstrap and other required CSS -->
+		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/login.css"/>
 	</head>
+
 	<body class="text-center">
 	
 	<main class="form-signin">
-		<form method="POST">
-			<img class="mb-4" src="../img/brand/esake-logo.jpg" alt="" height="120">
+
+		<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+			<img class="mb-4" src=<?php echo DIR_IMG . 'brand/esake-logo.jpg'?> alt="esake-logo" height="120">
 			
-			<?php echo ($user_redirected) ? '<div class="alert alert-danger fade show" role="alert">Πρέπει να συνδεθείτε για να χρησιμοποιήσετε την εφαρμογη.</div>' : '' ?>
-			<?php echo ($user_logged_out) ? '<div class="alert alert-success fade show" role="alert">Αποσυνδεθήκατε επιτυχώς!</div>' : '' ?>
-			
+			<?php
+				if($_SERVER["REQUEST_METHOD"] == "GET") {
+					// Check if the user was redirected - "Login Required"
+					if(isset($_GET["lr"])) {
+						displayErrorBanner('Πρέπει να συνδεθείτε για να χρησιμοποιήσετε την εφαρμογη.', '');
+					}
+				
+					// Check if the user logged out - "Logged out"
+					if(isset($_GET["lo"])) {
+						displaySuccessBanner('Αποσυνδεθήκατε επιτυχώς!', '');
+					}
+				}
+
+				if($login_err){
+					displayErrorBanner($login_err, '');
+				}
+			?>
+
 			<h1 class="h3 mb-3 fw-normal">Παρακαλώ συνδεθείτε</h1>
 
 			<div class="form-floating">
-				<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-				<label for="floatingInput">Όνομα χρήστη</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="">
+				<label for="username">Όνομα χρήστη</label>
 			</div>
+
 			<div class="form-floating">
-				<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-				<label for="floatingPassword">Συνθηματικό</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="">
+				<label for="password">Συνθηματικό</label>
 			</div>
-			<div class="checkbox mb-3">
-				<label>
-					<input type="checkbox" value="remember-me"> Θυμήσου με
-				</label>
-			</div>
+
 			<button class="w-100 btn btn-lg btn-primary" type="submit">Σύνδεση</button>
 		</form>
-		<p class="mt-5 mb-3 text-muted">Ανάπτυξη Εφαρμογών για Κινητές Συσκευές, 6ο Εξάμηνο</br>&copy; Ομάδα 1, 2021-2022</p>
+		<p class="mt-5 mb-3 text-muted">Ανάπτυξη Εφαρμογών για Κινητές Συσκευές, 6ο Εξάμηνο</br>&copy; Ομάδα 1, 2021-<?php echo date('Y')?></p>
 	</main>
 
 	</body>
