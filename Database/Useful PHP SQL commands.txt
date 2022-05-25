@@ -1,0 +1,20 @@
+Useful SQL example for PHP operations
+
+--Show total score per team for a single round (e.g. round 1)
+SELECT team_id, SUM(3*three_points_in+2*two_points_in+freethrows_in) FROM player_stats WHERE round_id = 1 GROUP BY team_id
+
+--Get all games with round number, game number, and team names, in order of round number and then game number
+SELECT game.round_id, game.game_id, h_team.name_gr AS Home_Team, a_team.name_gr AS Away_Team 
+FROM game
+JOIN team h_team ON game.home_team_id = h_team.id
+JOIN team a_team ON game.away_team_id = a_team.id
+ORDER BY game.round_id, game.game_id
+
+--Print count of 3-point shoots scored per team on round 1
+SELECT team.name_gr AS Home_Team, SUM(player_stats.three_points_in) AS Τρίποντα
+FROM player_stats 
+JOIN team ON player_stats.team_id = team.id
+WHERE round_id=1
+GROUP BY team_id
+
+
