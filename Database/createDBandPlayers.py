@@ -1,7 +1,5 @@
 import mysql.connector
 import csv
-import mysql.connector
-import csv
 import random
 from itertools import permutations 
 
@@ -9,7 +7,7 @@ from itertools import permutations
 def add_cities(conn, cities_file_path):
     db_cursor = conn.cursor()
     #open file and start reading
-    with open(cities_file_path, mode='r') as cities_file:
+    with open(cities_file_path, mode='r', encoding="utf8") as cities_file:
         cities_csv = csv.reader(cities_file)
         for city in cities_csv:
             db_cursor.execute("INSERT INTO city (name_gr, name_en) VALUES (%s, %s)", (city[0],city[1],))
@@ -19,7 +17,7 @@ def add_cities(conn, cities_file_path):
 def add_teams(conn, teams_file_path):
     db_cursor = conn.cursor()
     #open file and start reading
-    with open(teams_file_path, mode='r') as teams_file:
+    with open(teams_file_path, mode='r', encoding="utf8") as teams_file:
         teams_csv = csv.reader(teams_file)
         for team in teams_csv:
             db_cursor.execute("SELECT id FROM city WHERE name_gr=%s", (team[2], ))
@@ -33,7 +31,7 @@ def add_teams(conn, teams_file_path):
 def add_positions(conn, positions_file_path):
     db_cursor = conn.cursor()
     #open file and start reading
-    with open(positions_file_path, mode='r') as positions_file:
+    with open(positions_file_path, mode='r', encoding="utf8") as positions_file:
         positions_csv = csv.reader(positions_file)
         for position in positions_csv:
             db_cursor.execute("INSERT IGNORE INTO player_position (position_code, position_name) VALUES (%s, %s)", (position[1],position[0],))
@@ -43,7 +41,7 @@ def add_positions(conn, positions_file_path):
 def add_players(conn, players_file_path):
     db_cursor = conn.cursor()
     #open file and start reading
-    with open(players_file_path, mode='r') as players_file:
+    with open(players_file_path, mode='r', encoding="utf8") as players_file:
         players_csv = csv.reader(players_file)
         loops=0
         for player in players_csv:
@@ -56,6 +54,11 @@ def add_players(conn, players_file_path):
             db_cursor.execute("INSERT INTO player (surname_gr, name_gr, surname_en, name_en, player_position_code, team_id, img_path) VALUES (%s, %s, %s, %s, %s, %s, %s)", (player[0], player[1], player[2], player[3], player[5], fk_team_ids[0], photo_path,))
         #save changes
         conn.commit()
+
+def create_championship(conn):
+    db_cursor = conn.cursor()
+    db_cursor.execute("INSERT INTO championship (name) VALUES (%s)", ("ESAKE",))
+    conn.commit()
 
 def create_fixtures(conn):
     db_cursor = conn.cursor()
@@ -155,6 +158,7 @@ add_teams(conn, 'teams.csv')
 add_positions(conn, 'positions.csv')
 add_players(conn, 'players.csv')
 
+create_championship(conn)
 teams = create_fixtures(conn)
 insert_matchups(conn,teams)
 
