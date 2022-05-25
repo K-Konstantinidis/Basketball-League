@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<main class="form-signin">
 
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
-			<img class="mb-4" src=<?php echo DIR_IMG . 'brand/esake-logo.jpg'?> alt="esake-logo" height="120">
+			<img class="mb-4" src=<?php echo DIR_IMG_AREF . 'brand/esake-logo.jpg'?> alt="esake-logo" height="120">
 			
 			<?php
 				if($_SERVER["REQUEST_METHOD"] == "GET") {
