@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home_user, R.id.navigation_leagueTable, R.id.navigation_teamStats, R.id.navigation_playerStats, R.id.navigation_top5)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 

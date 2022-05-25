@@ -53,4 +53,8 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="title_activity_stats_manager_pages">Σελλιδες Υπευθύνου Στατιστικών</string>
+    <string name="gameweek_watch_gameButton">Παρακολούθηση Αγώνα</string>
+    <string name="esake_logo_no_text">ESAKE Λόγκο</string>
+    <string name="fixture_preview_team1_logo">Αριστερή Ομάδα στις Αγωνιστικές</string>
+    <string name="fixture_preview_team2_logo">Δεξιά Ομάδα στις Αγωνιστικές</string>
 </resources>
