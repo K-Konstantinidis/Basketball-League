@@ -43,4 +43,14 @@
     <string name="top5_name">Όνομα Παίκτη</string>
     <string name="top5_player_position">PG</string>
     <string name="top5_player_image">Φωτογραφία Παίκτη</string>
+    <string name="Gameweek_stats">Αγωνιστική #</string>
+    <string name="dash">-</string>
+    <string name="home_score_stats">Σκορ1</string>
+    <string name="away_score_stats">Σκορ2</string>
+    <string name="home_team_stats">Γηπεδούχος Ομάδα</string>
+    <string name="away_team_stats">Φιλοξενούμενη Ομάδα</string>
+    <string name="action_stats">Διαχείρηση Αγώνα</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_stats_manager_pages">Σελλιδες Υπευθύνου Στατιστικών</string>
 </resources>

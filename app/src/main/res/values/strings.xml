@@ -42,4 +42,14 @@
     <string name="top5_position">Position</string>
     <string name="top5_name">Player Name</string>
     <string name="top5_player_image">Player Image</string>
+    <string name="action_stats">Watch Game</string>
+    <string name="Gameweek_stats">Gameweek #</string>
+    <string name="dash">-</string>
+    <string name="home_score_stats">Score1</string>
+    <string name="away_score_stats">Score2</string>
+    <string name="home_team_stats">Home Team</string>
+    <string name="away_team_stats">Away Team</string>
+    <string name="title_activity_stats_manager_pages">Stats_Manager_Pages</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
