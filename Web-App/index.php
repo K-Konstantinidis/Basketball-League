@@ -8,7 +8,7 @@ if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
 	die();
 }
 else { // Otherwise, he is prompted to login
-	header('Location: ./public_html/loggin/');
+	header('Location: ./public_html/login/');
 	die();
 }
 
