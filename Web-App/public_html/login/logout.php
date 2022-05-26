@@ -4,12 +4,12 @@
 	
 	if(isset($_SESSION['logged_in'])) {
 		unset($_SESSION['logged_in']);
+
+		if(isset($_SESSION['user'])) {
+			unset($_SESSION['user']);
+		}
 	}
 
-	if(isset($_SESSION['user'])) {
-		unset($_SESSION['user']);
-	}
-
-	header('Location: ' . LOGIN_AREF . '?lo');
+	header('Location: ' . AREF_LOGIN . '?lo');
 	exit;
 ?>
