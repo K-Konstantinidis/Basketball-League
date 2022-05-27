@@ -51,6 +51,10 @@
     <string name="away_team_stats">Φιλοξενούμενη Ομάδα</string>
     <string name="action_stats">Διαχείρηση Αγώνα</string>
     <string name="title_activity_stats_manager_pages">Σελλιδες Υπευθύνου Στατιστικών</string>
+    <string name="gameweek_watch_gameButton">Παρακολούθηση Αγώνα</string>
+    <string name="esake_logo_no_text">ESAKE Λόγκο</string>
+    <string name="fixture_preview_team1_logo">Αριστερή Ομάδα στις Αγωνιστικές</string>
+    <string name="fixture_preview_team2_logo">Δεξιά Ομάδα στις Αγωνιστικές</string>
     <string name="gametime_stats">10 \'</string>
     <string name="home_team_logo">Λογότυπο της γηπεδούχος ομάδας</string>
     <string name="title_activity_main2">Λογότυπο της φιλοξενούμενης ομάδας</string>
