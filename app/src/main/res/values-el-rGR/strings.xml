@@ -50,7 +50,18 @@
     <string name="home_team_stats">Γηπεδούχος Ομάδα</string>
     <string name="away_team_stats">Φιλοξενούμενη Ομάδα</string>
     <string name="action_stats">Διαχείρηση Αγώνα</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
     <string name="title_activity_stats_manager_pages">Σελλιδες Υπευθύνου Στατιστικών</string>
+    <string name="gametime_stats">10 \'</string>
+    <string name="home_team_logo">Λογότυπο της γηπεδούχος ομάδας</string>
+    <string name="title_activity_main2">Λογότυπο της φιλοξενούμενης ομάδας</string>
+    <string name="first_fragment_label">πρώτη σελίδα</string>
+    <string name="second_fragment_label">δεύτερη σελίδα</string>
+    <string name="next">επόμενο</string>
+    <string name="previous">προηγούμενο</string>
+    <string name="tab_1">Επισκόπηση Αγώνα</string>
+    <string name="tab_2">Διαχείριση Παιχνιδιού</string>
+    <string name="tab_3">Διαχείριση Συνθέσεων</string>
+    <string name="away_team">Away Team</string>
+    <string name="starting_lineup_stats_manager">Βασικοί</string>
+    <string name="substitutes_stats_manager">Αλλαγές</string>
 </resources>

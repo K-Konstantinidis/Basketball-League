@@ -11,5 +11,6 @@
     <color name="hints">#D3D3D3</color>
     <color name="primary_color">#0B1C4E</color>
     <color name="continueAsUser">#0B7DAA</color>
-
+    <color name="red">#FF0000</color>
+    <color name="gray">#D2D2D2</color>
 </resources>

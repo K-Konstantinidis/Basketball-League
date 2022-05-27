@@ -23,21 +23,23 @@
                 android:id="@+id/imageView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
+                android:contentDescription="@string/home_team_stats"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="ImageContrastCheck"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Score1"
+                android:text="@string/home_score_stats"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.029"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,9 +47,10 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/dash"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,9 +58,10 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Score2"
+                android:text="@string/away_score_stats"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,24 +69,38 @@
                 android:id="@+id/imageView2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:contentDescription="@string/away_team_stats"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.056"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:layout_editor_absoluteX="202dp"
                 tools:src="@tools:sample/avatars" />
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="120dp"
+                android:layout_width="140dp"
                 android:layout_height="48dp"
-                android:text="Watch Game"
+                android:text="@string/action_stats"
                 android:textSize="11sp"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.6" />
+                app:layout_constraintVertical_bias="0.5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Gameweek_stats"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

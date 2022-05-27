@@ -49,7 +49,19 @@
     <string name="away_score_stats">Score2</string>
     <string name="home_team_stats">Home Team</string>
     <string name="away_team_stats">Away Team</string>
+    <string name="gametime_stats">10 \'</string>
+    <string name="home_team_logo">home team logo</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
     <string name="title_activity_stats_manager_pages">Stats_Manager_Pages</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_1">Game Overview</string>
+    <string name="tab_2">Manage Game</string>
+    <string name="tab_3">Manage Team</string>
+    <string name="starting_lineup_stats_manager">Starting</string>
+    <string name="substitutes_stats_manager">Substitutes</string>
+    <string name="away_team">Away Team</string>
 </resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentMatchOverviewStatsManager">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.188">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="team1"/>
+                <TextView
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:text="sp" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:text="sp"
+                    android:gravity="center"
+                    android:padding="3dip" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:text="sp"
+                    android:gravity="center"
+                    android:padding="3dip" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:text="sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="team1" />
+
+                <TextView
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:text="sp" />
+
+                <TextView
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:text="sp" />
+
+                <TextView
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:text="sp" />
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:text="sp" />
+            </TableRow>
+
+        </TableLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
