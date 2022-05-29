@@ -50,20 +50,19 @@
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_login2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_login_admin.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_login_user.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_main2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_signup_user.xml" value="0.23777173913043478" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_stats_manager_pages.xml" value="0.4" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/content_main.xml" value="0.2" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_dashboard.xml" value="0.1186046511627907" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_first.xml" value="0.264" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_game_management_stats_manager.xml" value="0.264" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_game_management_stats_manager.xml" value="0.4" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_games_stats_manager.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_home.xml" value="0.16757246376811594" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_home_stats_manager.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_home_user.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_league_table.xml" value="0.16802536231884058" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_league_table.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_match_overview_stats_manager.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_notifications.xml" value="0.16757246376811594" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_player_stats.xml" value="0.25416666666666665" />
@@ -73,6 +72,7 @@
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_team_management_stats_manager.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_team_stats.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/fragment_top5.xml" value="0.264" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/single_fixture.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/toolbar.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/layout/top5_spinner_items.xml" value="0.2" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />

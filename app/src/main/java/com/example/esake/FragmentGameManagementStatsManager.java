@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
@@ -25,6 +26,7 @@ public class FragmentGameManagementStatsManager extends Fragment{
 
     private String mParam1;
     private String mParam2;
+    private boolean flag;
 
     public FragmentGameManagementStatsManager() {
         // Required empty public constructor
@@ -69,26 +71,84 @@ public class FragmentGameManagementStatsManager extends Fragment{
         ConstraintLayout constraintLayout = root.findViewById(R.id.constraintLayout_games_statsManager);
         ConstraintSet constraintSet = new ConstraintSet();
 
-        imgViewHomeTeam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rdg1.setVisibility(View.VISIBLE);
-                rdg2.setVisibility(View.GONE);
-                constraintSet.clone(constraintLayout);
-                constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_homeTeam, ConstraintSet.BOTTOM,0);
-                constraintSet.applyTo(constraintLayout);
-            }
+        Button btn2pts = root.findViewById(R.id.button_2points);
+        Button btn2ptsM = root.findViewById(R.id.button_2pointsMissed);
+        Button btn3pts = root.findViewById(R.id.button_3points);
+        Button btn3ptsM = root.findViewById(R.id.button_3pointsMissed);
+        Button btnFT = root.findViewById(R.id.button_freeThrow);
+        Button btnFTM = root.findViewById(R.id.button_freeThrowMissed);
+        Button btnAssist = root.findViewById(R.id.button_assist);
+        Button btnFoul = root.findViewById(R.id.button_foul);
+        Button btnRebound = root.findViewById(R.id.button_rebound);
+        Button btnTurnOver = root.findViewById(R.id.button_turnover);
+        Button btnBlock = root.findViewById(R.id.button_block);
+        Button btnSteal = root.findViewById(R.id.button_steal);
+        ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
+        flag = false;
+
+        imgViewHomeTeam.setOnClickListener(view -> {
+            rdg1.setVisibility(View.VISIBLE);
+            rdg2.setVisibility(View.GONE);
+            constraintSet.clone(constraintLayout);
+            constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_homeTeam, ConstraintSet.BOTTOM,0);
+            constraintSet.applyTo(constraintLayout);
         });
 
-        imgViewAwayTeam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rdg2.setVisibility(View.VISIBLE);
-                rdg1.setVisibility(View.GONE);
-                constraintSet.clone(constraintLayout);
-                constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_awayTeam, ConstraintSet.BOTTOM,0);
-                constraintSet.applyTo(constraintLayout);
-            }
+        imgViewAwayTeam.setOnClickListener(view -> {
+            rdg2.setVisibility(View.VISIBLE);
+            rdg1.setVisibility(View.GONE);
+            constraintSet.clone(constraintLayout);
+            constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_awayTeam, ConstraintSet.BOTTOM,0);
+            constraintSet.applyTo(constraintLayout);
+        });
+
+        btn2pts.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btn2ptsM.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btn3pts.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btn3ptsM.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnFT.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnFTM.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnAssist.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnFoul.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnRebound.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnTurnOver.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnBlock.setOnClickListener(view -> {
+            if(flag)
+                radioOpp.setVisibility(View.GONE);
+        });
+        btnSteal.setOnClickListener(view -> {
+            radioOpp.setVisibility(View.VISIBLE);
+            flag = true;
         });
 
         return root;

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.esake.databinding.ActivityStatsManagerPagesBinding;
-import com.example.esake.ui.main.SectionsPagerAdapter;
+import com.example.esake.ui.tabbedView_statsManager.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class Stats_Manager_Pages extends AppCompatActivity {

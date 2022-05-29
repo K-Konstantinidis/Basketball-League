@@ -73,7 +73,7 @@
     <string name="table_wins_value">Wins</string>
     <string name="table_losses_value">Losses</string>
     <string name="team_name_table">"Team "</string>
-    <string name="table_games_value" />
+    <string name="table_games_value" >Value</string>
     <string name="table_team_logo">Team Logo in Table</string>
     <string name="tab_1">Game Overview</string>
     <string name="tab_2">Manage Game</string>

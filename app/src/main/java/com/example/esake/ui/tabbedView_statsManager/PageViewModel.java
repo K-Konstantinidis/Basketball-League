@@ -1,4 +1,4 @@
-package com.example.esake.ui.main;
+package com.example.esake.ui.tabbedView_statsManager;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

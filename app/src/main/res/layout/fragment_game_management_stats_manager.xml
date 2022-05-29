@@ -24,7 +24,7 @@
                 android:src="@drawable/esake_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.02"
@@ -39,7 +39,7 @@
                 android:src="@drawable/esake_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.02"
@@ -169,8 +169,7 @@
                         app:layout_constraintHorizontal_bias="0.02"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/button_2points"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        app:layout_constraintVertical_bias="0.5"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_freeThrow"
@@ -238,8 +237,7 @@
                         app:layout_constraintHorizontal_bias="0.98"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/button_3points"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        app:layout_constraintVertical_bias="0.5" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_assist"
@@ -288,25 +286,25 @@
                         app:layout_constraintTop_toBottomOf="@+id/button_assist" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_block"
+                        android:id="@+id/button_turnover"
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_other_actions"
-                        android:text="blk"
+                        android:text="TO"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/button_turnover"
+                        app:layout_constraintBottom_toTopOf="@+id/button_block"
                         app:layout_constraintEnd_toStartOf="@+id/button_3pointsMissed"
                         app:layout_constraintHorizontal_bias="0.98"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/button_foul" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_steal"
+                        android:id="@+id/button_block"
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_other_actions"
-                        android:text="STL"
+                        android:text="blk"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -317,11 +315,11 @@
                         app:layout_constraintVertical_bias="0.93" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_turnover"
+                        android:id="@+id/button_steal"
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_other_actions"
-                        android:text="TO"
+                        android:text="STL"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -338,6 +336,7 @@
                 android:id="@+id/radGroup_choose_opponent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -388,48 +387,6 @@
                         android:textSize="14sp" />
                 </TableRow>
             </com.example.esake.ToggleButtonGroupTableLayout>
-
-<!--            <RadioGroup-->
-<!--                android:id="@+id/radioGroup_chooseOpponent"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/card_with_actions"-->
-<!--                app:layout_constraintVertical_bias="0">-->
-
-<!--                <RadioButton-->
-<!--                    android:id="@+id/radio_away_player_1"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Player 1" />-->
-
-<!--                <RadioButton-->
-<!--                    android:id="@+id/radio_away_player_2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Player 2" />-->
-
-<!--                <RadioButton-->
-<!--                    android:id="@+id/radio_away_player_3"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Player 3" />-->
-
-<!--                <RadioButton-->
-<!--                    android:id="@+id/radio_away_player_4"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Player 4" />-->
-
-<!--                <RadioButton-->
-<!--                    android:id="@+id/radio_away_player_5"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Player 5" />-->
-<!--            </RadioGroup>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>

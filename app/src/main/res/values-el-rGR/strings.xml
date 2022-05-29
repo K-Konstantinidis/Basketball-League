@@ -68,4 +68,17 @@
     <string name="away_team">Away Team</string>
     <string name="starting_lineup_stats_manager">Βασικοί</string>
     <string name="substitutes_stats_manager">Αλλαγές</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="gameweek_selector">Λίστα Επιλογής Αγωνιστικής</string>
+    <string name="gameweek_preview_score1">Σκορ 1</string>
+    <string name="gameweek_preview_score2">Σκορ 2</string>
+    <string name="table_team_name">Ομάδα</string>
+    <string name="table_games_number">Παιχνίδια</string>
+    <string name="table_points_number">Πόντοι</string>
+    <string name="table_wins_value">Νίκες</string>
+    <string name="table_losses_value">Ήττες</string>
+    <string name="team_name_table">Ομάδα</string>
+    <string name="table_team_logo">Λογότυπο ομάδας</string>
+    <string name="table_games_value">Value</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.esake.ui.main;
+package com.example.esake.ui.tabbedView_statsManager;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.esake.R;
 import com.example.esake.databinding.FragmentStatsManagerPagesBinding;
 
 /**
