@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.esake">
 
+
+<!-- If you add the <intent-filter> inside an <activity> and change
+the android:exported="" to 'true' it will run that activity in the emulator.
+-SOS- Before running the app, remember to change back to 'false'
+      the android:exported="" in all the other activities -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,5 +35,4 @@
             android:exported="false" >
         </activity>
     </application>
-
 </manifest>

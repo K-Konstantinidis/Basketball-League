@@ -62,15 +62,18 @@ public class FragmentGameManagementStatsManager extends Fragment{
     @SuppressLint("InflateParams")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Get the view
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_game_management_stats_manager, null);
+        //Get the team images
         ImageView imgViewHomeTeam = root.findViewById(R.id.home_team_game_statsmanager);
         ImageView imgViewAwayTeam = root.findViewById(R.id.away_team_game_statsmanager);
-
+        //Get the radio groups
         RadioGroup rdg1 = root.findViewById(R.id.radioGroup_homeTeam);
         RadioGroup rdg2 = root.findViewById(R.id.radioGroup_awayTeam);
+        //Get the layout
         ConstraintLayout constraintLayout = root.findViewById(R.id.constraintLayout_games_statsManager);
         ConstraintSet constraintSet = new ConstraintSet();
-
+        //Get the buttons
         Button btn2pts = root.findViewById(R.id.button_2points);
         Button btn2ptsM = root.findViewById(R.id.button_2pointsMissed);
         Button btn3pts = root.findViewById(R.id.button_3points);
@@ -86,6 +89,9 @@ public class FragmentGameManagementStatsManager extends Fragment{
         ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
         flag = false;
 
+        //Add click listener to hide/show the radio group with the team players
+        //every time the user clicks the team image
+        //and change the constraint of the cardView
         imgViewHomeTeam.setOnClickListener(view -> {
             rdg1.setVisibility(View.VISIBLE);
             rdg2.setVisibility(View.GONE);
@@ -93,7 +99,6 @@ public class FragmentGameManagementStatsManager extends Fragment{
             constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_homeTeam, ConstraintSet.BOTTOM,0);
             constraintSet.applyTo(constraintLayout);
         });
-
         imgViewAwayTeam.setOnClickListener(view -> {
             rdg2.setVisibility(View.VISIBLE);
             rdg1.setVisibility(View.GONE);
@@ -102,6 +107,9 @@ public class FragmentGameManagementStatsManager extends Fragment{
             constraintSet.applyTo(constraintLayout);
         });
 
+        //Add click listener for each button action and hide
+        //the radio group with the 5 opponents, or show it
+        //if the clicked button is the steal button
         btn2pts.setOnClickListener(view -> {
             if(flag)
                 radioOpp.setVisibility(View.GONE);

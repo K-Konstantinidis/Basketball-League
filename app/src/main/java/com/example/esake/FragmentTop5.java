@@ -1,17 +1,15 @@
 package com.example.esake;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,27 +62,27 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Get the view
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_top5, null);
-        //get the spinner from the xml.
+        //Get the spinner from the xml.
         Spinner dropdown = (Spinner) root.findViewById(R.id.spinner);
-        //create a list of items for the spinner.
+        //Create a list of items for the spinner.
         String[] items = new String[]{"Week 1", "Week 2", "Week 3", "etc"};
-        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //Create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
+        //Set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
         return root;
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // Showing selected spinner item
+        //Show selected spinner item
         Toast.makeText(parent.getContext(), "You selected: ",Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 }
