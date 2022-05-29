@@ -67,73 +67,50 @@ $suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυ
 			?>
 
 			<div class="row">
-				<div class="col-md-2 border pb-3 m-1 text-center">
-					<div class="custom-control custom-checkbox image-checkbox">
-						<input type="checkbox" class="custom-control-input" id="ck1c"/> <!-- Change the ID! -->
-						<span class="lead mb-3">Paok</span><br> <!-- Change the team name! -->
-						<label class="custom-control-label" for="ck1c"> <!-- Same ID as the checkbox!!!! -->
-							<img src="https://source.unsplash.com/640x426/?holiday" alt="#" class="img-fluid" /> <!-- Image path -->
-						</label>
-					</div>
-				</div>
+				<?php
+				$sql = "SELECT * FROM team";
+				if($result = mysqli_query(connectDB(), $sql)){
+					if(mysqli_num_rows($result) > 0){
+						while($row = mysqli_fetch_array($result)){
+							echo '<div class="col-md-2 border pb-3 m-1 text-center">';
+								echo '<div class="custom-control custom-checkbox image-checkbox">';
+									echo '<input type="checkbox" class="custom-control-input" id='. $row["short_name_en"] . '-cb />';
+									echo '<span class="lead mb-3">' . $row["name_en"] . '</span><br>';
+									echo '<label class="custom-control-label" for="'. $row["short_name_en"] . '-cb">';
+										echo '<img src="https://source.unsplash.com/640x426/" alt="team-'. $row["id"] .'" class="img-fluid" />'; // replace unsplash with  $row["logo_path"] once there is one
+									echo '</label>';
+								echo '</div>';
+							echo '</div>';
+						}
+						mysqli_free_result($result);
+					}else{
+						echo '<div class="alert alert-danger"><em>No available records of teams found.</em></div>';
+					}
+				}else{
+					echo "Oops! Something went wrong. Please try again later.";
+				}
 
-				<!-- Delete the rest, they are simply for showcase START-->
-				<div class="col-md-2 border pb-3 m-1 text-center">
-					<div class="custom-control custom-checkbox image-checkbox">
-						<input type="checkbox" class="custom-control-input" id="ck1c"/> <!-- Change the ID! -->
-						<span class="lead mb-3">Paok</span><br> <!-- Change the team name! -->
-						<label class="custom-control-label" for="ck1c"> <!-- Same ID as the checkbox!!!! -->
-							<img src="https://source.unsplash.com/640x426/?holiday" alt="#" class="img-fluid" /> <!-- Image path -->
-						</label>
-					</div>
-				</div>
+				mysqli_close(connectDB());
+				?>
 
-				<div class="col-md-2 border pb-3 m-1 text-center">
-					<div class="custom-control custom-checkbox image-checkbox">
-						<input type="checkbox" class="custom-control-input" id="ck1c"/> <!-- Change the ID! -->
-						<span class="lead mb-3">Paok</span><br> <!-- Change the team name! -->
-						<label class="custom-control-label" for="ck1c"> <!-- Same ID as the checkbox!!!! -->
-							<img src="https://source.unsplash.com/640x426/?holiday" alt="#" class="img-fluid" /> <!-- Image path -->
-						</label>
-					</div>
-				</div>
-
-				<div class="col-md-2 border pb-3 m-1 text-center">
-					<div class="custom-control custom-checkbox image-checkbox">
-						<input type="checkbox" class="custom-control-input" id="ck1c"/> <!-- Change the ID! -->
-						<span class="lead mb-3">Paok</span><br> <!-- Change the team name! -->
-						<label class="custom-control-label" for="ck1c"> <!-- Same ID as the checkbox!!!! -->
-							<img src="https://source.unsplash.com/640x426/?holiday" alt="#" class="img-fluid" /> <!-- Image path -->
-						</label>
-					</div>
-				</div>
-
-				<div class="col-md-2 border pb-3 m-1 text-center">
-					<div class="custom-control custom-checkbox image-checkbox">
-						<input type="checkbox" class="custom-control-input" id="ck1c"/> <!-- Change the ID! -->
-						<span class="lead mb-3">Paok</span><br> <!-- Change the team name! -->
-						<label class="custom-control-label" for="ck1c"> <!-- Same ID as the checkbox!!!! -->
-							<img src="https://source.unsplash.com/640x426/?holiday" alt="#" class="img-fluid" /> <!-- Image path -->
-						</label>
-					</div>
-				</div>
-
-				<div class="col-md-2 border pb-3 m-1 text-center">
-					<div class="custom-control custom-checkbox image-checkbox">
-						<input type="checkbox" class="custom-control-input" id="ck1c"/> <!-- Change the ID! -->
-						<span class="lead mb-3">Paok</span><br> <!-- Change the team name! -->
-						<label class="custom-control-label" for="ck1c"> <!-- Same ID as the checkbox!!!! -->
-							<img src="https://source.unsplash.com/640x426/?holiday" alt="#" class="img-fluid" /> <!-- Image path -->
-						</label>
-					</div>
-				</div>
-				<!-- Delete the rest, they are simply for showcase END -->
 				<br>
 			</div>
+
+			<script>
+
+				// Unchecks all the checkboxes
+				function uncheck(){
+    				checkboxes.forEach((checkbox) => {
+        				checkbox.checked = false;
+ 				   });
+				}
+
+				const checkboxes = document.querySelectorAll('input[type=checkbox]');
+			</script>
 			
 			<div class="d-flex flex-grow-1 justify-content-center align-items-center">
 				<a href="./" class="btn btn-secondary mt-5 me-3 btn-single-line" role="button">Αρχική</a>
-				<button type="button" class="btn btn-danger mt-5 me-3">Εκκαθάριση Φόρμας</button>
+				<button onclick="uncheck()" type="button" class="btn btn-danger mt-5 me-3">Εκκαθάριση Φόρμας</button>
 				<button type="button" class="btn btn-success mt-5 me-3">Δημιουργία Πρωταθλήματος</button>
 			</div>
 
