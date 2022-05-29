@@ -59,6 +59,6 @@ public class FragmentTeamManagementStatsManager extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_team_management_stats_manager, container, false);
+        return inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, container, false);
     }
 }
