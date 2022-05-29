@@ -81,4 +81,21 @@
     <string name="starting_lineup_stats_manager">Starting</string>
     <string name="substitutes_stats_manager">Substitutes</string>
     <string name="away_team">Away Team</string>
+    <string name="homeTeamSM">team 1</string>
+    <string name="awayTeamSM">team 2</string>
+    <string name="SSM">S</string>
+    <string name="Q1SM">Q1</string>
+    <string name="Q2SM">Q2</string>
+    <string name="Q3SM">Q3</string>
+    <string name="Q4SM">Q4</string>
+    <string name="SHomeSM">100</string>
+    <string name="Q1HomeSM">20</string>
+    <string name="Q2HomeSM">30</string>
+    <string name="Q3HomeSM">30</string>
+    <string name="Q4HomeSM">20</string>
+    <string name="SAwaySM">90</string>
+    <string name="Q1AwaySM">35</string>
+    <string name="Q2AwaySM">20</string>
+    <string name="Q3AwaySM">25</string>
+    <string name="Q4AwaySM">10</string>
 </resources>

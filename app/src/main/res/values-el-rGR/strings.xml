@@ -81,4 +81,21 @@
     <string name="team_name_table">Ομάδα</string>
     <string name="table_team_logo">Λογότυπο ομάδας</string>
     <string name="table_games_value">Value</string>
+    <string name="homeTeamSM">Ομάδα 1</string>
+    <string name="awayTeamSM">Ομάδα 2</string>
+    <string name="SSM">Σ</string>
+    <string name="Q1SM">Π1</string>
+    <string name="Q2SM">Π2</string>
+    <string name="Q3SM">Π3</string>
+    <string name="Q4SM">Π4</string>
+    <string name="SHomeSM">100</string>
+    <string name="Q1HomeSM">20</string>
+    <string name="Q2HomeSM">30</string>
+    <string name="Q3HomeSM">30</string>
+    <string name="Q4HomeSM">20</string>
+    <string name="SAwaySM">90</string>
+    <string name="Q1AwaySM">35</string>
+    <string name="Q2AwaySM">20</string>
+    <string name="Q3AwaySM">25</string>
+    <string name="Q4AwaySM">10</string>
 </resources>
