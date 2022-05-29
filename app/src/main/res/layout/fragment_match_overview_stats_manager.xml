@@ -14,9 +14,10 @@
             android:id="@+id/teamCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0"
@@ -68,7 +69,7 @@
                     app:layout_constraintHorizontal_bias="0.05"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1" />
 
                 <TextView
                     android:id="@+id/Q1_statsManager"
@@ -85,23 +86,23 @@
                     app:layout_constraintHorizontal_bias="0.35"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1" />
 
                 <TextView
                     android:id="@+id/Q2_statsManager"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:gravity="center_horizontal"
                     android:text="@string/Q2SM"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="center_horizontal"
                     app:layout_constraintBottom_toTopOf="@+id/view2"
                     app:layout_constraintEnd_toStartOf="@+id/Q3_statsManager"
                     app:layout_constraintStart_toEndOf="@+id/Q1_statsManager"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1" />
 
                 <TextView
                     android:id="@+id/Q3_statsManager"
@@ -118,7 +119,7 @@
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1" />
 
                 <TextView
                     android:id="@+id/Q4_statsManager"
@@ -135,7 +136,7 @@
                     app:layout_constraintHorizontal_bias="0.95"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1" />
 
                 <TextView
                     android:id="@+id/SHomeScore_statsManager"
@@ -143,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="@string/SHomeSM"
-                    android:textColor="@color/black"
+                    android:textColor="@color/red"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -167,7 +168,7 @@
                     app:layout_constraintHorizontal_bias="0.35"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toBottomOf="@+id/view2"
-                    app:layout_constraintVertical_bias="0.153" />
+                    app:layout_constraintVertical_bias="0.15" />
 
                 <TextView
                     android:id="@+id/Q2HomeScore_statsManager"
@@ -198,7 +199,7 @@
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toBottomOf="@+id/view2"
-                    app:layout_constraintVertical_bias="0.153" />
+                    app:layout_constraintVertical_bias="0.15" />
 
                 <TextView
                     android:id="@+id/Q4HomeScore_statsManager"
@@ -222,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="@string/SAwaySM"
-                    android:textColor="@color/black"
+                    android:textColor="@color/red"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -246,7 +247,7 @@
                     app:layout_constraintHorizontal_bias="0.35"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toBottomOf="@+id/view2"
-                    app:layout_constraintVertical_bias="0.846" />
+                    app:layout_constraintVertical_bias="0.85" />
 
                 <TextView
                     android:id="@+id/Q2AwayScore_statsManager"
@@ -277,7 +278,7 @@
                     app:layout_constraintHorizontal_bias="0.75"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toBottomOf="@+id/view2"
-                    app:layout_constraintVertical_bias="0.846" />
+                    app:layout_constraintVertical_bias="0.85" />
 
                 <TextView
                     android:id="@+id/Q4AwayScore_statsManager"
@@ -304,11 +305,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.4" />
+                    app:layout_constraintVertical_bias="0.3" />
                 <View
                     android:id="@+id/view"
                     android:layout_width="2dp"
-                    android:layout_height="150dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#000000"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
