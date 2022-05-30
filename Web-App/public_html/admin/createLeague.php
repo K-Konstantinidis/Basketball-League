@@ -68,32 +68,28 @@ $suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυ
 
 			<div class="row">
 				<?php
-				$sql = "SELECT * FROM team";
-				if($result = mysqli_query(connectDB(), $sql)){
-					if(mysqli_num_rows($result) > 0){
-						while($row = mysqli_fetch_array($result)){
+				$conn = connectDB();
+				$data = $conn->query("SELECT * FROM team")->fetchAll();
+				  
+				if($data!=null){
+						foreach($data as $row) {
 							echo '<div class="col-md-2 border pb-3 m-1 text-center">';
 								echo '<div class="custom-control custom-checkbox image-checkbox">';
-									echo '<input type="checkbox" class="custom-control-input" id='. $row["short_name_en"] . '-cb />';
-									echo '<span class="lead mb-3">' . $row["name_en"] . '</span><br>';
-									echo '<label class="custom-control-label" for="'. $row["short_name_en"] . '-cb">';
-										echo '<img src="https://source.unsplash.com/640x426/" alt="team-'. $row["id"] .'" class="img-fluid" />'; // replace unsplash with  $row["logo_path"] once there is one
+									echo '<input type="checkbox" class="custom-control-input" id=' . $row['short_name_en'] . '-cb/>';
+									echo '<span class="lead mb-3">'. $row["name_en"] . '</span><br>';
+									echo '<label class="custom-control-label" for="' .  $row['short_name_en'] . '-cb">';
+										echo '<img src="https://source.unsplash.com/640x426/" alt="team- '. $row['id'] . '" class="img-fluid" />';  // Replace unsplash with  $row["logo_path"] once there is one -->
 									echo '</label>';
 								echo '</div>';
 							echo '</div>';
-						}
-						mysqli_free_result($result);
-					}else{
-						echo '<div class="alert alert-danger"><em>No available records of teams found.</em></div>';
-					}
-				}else{
-					echo "Oops! Something went wrong. Please try again later.";
+						} 
+					}else {
+					echo '<div class="alert alert-danger"><em>No available records of teams found.</em></div>';
 				}
 
-				mysqli_close(connectDB());
-				?>
-
-				<br>
+			$conn = null;
+			?>
+			<br>
 			</div>
 
 			<script>
