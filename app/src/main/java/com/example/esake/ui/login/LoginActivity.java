@@ -1,6 +1,7 @@
 package com.example.esake.ui.login;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.esake.FragmentUserHome;
+import com.example.esake.IndexPage;
 import com.example.esake.R;
+import com.example.esake.StatsManagerHome.HomeActivity;
+import com.example.esake.StatsManagerHome.HomeFragment;
 import com.example.esake.databinding.ActivityLoginAdminBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -117,6 +123,21 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+
+        Button successLogin = (Button)findViewById(R.id.button_login);
+
+        String value = "Manager Button";
+        Intent intent1 = new Intent(LoginActivity.this,HomeActivity.class);
+
+        successLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent1.putExtra("flag",value);
+                startActivity(intent1);
+            }
+        });
+
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
