@@ -36,11 +36,13 @@ function connectDB() {
 	// (or "/htdocs/" if you are on windows with XAMPP) with permissions set at
 	// 600 (aka rw-------), but this is a university assignment that requires to be
 	// 100% portable. Sorry.
-	$db_tmp = new mysqli('localhost', 'root', '', 'esake_management_app');
-
-	if($db_tmp->connect_error) {
-		echo 'Failed to connect to the database!';
-		die();
+	// 👆 True
+	try{
+		$db_tmp = new PDO('mysql:dbname=esake_management_app;host=localhost', 'root', ''); // Changed to PDO
+		// Set the PDO error mode to exception
+		$db_tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	} catch(PDOException $e){
+		die("ERROR: Could not connect. " . $e->getMessage());
 	}
 
 	return $db_tmp;
