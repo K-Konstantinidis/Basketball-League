@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.esake">
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +8,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Esake">
-        <activity
-            android:name=".StatsManagerHome.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Stats_Manager_Pages"
-            android:exported="false"
-            android:theme="@style/Theme.Esake.NoActionBar"></activity>
         <activity
             android:name=".IndexPage"
             android:exported="true">
@@ -26,6 +18,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Stats_Manager_Pages"
+            android:exported="false"
+            android:theme="@style/Theme.Esake.NoActionBar"/>
+        <activity
+            android:name=".StatsManagerHome.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
@@ -33,5 +32,4 @@
             android:exported="false">
         </activity>
     </application>
-
 </manifest>
