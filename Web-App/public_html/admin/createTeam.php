@@ -178,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<!-- Select from existing -->
 					<div class="col-md-6">
 						<label class="mb-1" for="teamCity_dropdown">Υπάρχουσες πόλεις</label>
-						<select name="team_city" class="form-select <?php echo ($teamCity_err) ? ' is-invalid' : '' ?>" id="teamCity_dropdown">
+						<select name="team_city" class="form-select <?php echo ($teamCity_err) ? ' is-invalid' : '' ?>" id="teamCity_dropdown" onchange="grayOut()">
 							<option selected="" disabled="" value="">Επιλέξτε...</option>
 							<?php
 							$data = $conn->query("SELECT * FROM city")->fetchAll();
@@ -198,12 +198,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						
 						<!-- New city name (Greek) -->
 						<div class="form-floating mb-3">
-							<input type="text" class="form-control <?php echo ($newCity_nameGR_err) ? ' is-invalid' : '' ?>" id="newCity_nameGR" placeholder="">
+							<input type="text" class="newCity form-control <?php echo ($newCity_nameGR_err) ? ' is-invalid' : '' ?>" id="newCity_nameGR" placeholder="">
 							<label for="newCity_nameGR">Όνομα Νέας Πόλης (Ελληνικά)</label>
 						</div>
 						<!-- New city name (English) -->
 						<div class="form-floating mb-3">
-							<input type="text" class="form-control <?php echo ($newCity_nameEN_err) ? ' is-invalid' : '' ?>" id="newCity_nameEN" placeholder="">
+							<input type="text" class="newCity form-control <?php echo ($newCity_nameEN_err) ? ' is-invalid' : '' ?>" id="newCity_nameEN" placeholder="">
 							<label for="newCity_nameEN">Όνομα Νέας Πόλης (Αγγλικά)</label>
 						</div>
 					</div>
@@ -215,7 +215,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				
 				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-3">
 					<a href="./" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
-					<button type="button" class="btn btn-danger me-3">Εκκαθάριση Φόρμας</button>
+					<button type="button" class="btn btn-danger me-3" onclick="clearForm()">Εκκαθάριση Φόρμας</button>
 					<button type="submit" class="btn btn-success me-3">Καταχώριση Ομάδας</button>
 				</div>
 
@@ -225,6 +225,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<br>
 		</div>
 		</main>
+		<script>
+
+			const dropdown = document.querySelector('#teamCity_dropdown');
+			const newFields = document.querySelectorAll('.newCity');
+			const textFields = document.querySelectorAll('input[type="text"]');
+			const imgField = document.querySelector('input[type="file"]');
+			
+			const fields = [...textFields, imgField];
+			
+			function grayOut(){
+				if(dropdown.selectedIndex !=0 ){
+					newFields.forEach((field)=>{
+						field.setAttribute('disabled', '');
+					})
+				}else{
+					newFields.forEach((field)=>{
+						field.removeAttribute('disabled');
+					})
+				}
+			}
+
+			function clearForm(){
+				fields.forEach((input)=>{
+					input.value = "";
+    			});
+				dropdown.selectedIndex = "0";
+				grayOut();
+			}
+		</script>
 
 		<!-- Footer -->
 		<?php require_once MAIN_FOOTER ?>
