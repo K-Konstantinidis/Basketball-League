@@ -25,14 +25,5 @@ public class Stats_Manager_Pages extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-
-//        ImageView arrowButton = binding.backArrow;
-//        arrowButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent myIntent = new Intent(getApplicationContext(), HomeFragment.class);
-//                startActivityForResult(myIntent, 0);
-//            }
-//        });
     }
 }

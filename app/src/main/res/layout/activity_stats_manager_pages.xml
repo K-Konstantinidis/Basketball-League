@@ -93,21 +93,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/esake_logo"/>
-
-            <ImageView
-                android:id="@+id/back_arrow"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="Back Arrow"
-                app:layout_constraintBottom_toTopOf="@+id/home_team_stats_manager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.tabs.TabLayout
@@ -130,7 +115,5 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:ignore="SpeakableTextPresentCheck">
-
     </androidx.viewpager.widget.ViewPager>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
