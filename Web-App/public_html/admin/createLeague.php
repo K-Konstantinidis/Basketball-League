@@ -1,5 +1,11 @@
 <?php
+/* TODO:: 
 
+- Add comments
+- Only make it able to select 2 teams for each league? Idk how it works
+- Enable checkmark if image is clicked
+
+*/
 session_start();
 require_once '../../resources/config.php';
 
