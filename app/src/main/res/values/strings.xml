@@ -1,39 +1,32 @@
 <resources>
     <string name="app_name">ESAKE</string>
+                <!-- Menu Titles -->
     <string name="title_home">Home</string>
     <string name="title_league_table">League Table</string>
     <string name="title_team_stats">Team Stats</string>
     <string name="title_player_stats">Player Stats</string>
     <string name="title_top5">Top 5</string>
+                <!-- Other Titles -->
     <string name="title_home_stats_manager">Games</string>
     <string name="title_activity_login">Login</string>
+                <!-- For Login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_username">Username</string>
-    <string name="prompt_name">Name</string>
-    <string name="prompt_surname">Surname</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign In</string>
-    <string name="action_sign_up_short">Sign Up</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login">"Log In"</string>
     <string name="loginPage">"Log In"</string>
-    <string name="forgot_password">"Forgot your password?"</string>
-    <string name="no_account">"Register Here"</string>
-    <string name="have_account">Login Here</string>
-    <string name="signup">Sign Up</string>
-    <string name="signupPage">Create An Account</string>
-    <string name="we_will_see">"Login failed"</string>
-    <string name="we_will_see2">"Login failed"</string>
     <string name="choose_user_type">Choose User Type</string>
     <string name="stats_manager">Stats Manager</string>
     <string name="user">User</string>
     <string name="logo">The app logo</string>
-    <string name="title_activity_login2">LoginActivity2</string>
     <string name="continue_as_user">Continue As User</string>
+                <!-- Top 5 Page -->
     <string name="spinner">spinner</string>
     <string name="top5_rating">Rating</string>
     <string name="top5_player_name">Player 1</string>
@@ -42,6 +35,7 @@
     <string name="top5_position">Position</string>
     <string name="top5_name">Player Name</string>
     <string name="top5_player_image">Player Image</string>
+            <!-- Home Page Stats Manager -->
     <string name="action_stats">Watch Game</string>
     <string name="Gameweek_stats">Gameweek #</string>
     <string name="dash">-</string>
@@ -50,23 +44,21 @@
     <string name="home_team_stats">Home Team</string>
     <string name="away_team_stats">Away Team</string>
     <string name="gametime_stats">10 \'</string>
+        <!-- Game Management Page Stats Manager -->
     <string name="home_team_logo">home team logo</string>
-    <string name="title_activity_main2">MainActivity2</string>
+    <string name="away_team">Away Team</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="title_activity_stats_manager_pages">Stats_Manager_Pages</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+                <!-- Home Page User -->
     <string name="esake_logo_no_text">ESAKE Logo No Text</string>
-    <string name="fixture_preview_team1_logo">Left Team Logo in Gameweek Preview</string>
-    <string name="fixture_preview_team2_logo">Right Team Logo in Gameweek Preview</string>
+    <string name="fixture_preview_team1_logo">Home Team Logo</string>
+    <string name="fixture_preview_team2_logo">Away Team Logo</string>
     <string name="gameweek_watch_gameButton">Watch Game</string>
     <string name="gameweek_selector">Gameweek Selection Spinner</string>
     <string name="gameweek_preview_score1">Score 1</string>
     <string name="gameweek_preview_score2">Score 2</string>
+            <!-- League Table Page User -->
     <string name="table_team_name">Team Name</string>
     <string name="table_games_number">Games</string>
     <string name="table_points_number">Points</string>
@@ -75,12 +67,14 @@
     <string name="team_name_table">"Team "</string>
     <string name="table_games_value">Value</string>
     <string name="table_team_logo">Team Logo in Table</string>
+             <!-- Tabbed View -->
     <string name="tab_1">Game Overview</string>
     <string name="tab_2">Manage Game</string>
     <string name="tab_3">Manage Team</string>
+            <!-- Team Management Page Stats Manager -->
     <string name="starting_lineup_stats_manager">Starting</string>
     <string name="substitutes_stats_manager">Substitutes</string>
-    <string name="away_team">Away Team</string>
+        <!-- OverView Page Stats Manager -->
     <string name="homeTeamSM">team 1</string>
     <string name="awayTeamSM">team 2</string>
     <string name="SSM">S</string>

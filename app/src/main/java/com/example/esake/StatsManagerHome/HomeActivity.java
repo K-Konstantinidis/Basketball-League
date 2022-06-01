@@ -1,12 +1,12 @@
 package com.example.esake.StatsManagerHome;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.esake.FragmentUserHome;
 import com.example.esake.R;
@@ -40,7 +40,5 @@ public class HomeActivity extends AppCompatActivity {
             else if(value.equals("Manager Button"))
                 layout2.setVisibility(View.GONE);
         }
-
     }
-
 }
