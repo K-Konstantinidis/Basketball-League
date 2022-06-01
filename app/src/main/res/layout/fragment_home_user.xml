@@ -63,6 +63,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:text="Gamw thn zoh moy" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvGameweek"
             android:layout_width="match_parent"
