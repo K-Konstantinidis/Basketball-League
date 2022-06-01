@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -109,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         Button successLogin = findViewById(R.id.button_login);
 
         String value = "Manager Button";
+        String value2 = "User Button";
         Intent intent1 = new Intent(LoginActivity.this,HomeActivity.class);
 
         successLogin.setOnClickListener(v -> {
@@ -116,6 +118,13 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent1);
         });
 
+        Intent intent2 = new Intent(LoginActivity.this, HomeActivity.class);
+        TextView userLogin = findViewById(R.id.ContinueAsUser);
+
+        userLogin.setOnClickListener(v -> {
+            intent2.putExtra("flag",value2);
+            startActivity(intent2);
+        });
 
     }
 
