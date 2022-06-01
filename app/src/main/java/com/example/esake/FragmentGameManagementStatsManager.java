@@ -113,6 +113,7 @@ public class FragmentGameManagementStatsManager extends Fragment{
         btn2pts.setOnClickListener(view -> {
             if(flag)
                 radioOpp.setVisibility(View.GONE);
+            //okhttp Δεν θα συνδεθεί με βάση κατευθείαν θα στείλει στην υπηρεσία να προσθέσει τους πόντους
         });
         btn2ptsM.setOnClickListener(view -> {
             if(flag)
