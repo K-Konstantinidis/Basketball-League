@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">ESAKE</string>
-                <!-- Menu Titles -->
+    <!-- Menu Titles -->
     <string name="title_home">Home</string>
     <string name="title_league_table">League Table</string>
     <string name="title_team_stats">Team Stats</string>
     <string name="title_player_stats">Player Stats</string>
     <string name="title_top5">Top 5</string>
-                <!-- Other Titles -->
+    <!-- Other Titles -->
     <string name="title_home_stats_manager">Games</string>
     <string name="title_activity_login">Login</string>
-                <!-- For Login -->
+    <!-- For Login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_username">Username</string>
@@ -26,7 +26,7 @@
     <string name="user">User</string>
     <string name="logo">The app logo</string>
     <string name="continue_as_user">Continue As User</string>
-                <!-- Top 5 Page -->
+    <!-- Top 5 Page -->
     <string name="spinner">spinner</string>
     <string name="top5_rating">Rating</string>
     <string name="top5_player_name">Player 1</string>
@@ -35,7 +35,7 @@
     <string name="top5_position">Position</string>
     <string name="top5_name">Player Name</string>
     <string name="top5_player_image">Player Image</string>
-            <!-- Home Page Stats Manager -->
+    <!-- Home Page Stats Manager -->
     <string name="action_stats">Watch Game</string>
     <string name="Gameweek_stats">Gameweek #</string>
     <string name="dash">-</string>
@@ -44,13 +44,13 @@
     <string name="home_team_stats">Home Team</string>
     <string name="away_team_stats">Away Team</string>
     <string name="gametime_stats">10 \'</string>
-        <!-- Game Management Page Stats Manager -->
+    <!-- Game Management Page Stats Manager -->
     <string name="home_team_logo">home team logo</string>
     <string name="away_team">Away Team</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-                <!-- Home Page User -->
+    <!-- Home Page User -->
     <string name="esake_logo_no_text">ESAKE Logo No Text</string>
     <string name="fixture_preview_team1_logo">Home Team Logo</string>
     <string name="fixture_preview_team2_logo">Away Team Logo</string>
@@ -58,7 +58,12 @@
     <string name="gameweek_selector">Gameweek Selection Spinner</string>
     <string name="gameweek_preview_score1">Score 1</string>
     <string name="gameweek_preview_score2">Score 2</string>
-            <!-- League Table Page User -->
+    <string name="home_team_user">Home Team</string>
+    <string name="home_score_user">100</string>
+    <string name="away_score_user">20</string>
+    <string name="gametime_user">10\'</string>
+    <string name="away_team_user">Away Team</string>
+    <!-- League Table Page User -->
     <string name="table_team_name">Team Name</string>
     <string name="table_games_number">Games</string>
     <string name="table_points_number">Points</string>
@@ -67,14 +72,19 @@
     <string name="team_name_table">"Team "</string>
     <string name="table_games_value">Value</string>
     <string name="table_team_logo">Team Logo in Table</string>
-             <!-- Tabbed View -->
+    <!-- Tabbed User -->
+    <string name="tab_1_user">Game Overview</string>
+    <string name="tab_2_user">Team Stats</string>
+    <string name="tab_3_user">Player Stats</string>
+    <string name="tab_4_user">Lineups</string>
+    <!-- Tabbed View Manager -->
     <string name="tab_1">Game Overview</string>
     <string name="tab_2">Manage Game</string>
     <string name="tab_3">Manage Team</string>
-            <!-- Team Management Page Stats Manager -->
+    <!-- Team Management Page Stats Manager -->
     <string name="starting_lineup_stats_manager">Starting</string>
     <string name="substitutes_stats_manager">Substitutes</string>
-        <!-- OverView Page Stats Manager -->
+    <!-- OverView Page Stats Manager -->
     <string name="homeTeamSM">team 1</string>
     <string name="awayTeamSM">team 2</string>
     <string name="SSM">S</string>
