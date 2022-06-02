@@ -1,14 +1,17 @@
 package com.example.esake.StatsManagerHome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.esake.R;
+import com.example.esake.Stats_Manager_Pages;
 import com.example.esake.databinding.FragmentHomeStatsManagerBinding;
 
 public class HomeFragment extends Fragment {
@@ -28,7 +31,21 @@ public class HomeFragment extends Fragment {
 //        return root;
 
         View v = inflater.inflate(R.layout.fragment_home_stats_manager,null);
+
+        Button b = (Button)v.findViewById(R.id.watchGame);
+        b.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(getActivity(), Stats_Manager_Pages.class);
+                startActivity(intent);
+
+            }
+
+        });
+
         return v;
+
     }
 
     @Override
