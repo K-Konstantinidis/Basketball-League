@@ -35,21 +35,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if(empty($username_err) && empty($password_err)) {
 		$link = connectDB();
-		$sql = 'SELECT username, password FROM user WHERE username = ?';
+		$sql = 'SELECT username, password FROM user WHERE username = :username';
 		
 		if($stmt = $link->prepare($sql)) {
 			// Bind and set the prepared statement
-			$stmt->bind_param('s', $param_username);
+			$stmt->bindParam(':username', $param_username, PDO::PARAM_STR);
+			
 			$param_username = $username;
 
 			if($stmt->execute()) {
-				$stmt->store_result();
-
-				if($stmt->num_rows == 1) {
-					$stmt->bind_result($username, $hashed_password);
-
+				if($stmt->rowCount() == 1) {
 					// Get the results
-					if($stmt->fetch()) {
+					if($row = $stmt->fetch()) {
+						$username = $row["username"];
+						$hashed_password = $row["password"];
 						//Correct credentials
 						if(strcmp(hash('sha256', $password), $hashed_password) === 0) {
 							session_start();
@@ -77,10 +76,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$login_err = 'Κάτι πήγε λάθος. Προσπαθήστε ξανά αργότερα';
 			}
 
-			$stmt->close();
-			$link->close();
+			unset($stmt);
 		}
 	}
+	unset($pdo);
 }
 
 ?>
