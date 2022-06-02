@@ -2,14 +2,14 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/user_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stats_Manager_Pages"
+    tools:context=".Tabbed_User"
     android:theme="@style/Theme.Esake">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBarLayoutUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,14 +18,14 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/home_team_stats_manager"
+                android:id="@+id/home_team_user"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:contentDescription="@string/home_team_stats"
+                android:contentDescription="@string/home_team_user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -34,18 +34,18 @@
                 android:src="@drawable/esake_logo"/>
 
             <TextView
-                android:id="@+id/home_team_score_stats_manager"
+                android:id="@+id/home_team_score_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/home_score_stats"
+                android:text="@string/home_score_user"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/dash_stats_manager"
-                app:layout_constraintStart_toEndOf="@+id/home_team_stats_manager"
+                app:layout_constraintEnd_toStartOf="@+id/dash_user"
+                app:layout_constraintStart_toEndOf="@+id/home_team_user"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/dash_stats_manager"
+                android:id="@+id/dash_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dash"
@@ -56,37 +56,37 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/away_team_score_stats_manager"
+                android:id="@+id/away_team_score_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/away_score_stats"
+                android:text="@string/away_score_user"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/away_team_stats_manager"
-                app:layout_constraintStart_toEndOf="@+id/dash_stats_manager"
+                app:layout_constraintEnd_toStartOf="@+id/away_team_user"
+                app:layout_constraintStart_toEndOf="@+id/dash_user"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/timeline_stats_manager"
+                android:id="@+id/timeline_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/gametime_stats"
+                android:text="@string/gametime_user"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dash_stats_manager" />
+                app:layout_constraintTop_toBottomOf="@+id/dash_user" />
 
             <ImageView
-                android:id="@+id/away_team_stats_manager"
+                android:id="@+id/away_team_user"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:contentDescription="@string/away_team_stats"
+                android:contentDescription="@string/away_team_user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"

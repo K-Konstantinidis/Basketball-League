@@ -11,6 +11,8 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
+        android:minWidth="100dp"
+        android:maxWidth="300dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/spinner"
         android:minHeight="48dp"

@@ -1,4 +1,4 @@
-package com.example.esake.ui.tabbedView_statsManager;
+package com.example.esake.ui.tabbedView_User;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.esake.databinding.FragmentStatsManagerPagesBinding;
+import com.example.esake.databinding.FragmentUserPagesBinding;
 
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
-    private FragmentStatsManagerPagesBinding binding;
+    private FragmentUserPagesBinding binding;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -45,7 +45,7 @@ public class PlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentStatsManagerPagesBinding.inflate(inflater, container, false);
+        binding = FragmentUserPagesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.sectionLabel;

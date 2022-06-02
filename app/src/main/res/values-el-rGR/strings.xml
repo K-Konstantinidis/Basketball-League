@@ -82,4 +82,13 @@
     <string name="Q3AwaySM">25</string>
     <string name="Q4AwaySM">10</string>
     <string name="playing">Βασικοί</string>
+    <string name="tab_1_user">Επισκόπηση Αγώνα</string>
+    <string name="tab_2_user">Στατιστικά Ομαδών</string>
+    <string name="tab_3_user">Στατιστικά Παικτών</string>
+    <string name="tab_4_user">Συνθέσεις</string>
+    <string name="home_team_user">Γηπεδούχος Ομάδα</string>
+    <string name="home_score_user">Φιλοξενούμενη Ομάδα</string>
+    <string name="away_team_user">Φιλοξενούμενη Ομάδα</string>
+    <string name="away_score_user">Σκορ2</string>
+    <string name="gametime_user">10\'</string>
 </resources>
