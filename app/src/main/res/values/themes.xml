@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Esake.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.Esake.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Esake.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

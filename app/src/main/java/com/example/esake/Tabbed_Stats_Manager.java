@@ -5,18 +5,18 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.esake.databinding.ActivityStatsManagerPagesBinding;
+import com.example.esake.databinding.ActivityTabbedStatsManagerBinding;
 import com.example.esake.ui.tabbedView_statsManager.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class Stats_Manager_Pages extends AppCompatActivity {
+public class Tabbed_Stats_Manager extends AppCompatActivity {
 
-    private ActivityStatsManagerPagesBinding binding;
+    private ActivityTabbedStatsManagerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityStatsManagerPagesBinding.inflate(getLayoutInflater());
+        binding = ActivityTabbedStatsManagerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.esake.R;
-import com.example.esake.Stats_Manager_Pages;
+import com.example.esake.Tabbed_Stats_Manager;
 import com.example.esake.databinding.FragmentHomeStatsManagerBinding;
 
 public class HomeFragment extends Fragment {
@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
         {
             public void onClick(View v)
             {
-                Intent intent = new Intent(getActivity(), Stats_Manager_Pages.class);
+                Intent intent = new Intent(getActivity(), Tabbed_Stats_Manager.class);
                 startActivity(intent);
 
             }
