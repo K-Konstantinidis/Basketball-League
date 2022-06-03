@@ -234,13 +234,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<!-- Buttons -->
 				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-5">
 					<a href="./" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
-					<button type="button" class="btn btn-danger me-3">Εκκαθάριση Φόρμας</button>
+					<button type="button" class="btn btn-danger me-3" onclick="clearForm()">Εκκαθάριση Φόρμας</button>
 					<button type="submit" class="btn btn-success me-3">Καταχώριση Παίκτη</button>
 				</div>
 			</form>
 
 		</div>
 		</main>
+
+		<script> 
+
+			const textFields = document.querySelectorAll('input[type="text"]');
+			const imgField = document.querySelector('input[type="file"]');
+			const dropdowns = document.querySelectorAll('select');
+
+			const fields = [...textFields, imgField];
+
+			function clearForm(){
+				fields.forEach((field)=>{
+					field.value = "";
+				})
+				dropdowns.forEach((dropdown)=>{
+					dropdown.selectedIndex = "0";
+				})
+			}
+
+		</script>
 
 		<!-- Footer -->
 		<?php require_once MAIN_FOOTER ?>

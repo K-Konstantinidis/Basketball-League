@@ -81,10 +81,10 @@ $suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυ
 						foreach($data as $row) {
 							echo '<div class="col-md-2 border pb-3 m-1 text-center">';
 								echo '<div class="custom-control custom-checkbox image-checkbox">';
-									echo '<input type="checkbox" class="custom-control-input" id=' . $row['short_name_en'] . '-cb/>';
+									echo '<input type="checkbox" class="custom-control-input" id=' . $row['short_name_en'] . '-cb />';
 									echo '<span class="lead mb-3">'. $row["name_en"] . '</span><br>';
 									echo '<label class="custom-control-label" for="' .  $row['short_name_en'] . '-cb">';
-										echo '<img src="https://source.unsplash.com/640x426/" alt="team- '. $row['id'] . '" class="img-fluid" />';  // Replace unsplash with  $row["logo_path"] once there is one -->
+										echo '<img src="https://source.unsplash.com/640x426/" alt="'. $row['short_name_en'] . '-cb" class="img-fluid" />';  // Replace unsplash with  $row["logo_path"] once there is one -->
 									echo '</label>';
 								echo '</div>';
 							echo '</div>';
@@ -100,14 +100,16 @@ $suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυ
 
 			<script>
 
+				const images = document.querySelectorAll('img');
+				
+				const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
 				// Unchecks all the checkboxes
 				function uncheck(){
     				checkboxes.forEach((checkbox) => {
         				checkbox.checked = false;
  				   });
 				}
-
-				const checkboxes = document.querySelectorAll('input[type=checkbox]');
 			</script>
 			
 			<div class="d-flex flex-grow-1 justify-content-center align-items-center">
