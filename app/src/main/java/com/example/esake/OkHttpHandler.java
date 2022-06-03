@@ -35,7 +35,11 @@ public class OkHttpHandler {
             while(keys.hasNext()) {
                 String brand = keys.next();
                 String models = json.get(brand).toString();
-                cbList.add(new CarBrand(brand, models));
+                String images = json.getJSONObject(brand).getString("images").toString();
+                cbList.add(new CarBrand(brand, models, images));
+                //CODE FOR IMAGES
+                // cbList.add(new CarBrand(brand, models));
+                // delete this if you add image code
             }
         } catch (JSONException e) {
             e.printStackTrace();

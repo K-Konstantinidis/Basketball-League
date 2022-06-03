@@ -9,6 +9,7 @@ public class GameWeek {
 
     public GameWeek(String ip) {
         String url= "http://"+ip+"/carsDBServices/populateDropDown.php";
+        //String url= "http://"+ip+"/multimediaDBServices/getMedia.php"; image code
 
         try {
             OkHttpHandler okHttpHandler = new OkHttpHandler();
@@ -26,14 +27,26 @@ public class GameWeek {
         return temp;
     }
 
-    public List<String> getAllModels(String b) {
-        List<String> temp = new ArrayList<String>();
-        for (int i=0; i<cbList.size(); i++) {
-            if (cbList.get(i).hasName(b)) {
-                temp = cbList.get(i).getAllModels();
+    //image code
+//    public List<String> getAllModels(String b) {
+//        List<String> temp = new ArrayList<String>();
+//        for (int i=0; i<cbList.size(); i++) {
+//            if (cbList.get(i).hasName(b)) {
+//                temp = cbList.get(i).getAllModels();
+//            }
+//        }
+//        return temp;
+//    }
+
+    //use this function if you need to get a specific image
+    public Media lookup(String brand, String model) {
+        for (int i = 0; i < cbList.size(); i++) {
+            if (cbList.get(i).hasName(brand)) {
+                return cbList.get(i).getMedia(model);
             }
+
         }
-        return temp;
+        return null;
     }
 
 }

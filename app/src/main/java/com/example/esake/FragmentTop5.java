@@ -1,15 +1,19 @@
 package com.example.esake;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,6 +67,9 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
     private final String myIP = "192.168.1.2";
     private GameWeek cbl;
 
+    ImageView myImage;
+    private String imageUri;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,9 +87,20 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 
         //Create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item, cbl.getAllBrands());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item,
+                cbl.getAllBrands());
         //Set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
+
+        imageUri = cbl.lookup("Nissan", "Sunny").getImage();
+        myImage= (ImageView) root.findViewById(R.id.imgTop5);
+        Picasso.with(root.getContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
+
+
+
+
+        //Picasso.with(getApplicationContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
+        // Picasso resizing will be useful somewhere
         return root;
     }
 
