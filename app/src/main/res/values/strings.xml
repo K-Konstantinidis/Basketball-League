@@ -142,4 +142,5 @@
     <string name="player_stats_stl_value">5</string>
     <string name="player_stats_blk_value">5</string>
 
+    <string name="playing">lineups</string>
 </resources>
