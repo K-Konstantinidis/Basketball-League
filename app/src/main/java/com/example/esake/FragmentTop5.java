@@ -60,19 +60,27 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
+    private final String myIP = "192.168.1.2";
+    private GameWeek cbl;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Get the view
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_top5, null);
         //Get the spinner from the xml.
         Spinner dropdown = (Spinner) root.findViewById(R.id.spinner);
+
+
         //Create a list of items for the spinner.
         //String[] items = new String[]{"Week 1", "Week 2", "Week 3", "etc"};
 
+        cbl = new GameWeek(myIP);
+        super.onCreate(savedInstanceState);
 
         //Create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item, cbl.getAllBrands());
         //Set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
         return root;
