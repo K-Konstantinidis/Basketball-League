@@ -1,7 +1,7 @@
 <?php
 /* TODO::
 
-- Gray out fields if existing team is selected and likewise
+- Make the short name input only 3-4 chars long
 
 */
 
