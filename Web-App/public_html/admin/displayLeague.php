@@ -6,7 +6,7 @@ require_once '../../resources/config.php';
 // Required for the navigation bar to load properly
 $currPage = 'displayLeague';
 
-// If the user is not logged in, he gets redirected at the loggin page.
+// If the user is not logged in, he gets redirected at the login page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
 	header('Location: ../login/?lr');
 	die();
@@ -57,39 +57,44 @@ $err_msg = 'Ένα μήνυμα σφάλματος';
 					echo '</div><br>';
 				}
 
-				if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+				// Newly created league
+				if(isset($_GET['nl'])) {
+					displaySuccessBanner('Η αγωνιστική δημιουργήθηκε επιτυχώς.');
+				}
+
+				if(isset($_GET['id'])) {
 					// TODO
 					// Display the league.
 
-					echo '<div class="row align-self-center">';
-						echo '<div class="col-md-4 text-center">';
+					echo "\n" . '<div class="row align-self-center">' . "\n";
 						
-						for($league_num = 0; $league_num <= 999; ++$league_num) {
-							echo '<div class="border p-3 m-3">';
-								echo '<h5>Αγωνιστική ' . $league_num . '</h5>';
-								echo '<hr>';
-								echo '<span>Team A - Team B</span><br>';
-								echo '<span>Team A - Team B</span><br>';
-								echo '<span>Team A - Team B</span><br>';
-								echo '<span>Team A - Team B</span><br>';
-								echo '<span>Team A - Team B</span><br>';
-							echo '</div>';
-						}
+					for($league_num = 0; $league_num <= 10; ++$league_num) {
+						echo '<div class="col-md-4 text-center">' . "\n";
+							echo '<div class="border p-3 m-3">' . "\n";
+								echo '<h5>Αγωνιστική ' . $league_num . '</h5>' . "\n";
+								echo '<hr>' . "\n";
+								echo '<span>Team A - Team B</span><br>' . "\n";
+								echo '<span>Team A - Team B</span><br>' . "\n";
+								echo '<span>Team A - Team B</span><br>' . "\n";
+								echo '<span>Team A - Team B</span><br>' . "\n";
+								echo '<span>Team A - Team B</span><br>' . "\n";
+							echo '</div>' . "\n";
+						echo '</div>' . "\n";
+					}
 							
-						echo '</div>';
-					echo '</div>';
+					echo '</div>' . "\n";
+				}
+				elseif(isset($_GET['inv_param'])) {
+					displayWarrningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
 				}
 				else {
-					echo '<div class="alert alert-warning fade show" role="alert">';
-					echo '<strong>Προσοχή!</strong><br>';
-					echo 'Δεν ορίσθηκε αγωνιστική προς εμφάνιση.';
-					echo '</div><br>';
+					displayWarrningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');
 				}
 			?>
 		</div>
 			
 		<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-			<a href="./" class="btn btn-secondary mb-5 me-3" role="button">Αρχική</a>
+			<a href="./" class="btn btn-primary mb-5 me-3" role="button">Αρχική</a>
 		</div>
 
 		<br><br>

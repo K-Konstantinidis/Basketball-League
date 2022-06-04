@@ -58,7 +58,7 @@ function displayErrorBanner(string $text, string $title = 'Σφάλμα!') {
 }
 
 function displayWarrningBanner($text, $title = 'Προσοχή!') {
-	echo '<div class="alert alert-warrning fade show" role="alert">';
+	echo '<div class="alert alert-warning fade show" role="alert">';
 	if(!empty($title)) {
 		echo '<strong>'. $title . '</strong><br>';
 	}	
