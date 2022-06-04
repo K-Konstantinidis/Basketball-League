@@ -117,6 +117,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 					echo '<button type="submit" class="btn btn-success mt-5 me-3">Δημιουργία Πρωταθλήματος</button>';
 					echo '</div>';
 				}
+
 				else { //There are no teams in the database
 					displayWarrningBanner('Δεν βρέθηκαν ομάδες για να συμπεριληφθούν στο πρωτάθλημα.' .
 						'<br/><a class="alert-link" href='. AREF_ADMIN_CREATE_TEAM .'>Δημιουργήστε</a> ομάδες και ξαναπροσπαθήστε');
@@ -124,6 +125,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 				$conn = null;
 			?>
+      
 			</form>
 			<br><br>
 
