@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_leagueTable"
         android:icon="@drawable/ic_trophy_24"
-        android:title="@string/title_league_table" />
+        android:title="@string/title_league_table"/>
 
     <item
         android:id="@+id/navigation_teamStats"

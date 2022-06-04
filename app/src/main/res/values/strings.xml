@@ -58,20 +58,26 @@
     <string name="gameweek_selector">Gameweek Selection Spinner</string>
     <string name="gameweek_preview_score1">Score 1</string>
     <string name="gameweek_preview_score2">Score 2</string>
+    <string name="gameweek_team1_logo">Left Team Logo in Gameweek Selection</string>
+    <string name="gameweek_team2_logo">Right Team Logo in Gameweek Selection</string>
+    <string name="gameweekDashBetweenScores">-</string>
     <string name="home_team_user">Home Team</string>
     <string name="home_score_user">100</string>
     <string name="away_score_user">20</string>
     <string name="gametime_user">10\'</string>
     <string name="away_team_user">Away Team</string>
     <!-- League Table Page User -->
-    <string name="table_team_name">Team Name</string>
-    <string name="table_games_number">Games</string>
-    <string name="table_points_number">Points</string>
-    <string name="table_wins_value">Wins</string>
-    <string name="table_losses_value">Losses</string>
-    <string name="team_name_table">"Team "</string>
-    <string name="table_games_value">Value</string>
-    <string name="table_team_logo">Team Logo in Table</string>
+    <string name="league_table_team_name">Team Name</string>
+    <string name="league_table_games">Games</string>
+    <string name="league_table_points">Points</string>
+    <string name="league_table_wins">Wins</string>
+    <string name="league_table_losses">Losses</string>
+    <string name="league_table_team_logo">Team Logo in Table</string>
+    <string name="league_table_teamName">Team Name</string>
+    <string name="league_table_games_value">5</string>
+    <string name="league_table_points_value">5</string>
+    <string name="league_table_wins_value">5</string>
+    <string name="league_table_losses_value">5</string>
     <!-- Tabbed User -->
     <string name="tab_1_user">Game Overview</string>
     <string name="tab_2_user">Team Stats</string>
@@ -102,5 +108,39 @@
     <string name="Q2AwaySM">20</string>
     <string name="Q3AwaySM">25</string>
     <string name="Q4AwaySM">10</string>
+    <string name="playing">Playing</string>
+    <!-- Team Stats Page User -->
+    <string name="team_stats_team_name">Team Name</string>
+    <string name="team_stats_pts">PTS</string>
+    <string name="team_stats_fg">FG</string>
+    <string name="team_stats_reb">REB</string>
+    <string name="team_stats_ast">AST</string>
+    <string name="team_stats_stl">STL</string>
+    <string name="team_stats_blk">BLK</string>
+    <string name="team_stats_pts_value">5</string>
+    <string name="team_stats_fg_value">5</string>
+    <string name="team_stats_reb_value">5</string>
+    <string name="team_stats_ast_value">5</string>
+    <string name="team_stats_stl_value">5</string>
+    <string name="team_stats_blk_value">5</string>
+    <string name="team_stats_teamName">Team Name</string>
+    <string name="team_stats_team_logo">Team Logo in Team Stats</string>
+    <!-- Player Stats Page User -->
+    <string name="player_stats_player_name">Player Name</string>
+    <string name="player_stats_pts">PTS</string>
+    <string name="player_stats_team_logo">Team Logo in Player Stats</string>
+    <string name="player_stats_playerName">Player Name</string>
+    <string name="player_stats_fg">FG</string>
+    <string name="player_stats_reb">REB</string>
+    <string name="player_stats_ast">AST</string>
+    <string name="player_stats_stl">STL</string>
+    <string name="player_stats_blk">BLK</string>
+    <string name="player_stats_pts_value">5</string>
+    <string name="player_stats_fg_value">5</string>
+    <string name="player_stats_reb_value">5</string>
+    <string name="player_stats_ast_value">5</string>
+    <string name="player_stats_stl_value">5</string>
+    <string name="player_stats_blk_value">5</string>
+
     <string name="playing">lineups</string>
 </resources>

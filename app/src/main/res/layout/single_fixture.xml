@@ -58,7 +58,7 @@
                 app:layout_constraintVertical_bias="0.517" />
 
             <ImageView
-                android:id="@+id/fixture_team2_logo"
+                android:id="@+id/gameweek_team2_logo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:contentDescription="@string/fixture_preview_team2_logo"
@@ -73,8 +73,11 @@
                 android:id="@+id/gameweek_preview_gameButton"
                 android:layout_width="173dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/signinup_buttons_border"
                 android:text="@string/gameweek_watch_gameButton"
+                android:textColor="#FFFFFF"
                 android:textSize="11sp"
+                app:backgroundTint="@color/primary_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"

@@ -8,7 +8,7 @@
     tools:context=".FragmentLeagueTable" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/table_header"
+        android:id="@+id/league_table_header"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:background="@color/primary_color"
@@ -20,75 +20,81 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/table_points_number"
+            android:id="@+id/league_table_team_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/table_points_number"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/league_table_team_name"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.614"
+            app:layout_constraintHorizontal_bias="0.033"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/table_games_number"
-            android:layout_width="wrap_content"
+            android:id="@+id/league_table_games"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="@string/table_games_number"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:text="@string/league_table_games"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.43"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/league_table_points"
+            app:layout_constraintStart_toEndOf="@id/league_table_team_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/table_team_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/league_table_points"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="@string/table_team_name"
+            android:gravity="center"
+            android:text="@string/league_table_points"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/league_table_wins"
+            app:layout_constraintStart_toEndOf="@id/league_table_games"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/table_losses"
-            android:layout_width="wrap_content"
+            android:id="@+id/league_table_wins"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="@string/table_losses_value"
+            android:gravity="center"
+            android:text="@string/league_table_wins"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/league_table_losses"
+            app:layout_constraintStart_toEndOf="@id/league_table_points"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/league_table_losses"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/league_table_losses"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.952"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/league_table_wins"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/table_wins"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/table_wins_value"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.763"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/teamCardView"
+        android:id="@+id/leagueTableTeamCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_header"
+        app:layout_constraintTop_toBottomOf="@+id/league_table_header"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
@@ -96,96 +102,97 @@
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
-            <View
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
-                android:background="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.352"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
             <ImageView
-                android:id="@+id/table_team_logo"
-                android:layout_width="26dp"
+                android:id="@+id/league_table_team_logo"
+                android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:contentDescription="@string/table_team_logo"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:contentDescription="@string/league_table_team_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5"
-                tools:ignore="ImageContrastCheck"
-                tools:src="@drawable/esake_logo" />
+                app:srcCompat="@drawable/esake_logo"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/gamesValue6"
+                android:id="@+id/league_table_teamName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/top5_player_rating"
-                android:textSize="18sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/league_table_teamName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/lineBetweenTeamAndGames"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/league_table_team_logo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+
+            <View
+                android:id="@+id/lineBetweenTeamAndGames"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:background="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.752"
-                app:layout_constraintStart_toStartOf="@+id/table_team_logo"
+                app:layout_constraintHorizontal_bias="0.385"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/league_table_games_value"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/league_table_games_value"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/league_table_points_value"
+                app:layout_constraintStart_toEndOf="@id/lineBetweenTeamAndGames"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
-                android:id="@+id/gamesValue5"
-                android:layout_width="wrap_content"
+                android:id="@+id/league_table_points_value"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="@string/top5_player_rating"
+                android:gravity="center"
+                android:text="@string/league_table_points_value"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.919"
-                app:layout_constraintStart_toStartOf="@+id/table_team_logo"
+                app:layout_constraintEnd_toStartOf="@id/league_table_wins_value"
+                app:layout_constraintStart_toEndOf="@id/league_table_games_value"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
-                android:id="@+id/teamNameTable"
-                android:layout_width="wrap_content"
+                android:id="@+id/league_table_wins_value"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="@string/table_team_name"
+                android:gravity="center"
+                android:text="@string/league_table_wins_value"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.022"
-                app:layout_constraintStart_toEndOf="@+id/table_team_logo"
+                app:layout_constraintEnd_toStartOf="@id/league_table_losses_value"
+                app:layout_constraintStart_toEndOf="@id/league_table_points_value"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
             <TextView
-                android:id="@+id/gamesValue"
-                android:layout_width="wrap_content"
+                android:id="@+id/league_table_losses_value"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="@string/top5_player_rating"
+                android:gravity="center"
+                android:text="@string/league_table_losses_value"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.436"
-                app:layout_constraintStart_toStartOf="@+id/table_team_logo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
-
-            <TextView
-                android:id="@+id/gamesValue2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/top5_player_rating"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.608"
-                app:layout_constraintStart_toStartOf="@+id/table_team_logo"
+                app:layout_constraintStart_toEndOf="@id/league_table_wins_value"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
 
