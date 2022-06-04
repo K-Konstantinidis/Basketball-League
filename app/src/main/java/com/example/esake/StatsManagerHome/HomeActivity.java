@@ -1,6 +1,7 @@
 package com.example.esake.StatsManagerHome;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,22 +29,23 @@ public class HomeActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
-        transaction.replace(R.id.homefrag, top5, null);
-//        transaction.add(R.id.homefrag, homefrag,null);
-//        transaction.add(R.id.userfrag, userfrag, null);
+        // transaction.replace(R.id.homefrag, top5, null);
+        //for top5 fragment
+        transaction.add(R.id.homefrag, homefrag,null);
+        transaction.add(R.id.userfrag, userfrag, null);
         transaction.commit();
 
         FrameLayout layout = findViewById(R.id.homefrag);
         FrameLayout layout2 = findViewById(R.id.userfrag);
 
         Bundle extras = getIntent().getExtras();
-//        if(extras!= null){
-//            String value = extras.getString("flag");
-//            if(value.equals("User Button"))
-//                layout.setVisibility(View.GONE);
-//            else if(value.equals("Manager Button"))
-//                layout2.setVisibility(View.GONE);
-//        }
+        if(extras!= null){
+            String value = extras.getString("flag");
+            if(value.equals("User Button"))
+                layout.setVisibility(View.GONE);
+            else if(value.equals("Manager Button"))
+                layout2.setVisibility(View.GONE);
+        }
 
     }
 }
