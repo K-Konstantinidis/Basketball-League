@@ -56,7 +56,7 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
-    private final String myIP = "192.168.1.2";
+    private final String myIP = "192.168.1.8";
     private GameWeek cbl;
 
 

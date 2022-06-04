@@ -8,7 +8,7 @@ public class GameWeek {
     ArrayList<CarBrand> cbList = new ArrayList<CarBrand>();
 
     public GameWeek(String ip) {
-        String url= "http://"+ip+"/carsDBServices/populateDropDown.php";
+        String url= "http://"+ip+"/multimediaDBServices/populateDropDown.php";
 
         try {
             OkHttpHandler okHttpHandler = new OkHttpHandler();
