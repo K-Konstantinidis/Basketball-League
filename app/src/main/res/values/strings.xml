@@ -126,7 +126,7 @@
     <string name="team_stats_teamName">Team Name</string>
     <string name="team_stats_team_logo">Team Logo in Team Stats</string>
     <!-- Player Stats Page User -->
-    <string name="player_stats_player_name">Player Name</string>
+    <string name="player_stats_player_name">Name</string>
     <string name="player_stats_pts">PTS</string>
     <string name="player_stats_team_logo">Team Logo in Player Stats</string>
     <string name="player_stats_playerName">Player Name</string>
