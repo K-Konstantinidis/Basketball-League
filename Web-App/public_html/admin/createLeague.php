@@ -14,14 +14,27 @@ $currPage = 'createLeague';
 
 // If the user is not logged in, he gets redirected at the login page.
 if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../login/?lr');
+	header('Location: '. AREF_LOGIN .'?lr');
 	die();
 }
 
-// Use these to display errors
-$err = $suc = false;
-$err_msg = 'Ένα μήνυμα σφάλματος';
-$suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυχία';
+$warn = $err = '';
+
+// Create the league
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+	if(!isset($_POST['t']) || !is_array($_POST['t'])) {
+		$warn = 'Δεν ορίσθηκαν σωστά οι παράμετροι για τη δημιουργία του πρωταθλήματος.<br>Προσπαθήστε ξανά αργότερα.';
+	}
+	else {
+		if(count($_POST['t']) % 2 != 0 || count($_POST['t']) < 4) {
+			$err = 'Πρέπει να επιλέξετε τουλάχιστον 4 ομάδες, και το πλήθος των ομάδων να είναι ζυγός αριθμός.';
+		}
+		else {
+			$_SESSION['teams_in_league'] = serialize($_POST['t']);
+			header('Location: ./loadingLeague.php');
+		}
+	}
+}
 
 ?>
 
@@ -39,6 +52,18 @@ $suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυ
 		<link rel="stylesheet" href="./css/base.css"/>
 		<link rel="stylesheet" href="./css/createLeague.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="./js/createLeague.js" defer></script>
+
+		<!-- Unchecks all the checkboxes -->
+		<script>
+			function uncheck(){
+				let checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+				checkboxes.forEach((checkbox) => {
+					checkbox.checked = false;
+				});
+			}
+			</script>
 	</head>
 
 	<body class="d-flex flex-column h-100">
@@ -58,65 +83,50 @@ $suc_msg = 'Το πρωτάθλημα δημιουργήθηκε με επιτυ
 
 			<?php
 				if($err) {
-					echo '<div class="alert alert-danger fade show" role="alert">';
-					echo '<strong>Σφάλμα!</strong><br>';
-					echo $err_msg . '.';
-					echo '</div><br>';
+					displayErrorBanner($err);
 				}
 
-				if($suc) {
-					echo '<div class="alert alert-success fade show" role="alert">';
-					echo '<strong>Επιτυχία!</strong><br>';
-					echo $suc_msg . '.';
-					echo '</div><br>';
+				if($warn) {
+					displayWarrningBanner($warn);
 				}
 			?>
 
-			<div class="row">
-				<?php
+			<form class="row" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+			<?php
 				$conn = connectDB();
 				$data = $conn->query("SELECT * FROM team")->fetchAll();
-				  
-				if($data!=null){
-						foreach($data as $row) {
-							echo '<div class="col-md-2 border pb-3 m-1 text-center">';
-								echo '<div class="custom-control custom-checkbox image-checkbox">';
-									echo '<input type="checkbox" class="custom-control-input" id=' . $row['short_name_en'] . '-cb/>';
-									echo '<span class="lead mb-3">'. $row["name_en"] . '</span><br>';
-									echo '<label class="custom-control-label" for="' .  $row['short_name_en'] . '-cb">';
-										echo '<img src="https://source.unsplash.com/640x426/" alt="team- '. $row['id'] . '" class="img-fluid" />';  // Replace unsplash with  $row["logo_path"] once there is one -->
-									echo '</label>';
-								echo '</div>';
+					
+				if($data != null){
+					$i = 0;
+
+					foreach($data as $row) {
+						echo '<div class="col-md-2 border pb-3 m-1 text-center">';
+							echo '<div class="custom-control custom-checkbox image-checkbox">';
+								echo '<input type="checkbox" name="t[]" value="' . $row['id'] . '" class="custom-control-input" id=' . $row['id'] . '>';
+								echo '<span class="lead mb-3"> '. $row['name_en'] . '</span><br>';
+								echo '<label class="custom-control-label" for="'. $row['id'] . '">';
+									echo '<img src="https://source.unsplash.com/640x426/" alt="team- '. $row['id'] . '" class="img-fluid" />';  // Replace unsplash with  $row["logo_path"] once there is one -->
+								echo '</label>';
 							echo '</div>';
-						} 
-					}else {
-					echo '<div class="alert alert-danger"><em>No available records of teams found.</em></div>';
+						echo '</div>';
+					}
+
+					echo '<div class="d-flex flex-grow-1 justify-content-center align-items-center">';
+					echo '<a href="./" class="btn btn-secondary mt-5 me-3 btn-single-line" role="button">Αρχική</a>';
+					echo '<button onclick="uncheck()" type="button" class="btn btn-danger mt-5 me-3">Εκκαθάριση Φόρμας</button>';
+					echo '<button type="submit" class="btn btn-success mt-5 me-3">Δημιουργία Πρωταθλήματος</button>';
+					echo '</div>';
+				}
+				else { //There are no teams in the database
+					displayWarrningBanner('Δεν βρέθηκαν ομάδες για να συμπεριληφθούν στο πρωτάθλημα.' .
+						'<br/><a class="alert-link" href='. AREF_ADMIN_CREATE_TEAM .'>Δημιουργήστε</a> ομάδες και ξαναπροσπαθήστε');
 				}
 
-			$conn = null;
+				$conn = null;
 			?>
-			<br>
-			</div>
-
-			<script>
-
-				// Unchecks all the checkboxes
-				function uncheck(){
-    				checkboxes.forEach((checkbox) => {
-        				checkbox.checked = false;
- 				   });
-				}
-
-				const checkboxes = document.querySelectorAll('input[type=checkbox]');
-			</script>
-			
-			<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-				<a href="./" class="btn btn-secondary mt-5 me-3 btn-single-line" role="button">Αρχική</a>
-				<button onclick="uncheck()" type="button" class="btn btn-danger mt-5 me-3">Εκκαθάριση Φόρμας</button>
-				<button type="button" class="btn btn-success mt-5 me-3">Δημιουργία Πρωταθλήματος</button>
-			</div>
-
+			</form>
 			<br><br>
+
 		</main>
 
 		<!-- Footer -->
