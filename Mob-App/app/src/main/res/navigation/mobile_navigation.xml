@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home_user">
+
+    <fragment
+        android:id="@+id/navigation_home_user"
+        android:name="com.example.esake.FragmentUserHome"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home_user" />
+    <fragment
+        android:id="@+id/navigation_leagueTable"
+        android:name="com.example.esake.FragmentLeagueTable"
+        android:label="@string/title_league_table"
+        tools:layout="@layout/fragment_league_table" />
+    <fragment
+        android:id="@+id/navigation_teamStats"
+        android:name="com.example.esake.FragmentTeamStats"
+        android:label="@string/title_team_stats"
+        tools:layout="@layout/fragment_team_stats" />
+    <fragment
+        android:id="@+id/navigation_playerStats"
+        android:name="com.example.esake.FragmentPlayerStats"
+        android:label="@string/title_player_stats"
+        tools:layout="@layout/fragment_player_stats" />
+    <fragment
+        android:id="@+id/navigation_top5"
+        android:name="com.example.esake.FragmentTop5"
+        android:label="@string/title_top5"
+        tools:layout="@layout/fragment_top5" />
+    <fragment
+        android:id="@+id/navigation_home_stats_manager"
+        android:name="com.example.esake.StatsManagerHome.HomeFragment"
+        android:label="@string/title_home_stats_manager"
+        tools:layout="@layout/fragment_home_stats_manager" />
+</navigation>
