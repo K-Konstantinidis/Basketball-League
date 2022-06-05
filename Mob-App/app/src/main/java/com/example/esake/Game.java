@@ -18,16 +18,6 @@ public class Game {
 //    private int team2Id;
 
 	//constructor
-    public Game(String gameid, int score1, int score2, Team homeTeam, Team awayTeam) {
-    	this.gameid = gameid;
-        this.score1 = score1;
-        this.score2 = score2;
-        this.awayTeam = awayTeam;
-        this.homeTeam = homeTeam;
-//        this.teams = new ArrayList<>();
-//        this.team1Id = team1Id;
-//        this.team2Id = team2Id;
-    }
 
 	public Game(String gameid, int score1, int score2, String homeTeam, String awayTeam) {
 		this.gameid = gameid;
@@ -102,15 +92,4 @@ public class Game {
 //    public int getTeam2Id() {
 //        return team2Id;
 //    }
-
-	//Setters for http
-
-
-	public int setScore1(String score1) {
-		return this.score1 = Integer. parseInt(score1);
-	}
-
-	public int setScore2(String score2) {
-		return this.score2 = Integer. parseInt(score2);
-	}
 }
