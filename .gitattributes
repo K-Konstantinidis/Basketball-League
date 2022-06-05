@@ -3,3 +3,6 @@
 
 # Show SQL files as SQL
 *.sql linguist-detectable=true
+
+# Show Java files as Java
+*.java linguist-detectable=true
