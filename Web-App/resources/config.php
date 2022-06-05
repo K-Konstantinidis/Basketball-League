@@ -27,6 +27,7 @@ define('AREF_ADMIN_CREATE_PLAYER',  AREF_DIR_ADMIN . 'createPlayer.php');
 define('AREF_ADMIN_CREATE_TEAM',    AREF_DIR_ADMIN . 'createTeam.php');
 define('AREF_ADMIN_DISPLAY_LEAGUE', AREF_DIR_ADMIN . 'displayLeague.php');
 define('AREF_ADMIN_DRAW_LEAGUE',    AREF_DIR_ADMIN . 'drawLeague.php');
+define('AREF_ADMIN_LOADING_LEAGUE', AREF_DIR_ADMIN . 'loadingLeague.php');
 
 
 
