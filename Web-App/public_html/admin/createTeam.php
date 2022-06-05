@@ -8,36 +8,12 @@
 session_start();
 require_once '../../resources/config.php';
 
-
-// Data filtering
-function filter_data($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-function convertCityToID($temp){
-	$conn = connectDB();
-	$query = $conn->prepare('SELECT * FROM city WHERE name_gr LIKE ?');
-	$query->bindValue(1, "$temp", PDO::PARAM_STR);
-	$query->execute();
-	try{
-		$result = $query->fetch();
-		$id = $result['id'];
-	}catch(PDOException $e){
-		$e->getMessage();
-	}
-	unset($conn);
-	return $id;
-}
-
 // Required for the navigation bar to load properly
 $currPage = 'createTeam';
 
-// If the user is not logged in, he gets redirected at the loggin page.
-if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../login/?lr');
+// If the user is not logged in, he gets redirected at the login page.
+if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
+	header('Location: ' . AREF_LOGIN . '?lr');
 	die();
 }
 
@@ -53,75 +29,138 @@ $stmt->bindParam(':short_name_en', $teamCodeEN);
 $stmt->bindParam(':short_name_gr', $teamCodeGR);
 $stmt->bindParam(':logo_path', $teamLogo);
 
-// Use these to display errors
-$err = $suc = false;
-$err_msg = 'Ένα μήνυμα σφάλματος';
+// Use these to display messages
+$err_msg = $suc_msg = '';
 $default ='Επιλέξτε...';
 
-$teamNameGR = $teamNameEN = $teamCodeGR = $teamCodeEN = $teamCity = $newCity_nameGR = $newCity_nameEN = $teamLogo = "";
-$teamNameGR_err = $teamNameEN_err = $teamCodeGR_err = $teamCodeEN_err = $teamCity_err = $newCity_nameGR_err = $newCity_nameEN_err = $teamLogo_err = false;
+$teamNameGR = $teamNameEN = $teamCodeGR = $teamCodeEN = $teamCity = $newCity_nameGR = $newCity_nameEN = $teamLogo = '';
+
+$teamCity_err = $newCity_err = false;
+$teamNameGR_err = $teamNameEN_err = $teamCodeGR_err = $teamCodeEN_err = $city_err = $teamLogo_err = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+	// Number of fields that are ready to be added
 	$count = 0;
 
-	// Name data filter
-	if(empty($_POST["name_en"])) $teamNameEN_err = "Παρακαλώ συμπληρώστε το πεδίο"; 
-		else { 
-			$teamNameEN = filter_data($_POST["name_en"]);
-			$count++;
-	 	}
-		 
-	if(empty($_POST["name_gr"])) $teamNameGR_err = "Παρακαλώ συμπληρώστε το πεδίο"; 
-		else { 
-			 $teamNameGR = filter_data($_POST["name_gr"]);
-			 $count++;
-		}
-			
-	if(empty($_POST["short_name_en"])) $teamCodeEN_err = "Παρακαλώ συμπληρώστε το πεδίο"; 
-		else { 
-			$teamCodeEN = filter_data($_POST["short_name_en"]);
-			$count++;
-		}
-
-	if(empty($_POST["short_name_gr"])) $teamCodeGR_err = "Παρακαλώ συμπληρώστε το πεδίο"; 
-		else { 
-			$teamCodeGR = filter_data($_POST["short_name_gr"]);
-			$count++;
-		}
-
-	if(!empty($_POST["team_city"]))
-	{ 
-			$temp = $_POST["team_city"];
-
-			$teamCity = convertCityToID($temp);
-
-			$count++;
+	// Check the name GR
+	if(!filter_data($_POST['name_gr'])) {
+		$teamNameGR_err = "Παρακαλώ συμπληρώστε το πεδίο";
+	}
+	else {
+		$teamNameGR = filter_data($_POST['name_gr']);
+		$count++;
 	}
 
-	if(!empty($_POST["newCity_gr"]) && !empty($_POST["newCity_en"]))
-	{
-		$newCity_nameGR = filter_data($_POST["newCity_gr"]);
-		$newCity_nameEN = filter_data($_POST["newCity_en"]);
-
-		$city_stmt = $conn->prepare("INSERT INTO city (name_en, name_gr) VALUES (:name_en, :name_gr)");
-		$city_stmt->bindParam(':name_en', $newCity_nameEN);
-		$city_stmt->bindParam(':name_gr', $newCity_nameGR);
-		$city_stmt->execute();
-
-		$teamCity = convertCityToID($newCity_nameGR);
+	// Check the name EN
+	if(!filter_data($_POST['name_en'])) {
+		$teamNameEN_err = 'Παρακαλώ συμπληρώστε το πεδίο';
+	}
+	else {
+		$teamNameEN = filter_data($_POST['name_en']);
 		$count++;
-
 	}
 	
-	// if(empty($_POST["logo_path"])) $teamLogo_err = "Παρακαλώ ανεβάστε την εικόνα του παίκτη"; 
-	// 	else { 
-	// 		$teamLogo = $_POST["logo_path"];
-	// 		$count++;
-	// 	}
+	// Check the short name GR
+	if(!filter_data($_POST['short_name_gr'])) {
+		$teamCodeGR_err = "Παρακαλώ συμπληρώστε το πεδίο";
+	}
+	else {
+		// Checks the length of the given code
+		$len = strlen( filter_data($_POST['short_name_gr']) );
 
-	if($count==5) $stmt->execute();
+		if($len < 3 || $len > 4) {
+			$teamCodeGR_err = "Ο κωδικός της ομάδας πρέπει να είναι 3 εως 4 χαρακτήρες";
+		}
+		else {
+			$teamCodeGR = filter_data($_POST['short_name_gr']);
+			$count++;
+		}
+	}
 
+	// Check the short name EN
+	if(!filter_data($_POST['short_name_en'])) {
+		$teamCodeEN_err = "Παρακαλώ συμπληρώστε το πεδίο";
+	}
+	else {
+		// Checks the length of the given code
+		$len = strlen( filter_data($_POST['short_name_en']) );
+
+		if($len < 3 || $len > 4) {
+			$teamCodeEN_err = "Ο κωδικός της ομάδας πρέπει να είναι 3 εως 4 χαρακτήρες";
+		}
+		else {
+			$teamCodeEN = filter_data($_POST['short_name_en']);
+			$count++;
+		}
+	}
+
+	// Flag, used for the creation of the new city.
+	// If we don't have it, every time the user tries to create a new team but
+	//  has incorrectly filled out the fields, and has selected to create a new city,
+	//  the new city will be added to the DB, creating duplicates.
+	// Don't ask me how I know...
+	$created_new_city = false;
+
+	// Check if the user selected an existing city
+	if(isset($_POST['team_city']) && filter_data($_POST['team_city'])) { 
+		$teamCity = filter_data($_POST['team_city']);
+		$count++;
+	}
+	// If he hasn't, check if he created a new city
+	else if(isset($_POST['newCity_gr']) && isset($_POST['newCity_en']) &&
+			filter_data($_POST['newCity_gr']) && filter_data($_POST['newCity_en'])
+	) {
+		$created_new_city = true;
+		$count++;
+	}
+	// If we reach here, then he didn't specify the city
+	else {
+		$city_err = 'Επιλέξτε μια υπάρχουσα πόλη, είτε δημιουργήστε μια νέα πόλη';
+		$teamCity_err = $newCity_err = true;
+	}
+	
+	// Check the logo
+	if(empty($_POST['logo_path'])) {
+		$teamLogo_err = "Παρακαλώ ανεβάστε την εικόνα της ομάδας";
+	}
+	else {
+		$teamLogo = $_POST['logo_path'];
+		$count++;
+	}
+
+	// All fields were completed successfully
+	if($count == 6) {
+		// If the user has created a new city, add it now...
+		if($created_new_city) {
+			// Prepare the new city to be added
+			$newCity_nameGR = filter_data($_POST['newCity_gr']);
+			$newCity_nameEN = filter_data($_POST['newCity_en']);
+
+			// Add the new city
+			$city_stmt = $conn->prepare("INSERT INTO city (name_en, name_gr) VALUES (:name_en, :name_gr)");
+			$city_stmt->bindParam(':name_gr', $newCity_nameGR);
+			$city_stmt->bindParam(':name_en', $newCity_nameEN);
+			$city_stmt->execute();
+
+			// Select the ID of the newly created city
+			$city_stmt = $conn->prepare('SELECT * FROM city WHERE name_gr LIKE ?');
+			$city_stmt->bindValue(1, "$newCity_nameGR", PDO::PARAM_STR);
+			$city_stmt->execute();
+			try {
+				$result = $city_stmt->fetch();
+				$teamCity = $result['id'];
+				$count++;
+			}
+			catch(PDOException $e) {
+				$e->getMessage();
+			}
+		}
+
+		// Create the team
+		$stmt->execute();
+		$suc_msg = 'Η ομάδα <strong>' . filter_data($_POST['name_gr']) . '</strong> δημιουργήθηκε επιτυχώς';
+		unset($_POST);
+	}
 }
 
 ?>
@@ -140,6 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<link rel="stylesheet" href="./css/base.css"/>
 		<link rel="stylesheet" href="./css/createTeam.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="./js/createTeam.js" defer></script>
   	</head>
 
 	<body class="d-flex flex-column h-100">
@@ -158,76 +198,131 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<br>
 
 			<?php
-				if($err) {
-					echo '<div class="alert alert-danger fade show" role="alert">';
-					echo '<strong>Σφάλμα!</strong><br>';
-					echo $err_msg . '.';
-					echo '</div><br>';
+				if($err_msg) {
+					displayErrorBanner($err_msg);
 				}
 
-				if($suc) {
-					echo '<div class="alert alert-success fade show" role="alert">';
-					echo '<strong>Επιτυχία!</strong><br>';
-					echo $suc_msg . '.';
-					echo '</div><br>';
+				if($suc_msg) {
+					displaySuccessBanner($suc_msg);
 				}
 			?>
 
 			<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
 				<!-- Name (Greek) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="name_gr" class="form-control <?php echo ($teamNameGR_err) ? ' is-invalid' : '' ?>" id="teamNameGR" placeholder="">
+					<input
+						type="text"
+						name="name_gr"
+						class="form-control <?php echo ($teamNameGR_err) ? ' is-invalid' : '' ?>"
+						id="teamNameGR"
+						placeholder=""
+						value="<?php echo (isset($_POST['name_gr'])) ? htmlspecialchars($_POST['name_gr']) : '' ?>"
+					>
 					<label for="teamNameGR">Όνομα Ομάδας (Ελληνικά)</label>
+					<?php if($teamNameGR_err) formInvalidFeedback($teamNameGR_err) ?>
 				</div>
 				<!-- Name (English) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="name_en" class="form-control <?php echo ($teamNameEN_err) ? ' is-invalid' : '' ?>" id="teamNameEN" placeholder="">
+					<input
+						type="text"
+						name="name_en"
+						class="form-control <?php echo ($teamNameEN_err) ? ' is-invalid' : '' ?>"
+						id="teamNameEN"
+						placeholder=""
+						value="<?php echo (isset($_POST['name_en'])) ? htmlspecialchars($_POST['name_en']) : '' ?>"
+					>
 					<label for="teamNameEN">Όνομα Ομάδας (Αγγλικά)</label>
+					<?php if($teamNameEN_err) formInvalidFeedback($teamNameEN_err) ?>
 				</div>
 				<!-- Team Code (English) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="short_name_en" class="form-control <?php echo ($teamCodeEN_err) ? ' is-invalid' : '' ?>" id="teamCodeEN" placeholder="">
+					<input
+						type="text"
+						name="short_name_en"
+						class="form-control <?php echo ($teamCodeEN_err) ? ' is-invalid' : '' ?>"
+						id="teamCodeEN"
+						placeholder=""
+						value="<?php echo (isset($_POST['short_name_en'])) ? htmlspecialchars($_POST['short_name_en']) : '' ?>"
+					>
 					<label for="teamCodeEN">Κωδικός ομάδας (Αγγλικά)</label>
+					<?php if($teamCodeEN_err) formInvalidFeedback($teamCodeEN_err) ?>
 				</div>
 				<!-- Team Code (Greek) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="short_name_gr" class="form-control <?php echo ($teamCodeGR_err) ? ' is-invalid' : '' ?>" id="teamCodeGR" placeholder="">
+					<input
+						type="text"
+						name="short_name_gr"
+						class="form-control <?php echo ($teamCodeGR_err) ? ' is-invalid' : '' ?>"
+						id="teamCodeGR"
+						placeholder=""
+						value="<?php echo (isset($_POST['short_name_gr'])) ? htmlspecialchars($_POST['short_name_gr']) : '' ?>"
+					>
 					<label for="teamCodeGR">Κωδικός ομάδας (Ελληνικά)</label>
+					<?php if($teamCodeGR_err) formInvalidFeedback($teamCodeGR_err) ?>
 				</div>
 
 				<!-- City -->
 				<div class="row mb-5">
 					<p class="lead">Επιλέξτε την πόλη στην οποία βρίσκεται η ομάδα ή αν δεν υπάρχει, δημιουργήστε την.</p>
 					
+					<?php echo '<p class="lead text-danger">' . $city_err . '</p>' ?>
+					
 					<!-- Select from existing -->
 					<div class="col-md-6">
 						<label class="mb-1" for="teamCity_dropdown">Υπάρχουσες πόλεις</label>
-						<select name="team_city" class="form-select <?php echo ($teamCity_err) ? ' is-invalid' : '' ?>" id="teamCity_dropdown" onchange="grayOut()">
-							<option selected="" disabled="" value=""><?php echo $default ?></option>
+						<select
+							name="team_city"
+							class="form-select <?php echo ($teamCity_err) ? ' is-invalid' : '' ?>"
+							id="teamCity_dropdown"
+							onchange="grayOut()"
+						>
+							<option selected disabled value="">Επιλέξτε...</option>
 							<?php
-							$data = $conn->query("SELECT * FROM city")->fetchAll();
-							if($data!=null){
-								foreach($data as $row) {
-									echo '<option>' . $row["name_gr"] . '</option>'; // Greek
-									// echo '<option>' . $row["name_en"] . ' </option>'; // English
+								// Retrieve the existing cities
+								$data = $conn->query("SELECT * FROM city ORDER BY name_gr")->fetchAll();
+
+								// Add them in the dropdown
+								if($data != null) {
+									foreach($data as $row) {
+										// Remember the user selection, if he has made one
+										$selected = '';
+										if(isset($_POST['team_city']) && $row['id'] == $_POST['team_city']) {
+											$selected = 'selected';
+										}
+
+										echo '<option value=' . $row['id'] . ' ' . $selected . '>' . $row['name_gr'] . '</option>' . "\n";
+									}
 								}
-						}
-						?>
+							?>
 						</select>
 					</div>
 					
 					<!-- Create New -->
 					<div class="col-md-6 div-spacer">
 						<label class="mb-1">Δημιουργία Πόλης</label>
-						
+
 						<!-- New city name (Greek) -->
 						<div class="form-floating mb-3">
-							<input type="text" name="newCity_gr" class="newCity form-control <?php echo ($newCity_nameGR_err) ? ' is-invalid' : '' ?>" id="newCity_nameGR" placeholder="">
+							<input
+								type="text"
+								name="newCity_gr"
+								class="newCity form-control <?php echo ($newCity_err) ? ' is-invalid' : '' ?>"
+								id="newCity_nameGR"
+								placeholder=""
+								value="<?php echo (isset($_POST['newCity_gr'])) ? htmlspecialchars($_POST['newCity_gr']) : '' ?>"
+							>
 							<label for="newCity_nameGR">Όνομα Νέας Πόλης (Ελληνικά)</label>
 						</div>
 						<!-- New city name (English) -->
 						<div class="form-floating mb-3">
-							<input type="text" name="newCity_en" class="newCity form-control <?php echo ($newCity_nameEN_err) ? ' is-invalid' : '' ?>" id="newCity_nameEN" placeholder="">
+							<input
+								type="text"
+								name="newCity_en"
+								class="newCity form-control <?php echo ($newCity_err) ? ' is-invalid' : '' ?>"
+								id="newCity_nameEN"
+								placeholder=""
+								value="<?php echo (isset($_POST['newCity_en'])) ? htmlspecialchars($_POST['newCity_en']) : '' ?>"
+							>
 							<label for="newCity_nameEN">Όνομα Νέας Πόλης (Αγγλικά)</label>
 						</div>
 					</div>
@@ -235,11 +330,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				<!-- Logo -->
 				<label for="teamLogo" class="mb-1">Σήμα Ομάδας</label>
-				<input type="file" name="logo_path" class="form-control mb-5 <?php echo ($teamLogo_err) ? ' is-invalid' : '' ?>" id="teamLogo" accept="image/*">
+				<input
+					type="file"
+					name="logo_path"
+					class="form-control mb-5 <?php echo ($teamLogo_err) ? ' is-invalid' : '' ?>"
+					id="teamLogo"
+					accept="image/*"
+				>
 				
 				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-3">
 					<a href="./" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
-					<button type="button" class="btn btn-danger me-3" onclick="clearForm()">Εκκαθάριση Φόρμας</button>
+					<a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="btn btn-danger me-3" role="button">Εκκαθάριση Φόρμας</a>
 					<button type="submit" class="btn btn-success me-3">Καταχώριση Ομάδας</button>
 				</div>
 
@@ -251,41 +352,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</main>
 		<script>
 
-			const dropdown = document.querySelector('#teamCity_dropdown');
-			const newFields = document.querySelectorAll('.newCity');
-			const textFields = document.querySelectorAll('input[type="text"]');
-			const imgField = document.querySelector('input[type="file"]');
 			
-			const fields = [...textFields, imgField];
-			
-			function grayOut(){
-				if(dropdown.selectedIndex !=0 ){
-					newFields.forEach((field)=>{
-						field.setAttribute('disabled', '');
-					})
-				}else{
-					newFields.forEach((field)=>{
-						field.removeAttribute('disabled');
-					})
-				}
-			}
-
-			function lockOut() {
-				if(!dropdown.hasAttribute('disabled')) dropdown.setAttribute('disabled', '');
-			}
-
-			function clearForm(){
-				fields.forEach((input)=>{
-					input.value = "";
-    			});
-				dropdown.selectedIndex = "0";
-				dropdown.removeAttribute('disabled');
-				grayOut();
-			}
-  
-			newFields.forEach((field)=>{
-					field.addEventListener("input", lockOut)
-				});
 
 		</script>
 
