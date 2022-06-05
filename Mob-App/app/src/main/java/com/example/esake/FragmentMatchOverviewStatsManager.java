@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,12 +54,31 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
+
+	private Match game;
+	private final String myIP = "192.168.1.2";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_match_overview_stats_manager, null);
+		game = new Match(myIP);
+
+		TextView team1 = root.findViewById(R.id.homeTeamName_statsManager);
+		TextView team2 = root.findViewById(R.id.awayTeamName_statsManager);
+		team1.setText(game.getTeamList(2,true));
+		team2.setText(game.getTeamList(2,false));
+
+		TextView score1 = root.findViewById(R.id.SHomeScore_statsManager);
+		TextView score2 = root.findViewById(R.id.SAwayScore_statsManager);
+		score1.setText(game.getScoreList(2, true));
+		score2.setText(game.getScoreList(2,false));
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_match_overview_stats_manager, container, false);
+        return root;
     }
 }

@@ -32,8 +32,8 @@ public class DatabaseAdapter {
 //            String name = cursor.getString(index2);
 //            int index3 = cursor.getColumnIndex(DatabaseHelper.KEY_EMAIL);
 //            String email = cursor.getString(index3);
-            Game game = new Game(score1, score2);
-            gamesList.add(game);
+         //   Game game = new Game(score1, score2 );
+            //gamesList.add(game);
         }
         return gamesList;
     }
