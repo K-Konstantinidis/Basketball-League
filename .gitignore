@@ -1,4 +1,7 @@
+*.ffs_batch
+*.ffs_db
 *.iml
+*.mwb.bak
 .gradle
 /local.properties
 /.idea/caches
