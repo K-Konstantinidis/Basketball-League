@@ -76,6 +76,14 @@ function displaySuccessBanner($text, $title = 'Επιτυχία!') {
 	echo '</div><br>';
 }
 
+// Data filtering
+function filter_data($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+
 /**
  * 
  */
@@ -87,6 +95,12 @@ function findBasePathToDir($php_self, $to) {
 	else {
 		return substr($php_self, 0, $rpos);
 	}
+}
+
+function formInvalidFeedback(string $msg) {
+	echo '<div class="invalid-feedback">';
+	echo $msg;
+	echo '</div>' . "\n";
 }
 
 ?>
