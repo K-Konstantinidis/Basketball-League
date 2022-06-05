@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 					displayErrorBanner($err);
 				}
 				if($warn) {
-					displayWarrningBanner($warn);
+					displayWarningBanner($warn);
 				}
 
 				$conn = connectDB();
@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 					echo '</div>' . "\n";
 				}
 				else { //There are no teams in the database
-					displayWarrningBanner('Δεν βρέθηκαν ομάδες για να συμπεριληφθούν στο πρωτάθλημα.' .
+					displayWarningBanner('Δεν βρέθηκαν ομάδες για να συμπεριληφθούν στο πρωτάθλημα.' .
 						'<br/><a class="alert-link" href='. AREF_ADMIN_CREATE_TEAM .'>Δημιουργήστε</a> ομάδες και ξαναπροσπαθήστε');
 				}
 

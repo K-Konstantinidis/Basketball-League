@@ -85,10 +85,10 @@ $err_msg = 'Ένα μήνυμα σφάλματος';
 					echo '</div>' . "\n";
 				}
 				elseif(isset($_GET['inv_param'])) {
-					displayWarrningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
+					displayWarningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
 				}
 				else {
-					displayWarrningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');
+					displayWarningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');
 				}
 			?>
 		</div>
