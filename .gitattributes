@@ -6,3 +6,6 @@
 
 # Show Java files as Java
 *.java linguist-detectable=true
+
+# Show JavaScript files as JavaScript
+*.js linguist-detectable=true

@@ -1,55 +1,22 @@
 <?php
 
-/*TODO:: 
-
-- Add comments
-- Figure out what's wrong with images / ask
-- Show Verbose (Line: 202-203-204) but add code only in db
-- Add success / error message (Line: 51)
-- Add button to only light up if all inputs are done
-- Add potential language check for inputs (?)
-- Clear form button functionality
-
-*/
-
 session_start();
 require_once '../../resources/config.php';
 
-// Data filtering
-function filter_data($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
+// Connect to the database
+$conn = connectDB();
 
 // Required for the navigation bar to load properly
 $currPage = 'createPlayer';
 
-// If the user is not logged in, he gets redirected at the loggin page.
-if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../login/?lr');
+// If the user is not logged in, he gets redirected at the login page.
+if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
+	header('Location: ' . AREF_LOGIN . '?lr');
 	die();
 }
 
-$conn = connectDB();
-
-// Binding vars to actual form inputs
-$stmt = $conn->prepare("INSERT INTO player (name_en, surname_en, name_gr, surname_gr, team_id, player_position_code, img_path)
-VALUES (:name_en, :surname_en, :name_gr, :surname_gr, :team_id, :player_position_code, :img_path)");
-$stmt->bindParam(':name_en', $playerNameEN);
-$stmt->bindParam(':surname_en', $playerSurnameEN);
-$stmt->bindParam(':name_gr', $playerNameGR);
-$stmt->bindParam(':surname_gr', $playerSurnameGR);
-$stmt->bindParam(':team_id', $playerTeam);
-$stmt->bindParam(':player_position_code', $playerPos);
-$stmt->bindParam(':img_path', $playerImg);
-
-
 // Use these to display errors
-$err = $suc = false;
-$err_msg = 'Ένα μήνυμα σφάλματος';
-// $suc_msg = 'Ο παίκτης <strong>' . $_POST['playerNameGR'] . '</strong> δημιουργήθηκε επιτυχώς'; - Commented because of warning, fix
+$err_msg = $suc_msg = '';
 
 // Variables
 $playerNameGR = $playerSurnameGR = $playerNameEN = $playerSurnameEN = $playerPos = $playerTeam = $playerImg = "";
@@ -57,68 +24,94 @@ $playerNameGR = $playerSurnameGR = $playerNameEN = $playerSurnameEN = $playerPos
 // Use them to indicate errors on the input field
 $playerNameGR_err = $playerSurnameGR_err = $playerNameEN_err = $playerSurnameEN_err = $playerPos_err = $playerTeam_err = $playerImg_err = "";
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+	// Number of fields that are ready to be added
 	$count = 0;
 
-	// Name data filter
-	if(empty($_POST["name_en"])) $playerNameEN_err = "Παρακαλώ συμπληρώστε το όνομα του παίκτη στα Αγγλικά"; 
-		else { 
-			$playerNameEN = filter_data($_POST["name_en"]);
-			$count++;
-	 	}
-		 
-	if(empty($_POST["surname_en"])) $playerSurnameEN_err = "Παρακαλώ συμπληρώστε το επίθετο του παίκτη στα Αγγλικά"; 
-		else { 
-			 $playerSurnameEN = filter_data($_POST["surname_en"]);
-			 $count++;
-		}
-			
-	if(empty($_POST["name_gr"])) $playerNameGR_err = "Παρακαλώ συμπληρώστε το όνομα στα Ελληνικά"; 
-		else { 
-			$playerNameGR = filter_data($_POST["name_gr"]);
-			$count++;
-		}
+	// Binding vars to actual form inputs
+	$stmt = $conn->prepare(
+		"INSERT INTO player (name_en, surname_en, name_gr, surname_gr, team_id, player_position_code, img_path)
+		VALUES (:name_en, :surname_en, :name_gr, :surname_gr, :team_id, :player_position_code, :img_path)"
+	);
+	$stmt->bindParam(':name_en', $playerNameEN);
+	$stmt->bindParam(':surname_en', $playerSurnameEN);
+	$stmt->bindParam(':name_gr', $playerNameGR);
+	$stmt->bindParam(':surname_gr', $playerSurnameGR);
+	$stmt->bindParam(':team_id', $playerTeam);
+	$stmt->bindParam(':player_position_code', $playerPos);
+	$stmt->bindParam(':img_path', $playerImg);
 
-	if(empty($_POST["surname_gr"])) $playerSurnameGR_err = "Παρακαλώ συμπληρώστε το επίθετο του παίκτη στα Ελληνικά"; 
-		else { 
-			$playerSurnameGR = filter_data($_POST["surname_gr"]);
-			$count++;
-		}
-		
-	if(empty($_POST["player_team"])) $playerTeam_err = "Παρακαλώ επιλέξτε την ομάδα που θα συμμετάσχει o παίκτης";  // o 
-		else { 
-			$temp = $_POST["player_team"];
+	// Check name EN
+	if(!isset($_POST['name_en']) || !filter_data($_POST['name_en'])) {
+		$playerNameEN_err = 'Παρακαλώ συμπληρώστε το όνομα του παίκτη στα Αγγλικά';
+	}
+	else {
+		$playerNameEN = filter_data($_POST['name_en']);
+		$count++;
+	}
 
-			$query = $conn->prepare('SELECT * FROM team WHERE name_gr LIKE ?');
-			$query->bindValue(1, "$temp", PDO::PARAM_STR);
-			$query->execute();
-
-			try{
-				$result = $query->fetch();
-				$playerTeam = $result['id'];
-			}catch(PDOException $e){
-				$e->getMessage();
-			}
-
-			$count++;
-		}
-
-	if(empty($_POST["player_position_code"])) $playerPos_err = "Παρακαλώ επιλέξτε την θέση του παίκτη"; 
-		else { 
-			$playerPos = $_POST["player_position_code"];
-			$count++;
-		}
-
-	// if(empty($_POST["img_path"])) $playerImg_err = "Παρακαλώ ανεβάστε την εικόνα του παίκτη"; 
-	// 	else { 
-	// 		$playerImg = $_POST["img_path"];
-	// 		$count++;
-	// 	}
+	// Check surname EN
+	if(!isset($_POST['surname_en']) || !filter_data($_POST['surname_en'])) {
+		$playerSurnameEN_err = 'Παρακαλώ συμπληρώστε το επίθετο του παίκτη στα Αγγλικά';
+	}
+	else {
+		$playerSurnameEN = filter_data($_POST['surname_en']);
+		$count++;
+	}
 	
-	if($count==6) $stmt->execute();
+	// Check name GR
+	if(!isset($_POST['name_gr']) || !filter_data($_POST['name_gr'])) {
+		$playerNameGR_err = 'Παρακαλώ συμπληρώστε το όνομα στα Ελληνικά';
+	}
+	else {
+		$playerNameGR = filter_data($_POST['name_gr']);
+		$count++;
+	}
+
+	// Check surname GR
+	if(!isset($_POST['surname_gr']) || !filter_data($_POST['surname_gr'])) {
+		$playerSurnameGR_err = 'Παρακαλώ συμπληρώστε το επίθετο του παίκτη στα Ελληνικά';
+	}
+	else {
+		$playerSurnameGR = filter_data($_POST["surname_gr"]);
+		$count++;
+	}
+	
+	// Check selected player team
+	if(!isset($_POST['player_team']) || !filter_data($_POST['player_team'])) {
+		$playerTeam_err = 'Παρακαλώ επιλέξτε την ομάδα που θα συμμετάσχει o παίκτης';
+	}
+	else {
+		$playerTeam = filter_data($_POST['player_team']);
+		$count++;
+	}
+
+	// Check selected player position
+	if(!isset($_POST['player_position_code']) || !filter_data($_POST['player_position_code'])) {
+		$playerPos_err = 'Παρακαλώ επιλέξτε την θέση του παίκτη';
+	}
+	else {
+		$playerPos = filter_data($_POST['player_position_code']);
+		$count++;
+	}
+
+	// Check if there is an image uploaded
+	if(!isset($_POST['img']) || !filter_data($_POST['img'])) {
+		$playerImg_err = 'Παρακαλώ ανεβάστε την εικόνα του παίκτη';
+	}
+	else {
+		$playerImg = $_POST['img'];
+		$count++;
+	}
+	
+	// If all fields were filled successfully, insert the new player
+	if($count == 7) {
+		$stmt->execute();
+		$suc_msg = 'Ο παίκτης <strong>' . filter_data($_POST['name_gr']) . '</strong> δημιουργήθηκε επιτυχώς';
+		unset($_POST);
+	}
 }
+
 ?>
 
 <!doctype html>
@@ -153,113 +146,152 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<br>
 
 			<?php
-				if($err) {
-					echo '<div class="alert alert-danger fade show" role="alert">';
-					echo '<strong>Σφάλμα!</strong><br>';
-					echo $err_msg . '.';
-					echo '</div><br>';
+				if($err_msg) {
+					displayErrorBanner($err_msg);
 				}
 
-				if($suc) {
-					echo '<div class="alert alert-success fade show" role="alert">';
-					echo '<strong>Επιτυχία!</strong><br>';
-					echo $suc_msg . '.';
-					echo '</div><br>';
+				if($suc_msg) {
+					displaySuccessBanner($suc_msg);
 				}
 			?>
 
 			<form method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>">
 				<!-- Name (in Greek) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="name_gr" class="form-control <?php echo ($playerNameGR_err) ? ' is-invalid' : '' ?>" id="playerNameGR" placeholder="">
+					<input
+						type="text"
+						name="name_gr"
+						class="form-control <?php echo ($playerNameGR_err) ? ' is-invalid' : '' ?>"
+						id="playerNameGR"
+						placeholder=""
+						value="<?php echo (isset($_POST['name_gr'])) ? filter_data($_POST['name_gr']) : '' ?>"
+					>
 					<label for="playerNameGR">Όνομα Παίκτη (Ελληνικά)</label>
+					<?php if($playerNameGR_err) formInvalidFeedback($playerNameGR_err) ?>
 				</div>
 				<!-- Surname (in Greek) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="surname_gr" class="form-control <?php echo ($playerSurnameGR_err) ? ' is-invalid' : '' ?>" id="playerSurnameGR" placeholder="">
+					<input
+						type="text"
+						name="surname_gr"
+						class="form-control <?php echo ($playerSurnameGR_err) ? ' is-invalid' : '' ?>"
+						id="playerSurnameGR"
+						placeholder=""
+						value="<?php echo (isset($_POST['surname_gr'])) ? filter_data($_POST['surname_gr']) : '' ?>"
+					>
 					<label for="playerSurnameGR">Επώνυμο Παίκτη (Ελληνικά)</label>
+					<?php if($playerSurnameGR_err) formInvalidFeedback($playerSurnameGR_err) ?>
 				</div>
 
 				<!-- Name (in English) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="name_en" class="form-control <?php echo ($playerNameEN_err) ? ' is-invalid' : '' ?>" id="playerNameEN" placeholder="">
+					<input
+						type="text"
+						name="name_en"
+						class="form-control <?php echo ($playerNameEN_err) ? ' is-invalid' : '' ?>"
+						id="playerNameEN"
+						placeholder=""
+						value="<?php echo (isset($_POST['name_en'])) ? filter_data($_POST['name_en']) : '' ?>"
+					>
 					<label for="playerNameEN">Όνομα Παίκτη (Αγγλικά)</label>
+					<?php if($playerNameEN_err) formInvalidFeedback($playerNameEN_err) ?>
 				</div>
 				<!-- Surname (in English) -->
 				<div class="form-floating mb-5">
-					<input type="text" name="surname_en" class="form-control <?php echo ($playerSurnameEN_err) ? ' is-invalid' : '' ?>" id="playerSurnameEN" placeholder="">
+					<input
+						type="text"
+						name="surname_en"
+						class="form-control <?php echo ($playerSurnameEN_err) ? ' is-invalid' : '' ?>"
+						id="playerSurnameEN"
+						placeholder=""
+						value="<?php echo (isset($_POST['surname_en'])) ? filter_data($_POST['surname_en']) : '' ?>"
+					>
 					<label for="playerSurnameEN">Επώνυμο Παίκτη (Αγγλικά)</label>
+					<?php if($playerSurnameEN_err) formInvalidFeedback($playerSurnameEN_err) ?>
 				</div>
 
 				<!-- Player Position -->
 				<div class="mb-5">
 					<label class="mb-1" for="playerPos">Θέση Παίκτη</label>
-					<select name="player_position_code" class="form-select <?php echo ($playerPos_err) ? ' is-invalid' : '' ?>" id="playerPos">
-						<option selected="" disabled="" value="">Επιλέξτε...</option>
+					<select
+						name="player_position_code"
+						class="form-select <?php echo ($playerPos_err) ? ' is-invalid' : '' ?>"
+						id="playerPos"
+					>
+						<option selected disabled value="">Επιλέξτε...</option>
 						<?php
+							// Retrieve the player positions
 							$data = $conn->query("SELECT * FROM player_position")->fetchAll();
-							if($data!=null){
+
+							// Add them in the dropdown
+							if($data != null) {
 								foreach($data as $row) {
-									// echo '<option>' . $row["position_name"] .' </option>'; // Verbose
-									echo '<option>' . $row["position_code"] . ' </option>'; // Code only
-									// echo '<option>' . $row["position_code"] .' - '. $row["position_name"] . ' </option>'; // Both
+									// Remember the user selection, if he has made one
+									$selected = '';
+									if(isset($_POST['player_position_code']) && $row["position_code"] == $_POST['player_position_code']) {
+										$selected = 'selected';
+									}
+									
+									echo '<option value="' . $row["position_code"] . '" ' . $selected . '>' . $row["position_name"] . '</option>' . "\n";
 								}
-						}
+							}
+
+							// Free the allocated memory
+							unset($data);
 						?>
 					</select>
+					<?php if($playerPos_err) formInvalidFeedback($playerPos_err) ?>
 				</div>
 
 				<!-- Player Team -->
 				<div class="mb-5">
 					<label class="mb-1" for="playerTeam">Ομάδα Παίκτη</label>
-					<select name="player_team" class="form-select <?php echo ($playerTeam_err) ? ' is-invalid' : '' ?>" id="playerTeam">
+					<select
+						name="player_team"
+						class="form-select <?php echo ($playerTeam_err) ? ' is-invalid' : '' ?>"
+						id="playerTeam"
+					>
 						<option selected="" disabled="" value="">Επιλέξτε...</option>
 						<?php
-							$data = $conn->query("SELECT * FROM team")->fetchAll();
-							if($data!=null){
+							// Retrieve the teams
+							$data = $conn->query("SELECT * FROM team ORDER BY name_gr")->fetchAll();
+							
+							// Add them in the dropdown
+							if($data != null) {
 								foreach($data as $row) {
-									echo '<option>' . $row["name_gr"] .' </option>'; 
+									// Remember the user selection, if he has made one
+									$selected = '';
+									if(isset($_POST['player_team']) && $row['id'] == $_POST['player_team']) {
+										$selected = 'selected';
+									}
+									echo '<option value=' . $row['id'] . ' ' . $selected . '>' . $row['name_gr'] . '</option>' . "\n";
 								}
-						}
+							}
+
+							// Free the allocated memory
+							unset($data);
 						?>
 					</select>
+					<?php if($playerTeam_err) formInvalidFeedback($playerTeam_err) ?>
 				</div>
 
 				<!-- Player Image Selection -->
 				<div class="mb-5">
 					<label for="playerImg">Φωτογραφία Παίκτη</label>
 					<input type="file" name="img" class="form-control mt-1 <?php echo ($playerImg_err) ? ' is-invalid' : '' ?>" id="playerImg" accept="image/*">
+					<?php if($playerSurnameGR_err) formInvalidFeedback($playerSurnameGR_err) ?>
 				</div>
 			
 				<!-- Buttons -->
 				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-5">
-					<a href="./" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
-					<button type="button" class="btn btn-danger me-3" onclick="clearForm()">Εκκαθάριση Φόρμας</button>
+					<a href="<?php echo AREF_DIR_ADMIN ?>" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
+					<a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="btn btn-danger me-3" role="button">Εκκαθάριση Φόρμας</a>
 					<button type="submit" class="btn btn-success me-3">Καταχώριση Παίκτη</button>
 				</div>
 			</form>
 
 		</div>
 		</main>
-
-		<script> 
-
-			const textFields = document.querySelectorAll('input[type="text"]');
-			const imgField = document.querySelector('input[type="file"]');
-			const dropdowns = document.querySelectorAll('select');
-
-			const fields = [...textFields, imgField];
-
-			function clearForm(){
-				fields.forEach((field)=>{
-					field.value = "";
-				})
-				dropdowns.forEach((dropdown)=>{
-					dropdown.selectedIndex = "0";
-				})
-			}
-
-		</script>
 
 		<!-- Footer -->
 		<?php require_once MAIN_FOOTER ?>

@@ -7,14 +7,13 @@ require_once '../../resources/config.php';
 $currPage = 'displayLeague';
 
 // If the user is not logged in, he gets redirected at the login page.
-if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../login/?lr');
+if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
+	header('Location: ' . AREF_LOGIN . '?lr');
 	die();
 }
 
-// Use these to display errors
-$err = false;
-$err_msg = 'Ένα μήνυμα σφάλματος';
+// Use this to display error messages
+$err_msg = '';
 
 ?>
 
@@ -50,11 +49,8 @@ $err_msg = 'Ένα μήνυμα σφάλματος';
 			<br>
 
 			<?php
-				if($err) {
-					echo '<div class="alert alert-danger fade show" role="alert">';
-					echo '<strong>Σφάλμα!</strong><br>';
-					echo $err_msg . '.';
-					echo '</div><br>';
+				if($err_msg) {
+					displayErrorBanner($err_msg);
 				}
 
 				// Newly created league
@@ -85,10 +81,10 @@ $err_msg = 'Ένα μήνυμα σφάλματος';
 					echo '</div>' . "\n";
 				}
 				elseif(isset($_GET['inv_param'])) {
-					displayWarrningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
+					displayWarningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
 				}
 				else {
-					displayWarrningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');
+					displayWarningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');
 				}
 			?>
 		</div>

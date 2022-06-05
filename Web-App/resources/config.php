@@ -27,6 +27,7 @@ define('AREF_ADMIN_CREATE_PLAYER',  AREF_DIR_ADMIN . 'createPlayer.php');
 define('AREF_ADMIN_CREATE_TEAM',    AREF_DIR_ADMIN . 'createTeam.php');
 define('AREF_ADMIN_DISPLAY_LEAGUE', AREF_DIR_ADMIN . 'displayLeague.php');
 define('AREF_ADMIN_DRAW_LEAGUE',    AREF_DIR_ADMIN . 'drawLeague.php');
+define('AREF_ADMIN_LOADING_LEAGUE', AREF_DIR_ADMIN . 'loadingLeague.php');
 
 
 
@@ -57,7 +58,7 @@ function displayErrorBanner(string $text, string $title = 'Σφάλμα!') {
 	echo '</div><br>';
 }
 
-function displayWarrningBanner($text, $title = 'Προσοχή!') {
+function displayWarningBanner($text, $title = 'Προσοχή!') {
 	echo '<div class="alert alert-warning fade show" role="alert">';
 	if(!empty($title)) {
 		echo '<strong>'. $title . '</strong><br>';
@@ -75,6 +76,14 @@ function displaySuccessBanner($text, $title = 'Επιτυχία!') {
 	echo '</div><br>';
 }
 
+// Data filtering
+function filter_data($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
+
 /**
  * 
  */
@@ -86,6 +95,12 @@ function findBasePathToDir($php_self, $to) {
 	else {
 		return substr($php_self, 0, $rpos);
 	}
+}
+
+function formInvalidFeedback(string $msg) {
+	echo '<div class="invalid-feedback">';
+	echo $msg;
+	echo '</div>' . "\n";
 }
 
 ?>
