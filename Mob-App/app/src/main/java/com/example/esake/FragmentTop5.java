@@ -65,10 +65,10 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
     }
 
     private final String myIP = "192.168.1.2";
-    private GameWeek cbl;
+    private GameWeek match;
 
-    ImageView myImage;
-    private String imageUri;
+//    ImageView myImage;
+//    private String imageUri;
 
 
     @Override
@@ -82,22 +82,19 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         //Create a list of items for the spinner.
         //String[] items = new String[]{"Week 1", "Week 2", "Week 3", "etc"};
 
-        cbl = new GameWeek(myIP);
+		match = new GameWeek(myIP);
         super.onCreate(savedInstanceState);
 
         //Create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item,
-                cbl.getAllBrands());
-        //Set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
-
-        imageUri = cbl.lookup("Nissan", "Sunny").getImage();
-        myImage= (ImageView) root.findViewById(R.id.imgTop5);
-        Picasso.with(root.getContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
-
-
-
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_spinner_dropdown_item,
+//                cbl.getAllBrands());
+//        //Set the spinners adapter to the previously created one.
+//        dropdown.setAdapter(adapter);
+//
+//        imageUri = cbl.lookup("Nissan", "Sunny").getImage();
+//        myImage= (ImageView) root.findViewById(R.id.imgTop5);
+//        Picasso.with(root.getContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
 
         //Picasso.with(getApplicationContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
         // Picasso resizing will be useful somewhere
