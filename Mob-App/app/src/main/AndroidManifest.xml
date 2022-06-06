@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.esake">
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.example.esake">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,14 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Esake"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+		tools:targetApi="n">
         <activity
             android:name=".Login"
             android:exported="false" />
-        <activity
-            android:name=".Tabbed_User"
-            android:exported="false"
-            android:theme="@style/Theme.Esake.NoActionBar"></activity>
+		<activity
+			android:name=".Tabbed_User"
+			android:exported="false"
+			android:theme="@style/Theme.Esake.NoActionBar" />
         <activity
             android:name=".IndexPage"
             android:exported="true">
@@ -36,12 +38,9 @@
         <activity
             android:name=".StatsManagerHome.HomeActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"></activity>
+		<activity
+			android:name=".MainActivity"
+			android:exported="false" />
     </application>
 
 </manifest>
