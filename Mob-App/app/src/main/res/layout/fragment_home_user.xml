@@ -7,153 +7,148 @@
     android:layout_height="match_parent"
     tools:context=".FragmentUserHome">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gameweekSelectionCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/gameweekGameCardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+	<androidx.cardview.widget.CardView
+		android:id="@+id/gameweekSelectionCardView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/gameweek_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/gameweek_header"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
 
-            <Spinner
-                android:id="@+id/gameweek_selection"
-                android:layout_width="264dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:contentDescription="@string/gameweek_selector"
-                android:entries="@android:array/imProtocols"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+			<Spinner
+				android:id="@+id/gameweek_selection"
+				android:layout_width="264dp"
+				android:layout_height="48dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:contentDescription="@string/gameweek_selector"
+				android:entries="@android:array/imProtocols"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
-                android:id="@+id/esake_logo_no_text"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:contentDescription="@string/esake_logo_no_text"
-                android:src="@drawable/esake_logo_no_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+			<ImageView
+				android:id="@+id/esake_logo_no_text"
+				android:layout_width="42dp"
+				android:layout_height="42dp"
+				android:layout_marginEnd="10dp"
+				android:layout_marginRight="10dp"
+				android:contentDescription="@string/esake_logo_no_text"
+				android:src="@drawable/esake_logo_no_text"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="1.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.5" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gameweekGameCardView"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:padding="8dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameweekSelectionCardView">
+	<androidx.cardview.widget.CardView
+		android:id="@+id/gameweekGameCardView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="8dp"
+		app:cardBackgroundColor="#FFFFFF"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/gameweekSelectionCardView"
+		app:layout_constraintVertical_bias="0.0">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gameweek_game_layout_border">
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/gameweek_game_layout_border">
 
-            <ImageView
-                android:id="@+id/gameweek_team1_logo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/gameweek_team1_logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/gameweek_preview_team1_score"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/esake_logo"
-                tools:ignore="ImageContrastCheck" />
+			<ImageView
+				android:id="@+id/gameweek_team1_logo"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:contentDescription="@string/gameweek_team1_logo"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.03"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:srcCompat="@drawable/esake_logo"/>
 
-            <TextView
-                android:id="@+id/gameweek_preview_team1_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/gameweek_preview_score1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/gameweekDashBetweenScores"
-                app:layout_constraintHorizontal_bias="0.011"
-                app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.517" />
+			<TextView
+				android:id="@+id/gameweek_preview_team1_score"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gameweek_preview_score1"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/gameweek_team2_logo"
+				app:layout_constraintHorizontal_bias="0.1"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
+				app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/gameweekDashBetweenScores"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/gameweekDashBetweenScores"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/gameweek_preview_team2_score"
-                app:layout_constraintHorizontal_bias="0.426"
-                app:layout_constraintStart_toEndOf="@+id/gameweek_preview_team1_score"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.517" />
+			<TextView
+				android:id="@+id/gameweekDashBetweenScores"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gameweekDashBetweenScores"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/gameweek_preview_team2_score"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_preview_team1_score"
+				app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/gameweek_preview_team2_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/gameweek_preview_score2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/gameweek_team2_logo"
-                app:layout_constraintStart_toEndOf="@id/gameweekDashBetweenScores"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.517" />
+			<TextView
+				android:id="@+id/gameweek_preview_team2_score"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gameweek_preview_score2"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/gameweek_team2_logo"
+				app:layout_constraintHorizontal_bias="0.9"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
+				app:layout_constraintTop_toTopOf="parent"/>
 
-            <ImageView
-                android:id="@+id/gameweek_team2_logo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:contentDescription="@string/gameweek_team2_logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/gameweek_preview_gameButton"
-                app:layout_constraintStart_toEndOf="@id/gameweek_preview_team2_score"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/esake_logo" />
+			<ImageView
+				android:id="@+id/gameweek_team2_logo"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:contentDescription="@string/gameweek_team2_logo"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.45"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:srcCompat="@drawable/esake_logo" />
 
-            <Button
-                android:id="@+id/gameweek_preview_gameButton"
-                android:layout_width="123dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:clickable="true"
-                android:text="@string/gameweek_watch_gameButton"
-                android:textColor="#FFFFFF"
-                android:textSize="11sp"
-                app:backgroundTint="@color/primary_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
-                app:rippleColor="@color/white" />
+			<Button
+				android:id="@+id/gameweek_preview_gameButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:enabled="true"
+				android:minHeight="48dp"
+				android:text="@string/gameweek_watch_gameButton"
+				android:textColor="@color/white"
+				android:textSize="11sp"
+				app:backgroundTint="@color/primary_color"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias=".9"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_team2_logo"
+				app:layout_constraintTop_toTopOf="parent"
+				app:rippleColor="@color/white" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="409dp"
