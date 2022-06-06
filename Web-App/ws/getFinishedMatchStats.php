@@ -2,7 +2,7 @@
 
 /**
  * Web service which returns the statistics of a given match that has ended.
- * The data are returned as a JSON file.
+ * The data is returned as a JSON file.
  * 
  * As parameters, it requires:
  * 		lang	-> The language in which the results will be returned.
