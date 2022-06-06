@@ -25,6 +25,9 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
     private String mParam1;
     private String mParam2;
 
+	private Match game;
+	private final String myIP = "192.168.1.199";
+
     public FragmentMatchOverviewStatsManager() {
         // Required empty public constructor
     }
@@ -56,10 +59,6 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
         }
 
     }
-
-	private Match game;
-	private final String myIP = "192.168.1.2";
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

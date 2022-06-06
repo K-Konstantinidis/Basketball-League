@@ -135,4 +135,6 @@
     <string name="team_stats_teamName">Όνομα Ομάδας</string>
     <string name="team_stats_team_logo">Λογότυπο Ομάδας</string>
     <string name="player_stats_team_logo">Λογότυπο Ομάδας</string>
+    <string name="server_error">Υπήρξε ένα πρόβλημα στον διακομιστή κατά την πρόσβαση στη βάση δεδομένων</string>
+	<string name="invalid_credentials">Το όνομα χρήστη ή το συνθηματικό είναι λανθασμένο</string>
 </resources>

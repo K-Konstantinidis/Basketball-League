@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
 
 	public HomeFragment(){}
 
-	private final String myIP = "192.168.1.2";
+	private final String myIP = "192.168.1.199";
 	//private Championship matches;
 	private GameWeek matchList;
 	private TextView text1, text3;
