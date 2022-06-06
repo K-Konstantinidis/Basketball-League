@@ -79,10 +79,10 @@
     <string name="league_table_wins_value">5</string>
     <string name="league_table_losses_value">5</string>
     <!-- Tabbed User -->
-    <string name="tab_1_user">Game Overview</string>
+    <string name="tab_1_user">Game</string>
     <string name="tab_2_user">Team Stats</string>
     <string name="tab_3_user">Player Stats</string>
-    <string name="tab_4_user">Lineups</string>
+    <string name="tab_4_user">Lineup</string>
     <!-- Tabbed View Manager -->
     <string name="tab_1">Game Overview</string>
     <string name="tab_2">Manage Game</string>

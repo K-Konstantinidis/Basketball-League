@@ -6,21 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.esake.Championship;
+import com.example.esake.GameWeek;
 import com.example.esake.R;
 import com.example.esake.Tabbed_Stats_Manager;
 import com.example.esake.databinding.FragmentHomeStatsManagerBinding;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeStatsManagerBinding binding;
+	private FragmentHomeStatsManagerBinding binding;
 
-    public HomeFragment(){}
+	private ArrayList<String> Scores = new ArrayList<>();
+	private ArrayList<String> gameweeks = new ArrayList<>();
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public HomeFragment(){}
+
+	private final String myIP = "192.168.1.2";
+	//private Championship matches;
+	private GameWeek matchList;
+	private TextView text1, text3;
+
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 //
 //        binding = FragmentHomeStatsManagerBinding.inflate(inflater, container, false);
@@ -30,27 +43,34 @@ public class HomeFragment extends Fragment {
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 //        return root;
 
-        View v = inflater.inflate(R.layout.fragment_home_stats_manager,null);
+		View v = inflater.inflate(R.layout.fragment_home_stats_manager,null);
 
-        Button b = (Button)v.findViewById(R.id.watchGame);
-        b.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(getActivity(), Tabbed_Stats_Manager.class);
-                startActivity(intent);
+		Button b = (Button)v.findViewById(R.id.watchGame);
+		b.setOnClickListener(new View.OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				Intent intent = new Intent(getActivity(), Tabbed_Stats_Manager.class);
+				startActivity(intent);
 
-            }
+			}
 
-        });
+		});
 
-        return v;
+		text1 = v.findViewById(R.id.textView);
+		text3 = v.findViewById(R.id.textView3);
 
-    }
+		matchList = new GameWeek(myIP);
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
+		text1.setText(matchList.getMatchList(0,true));
+		text3.setText(matchList.getMatchList(0,false));
+
+		return v;
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		binding = null;
+	}
 }
