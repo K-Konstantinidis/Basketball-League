@@ -58,8 +58,8 @@
     <string name="fixture_preview_team2_logo">Away Team Logo</string>
     <string name="gameweek_watch_gameButton">Watch Game</string>
     <string name="gameweek_selector">Gameweek Selection Spinner</string>
-    <string name="gameweek_preview_score1">Score 1</string>
-    <string name="gameweek_preview_score2">Score 2</string>
+    <string name="gameweek_preview_score1">100</string>
+    <string name="gameweek_preview_score2">100</string>
     <string name="gameweek_team1_logo">Left Team Logo in Gameweek Selection</string>
     <string name="gameweek_team2_logo">Right Team Logo in Gameweek Selection</string>
     <string name="gameweekDashBetweenScores">-</string>
@@ -151,4 +151,5 @@
     <string name="team_name_table">Team</string>
     <string name="table_team_logo">Team logo</string>
     <string name="table_games_value">Value</string>
+	<string name="starting_player_1">starting player 1</string>
 </resources>

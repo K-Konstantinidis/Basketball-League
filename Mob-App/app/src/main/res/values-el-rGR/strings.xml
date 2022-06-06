@@ -137,4 +137,5 @@
     <string name="player_stats_team_logo">Λογότυπο Ομάδας</string>
     <string name="server_error">Υπήρξε ένα πρόβλημα στον διακομιστή κατά την πρόσβαση στη βάση δεδομένων</string>
 	<string name="invalid_credentials">Το όνομα χρήστη ή το συνθηματικό είναι λανθασμένο</string>
+    <string name="starting_player_1">Παίκτης 1</string>
 </resources>
