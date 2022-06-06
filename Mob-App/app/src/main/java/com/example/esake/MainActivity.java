@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity{
 
     private ActivityMainBinding binding;
 
-    //Spinner spinner; // A spinner element
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
