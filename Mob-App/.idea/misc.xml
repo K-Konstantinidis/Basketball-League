@@ -3,6 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/gameweek_game_layout_border.xml" value="0.2595" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/signinup_buttons_border.xml" value="0.1525" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_index_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_stats_manager.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_game_management_stats_manager.xml" value="0.264" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_stats_manager.xml" value="0.4" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_user.xml" value="0.4" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_league_table.xml" value="0.4742468415937804" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_lineups_user.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_stats_manager.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_user.xml" value="0.264" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats.xml" value="0.4" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_live_user.xml" value="0.4" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_stats_manager_pages.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_management_livegame_stats_manager.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_management_startingteam_stats_manager.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats.xml" value="0.4" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_user_pages.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/Basketball-League/src/main/res/layout/fragment_dashboard.xml" value="0.3809064609450338" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/Mob-App/app/src/main/res/layout/fragment_game_management_stats_manager.xml" value="0.25416666666666665" />
