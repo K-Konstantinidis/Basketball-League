@@ -39,7 +39,7 @@ function connectDB() {
 	// 100% portable. Sorry.
 	// 👆 True
 	try{
-		$db_tmp = new PDO('mysql:dbname=esake_management_app;host=localhost', 'root', ''); // Changed to PDO
+		$db_tmp = new PDO('mysql:dbname=basketball_db;host=localhost', 'root', ''); // Changed to PDO
 		// Set the PDO error mode to exception
 		$db_tmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch(PDOException $e){
