@@ -67,12 +67,8 @@ public class FragmentGameManagementStatsManager extends Fragment{
         //Get the team images
         ImageView imgViewHomeTeam = root.findViewById(R.id.home_team_game_statsmanager);
         ImageView imgViewAwayTeam = root.findViewById(R.id.away_team_game_statsmanager);
-        //Get the radio groups
-        RadioGroup rdg1 = root.findViewById(R.id.radioGroup_homeTeam);
-        RadioGroup rdg2 = root.findViewById(R.id.radioGroup_awayTeam);
-        //Get the layout
-        ConstraintLayout constraintLayout = root.findViewById(R.id.constraintLayout_games_statsManager);
-        ConstraintSet constraintSet = new ConstraintSet();
+        //Get the radio group with the 10 players (5+5)
+        RadioGroup rdg1 = root.findViewById(R.id.radGroup_player);
         //Get the buttons
         Button btn2pts = root.findViewById(R.id.button_2points);
         Button btn2ptsM = root.findViewById(R.id.button_2pointsMissed);
@@ -86,6 +82,7 @@ public class FragmentGameManagementStatsManager extends Fragment{
         Button btnTurnOver = root.findViewById(R.id.button_turnover);
         Button btnBlock = root.findViewById(R.id.button_block);
         Button btnSteal = root.findViewById(R.id.button_steal);
+        //Get the radio group with the 5 opponents
         ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
         flag = false;
 
@@ -93,18 +90,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
         //every time the user clicks the team image
         //and change the constraint of the cardView
         imgViewHomeTeam.setOnClickListener(view -> {
-            rdg1.setVisibility(View.VISIBLE);
-            rdg2.setVisibility(View.GONE);
-            constraintSet.clone(constraintLayout);
-            constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_homeTeam, ConstraintSet.BOTTOM,0);
-            constraintSet.applyTo(constraintLayout);
+
         });
         imgViewAwayTeam.setOnClickListener(view -> {
-            rdg2.setVisibility(View.VISIBLE);
-            rdg1.setVisibility(View.GONE);
-            constraintSet.clone(constraintLayout);
-            constraintSet.connect(R.id.card_with_actions, ConstraintSet.TOP, R.id.radioGroup_awayTeam, ConstraintSet.BOTTOM,0);
-            constraintSet.applyTo(constraintLayout);
+
         });
 
         //Add click listener for each button action and hide
