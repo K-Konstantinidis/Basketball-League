@@ -56,6 +56,7 @@ public class Login extends AppCompatActivity {
 						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
 						break;
 					case 1:
+						//Απεδω θα βγει το flag αφού τον πάμε σε άλλο activity
 						Intent intent1 = new Intent(Login.this, HomeActivity.class);
 						intent1.putExtra("flag",value);
 						startActivity(intent1);
@@ -65,9 +66,10 @@ public class Login extends AppCompatActivity {
 		});
 
 		//Continue as user text
-		Intent intent2 = new Intent(Login.this, HomeActivity.class);
+		Intent intent2 = new Intent(Login.this, MainActivity.class);
 		TextView userLogin = findViewById(R.id.ContinueAsUser);
 
+		//Απεδω θα βγει το flag αφού τον πάμε σε άλλο activity
 		userLogin.setOnClickListener(v -> {
 			intent2.putExtra("flag",value2);
 			startActivity(intent2);
