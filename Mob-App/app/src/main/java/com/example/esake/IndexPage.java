@@ -13,16 +13,17 @@ public class IndexPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index_page);
 
+        //find stats manager button
         Button statsMan = findViewById(R.id.button_stats_manager);
-
-        String value = "User Button";
-        Intent intent1 = new Intent(IndexPage.this, HomeActivity.class);
-
-
+        //if sm button clicked, go to log in page
         statsMan.setOnClickListener(v -> startActivity(new Intent(IndexPage.this, Login.class)));
 
+        //find user button
         Button userLogin = findViewById(R.id.button_user);
 
+		String value = "User Button";
+		Intent intent1 = new Intent(IndexPage.this, HomeActivity.class);
+		//if user button clicked, go to home page
         userLogin.setOnClickListener(v -> {
             intent1.putExtra("flag", value);
             startActivity(intent1);
