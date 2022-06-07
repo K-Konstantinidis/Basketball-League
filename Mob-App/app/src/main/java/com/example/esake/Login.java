@@ -2,10 +2,12 @@ package com.example.esake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,19 +35,17 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-		String value = "Manager Button";
-		String value2 = "User Button";
-
-		//find log in button
+		//Find log in button
 		Button successLogin = findViewById(R.id.button_login);
+		//If sm button clicked, go to sm home page
 		successLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				//get username & password
+				//Get username & password
 				TextView username = (TextView) findViewById(R.id.username);
 				TextView password = (TextView) findViewById(R.id.password);
 
-				//try to log in
+				//Try to log in
 				int status = login(username.getText().toString(), password.getText().toString());
 
 				switch (status) {
@@ -56,24 +56,16 @@ public class Login extends AppCompatActivity {
 						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
 						break;
 					case 1:
-						//Απεδω θα βγει το flag αφού τον πάμε σε άλλο activity
-						Intent intent1 = new Intent(Login.this, HomeActivity.class);
-						intent1.putExtra("flag",value);
-						startActivity(intent1);
+						startActivity(new Intent(Login.this, HomeActivity.class));
 						break;
 				}
 			}
 		});
 
 		//Continue as user text
-		Intent intent2 = new Intent(Login.this, MainActivity.class);
 		TextView userLogin = findViewById(R.id.ContinueAsUser);
-
-		//Απεδω θα βγει το flag αφού τον πάμε σε άλλο activity
-		userLogin.setOnClickListener(v -> {
-			intent2.putExtra("flag",value2);
-			startActivity(intent2);
-		});
+		//If user text clicked, go to home page
+		userLogin.setOnClickListener(v -> startActivity(new Intent(Login.this, MainActivity.class)));
 
 	}
 
@@ -91,7 +83,7 @@ public class Login extends AppCompatActivity {
 			.build();
 
 		Request request = new Request.Builder()
-			.url("http://192.168.1.199/ws/login.php")
+			.url("http://192.168.1.8/ws/login.php")
 			.method("POST", body)
 			.build();
 
