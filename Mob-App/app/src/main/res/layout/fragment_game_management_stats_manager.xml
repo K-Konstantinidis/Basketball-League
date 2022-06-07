@@ -27,9 +27,7 @@
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.02"
-                android:clickable="true"
-                android:focusable="true"/>
+                app:layout_constraintVertical_bias="0.02"/>
 
             <ImageView
                 android:id="@+id/away_team_game_statsmanager"
@@ -42,9 +40,7 @@
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.02"
-                android:clickable="true"
-                android:focusable="true"/>
+                app:layout_constraintVertical_bias="0.02"/>
 
 			<com.example.esake.ToggleButtonGroupTableLayout
 				android:id="@+id/radGroup_player"
@@ -57,7 +53,8 @@
 				app:layout_constraintTop_toBottomOf="@+id/home_team_game_statsmanager"
 				app:layout_constraintVertical_bias="0.0"
 				android:stretchColumns="1"
-				android:layout_marginEnd="15dp"
+				android:layout_marginEnd="5dp"
+				android:layout_marginStart="5dp"
 				android:layout_marginTop="5dp">
 
 				<TableRow>
@@ -65,15 +62,20 @@
 						android:id="@+id/playerHome1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Player 1"
-						android:textSize="14sp"
-						android:layout_marginStart="10dp"/>
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
+						android:textSize="14sp"/>
 
 					<RadioButton
 						android:id="@+id/playerAway1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Player 1"
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
 						android:textSize="14sp"
 						android:layout_gravity="end" />
 				</TableRow>
@@ -83,17 +85,20 @@
 						android:id="@+id/playerHome2"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 2"
-						android:textSize="14sp"
-						android:layout_marginStart="10dp"/>
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
+						android:textSize="14sp"/>
 
 					<RadioButton
 						android:id="@+id/playerAway2"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 2"
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
 						android:textSize="14sp"
 						android:layout_gravity="end"/>
 				</TableRow>
@@ -103,17 +108,20 @@
 						android:id="@+id/playerHome3"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 3"
-						android:textSize="14sp"
-						android:layout_marginStart="10dp"/>
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
+						android:textSize="14sp"/>
 
 					<RadioButton
 						android:id="@+id/playerAway3"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 3"
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
 						android:textSize="14sp"
 						android:layout_gravity="end"/>
 				</TableRow>
@@ -123,17 +131,20 @@
 						android:id="@+id/playerHome4"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 4"
-						android:textSize="14sp"
-						android:layout_marginStart="10dp"/>
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
+						android:textSize="14sp"/>
 
 					<RadioButton
 						android:id="@+id/playerAway4"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 4"
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
 						android:textSize="14sp"
 						android:layout_gravity="end"/>
 				</TableRow>
@@ -143,17 +154,20 @@
 						android:id="@+id/playerHome5"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 5"
-						android:textSize="14sp"
-						android:layout_marginStart="10dp"/>
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
+						android:textSize="14sp"/>
 
 					<RadioButton
 						android:id="@+id/playerAway5"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginRight="20dp"
-						android:text="Player 5"
+						android:text="Someone Someonidis"
+						android:maxEms="10"
+						android:ellipsize="end"
+						android:maxLines="1"
 						android:textSize="14sp"
 						android:layout_gravity="end"/>
 				</TableRow>
@@ -163,6 +177,7 @@
                 android:id="@+id/card_with_actions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+				android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

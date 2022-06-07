@@ -36,13 +36,16 @@ public class Login extends AppCompatActivity {
 		String value = "Manager Button";
 		String value2 = "User Button";
 
+		//find log in button
 		Button successLogin = findViewById(R.id.button_login);
 		successLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				//get username & password
 				TextView username = (TextView) findViewById(R.id.username);
 				TextView password = (TextView) findViewById(R.id.password);
 
+				//try to log in
 				int status = login(username.getText().toString(), password.getText().toString());
 
 				switch (status) {
@@ -61,7 +64,7 @@ public class Login extends AppCompatActivity {
 			}
 		});
 
-
+		//Continue as user text
 		Intent intent2 = new Intent(Login.this, HomeActivity.class);
 		TextView userLogin = findViewById(R.id.ContinueAsUser);
 

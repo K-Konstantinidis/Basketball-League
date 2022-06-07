@@ -7,150 +7,162 @@
     android:layout_height="match_parent"
     tools:context=".FragmentTop5">
 
+	<androidx.cardview.widget.CardView
+		android:id="@+id/cardViewSelectGameweek"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/spinner"
-        android:layout_marginLeft="5dp"
-        android:maxWidth="300dp"
-        android:minWidth="100dp"
-        android:minHeight="48dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/top5cnlayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.0">
+			<Spinner
+				android:id="@+id/spinner"
+				android:layout_width="wrap_content"
+				android:layout_height="42dp"
+				android:contentDescription="@string/gameweek_selector"
+				android:entries="@android:array/imProtocols"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/top5positionbutton"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/top5_position"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.076"
-            app:layout_constraintStart_toEndOf="@+id/top5playernamebutton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+			<ImageView
+				android:id="@+id/esake_logo_no_text"
+				android:layout_width="42dp"
+				android:layout_height="42dp"
+				android:contentDescription="@string/esake_logo_no_text"
+				android:src="@drawable/esake_logo_no_text"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.95"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"/>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/top5playernamebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/top5_name"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.02"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/top5cnlayout1"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:background="@color/primary_color"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/cardViewSelectGameweek"
+		app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/top5ratingbutton"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/top5_rating"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/top5positionbutton"
-            app:layout_constraintTop_toTopOf="parent" />
+		<Button
+			android:id="@+id/top5playernamebutton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="?android:attr/selectableItemBackground"
+			android:text="@string/top5_name"
+			android:textAllCaps="false"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.02"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+		<Button
+			android:id="@+id/top5positionbutton"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:background="?android:attr/selectableItemBackground"
+			android:text="@string/top5_position"
+			android:textAllCaps="false"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/top5ratingbutton"
+			app:layout_constraintStart_toEndOf="@+id/top5playernamebutton"
+			app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/top5cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top5cnlayout1"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints">
+		<Button
+			android:id="@+id/top5ratingbutton"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:background="?android:attr/selectableItemBackground"
+			android:text="@string/top5_rating"
+			android:textAllCaps="false"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.98"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/imgTop5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:contentDescription="@string/top5_player_image"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/esake_logo" />
+	<androidx.cardview.widget.CardView
+		android:id="@+id/top5cardView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/top5cnlayout1"
+		app:layout_constraintVertical_bias="0.0">
 
-            <TextView
-                android:id="@+id/nameTop5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/top5_player_name"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03"
-                app:layout_constraintStart_toEndOf="@+id/imgTop5"
-                app:layout_constraintTop_toTopOf="parent" />
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/positionTop5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/top5_player_position"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.3"
-                app:layout_constraintStart_toEndOf="@+id/nameTop5"
-                app:layout_constraintTop_toTopOf="parent" />
+			<ImageView
+				android:id="@+id/imgTop5"
+				android:layout_width="34dp"
+				android:layout_height="34dp"
+				android:contentDescription="@string/top5_player_image"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.01"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:srcCompat="@drawable/esake_logo" />
 
-            <TextView
-                android:id="@+id/ratingTop5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/top5_player_rating"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.7"
-                app:layout_constraintStart_toEndOf="@+id/positionTop5"
-                app:layout_constraintTop_toTopOf="parent" />
+			<TextView
+				android:id="@+id/nameTop5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/top5_player_name"
+				android:textSize="12dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.01"
+				app:layout_constraintStart_toEndOf="@+id/imgTop5"
+				app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+			<TextView
+				android:id="@+id/positionTop5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/top5_player_position"
+				android:textSize="20sp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.36"
+				app:layout_constraintStart_toEndOf="@+id/nameTop5"
+				app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
+			<TextView
+				android:id="@+id/ratingTop5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/top5_player_rating"
+				android:textSize="20sp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.62"
+				app:layout_constraintStart_toEndOf="@+id/positionTop5"
+				app:layout_constraintTop_toTopOf="parent" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
