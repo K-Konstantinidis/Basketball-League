@@ -147,4 +147,6 @@
 	<string name="blk">BLK</string>
 	<string name="percentfg">%FG</string>
 	<string name="_3fg">3FG</string>
+    <string name="stl">STL</string>
+	<string name="to">TO</string>
 </resources>

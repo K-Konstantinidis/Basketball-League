@@ -20,13 +20,7 @@ public class IndexPage extends AppCompatActivity {
 
         //Find user button
         Button userLogin = findViewById(R.id.button_user);
-
-		String value = "User Button";
-		Intent intent1 = new Intent(IndexPage.this, MainActivity.class);
 		//If user button clicked, go to home page
-        userLogin.setOnClickListener(v -> {
-            intent1.putExtra("flag", value);
-            startActivity(intent1);
-        });
+        userLogin.setOnClickListener(v -> startActivity(new Intent(IndexPage.this, MainActivity.class)));
     }
 }
