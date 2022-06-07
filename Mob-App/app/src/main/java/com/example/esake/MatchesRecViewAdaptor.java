@@ -62,10 +62,10 @@ public class MatchesRecViewAdaptor extends RecyclerView.Adapter<MatchesRecViewAd
 
 		public ViewHolder(@NonNull View itemView) {
 			super(itemView);
-			image1 = itemView.findViewById(R.id.fixture_team1_logo);
+			image1 = itemView.findViewById(R.id.gameweek_team1_logo);
 			score1 = itemView.findViewById(R.id.gameweek_preview_team1_score);
 
-			between = itemView.findViewById(R.id.betweenScoresDash);
+			between = itemView.findViewById(R.id.gameweekDashBetweenScores);
 
 			image2 = itemView.findViewById(R.id.gameweek_team2_logo);
 			score2 = itemView.findViewById(R.id.gameweek_preview_team2_score);
