@@ -44,8 +44,8 @@
 					android:id="@+id/player_stats_rating"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="88dp"
-					android:layout_marginLeft="60dp"
+					android:layout_marginStart="80dp"
+					android:layout_marginLeft="80dp"
 					android:gravity="center"
 					android:text="@string/rating"
 					android:textColor="@color/white"
@@ -152,7 +152,7 @@
 					android:layout_marginStart="20dp"
 					android:layout_marginLeft="20dp"
 					android:gravity="center"
-					android:text="@string/fouls"
+					android:text="@string/stl"
 					android:textColor="@color/white"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
@@ -166,8 +166,6 @@
 					android:layout_height="wrap_content"
 					android:layout_marginStart="20dp"
 					android:layout_marginLeft="20dp"
-					android:layout_marginEnd="10dp"
-					android:layout_marginRight="10dp"
 					android:gravity="center"
 					android:text="@string/blk"
 					android:textColor="@color/white"
@@ -176,6 +174,38 @@
 					app:layout_constraintHorizontal_bias="0.0"
 					app:layout_constraintStart_toEndOf="@id/player_stats_stl"
 					app:layout_constraintTop_toTopOf="parent"/>
+
+				<TextView
+					android:id="@+id/player_stats_fls"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/fouls"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_blk"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_to"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginEnd="10dp"
+					android:layout_marginRight="10dp"
+					android:gravity="center"
+					android:text="@string/to"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_fls"
+					app:layout_constraintTop_toTopOf="parent" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<androidx.cardview.widget.CardView
@@ -362,8 +392,6 @@
 						android:layout_height="wrap_content"
 						android:layout_marginStart="28dp"
 						android:layout_marginLeft="30dp"
-						android:layout_marginEnd="10dp"
-						android:layout_marginRight="10dp"
 						android:gravity="center"
 						android:text="@string/player_stats_stl_value"
 						android:textSize="14sp"
@@ -373,6 +401,38 @@
 						app:layout_constraintStart_toEndOf="@+id/player_stats_stl_value"
 						app:layout_constraintTop_toTopOf="parent"
 						app:layout_constraintVertical_bias="0.5" />
+
+					<TextView
+						android:id="@+id/player_stats_foul_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="29dp"
+						android:layout_marginLeft="29dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_block_value"
+						app:layout_constraintTop_toTopOf="parent"/>
+
+					<TextView
+						android:id="@+id/player_stats_turnover_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="24dp"
+						android:layout_marginLeft="24dp"
+						android:layout_marginEnd="10dp"
+						android:layout_marginRight="10dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_foul_value"
+						app:layout_constraintTop_toTopOf="parent"/>
 
 				</androidx.constraintlayout.widget.ConstraintLayout>
 			</androidx.cardview.widget.CardView>
