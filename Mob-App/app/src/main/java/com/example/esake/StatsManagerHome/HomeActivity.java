@@ -24,8 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         HomeFragment homefrag = new HomeFragment();
         FragmentUserHome userfrag = new FragmentUserHome();
 
-        FragmentTop5 top5 = new FragmentTop5();
-
+//      FragmentTop5 top5 = new FragmentTop5();
 
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
@@ -37,14 +36,18 @@ public class HomeActivity extends AppCompatActivity {
 
         FrameLayout layout = findViewById(R.id.homefrag);
         FrameLayout layout2 = findViewById(R.id.userfrag);
+		View navView = findViewById(R.id.nav_view);
 
-        Bundle extras = getIntent().getExtras();
+		//Απεδω θα βγει το bundle αφού δεν θα έχουμε flags
+		Bundle extras = getIntent().getExtras();
         if(extras!= null){
             String value = extras.getString("flag");
             if(value.equals("User Button"))
-                layout.setVisibility(View.GONE);
-            else if(value.equals("Manager Button"))
-                layout2.setVisibility(View.GONE);
+				layout.setVisibility(View.GONE);
+            else if(value.equals("Manager Button")) {
+				layout2.setVisibility(View.GONE);
+				navView.setVisibility(View.GONE);
+			}
         }
 
     }
