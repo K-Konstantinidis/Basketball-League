@@ -25,7 +25,7 @@
     <string name="continue_as_user">Συνεχίστε Σαν Χρήστης</string>
     <string name="title_home_stats_manager">Αγώνες</string>
     <string name="spinner">spinner</string>
-    <string name="top5_rating">Βαθμολογία</string>
+    <string name="top5_rating">Βαθμοί</string>
     <string name="top5_player_name">Παίκτης 1</string>
     <string name="top5_player_rating">5</string>
     <string name="top5_position">Θέση</string>
@@ -138,4 +138,13 @@
     <string name="server_error">Υπήρξε ένα πρόβλημα στον διακομιστή κατά την πρόσβαση στη βάση δεδομένων</string>
 	<string name="invalid_credentials">Το όνομα χρήστη ή το συνθηματικό είναι λανθασμένο</string>
     <string name="starting_player_1">Παίκτης 1</string>
+	<string name="player_stats_3fg_value">10</string>
+	<string name="player_stats_percentfg_value">10</string>
+	<string name="fouls">FLS</string>
+	<string name="rating">Βαθμοί</string>
+	<string name="player_stats_rating_value">10</string>
+	<string name="fg">FG</string>
+	<string name="blk">BLK</string>
+	<string name="percentfg">%FG</string>
+	<string name="_3fg">3FG</string>
 </resources>

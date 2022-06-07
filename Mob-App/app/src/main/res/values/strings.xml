@@ -119,12 +119,12 @@
     <string name="team_stats_ast">AST</string>
     <string name="team_stats_stl">STL</string>
     <string name="team_stats_blk">BLK</string>
-    <string name="team_stats_pts_value">5</string>
-    <string name="team_stats_fg_value">5</string>
-    <string name="team_stats_reb_value">5</string>
-    <string name="team_stats_ast_value">5</string>
-    <string name="team_stats_stl_value">5</string>
-    <string name="team_stats_blk_value">5</string>
+    <string name="team_stats_pts_value">10</string>
+    <string name="team_stats_fg_value">10</string>
+    <string name="team_stats_reb_value">10</string>
+    <string name="team_stats_ast_value">10</string>
+    <string name="team_stats_stl_value">10</string>
+    <string name="team_stats_blk_value">10</string>
     <string name="team_stats_teamName">Team Name</string>
     <string name="team_stats_team_logo">Team Logo in Team Stats</string>
     <!-- Player Stats Page User -->
@@ -137,12 +137,15 @@
     <string name="player_stats_ast">AST</string>
     <string name="player_stats_stl">STL</string>
     <string name="player_stats_blk">BLK</string>
-    <string name="player_stats_pts_value">5</string>
-    <string name="player_stats_fg_value">5</string>
-    <string name="player_stats_reb_value">5</string>
-    <string name="player_stats_ast_value">5</string>
-    <string name="player_stats_stl_value">5</string>
-    <string name="player_stats_blk_value">5</string>
+    <string name="player_stats_pts_value">10</string>
+    <string name="player_stats_fg_value">10</string>
+    <string name="player_stats_reb_value">10</string>
+    <string name="player_stats_ast_value">10</string>
+    <string name="player_stats_stl_value">10</string>
+    <string name="player_stats_blk_value">10</string>
+	<string name="player_stats_rating_value">10</string>
+	<string name="player_stats_3fg_value">10</string>
+	<string name="player_stats_percentfg_value">10</string>
     <string name="table_team_name">Team</string>
     <string name="table_games_number">Games</string>
     <string name="table_points_number">Points</string>
@@ -152,4 +155,10 @@
     <string name="table_team_logo">Team logo</string>
     <string name="table_games_value">Value</string>
 	<string name="starting_player_1">starting player 1</string>
+	<string name="rating">Rating</string>
+	<string name="fouls">FLS</string>
+	<string name="fg">FG</string>
+	<string name="blk">BLK</string>
+	<string name="percentfg">%FG</string>
+	<string name="_3fg">3FG</string>
 </resources>
