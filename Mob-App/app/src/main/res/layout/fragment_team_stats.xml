@@ -1,236 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/team_stats"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FragmentTeamStats">
+<HorizontalScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/team_stats_header"
-        android:layout_width="match_parent"
-		android:layout_height="50dp"
-        android:background="@color/primary_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+	<FrameLayout
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		tools:context=".FragmentTeamStats">
 
-        <TextView
-            android:id="@+id/team_stats_team_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/team_stats_team_name"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
 
-		<TextView
-			android:id="@+id/team_stats_pts"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/team_stats_pts"
-			android:textColor="@color/white"
-			app:layout_constraintHorizontal_bias="0.42"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
-
-		<TextView
-			android:id="@+id/team_stats_fg"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/team_stats_fg"
-			android:textColor="@color/white"
-			app:layout_constraintHorizontal_bias="0.08"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/team_stats_pts"
-			app:layout_constraintTop_toTopOf="parent" />
-
-		<TextView
-			android:id="@+id/team_stats_reb"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/team_stats_reb"
-			android:textColor="@color/white"
-			app:layout_constraintHorizontal_bias="0.1"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/team_stats_fg"
-			app:layout_constraintTop_toTopOf="parent" />
-
-		<TextView
-			android:id="@+id/team_stats_ast"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/team_stats_ast"
-			android:textColor="@color/white"
-			app:layout_constraintHorizontal_bias="0.12"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/team_stats_reb"
-			app:layout_constraintTop_toTopOf="parent" />
-
-		<TextView
-			android:id="@+id/team_stats_stl"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/team_stats_stl"
-			android:textColor="@color/white"
-			app:layout_constraintHorizontal_bias="0.2"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/team_stats_ast"
-			app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/team_stats_blk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/team_stats_blk"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/team_stats_stl"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/teamStatsCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/team_stats_header"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/team_stats_team_logo"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:contentDescription="@string/team_stats_team_logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.01"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/esake_logo"/>
-
-            <TextView
-                android:id="@+id/team_stats_teamName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/team_stats_teamName"
-				android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/lineBetweenTeamAndPoints"
-                app:layout_constraintHorizontal_bias="0.1"
-                app:layout_constraintStart_toEndOf="@+id/team_stats_team_logo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
-
-            <View
-                android:id="@+id/lineBetweenTeamAndPoints"
-                android:layout_width="2dp"
-                android:layout_height="30dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.385"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-			<TextView
-				android:id="@+id/team_stats_pts_value"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/team_stats_pts_value"
-				android:textSize="18sp"
-				app:layout_constraintHorizontal_bias="0.02"
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/team_stats_header"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:background="@color/primary_color"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toEndOf="@id/lineBetweenTeamAndPoints"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.0">
 
-			<TextView
-				android:id="@+id/team_stats_fg_value"
-				android:layout_width="wrap_content"
+				<TextView
+					android:id="@+id/team_stats_team_name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/team_name_table"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.11"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_pts"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="95dp"
+					android:layout_marginLeft="95dp"
+					android:gravity="center"
+					android:text="@string/player_stats_pts"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_team_name"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_fg"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/fg"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_pts"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_3fg"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/_3fg"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_fg"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_percentfg"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/percentfg"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_3fg"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_reb"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/player_stats_reb"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_percentfg"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_ast"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/player_stats_ast"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_reb"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_stl"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/fouls"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_ast"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/team_stats_blk"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginEnd="10dp"
+					android:layout_marginRight="10dp"
+					android:gravity="center"
+					android:text="@string/blk"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/team_stats_stl"
+					app:layout_constraintTop_toTopOf="parent"/>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/teamStatsCardView"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/team_stats_fg_value"
-				android:textSize="18sp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.14"
-				app:layout_constraintStart_toEndOf="@id/team_stats_pts_value"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintHorizontal_bias="0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/team_stats_header"
+				app:layout_constraintVertical_bias="0.0"
+				app:cardElevation="0dp">
 
-			<TextView
-				android:id="@+id/team_stats_reb_value"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/team_stats_reb_value"
-				android:textSize="18sp"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.18"
-				app:layout_constraintStart_toEndOf="@id/team_stats_fg_value"
-				app:layout_constraintTop_toTopOf="parent" />
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
 
-			<TextView
-				android:id="@+id/team_stats_ast_value"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/team_stats_ast_value"
-				android:textSize="18sp"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.24"
-				app:layout_constraintStart_toEndOf="@id/team_stats_reb_value"
-				app:layout_constraintTop_toTopOf="parent" />
+					<ImageView
+						android:id="@+id/team_stats_team_logo"
+						android:layout_width="24dp"
+						android:layout_height="24dp"
+						android:contentDescription="@string/team_stats_team_logo"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.01"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:srcCompat="@drawable/esake_logo" />
 
-			<TextView
-				android:id="@+id/team_stats_stl_value"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/team_stats_stl_value"
-				android:textSize="18sp"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.35"
-				app:layout_constraintStart_toEndOf="@id/team_stats_ast_value"
-				app:layout_constraintTop_toTopOf="parent" />
+					<TextView
+						android:id="@+id/team_stats_playerName"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="5dp"
+						android:layout_marginLeft="5dp"
+						android:text="Team Name"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toStartOf="@id/lineBetweenTeamAndPoints"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/team_stats_team_logo"
+						app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/team_stats_blk_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/team_stats_blk_value"
-                android:textSize="18sp"
-				app:layout_constraintHorizontal_bias="0.6"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/team_stats_stl_value"
-                app:layout_constraintTop_toTopOf="parent"/>
+					<View
+						android:id="@+id/lineBetweenTeamAndPoints"
+						android:layout_width="2dp"
+						android:layout_height="30dp"
+						android:layout_marginStart="145dp"
+						android:background="@color/black"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/team_stats_team_logo"
+						app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+					<TextView
+						android:id="@+id/team_stats_pts_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="10dp"
+						android:layout_marginLeft="10dp"
+						android:gravity="center"
+						android:text="@string/player_stats_pts_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/lineBetweenTeamAndPoints"
+						app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+					<TextView
+						android:id="@+id/team_stats_fg_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="27dp"
+						android:layout_marginLeft="27dp"
+						android:gravity="center"
+						android:text="@string/player_stats_fg_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/team_stats_pts_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/team_stats_3fg_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="28dp"
+						android:layout_marginLeft="28dp"
+						android:gravity="center"
+						android:text="@string/player_stats_3fg_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/team_stats_fg_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/team_stats_percentfg_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginLeft="30dp"
+						android:gravity="center"
+						android:text="@string/player_stats_percentfg_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/team_stats_3fg_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/team_stats_reb_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="28dp"
+						android:layout_marginLeft="28dp"
+						android:gravity="center"
+						android:text="@string/player_stats_reb_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/team_stats_percentfg_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/team_stats_ast_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="28dp"
+						android:layout_marginLeft="28dp"
+						android:gravity="center"
+						android:text="@string/player_stats_ast_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/team_stats_reb_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/team_stats_stl_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="29dp"
+						android:layout_marginLeft="29dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/team_stats_ast_value"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.5" />
+
+					<TextView
+						android:id="@+id/team_stats_block_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="29dp"
+						android:layout_marginLeft="29dp"
+						android:layout_marginEnd="10dp"
+						android:layout_marginRight="10dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/team_stats_stl_value"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.5" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</FrameLayout>
+</HorizontalScrollView>
