@@ -52,7 +52,7 @@
 			android:textColor="@color/white"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintHorizontal_bias="0.15"
+			app:layout_constraintHorizontal_bias="0.1"
 			app:layout_constraintStart_toEndOf="@id/league_table_games"
 			app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,7 +65,7 @@
 			android:textColor="@color/white"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintHorizontal_bias="0.25"
+			app:layout_constraintHorizontal_bias="0.2"
 			app:layout_constraintStart_toEndOf="@id/league_table_points"
 			app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,6 +118,7 @@
                 android:layout_height="wrap_content"
 				android:maxEms="8"
 				android:ellipsize="end"
+				android:textSize="12dp"
 				android:maxLines="1"
                 android:text="@string/league_table_teamName"
                 app:layout_constraintBottom_toBottomOf="parent"

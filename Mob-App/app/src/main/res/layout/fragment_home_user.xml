@@ -24,35 +24,27 @@
 
 			<Spinner
 				android:id="@+id/gameweek_selection"
-				android:layout_width="264dp"
-				android:layout_height="48dp"
-				android:layout_marginStart="10dp"
-				android:layout_marginLeft="10dp"
-				android:layout_marginTop="10dp"
-				android:layout_marginBottom="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="42dp"
 				android:contentDescription="@string/gameweek_selector"
 				android:entries="@android:array/imProtocols"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintHorizontal_bias="0.1"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintVertical_bias="0.0" />
+				app:layout_constraintTop_toTopOf="parent"/>
 
 			<ImageView
 				android:id="@+id/esake_logo_no_text"
 				android:layout_width="42dp"
 				android:layout_height="42dp"
-				android:layout_marginEnd="10dp"
-				android:layout_marginRight="10dp"
 				android:contentDescription="@string/esake_logo_no_text"
 				android:src="@drawable/esake_logo_no_text"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="1.0"
+				app:layout_constraintHorizontal_bias="0.98"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintVertical_bias="0.5" />
+				app:layout_constraintTop_toTopOf="parent" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.cardview.widget.CardView>
 

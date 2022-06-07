@@ -31,20 +31,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-	<com.google.android.material.bottomnavigation.BottomNavigationView
-		android:id="@+id/nav_view"
-		android:layout_width="match_parent"
-		android:layout_height="70dp"
-		android:background="@drawable/signinup_buttons_border"
-		app:itemIconTint="@color/primary_color"
-		app:itemRippleColor="@color/primary_color"
-		app:itemTextColor="@color/primary_color"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintHorizontal_bias="0.0"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias="1"
-		app:menu="@menu/bottom_nav_menu" />
+<!--	Home should not have a bottom menu because activity_home-->
+<!--	is for the sm home. Activity_main is the one for the user-->
+<!--	and the bottom menu should only be there.-->
+
+<!--	<com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--		android:id="@+id/nav_view"-->
+<!--		android:layout_width="match_parent"-->
+<!--		android:layout_height="wrap_content"-->
+<!--		android:background="@drawable/signinup_buttons_border"-->
+<!--		app:itemIconTint="@color/primary_color"-->
+<!--		app:itemRippleColor="@color/primary_color"-->
+<!--		app:itemTextColor="@color/primary_color"-->
+<!--		app:layout_constraintBottom_toBottomOf="parent"-->
+<!--		app:layout_constraintLeft_toLeftOf="parent"-->
+<!--		app:layout_constraintRight_toRightOf="parent"-->
+<!--		app:layout_constraintTop_toTopOf="parent"-->
+<!--		app:layout_constraintVertical_bias="1"-->
+<!--		app:menu="@menu/bottom_nav_menu" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
