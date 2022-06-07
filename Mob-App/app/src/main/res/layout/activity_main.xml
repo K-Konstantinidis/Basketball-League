@@ -9,7 +9,7 @@
 		android:id="@+id/nav_view"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="@drawable/signinup_buttons_border"
+		android:background="@drawable/bottom_nav_menu_rounded"
 		app:itemIconTint="@drawable/bottom_nav_menu"
 		app:itemRippleColor="@color/primary_color"
 		app:itemTextColor="@drawable/bottom_nav_menu"
