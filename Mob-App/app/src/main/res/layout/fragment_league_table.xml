@@ -160,7 +160,7 @@
 				android:textSize="18sp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.26"
+				app:layout_constraintHorizontal_bias="0.25"
 				app:layout_constraintStart_toEndOf="@id/league_table_games_value"
 				app:layout_constraintTop_toTopOf="parent"/>
 
@@ -173,7 +173,7 @@
 				android:textSize="18sp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.38"
+				app:layout_constraintHorizontal_bias="0.35"
 				app:layout_constraintStart_toEndOf="@id/league_table_points_value"
 				app:layout_constraintTop_toTopOf="parent" />
 
