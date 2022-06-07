@@ -10,4 +10,5 @@
 # Show JavaScript files as JavaScript
 *.js linguist-detectable=true
 
+# Show XML files as xml
 *.xml linguist-detectable=true
