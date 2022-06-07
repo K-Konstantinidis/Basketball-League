@@ -117,6 +117,8 @@
 				android:id="@+id/imgTop5"
 				android:layout_width="34dp"
 				android:layout_height="34dp"
+				android:layout_marginTop="5dp"
+				android:layout_marginBottom="5dp"
 				android:contentDescription="@string/top5_player_image"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -131,6 +133,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/top5_player_name"
 				android:textSize="12dp"
+
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintHorizontal_bias="0.01"

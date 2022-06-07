@@ -43,18 +43,17 @@ public class HomeFragment extends Fragment {
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 //        return root;
 
+		//Get the view
 		View v = inflater.inflate(R.layout.fragment_home_stats_manager,null);
 
-		Button b = (Button)v.findViewById(R.id.watchGame);
-		b.setOnClickListener(new View.OnClickListener()
-		{
-			public void onClick(View v)
-			{
+		//Get the button to start a game
+		Button b = v.findViewById(R.id.watchGame);
+		b.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				//Go to the tabbed view for the game
 				Intent intent = new Intent(getActivity(), Tabbed_Stats_Manager.class);
 				startActivity(intent);
-
 			}
-
 		});
 
 		text1 = v.findViewById(R.id.textView);
