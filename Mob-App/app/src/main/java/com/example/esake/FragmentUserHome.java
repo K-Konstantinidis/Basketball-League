@@ -1,9 +1,11 @@
 package com.example.esake;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
@@ -17,7 +19,7 @@ public class FragmentUserHome extends Fragment {
 //    private String mParam2;
 
 	Spinner gameweekSpinner;
-	static String urlAddress = "http://192.168.1.7/android/populateRounds.php";
+	static String urlAddress = "http://"+myIP.getIp()+"/ws/populateRounds.php";
 
 	public FragmentUserHome() {}
 
@@ -57,8 +59,15 @@ public class FragmentUserHome extends Fragment {
 		// Get the spinner
 //		Spinner dropdown = (Spinner) v.findViewById(R.id.gameweek_selection_spinner);
 //
-//		// Get the button
-//		Button game = v.findViewById(R.id.gameweek_preview_gameButton);
+		// Get the button
+		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
+		game.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getContext(), Tabbed_User.class);
+				startActivity(intent);
+			}
+		});
 //
 //		// Create a list of items for the spinner.
 //		String[] items = new String[]{"Gameweek 1", "Gameweek 2", "Gameweek 3", "etc..."};
