@@ -33,6 +33,9 @@ if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
 
 	$championship_id = $_GET['cid'];
 }
+else {
+	die('Not all of the necessary parameters were passed');
+}
 
 // Connect to the database
 $dbh = connectDB();
