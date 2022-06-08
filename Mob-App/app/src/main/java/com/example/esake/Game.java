@@ -25,7 +25,7 @@ public class Game {
 		this.score2 = score2;
 		this.homeTeamName = awayTeam;
 		this.awayTeamName = homeTeam;
-//        this.teams = new ArrayList<>();
+//	    this.teams = new ArrayList<>();
 //        this.team1Id = team1Id;
 //        this.team2Id = team2Id;
 	}
@@ -55,6 +55,7 @@ public class Game {
     public int getScore2() {
         return score2;
     }
+
     public int getScore(boolean isHomeTeam){
 
     	score1 = getScore1();

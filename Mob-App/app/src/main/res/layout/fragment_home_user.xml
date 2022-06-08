@@ -23,22 +23,23 @@
 			android:layout_height="wrap_content">
 
 			<Spinner
-				android:id="@+id/gameweek_selection"
+				android:id="@+id/gameweek_selection_spinner"
 				android:layout_width="wrap_content"
 				android:layout_height="42dp"
 				android:contentDescription="@string/gameweek_selector"
-				android:entries="@android:array/imProtocols"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.1"
+				app:layout_constraintHorizontal_bias="0.011"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"/>
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.0" />
 
 			<ImageView
 				android:id="@+id/esake_logo_no_text"
 				android:layout_width="42dp"
 				android:layout_height="42dp"
 				android:contentDescription="@string/esake_logo_no_text"
+				android:padding="5dp"
 				android:src="@drawable/esake_logo_no_text"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +53,11 @@
 		android:id="@+id/gameweekGameCardView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:layout_marginStart="2dp"
+		android:layout_marginLeft="2dp"
+		android:layout_marginTop="2dp"
+		android:layout_marginEnd="2dp"
+		android:layout_marginRight="2dp"
 		android:padding="8dp"
 		app:cardBackgroundColor="#FFFFFF"
 		app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +81,7 @@
 				app:layout_constraintHorizontal_bias="0.03"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
-				app:srcCompat="@drawable/esake_logo"/>
+				app:srcCompat="@drawable/esake_logo" />
 
 			<TextView
 				android:id="@+id/gameweek_preview_team1_score"
@@ -86,7 +92,7 @@
 				app:layout_constraintEnd_toStartOf="@+id/gameweek_team2_logo"
 				app:layout_constraintHorizontal_bias="0.1"
 				app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
-				app:layout_constraintTop_toTopOf="parent"/>
+				app:layout_constraintTop_toTopOf="parent" />
 
 			<TextView
 				android:id="@+id/gameweekDashBetweenScores"
@@ -96,7 +102,7 @@
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toStartOf="@+id/gameweek_preview_team2_score"
 				app:layout_constraintStart_toEndOf="@+id/gameweek_preview_team1_score"
-				app:layout_constraintTop_toTopOf="parent"/>
+				app:layout_constraintTop_toTopOf="parent" />
 
 			<TextView
 				android:id="@+id/gameweek_preview_team2_score"
@@ -107,7 +113,7 @@
 				app:layout_constraintEnd_toStartOf="@id/gameweek_team2_logo"
 				app:layout_constraintHorizontal_bias="0.9"
 				app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
-				app:layout_constraintTop_toTopOf="parent"/>
+				app:layout_constraintTop_toTopOf="parent" />
 
 			<ImageView
 				android:id="@+id/gameweek_team2_logo"
@@ -141,22 +147,5 @@
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="653dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameweekSelectionCardView"
-        tools:visibility="gone">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvGameweek"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
