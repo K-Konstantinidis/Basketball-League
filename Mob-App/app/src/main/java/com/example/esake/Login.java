@@ -2,16 +2,12 @@ package com.example.esake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.esake.StatsManagerHome.HomeActivity;
 import com.example.esake.databinding.ActivityMainBinding;
@@ -45,20 +41,22 @@ public class Login extends AppCompatActivity {
 				TextView username = (TextView) findViewById(R.id.username);
 				TextView password = (TextView) findViewById(R.id.password);
 
-				//Try to log in
-				int status = login(username.getText().toString(), password.getText().toString());
+				startActivity(new Intent(Login.this, HomeActivity.class));
 
-				switch (status) {
-					case -1:
-						Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
-						break;
-					case 0:
-						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
-						break;
-					case 1:
-						startActivity(new Intent(Login.this, HomeActivity.class));
-						break;
-				}
+				//Try to log in
+//				int status = login(username.getText().toString(), password.getText().toString());
+//
+//				switch (status) {
+//					case -1:
+//						Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
+//						break;
+//					case 0:
+//						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
+//						break;
+//					case 1:
+//						//startActivity(new Intent(Login.this, HomeActivity.class));
+//						break;
+//				}
 			}
 		});
 
@@ -83,7 +81,7 @@ public class Login extends AppCompatActivity {
 			.build();
 
 		Request request = new Request.Builder()
-			.url("http://192.168.1.8/ws/login.php")
+			.url("http://"+myIP.getIp()+"/ws/login.php")
 			.method("POST", body)
 			.build();
 
