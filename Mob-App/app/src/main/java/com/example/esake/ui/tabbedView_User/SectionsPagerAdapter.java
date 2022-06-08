@@ -2,6 +2,7 @@ package com.example.esake.ui.tabbedView_User;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,7 +13,6 @@ import com.example.esake.FragmentMatchOverviewUser;
 import com.example.esake.FragmentPlayerStatsLiveUser;
 import com.example.esake.FragmentTeamStatsLiveUser;
 import com.example.esake.R;
-import com.example.esake.ui.tabbedView_statsManager.PlaceholderFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -29,7 +29,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mContext = context;
     }
 
-    @Override
+    @NonNull
+	@Override
     public Fragment getItem(int position) {
         switch (position){
             case 0:
