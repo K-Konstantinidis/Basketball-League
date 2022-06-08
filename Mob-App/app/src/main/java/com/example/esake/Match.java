@@ -6,7 +6,7 @@ public class Match {
 	private ArrayList<Game> match = new ArrayList<>();
 
 	public Match(String ip){
-		String url= "http://"+ip+"/Scores/getGameweekMatches.php?round_id=2";
+		String url= "http://"+ip+"/ws/getGameweekMatches.php?round_id=2";
 		try {
 			OkHttpHandler okHttpHandler = new OkHttpHandler();
 			match = okHttpHandler.getDataforMatches(url);

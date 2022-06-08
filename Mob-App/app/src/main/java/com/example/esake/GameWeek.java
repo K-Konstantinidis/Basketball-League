@@ -7,7 +7,7 @@ public class GameWeek {
 	ArrayList<Championship> matchList = new ArrayList<>();
 
 	public GameWeek(String ip) {
-		String url= "http://"+ip+"/Scores/getGameweekMatches.php?round_id=2";
+		String url= "http://"+ip+"/ws/getGameweekMatches.php?round_id=2";
 		//String url= "http://"+ip+"/multimediaDBServices/getMedia.php"; image code
 
 		try {
