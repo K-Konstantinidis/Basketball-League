@@ -46,130 +46,139 @@
 				android:id="@+id/radGroup_player"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:visibility="visible"
+				android:layout_marginStart="5dp"
+				android:layout_marginTop="5dp"
+				android:layout_marginEnd="5dp"
+				android:stretchColumns="1"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/home_team_game_statsmanager"
-				app:layout_constraintVertical_bias="0.0"
-				android:stretchColumns="1"
-				android:layout_marginEnd="5dp"
-				android:layout_marginStart="5dp"
-				android:layout_marginTop="5dp">
+				app:layout_constraintVertical_bias="0.0">
 
 				<TableRow>
+
 					<RadioButton
 						android:id="@+id/playerHome1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="start"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 
 					<RadioButton
 						android:id="@+id/playerAway1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"
-						android:layout_gravity="end" />
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 				</TableRow>
 
 				<TableRow>
+
 					<RadioButton
 						android:id="@+id/playerHome2"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="start"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 
 					<RadioButton
 						android:id="@+id/playerAway2"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"
-						android:layout_gravity="end"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 				</TableRow>
 
 				<TableRow>
+
 					<RadioButton
 						android:id="@+id/playerHome3"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="start"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 
 					<RadioButton
 						android:id="@+id/playerAway3"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"
-						android:layout_gravity="end"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 				</TableRow>
 
 				<TableRow>
+
 					<RadioButton
 						android:id="@+id/playerHome4"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="start"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 
 					<RadioButton
 						android:id="@+id/playerAway4"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"
-						android:layout_gravity="end"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 				</TableRow>
 
 				<TableRow>
+
 					<RadioButton
 						android:id="@+id/playerHome5"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="start"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 
 					<RadioButton
 						android:id="@+id/playerAway5"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="Someone Someonidis"
-						android:maxEms="10"
+						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:maxEms="9"
 						android:maxLines="1"
-						android:textSize="14sp"
-						android:layout_gravity="end"/>
+						android:text="Someone Someonidis"
+						android:textSize="14sp" />
 				</TableRow>
 			</com.example.esake.ToggleButtonGroupTableLayout>
 
@@ -385,72 +394,74 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <com.example.esake.ToggleButtonGroupTableLayout
-                android:id="@+id/radGroup_choose_opponent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_with_actions">
+			<com.example.esake.ToggleButtonGroupTableLayout
+				android:id="@+id/radGroup_choose_opponent"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:visibility="gone"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/card_with_actions">
 
-                <TableRow>
-                    <RadioButton
-                        android:id="@+id/opponent1"
-						android:layout_weight="1"
+				<TableRow>
+
+					<RadioButton
+						android:id="@+id/opponent1"
 						android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Sloukidis Stauros"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-                        android:textSize="14sp" />
+						android:text="Sloukidis Stauros"
+						android:textSize="14sp" />
 
-                    <RadioButton
-                        android:id="@+id/opponent2"
-						android:layout_weight="1"
+					<RadioButton
+						android:id="@+id/opponent2"
 						android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Sloukidis Stauros"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-                        android:textSize="14sp" />
+						android:text="Sloukidis Stauros"
+						android:textSize="14sp" />
 
-                    <RadioButton
-                        android:id="@+id/opponent3"
-						android:layout_weight="1"
+					<RadioButton
+						android:id="@+id/opponent3"
 						android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Sloukidis Stauros"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-                        android:textSize="14sp" />
-                </TableRow>
+						android:text="Sloukidis Stauros"
+						android:textSize="14sp" />
+				</TableRow>
 
-                <TableRow>
-                    <RadioButton
-                        android:id="@+id/opponent4"
-						android:layout_weight="1"
+				<TableRow>
+
+					<RadioButton
+						android:id="@+id/opponent4"
 						android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Sloukidis Stauros"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:ellipsize="end"
 						android:maxEms="8"
-						android:ellipsize="end"
 						android:maxLines="1"
-                        android:textSize="14sp" />
+						android:text="Sloukidis Stauros"
+						android:textSize="14sp" />
 
-                    <RadioButton
-                        android:id="@+id/opponent5"
-						android:layout_weight="1"
+					<RadioButton
+						android:id="@+id/opponent5"
 						android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Sloukidis Stauros"
-						android:maxEms="8"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
 						android:ellipsize="end"
+						android:maxEms="8"
 						android:maxLines="1"
-                        android:textSize="14sp" />
-                </TableRow>
-            </com.example.esake.ToggleButtonGroupTableLayout>
+						android:text="Sloukidis Stauros"
+						android:textSize="14sp" />
+				</TableRow>
+			</com.example.esake.ToggleButtonGroupTableLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>

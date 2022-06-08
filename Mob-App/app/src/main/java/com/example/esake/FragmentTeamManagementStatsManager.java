@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +59,12 @@ public class FragmentTeamManagementStatsManager extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, container, false);
+		//Get the view
+		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
+
+		//Get the start game button
+		Button startGameBtn = root.findViewById(R.id.startGameButton);
+
+		return root;
     }
 }

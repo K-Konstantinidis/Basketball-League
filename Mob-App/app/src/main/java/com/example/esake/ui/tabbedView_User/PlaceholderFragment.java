@@ -48,7 +48,7 @@ public class PlaceholderFragment extends Fragment {
         binding = FragmentUserPagesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
+        final TextView textView = binding.sectionLabelUser;
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

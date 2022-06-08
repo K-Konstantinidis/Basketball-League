@@ -64,11 +64,8 @@ public class FragmentGameManagementStatsManager extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Get the view
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_game_management_stats_manager, null);
-        //Get the team images
-        ImageView imgViewHomeTeam = root.findViewById(R.id.home_team_game_statsmanager);
-        ImageView imgViewAwayTeam = root.findViewById(R.id.away_team_game_statsmanager);
-        //Get the radio group with the 10 players (5+5)
-        RadioGroup rdg1 = root.findViewById(R.id.radGroup_player);
+        //Get the radio group with the 10 players (5 home + 5 away)
+		ToggleButtonGroupTableLayout rdg1 = root.findViewById(R.id.radGroup_player);
         //Get the buttons
         Button btn2pts = root.findViewById(R.id.button_2points);
         Button btn2ptsM = root.findViewById(R.id.button_2pointsMissed);
@@ -86,23 +83,12 @@ public class FragmentGameManagementStatsManager extends Fragment{
         ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
         flag = false;
 
-        //Add click listener to hide/show the radio group with the team players
-        //every time the user clicks the team image
-        //and change the constraint of the cardView
-        imgViewHomeTeam.setOnClickListener(view -> {
-
-        });
-        imgViewAwayTeam.setOnClickListener(view -> {
-
-        });
-
-        //Add click listener for each button action and hide
+        //Add a click listener for each button action and hide
         //the radio group with the 5 opponents, or show it
-        //if the clicked button is the steal button
+        //if the steal button was clicked
         btn2pts.setOnClickListener(view -> {
             if(flag)
                 radioOpp.setVisibility(View.GONE);
-            //okhttp Δεν θα συνδεθεί με βάση κατευθείαν θα στείλει στην υπηρεσία να προσθέσει τους πόντους
         });
         btn2ptsM.setOnClickListener(view -> {
             if(flag)

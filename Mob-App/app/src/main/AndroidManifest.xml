@@ -16,33 +16,38 @@
         android:theme="@style/Theme.Esake"
         android:usesCleartextTraffic="true"
 		tools:targetApi="n">
-        <activity
-            android:name=".Login"
-            android:exported="false" />
+<!--	Run index page (Official Main) -->
 		<activity
-			android:name=".Tabbed_User"
-			android:exported="false"
-			android:theme="@style/Theme.Esake.NoActionBar" />
-        <activity
-            android:name=".IndexPage"
-            android:exported="true">
+			android:name=".IndexPage"
+			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-        </activity>
+		</activity>
+<!--	Run login page -->
         <activity
-            android:name=".Tabbed_Stats_Manager"
-            android:exported="false"
-            android:theme="@style/Theme.Esake.NoActionBar" />
-        <activity
-            android:name=".StatsManagerHome.HomeActivity"
+            android:name=".Login"
             android:exported="false" />
+<!--	Run home pages -->
+		<activity
+			android:name=".StatsManagerHome.HomeActivity"
+			android:exported="false" />
 		<activity
 			android:name=".MainActivity"
 			android:exported="false" >
 		</activity>
+		<!--	Run tabbed pages -->
+		<activity
+			android:name=".Tabbed_User"
+			android:exported="false"
+			android:theme="@style/Theme.Esake.NoActionBar" >
+		</activity>
+		<activity
+			android:name=".Tabbed_Stats_Manager"
+			android:exported="false"
+			android:theme="@style/Theme.Esake.NoActionBar" >
+		</activity>
     </application>
-
 </manifest>

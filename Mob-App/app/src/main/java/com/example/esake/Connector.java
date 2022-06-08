@@ -1,36 +1,26 @@
 package com.example.esake;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 
 public class Connector {
 
-	public static HttpURLConnection connect(String urlAddress)
-	{
-		try
-		{
-			URL url=new URL(urlAddress);
-			HttpURLConnection con= (HttpURLConnection) url.openConnection();
+	private ArrayList<Day> weeks = new ArrayList<>();
 
-			//PROPERTIES
-			con.setRequestMethod("POST");
-			con.setConnectTimeout(20000);
-			con.setReadTimeout(20000);
-			con.setDoInput(true);
-			con.setDoOutput(true);
-
-			//RETURN
-			return con;
-
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+	public Connector(String ip){
+		String url= "http://"+ip+"/ws/populateRounds.php";
+		try {
+			OkHttpHandler okHttpHandler = new OkHttpHandler();
+			weeks = okHttpHandler.getGameWeeks(url);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return null;
 	}
 
+	public ArrayList<String> getWeeks() {
+		ArrayList<String> temp = new ArrayList<String>();
+		for (int i=0; i<weeks.size(); i++) {
+			temp.add(weeks.get(i).getGameweek());
+		}
+		return temp;
+	}
 }
