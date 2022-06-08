@@ -76,7 +76,6 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
 		score1.setText(game.getScoreList(2, true));
 		score2.setText(game.getScoreList(2,false));
 
-        // Inflate the layout for this fragment
-        return root;
+    	return root;
     }
 }
