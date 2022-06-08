@@ -20,10 +20,10 @@ public class Tabbed_Stats_Manager extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
+        ViewPager viewPager = binding.viewPagerSm;
 
         viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
+        TabLayout tabs = binding.tabsSm;
         tabs.setupWithViewPager(viewPager);
     }
 }
