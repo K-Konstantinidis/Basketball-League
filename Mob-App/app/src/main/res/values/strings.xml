@@ -84,7 +84,7 @@
     <string name="tab_1_user">Game</string>
     <string name="tab_2_user">Team Stats</string>
     <string name="tab_3_user">Player Stats</string>
-    <string name="tab_4_user">Lineup</string>
+    <string name="tab_4_user">Lineups</string>
     <!-- Tabbed View Manager -->
     <string name="tab_1">Game Overview</string>
     <string name="tab_2">Manage Game</string>
@@ -163,5 +163,6 @@
     <string name="table_team_logo">Team logo</string>
     <string name="table_games_value">Value</string>
 	<string name="starting_player_1">starting player 1</string>
+	<string name="start_game">Start Game</string>
 
 </resources>
