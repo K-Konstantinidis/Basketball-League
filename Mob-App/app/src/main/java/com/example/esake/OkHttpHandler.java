@@ -99,7 +99,41 @@ public class OkHttpHandler {
 
 		return game;
 	}
+	//code for League Table
+	ArrayList<LeagueRank> getDataforLeague(String url) throws Exception {
+		ArrayList<LeagueRank> Ranking = new ArrayList<LeagueRank>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		//System.out.println("My Response: " + data);
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
 
+			//Getting json from WS
+
+			while(keys.hasNext()) {
+				String id = keys.next();
+				String logo_path = json.getJSONObject(id).getString("logo");
+				String name_en = json.getJSONObject(id).getString("name");
+				String MatchesPlayed = json.getJSONObject(id).getString("matches_played");
+				String Points = json.getJSONObject(id).getString("points");
+				String Wins = json.getJSONObject(id).getString("wins");
+				String Losses = json.getJSONObject(id).getString("losses");
+
+				//Code to add from Json to Screen
+				LeagueRank rank = new LeagueRank(logo_path,name_en,	Integer.parseInt(MatchesPlayed),
+					Integer.parseInt(Points),Integer.parseInt(Wins),Integer.parseInt(Losses));
+				Ranking.add(rank);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return Ranking;
+	}
 
 
 	public void logHistory(String url) throws Exception {

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,8 +22,13 @@ public class FragmentLeagueTable extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+	private String mParam1;
+	private String mParam2;
+
+	//Variables for set Text and other
+	private TextView team_name,MatchesPlayed,Points,Wins,Losses;
+	private ImageView logo_path;
+	private LeagueRanking Lr;
 
     public FragmentLeagueTable() {
         // Required empty public constructor
@@ -54,12 +61,30 @@ public class FragmentLeagueTable extends Fragment {
         }
     }
 
+    // IDs to Variables
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_league_table, container, false);
 
+		View v =  inflater.inflate(R.layout.fragment_league_table, container, false);
 
+		logo_path = (ImageView) v.findViewById(R.id.league_table_team_logo);
+		team_name = v.findViewById(R.id.league_table_teamName);
+		MatchesPlayed=v.findViewById(R.id.league_table_games_value);
+		Points=v.findViewById(R.id.league_table_points_value);
+		Wins=v.findViewById(R.id.league_table_wins_value);
+		Losses=	v.findViewById(R.id.league_table_losses_value);
+
+		Lr = new LeagueRanking(myIP.getIp());
+
+		//logo_path.setText(Lr.getLeagueRankTeamLogo(0));
+		logo_path.setImageResource(R.drawable.five);
+		team_name.setText(Lr.getLeagueRankName(0));
+		MatchesPlayed.setText(String.valueOf(Lr.getLeagueRankMatchesPlayed(0)));
+		Points.setText(String.valueOf(Lr.getLeagueRankPoints(0)));
+		Wins.setText(String.valueOf(Lr.getLeagueRankWins(0)));
+		Losses.setText(String.valueOf(Lr.getLeagueRankLosses(0)));
+
+		return v;
     }
 }
