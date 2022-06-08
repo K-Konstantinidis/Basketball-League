@@ -14,7 +14,7 @@
  * CAREFUL! You must pass the full value of the statistic
  *          and NOT the amount by which it fluctuated!
  * 
- * Eg.: The player had 10 assist and made one more,
+ * Eg.: The player had 10 assists and made one more,
  *      you will pass "a=11" and not "a=1".
  * 
  * The statistics which can be modified are:
@@ -24,8 +24,8 @@
  *		tpo		-> 'two_points_out'
  *		thpi	-> 'three_points_in'
  *		thpo	-> 'three_points_out '
- *		or		-> 'offensive_reboun'
- *		dr		-> 'defensive_reboun'
+ *		or		-> 'offensive_rebound'
+ *		dr		-> 'defensive_rebound'
  *		a		-> 'assists '
  *		b		-> 'blocks'
  *		s		-> 'steals'
@@ -88,10 +88,7 @@ $num_modified = count($mod_stats);
 if($num_modified) {
 	$dbh = connectDB();
 	
-	$sql =
-	'UPDATE ongoing_game_player_stats
-	WHERE championship_id = :cid, round_id = :rid, game_id = :gid, player_id = :pid
-	SET ';
+	$sql = 'UPDATE ongoing_game_player_stats SET ';
 
 	// For each statistic that was changed
 	foreach($mod_stats as $stat => $stat_val) {
@@ -99,10 +96,11 @@ if($num_modified) {
 		$sql .= $stat . ' = :' . $stat;
 
 		// If it is the last statistic,
-		// add ';', else add ',' at the end of the query
-		$sql .= (--$num_modified) ? ', ': ';';
+		// add ' ', else add ',' at the end of the query
+		$sql .= (--$num_modified) ? ', ': ' ';
 	}
 
+	$sql .= 'WHERE championship_id = :cid, round_id = :rid, game_id = :gid, player_id = :pid;';
 	// Bind the parameters to the prepared statement
 	$stmt = $dbh->prepare($sql);
 
@@ -112,7 +110,7 @@ if($num_modified) {
 	$stmt->bindParam(':pid', $player_id,		PDO::PARAM_INT);
 
 	foreach($mod_stats as $stat => $stat_val) {
-		$stmt->bindParam(':' . $stat, $mod_stats[$stat]);
+		$stmt->bindParam(':' . $stat, $mod_stats[$stat], PDO::PARAM_INT);
 	}
 
 	// Execute the statement
