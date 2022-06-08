@@ -47,7 +47,7 @@ public class FragmentUserHome extends Fragment {
 		//Get the view
 		View view = inflater.inflate(R.layout.fragment_home_user, null);
 
-		gameweekSpinner = (Spinner) view.findViewById(R.id.gameweek_selection_spinner);
+		gameweekSpinner = view.findViewById(R.id.gameweek_selection_spinner);
 		Downloader downloader = new Downloader(view.getContext(), urlAddress, gameweekSpinner);
 		downloader.execute();
 
