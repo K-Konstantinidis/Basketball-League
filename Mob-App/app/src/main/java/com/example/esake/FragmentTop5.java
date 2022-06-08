@@ -80,7 +80,7 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         //Create a list of items for the spinner.
         //String[] items = new String[]{"Week 1", "Week 2", "Week 3", "etc"};
 
-		match = new GameWeek(myIP.getIp());
+		//match = new GameWeek(myIP.getIp());
         super.onCreate(savedInstanceState);
 
         //Create an adapter to describe how the items are displayed, adapters are used in several places in android.
