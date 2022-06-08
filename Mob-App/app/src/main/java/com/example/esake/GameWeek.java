@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GameWeek {
 
-	ArrayList<Championship> matchList = new ArrayList<>();
+	ArrayList<Game> matchList = new ArrayList<>();
 
 	public GameWeek(String ip) {
 		String url= "http://"+ip+"/ws/getGameweekMatches.php?round_id=2";
@@ -12,14 +12,14 @@ public class GameWeek {
 
 		try {
 			OkHttpHandler okHttpHandler = new OkHttpHandler();
-			matchList = okHttpHandler.populateDropDown(url);
+			matchList = okHttpHandler.getDataforMatches(url);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public String getMatchList(int matchIndex, boolean isHomeTeam){
-		return this.matchList.get(matchIndex).getTeamScore(isHomeTeam);
+	public int getMatchList(int matchIndex, boolean isHomeTeam){
+		return this.matchList.get(matchIndex).getScore(isHomeTeam);
 	}
 
 //    public List<String> getAllBrands() {

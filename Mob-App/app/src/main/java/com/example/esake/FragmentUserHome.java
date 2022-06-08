@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -41,6 +42,8 @@ public class FragmentUserHome extends Fragment {
 //        }
 //    }
 
+	private Connector weeks;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -48,9 +51,14 @@ public class FragmentUserHome extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_home_user, null);
 
 		gameweekSpinner = (Spinner) view.findViewById(R.id.gameweek_selection_spinner);
-		Downloader downloader = new Downloader(view.getContext(), urlAddress, gameweekSpinner);
-		downloader.execute();
+//		Downloader downloader = new Downloader(view.getContext(), urlAddress, gameweekSpinner);
+//		downloader.execute();
 
+		weeks = new Connector(myIP.getIp());
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, weeks.getWeeks());
+		// Set the spinners adapter to the previously created one.
+		gameweekSpinner.setAdapter(adapter);
 
 		// Inflate the layout for this fragment
 		// Return inflater.inflate(R.layout.fragment_home_user, container, false);

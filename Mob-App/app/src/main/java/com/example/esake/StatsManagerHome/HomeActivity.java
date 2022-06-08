@@ -22,7 +22,6 @@ import com.example.esake.myIP;
 
 public class HomeActivity extends AppCompatActivity {
 
-	private Championship matches;
 	private GameWeek matchList;
 	private TextView text1, text3;
 
@@ -56,9 +55,6 @@ public class HomeActivity extends AppCompatActivity {
 		text1 = findViewById(R.id.textView);
 		text3 = findViewById(R.id.textView3);
 
-		matchList = new GameWeek(myIP.getIp());
-
-		text1.setText(matchList.getMatchList(2,true));
-		text3.setText(matchList.getMatchList(2,false));
+		matchList.getMatchList(2,false);
     }
 }
