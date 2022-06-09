@@ -222,7 +222,7 @@
 						app:srcCompat="@drawable/esake_logo" />
 
 					<TextView
-						android:id="@+id/team_stats_playerName"
+						android:id="@+id/team_stats_teamName"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginStart="5dp"

@@ -14,7 +14,25 @@ public class Connector {
 			String url = "http://" + ip + "/ws/.php";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				weeks = okHttpHandler.getGameWeeks(url);
+			//	weeks = okHttpHandler.getGameWeeks(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(string.equals("player-live-stats")) {
+			String url = "http://" + ip + "/ws/.php";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				//weeks = okHttpHandler.getGameWeeks(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(string.equals("team-stats")) {
+			String url = "http://" + ip + "/ws/.php";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				//weeks = okHttpHandler.getGameWeeks(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
