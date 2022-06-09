@@ -1,22 +1,23 @@
 import mysql.connector
 import csv
 import random
+import time
 from itertools import permutations 
 
 class Player:
-    def __init__(self,id,seed):
+    def __init__(self,id):
         self.id = id
 
-        self.three_points_in = self.calc_shot_type_in_count(3, 3)
-        self.two_points_in = self.calc_shot_type_in_count(4, 2)
-        self.freethrows_in = self.calc_shot_type_in_count(2, 1)
+        self.three_points_in = self.calc_shot_type_in_count(0.6)
+        self.two_points_in = self.calc_shot_type_in_count(0.9)
+        self.freethrows_in = self.calc_shot_type_in_count(0.8)
 
-        self.three_points_out = self.calc_shot_type_out_count(self.three_points_in+4)
-        self.two_points_out = self.calc_shot_type_out_count(self.two_points_in+3)
-        self.freethrows_out = self.calc_shot_type_out_count(self.freethrows_in+3)
+        self.three_points_out = self.calc_shot_type_out_count(self.three_points_in+2)
+        self.two_points_out = self.calc_shot_type_out_count(self.two_points_in+1)
+        self.freethrows_out = self.calc_shot_type_out_count(self.freethrows_in)
 
-        self.off_rebounds = self.calc_off_rebounds(seed)
-        self.def_rebounds = self.calc_def_rebounds(seed)
+        self.off_rebounds = self.calc_off_rebounds()
+        self.def_rebounds = self.calc_def_rebounds()
 
         self.assists = self.calc_assists()
         self.blocks = self.calc_blocks()
@@ -24,34 +25,33 @@ class Player:
         self.turnovers = self.calc_turnovers()
         self.fouls = self.calc_fouls()
 
-    def calc_shot_type_in_count(self, upper_bound, points):
-        return random.randint(0, int(0.8+(upper_bound/(2*points*(random.random()+0.1)))))
+    def calc_shot_type_in_count(self, in_likelihood):
+        return int((random.random()+in_likelihood)*random.randint(random.randint(0, 1),int(random.randint(3, 4)*in_likelihood)))
+        # return random.randint(0, int(0.5+(upper_bound/(2*points*(random.random()+0.8)))))
 
     def calc_shot_type_out_count(self, out_likelihood):
         return random.randint(0, out_likelihood)
 
-    def calc_off_rebounds(self,seed):
-        total_approx = int(seed / (random.random()+2))
-        return int((random.randint(0,total_approx)/(random.randint(3,4))))
+    def calc_off_rebounds(self):
+        return random.randint(0, 3)
 
-    def calc_def_rebounds(self,seed):
-        total_approx = int(seed / (random.random()+2))
-        return int((random.randint(0,total_approx)/(random.randint(2,3)*(random.random()+0.3))))
+    def calc_def_rebounds(self):
+      return random.randint(0, 6) + random.randint(0, int(random.random()*random.randint(0, 1)))*random.randint(0, 4)
 
     def calc_assists(self):
         return int(random.randint(0, 4)*random.random()+random.randint(0, 2))
 
     def calc_blocks(self):
-        return int(6*random.random()*random.random())
+        return int(4*random.random()*random.random())
 
     def calc_steals(self):
-        return int(2.5*random.random())
+        return int(2*random.random())
 
     def calc_turnovers(self):
-        return int(random.random()+random.randint(0, 3))
+        return int(random.random()+random.randint(0, 2))
 
     def calc_fouls(self):
-        return int((random.random()+0.7)*random.randint(0,6))
+        return random.randint(0, 4)+int(random.random())*random.randint(0, 1)
 
 #Adds all products in products.csv to the products table (ignoring duplicates)
 def add_cities(conn, cities_file_path):
@@ -69,13 +69,12 @@ def add_teams(conn, teams_file_path):
     #open file and start reading
     with open(teams_file_path, mode='r', encoding="utf8") as teams_file:
         teams_csv = csv.reader(teams_file)
-        loops=0;
+        loops=0
         for team in teams_csv:
             loops+=1
             db_cursor.execute("SELECT id FROM city WHERE name_gr=%s", (team[2], ))
             fk_city_ids = db_cursor.fetchone()
-            print(fk_city_ids[0])
-            photo_path = "http://192.168.69.2/img/emblem/" + str(loops) + ".jpg"
+            photo_path = "/resources/images/teams/" + str(loops).zfill(4) + ".jpg"
             #Order: 
             db_cursor.execute("INSERT INTO team (city_id, name_gr, name_en, short_name_en, short_name_gr,logo_path) VALUES (%s, %s, %s, %s, %s, %s)", (fk_city_ids[0], team[0], team[1], team[4], team[5],photo_path,))
         #save changes
@@ -101,8 +100,7 @@ def add_players(conn, players_file_path):
             loops+=1
             db_cursor.execute("SELECT id FROM team WHERE name_gr=%s", (player[6], ))
             fk_team_ids = db_cursor.fetchone()
-            print(fk_team_ids[0])
-            photo_path = "http://192.168.69.2/img/players/" + str(loops) + ".jpg"
+            photo_path = "/resources/images/players/" + str(loops).zfill(4) + ".jpg"
             #Order: 
             db_cursor.execute("INSERT INTO player (surname_gr, name_gr, surname_en, name_en, player_position_code, team_id, img_path) VALUES (%s, %s, %s, %s, %s, %s, %s)", (player[0], player[1], player[2], player[3], player[5], fk_team_ids[0], photo_path,))
         #save changes
@@ -128,21 +126,37 @@ def get_teams(conn):
 
     return teams
 
-def new_fixture(all_matches,length):
+def get_first_half_fixture(all_matches,first_half_length, matches_per_day):
+    original_matchups = all_matches.copy()
+    temp_fixtures = []
 
-    while True:
-        temp_matches = all_matches.copy()
-        fixture = []
-        for j in range (int(length/2)):
-            
-            match = random.choice(temp_matches)
-            remove_match(match, fixture, temp_matches)
+    for i in range(first_half_length):
+        start_time = time.time()
+        fixture_finalized = False
 
-            if len(fixture)==int(length/2):
-                all_matches = register_matches(all_matches,fixture)
-                return fixture
-            elif len(temp_matches)==0 and len(fixture)<int(length/2):
-                break
+        while not fixture_finalized:
+            temp_matches = all_matches.copy()
+            fixture = []
+            for j in range (matches_per_day):
+                
+                match = random.choice(temp_matches)
+                remove_match(match, fixture, temp_matches)
+
+                if len(fixture)==matches_per_day:
+                    all_matches = register_matches(all_matches,fixture)
+                    temp_fixtures.append(fixture)
+                    fixture_finalized = True
+                    break
+
+                elif len(temp_matches)==0 and len(fixture)<matches_per_day:
+                    break
+
+                if (time.time()-start_time > 1):
+                    temp_fixtures = []
+                    print("CAUTION: Timeout")
+                    return temp_fixtures
+
+    return temp_fixtures
 
 def register_matches(all_matches, fixture):
     for match in fixture:
@@ -169,9 +183,8 @@ def insert_matchups(conn,teams):
 
     days = 2*(len(teams)-1)
 
-    for i in range(int(days/2)):
-        fixtures.append([])
-        fixtures[i]=new_fixture(all_matches,len(teams))
+    while(len(fixtures) < int(days/2)):
+        fixtures = get_first_half_fixture(all_matches, int(days/2), int(len(teams)/2))
 
     for i,j in zip(range(int(days/2),days),range(int(days/2))):
         fixtures.append([])
@@ -190,12 +203,12 @@ def insert_matchups(conn,teams):
         round_id = (db_cursor.fetchone())[0]
         j=0
         status = 2
-        if i<2:
+        if i<7:
             status = 0
 
         for match in fixtures[i]:
             j+=1
-            db_cursor.execute("INSERT INTO game (championship_id, round_id, id, home_team_id, away_team_id, status) VALUES (%s, %s, %s, %s, %s, %s)", (fk_championship_id, round_id, j, match[0], match[1], status,))
+            db_cursor.execute("INSERT INTO game (championship_id, round_id, id, home_team_id, away_team_id, game_status) VALUES (%s, %s, %s, %s, %s, %s)", (fk_championship_id, round_id, j, match[0], match[1], status,))
                 #save changes
     conn.commit()
 
@@ -213,7 +226,7 @@ def add_player_stats_per_team(conn, team_id, round_id, game_id):
 
     score = 0
     for p in team_players:
-        player = Player(p[0],random.randint(60, 90))
+        player = Player(p[0])
         score+=player.freethrows_in+2*player.two_points_in+3*player.three_points_in
 
         stmt = ("INSERT IGNORE INTO player_stats (championship_id, round_id, game_id, team_id, player_id, freethrows_in, freethrows_out, \
@@ -241,21 +254,21 @@ def calculate_quarter_score(conn, championship_id, round_id, game_id, team_id, t
 
     conn.commit()
 
-def assign_round_3_game_3_stats_to_players(conn, round_id, game_id, home_team_id, away_team_id):
-    home_score = add_round_3_game_3_player_stats_per_team(conn, home_team_id, round_id, game_id)
-    calculate_round_3_quarter_score(conn, 1, round_id, game_id, home_team_id, home_score)
-    away_score = add_round_3_game_3_player_stats_per_team(conn, away_team_id, round_id, game_id)
-    calculate_round_3_quarter_score(conn, 1, round_id, game_id, away_team_id, away_score)
+def assign_round_7_game_3_stats_to_players(conn, round_id, game_id, home_team_id, away_team_id):
+    home_score = add_round_7_game_3_player_stats_per_team(conn, home_team_id, round_id, game_id)
+    calculate_round_7_quarter_score(conn, 1, round_id, game_id, home_team_id, home_score)
+    away_score = add_round_7_game_3_player_stats_per_team(conn, away_team_id, round_id, game_id)
+    calculate_round_7_quarter_score(conn, 1, round_id, game_id, away_team_id, away_score)
 
-def add_round_3_game_3_player_stats_per_team(conn, team_id, round_id, game_id):
+def add_round_7_game_3_player_stats_per_team(conn, team_id, round_id, game_id):
     db_cursor = conn.cursor()
 
     db_cursor.execute("SELECT id FROM player WHERE team_id=%s", (team_id,))
     team_players = db_cursor.fetchall()
 
-    score = 0 
+    team_score = 0 
     for p in team_players:
-        player = Player(p[0],random.randint(30, 50))
+        player = Player(p[0])
         player_points_scored_so_far = player.freethrows_in+2*player.two_points_in+3*player.three_points_in
         avg_score = int(player_points_scored_so_far/2)
         
@@ -287,7 +300,7 @@ def add_round_3_game_3_player_stats_per_team(conn, team_id, round_id, game_id):
             two_points_in, two_points_out, three_points_in, three_points_out, offensive_rebounds, defensive_rebounds, \
             assists, blocks, steals, turnovers, fouls) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
             )
-        player_tuple = (1, round_id, game_id, 1, team_id, player.id, q1_freethrows_in+0, player.q1_freethrows_out+0,
+        player_tuple = (1, round_id, game_id, 1, team_id, player.id, q1_freethrows_in+0, q1_freethrows_out+0,
             q1_two_points_in, q1_two_points_out, q1_three_points_in, q1_three_points_out, 
             random.randint(0,int(player.off_rebounds/2)+1), random.randint(0,int(player.def_rebounds/2)+1),
             random.randint(0,int(player.assists/2)+1), random.randint(0,int(player.blocks/2)+1), 
@@ -295,7 +308,7 @@ def add_round_3_game_3_player_stats_per_team(conn, team_id, round_id, game_id):
             random.randint(0,int(player.fouls/2)+1))
         db_cursor.execute(stmt, player_tuple)
 
-        player_tuple = (1, round_id, game_id, 1, team_id, player.id, q2_freethrows_in+0, player.q2_freethrows_out+0,
+        player_tuple = (1, round_id, game_id, 1, team_id, player.id, q2_freethrows_in+0, q2_freethrows_out+0,
             q2_two_points_in, q2_two_points_out, q2_three_points_in, q2_three_points_out, 
             random.randint(0,int(player.off_rebounds/2)+1), random.randint(0,int(player.def_rebounds/2)+1),
             random.randint(0,int(player.assists/2)+1), random.randint(0,int(player.blocks/2)+1), 
@@ -305,9 +318,9 @@ def add_round_3_game_3_player_stats_per_team(conn, team_id, round_id, game_id):
 
         conn.commit()
 
-    return score
+    return team_score
 
-def calculate_round_3_quarter_score(conn, championship_id, round_id, game_id, team_id, total_score):
+def calculate_round_7_quarter_score(conn, championship_id, round_id, game_id, team_id, total_score):
     db_cursor = conn.cursor()
     score_copy = total_score
     
@@ -346,18 +359,18 @@ teams = get_teams(conn)
 insert_matchups(conn,teams)
 
 db_cursor = conn.cursor()
-db_cursor.execute("SELECT round_id, id, home_team_id, away_team_id FROM game WHERE round_id<3 ORDER BY round_id,id")
+db_cursor.execute("SELECT round_id, id, home_team_id, away_team_id FROM game WHERE round_id<7 ORDER BY round_id,id")
 games = db_cursor.fetchall()
 for game in games:
     assign_stats_to_players(conn,game[0],game[1],game[2],game[3])
 
-db_cursor.execute("SELECT round_id, id, home_team_id, away_team_id FROM game WHERE round_id=3 ORDER BY round_id,id")
-round_3_games = db_cursor.fetchall()
-for game in round_3_games:
-    if game_id<3:
+db_cursor.execute("SELECT round_id, id, home_team_id, away_team_id FROM game WHERE round_id=7 ORDER BY round_id,id")
+round_7_games = db_cursor.fetchall()
+for game in round_7_games:
+    if game[1]<3:
         assign_stats_to_players(conn,game[0],game[1],game[2],game[3])
-    elif game_id==3:
-        assign_round_3_stats_to_players(conn,game[0],game[1],game[2],game[3])
+    elif game[1]==3:
+        assign_round_7_game_3_stats_to_players(conn,game[0],game[1],game[2],game[3])
     
 
 conn.close()
