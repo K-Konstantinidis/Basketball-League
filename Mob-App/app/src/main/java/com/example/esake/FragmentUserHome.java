@@ -54,7 +54,7 @@ public class FragmentUserHome extends Fragment {
 //		Downloader downloader = new Downloader(view.getContext(), urlAddress, gameweekSpinner);
 //		downloader.execute();
 
-		weeks = new Connector(myIP.getIp());
+		weeks = new Connector(myIP.getIp(),"gameweeks");
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, weeks.getWeeks());
 		// Set the spinners adapter to the previously created one.

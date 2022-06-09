@@ -58,6 +58,9 @@ public class FragmentTeamStatsLiveUser extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_team_stats_live_user, container, false);
+		if(true)
+        	return inflater.inflate(R.layout.fragment_team_stats_finished_user, container, false);
+		else
+			return inflater.inflate(R.layout.fragment_team_stats_live_user, container, false);
     }
 }

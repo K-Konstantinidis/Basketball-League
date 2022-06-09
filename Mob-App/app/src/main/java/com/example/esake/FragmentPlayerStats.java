@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +56,39 @@ public class FragmentPlayerStats extends Fragment {
         }
     }
 
+	private Connector stats;
+	private TextView pName, pRating;
+	private TextView pPts, pFg;
+	private TextView p3Fg, pPercentfg;
+	private TextView pReb, pAst;
+	private TextView pStl,pBlock;
+	private TextView pFls, pTurnover;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_stats, container, false);
+		View view = inflater.inflate(R.layout.fragment_player_stats, container, false);
+
+		stats = new Connector(myIP.getIp(), "player-stats");
+
+		pName = view.findViewById(R.id.player_stats_playerName);
+		pRating = view.findViewById(R.id.player_stats_rating_value);
+		pPts = view.findViewById(R.id.player_stats_pts_value);
+		pFg = view.findViewById(R.id.player_stats_fg_value);
+		p3Fg = view.findViewById(R.id.player_stats_3fg_value);
+
+		pPercentfg = view.findViewById(R.id.player_stats_percentfg_value);
+		pReb = view.findViewById(R.id.player_stats_reb_value);
+		pAst = view.findViewById(R.id.player_stats_ast_value);
+		pStl = view.findViewById(R.id.player_stats_stl_value);
+		pBlock = view.findViewById(R.id.player_stats_block_value);
+
+		pFls = view.findViewById(R.id.player_stats_foul_value);
+		pTurnover = view.findViewById(R.id.player_stats_turnover_value);
+
+
+
+		return view;
     }
 }
