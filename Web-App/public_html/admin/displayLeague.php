@@ -131,7 +131,8 @@ $err_msg = '';
 		</div>
 			
 		<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-			<a href="./" class="btn btn-primary mb-5 me-3" role="button">Αρχική</a>
+			<a href="<?php echo AREF_DIR_ADMIN ?>" class="btn btn-primary mb-5 me-3" role="button">Αρχική</a>
+			<a href="<?php echo AREF_ADMIN_AVAILABLE_LEAGUES ?>" class="btn btn-success mb-5 me-3" role="button">Διαθέσιμα Πρωταθλήματα</a>
 		</div>
 
 		<br><br>
