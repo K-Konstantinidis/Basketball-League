@@ -8,6 +8,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.esake.StatsManagerHome.HomeActivity;
 import com.example.esake.databinding.ActivityMainBinding;
@@ -44,19 +45,19 @@ public class Login extends AppCompatActivity {
 				startActivity(new Intent(Login.this, HomeActivity.class));
 
 				//Try to log in
-//				int status = login(username.getText().toString(), password.getText().toString());
-//
-//				switch (status) {
-//					case -1:
-//						Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
-//						break;
-//					case 0:
-//						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
-//						break;
-//					case 1:
-//						//startActivity(new Intent(Login.this, HomeActivity.class));
-//						break;
-//				}
+				int status = login(username.getText().toString(), password.getText().toString());
+
+				switch (status) {
+					case -1:
+						Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
+						break;
+					case 0:
+						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
+						break;
+					case 1:
+						startActivity(new Intent(Login.this, HomeActivity.class));
+						break;
+				}
 			}
 		});
 

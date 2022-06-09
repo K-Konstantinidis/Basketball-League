@@ -19,8 +19,8 @@ header('Content-Type: application/json');
 
 // Check if all the necessary parameters are given
 if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
-	isset($_GET['cid'])  && !empty($_GET['cid']))
-{
+	isset($_GET['cid'])  && !empty($_GET['cid'])
+) {
 	if($_GET['lang'] === 'en') {
 		$lang_stmt = 'name_en';
 	}
@@ -76,13 +76,13 @@ FROM
                 GROUP BY round_id,game_id,team_id) AS a_team
 			ON h_team.round_id = a_team.round_id AND h_team.game_id = a_team.game_id)) AS a
     GROUP BY winner) AS win_count ON team.id = win_count.winner) AS b
-ORDER BY points DESC";
+ORDER BY points DESC, matches_played DESC, wins DESC";
 
 // Prepare the statement
 $stmt = $dbh->prepare($sql);
 
 // Bind the parameters
-$stmt->bindParam(':cid',	$championship_id, PDO::PARAM_INT);
+$stmt->bindParam(':cid', $championship_id, PDO::PARAM_INT);
 
 // Execute the statement and fetch the results
 try {
