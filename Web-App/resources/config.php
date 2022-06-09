@@ -21,13 +21,14 @@ define('AREF_LOGIN',        AREF_HTML . 'login/');
 define('AREF_LOGOUT',       AREF_LOGIN . 'logout.php');
 define('AREF_DIR_IMG',      AREF_HTML . 'img/');
 
-define('AREF_DIR_ADMIN',            AREF_HTML . 'admin/');
-define('AREF_ADMIN_CREATE_LEAGUE',  AREF_DIR_ADMIN . 'createLeague.php');
-define('AREF_ADMIN_CREATE_PLAYER',  AREF_DIR_ADMIN . 'createPlayer.php');
-define('AREF_ADMIN_CREATE_TEAM',    AREF_DIR_ADMIN . 'createTeam.php');
-define('AREF_ADMIN_DISPLAY_LEAGUE', AREF_DIR_ADMIN . 'displayLeague.php');
-define('AREF_ADMIN_DRAW_LEAGUE',    AREF_DIR_ADMIN . 'drawLeague.php');
-define('AREF_ADMIN_LOADING_LEAGUE', AREF_DIR_ADMIN . 'loadingLeague.php');
+define('AREF_DIR_ADMIN',            	AREF_HTML . 'admin/');
+define('AREF_ADMIN_AVAILABLE_LEAGUES',  AREF_DIR_ADMIN . 'availableLeagues.php');
+define('AREF_ADMIN_CREATE_LEAGUE',  	AREF_DIR_ADMIN . 'createLeague.php');
+define('AREF_ADMIN_CREATE_PLAYER',  	AREF_DIR_ADMIN . 'createPlayer.php');
+define('AREF_ADMIN_CREATE_TEAM',    	AREF_DIR_ADMIN . 'createTeam.php');
+define('AREF_ADMIN_DISPLAY_LEAGUE', 	AREF_DIR_ADMIN . 'displayLeague.php');
+define('AREF_ADMIN_DRAW_LEAGUE',    	AREF_DIR_ADMIN . 'drawLeague.php');
+define('AREF_ADMIN_LOADING_LEAGUE', 	AREF_DIR_ADMIN . 'loadingLeague.php');
 
 
 
