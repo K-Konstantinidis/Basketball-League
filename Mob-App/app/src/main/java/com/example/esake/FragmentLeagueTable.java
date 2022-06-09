@@ -28,7 +28,7 @@ public class FragmentLeagueTable extends Fragment {
 	//Variables for set Text and other
 	private TextView team_name,MatchesPlayed,Points,Wins,Losses;
 	private ImageView logo_path;
-	private LeagueRanking Lr;
+	private Connector Lr;
 
     public FragmentLeagueTable() {
         // Required empty public constructor
@@ -75,7 +75,7 @@ public class FragmentLeagueTable extends Fragment {
 		Wins=v.findViewById(R.id.league_table_wins_value);
 		Losses=	v.findViewById(R.id.league_table_losses_value);
 
-		Lr = new LeagueRanking(myIP.getIp());
+		Lr = new Connector(myIP.getIp(),"league");
 
 		//logo_path.setText(Lr.getLeagueRankTeamLogo(0));
 		logo_path.setImageResource(R.drawable.five);

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.esake.Match;
+import com.example.esake.Connector;
 import com.example.esake.R;
 import com.example.esake.Tabbed_Stats_Manager;
 import com.example.esake.myIP;
@@ -16,7 +16,7 @@ import com.example.esake.myIP;
 
 public class HomeActivity extends AppCompatActivity {
 
-	private Match matchList;
+	private Connector matchList;
 	private TextView text1, text3;
 
     @Override
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
 			}
 		});
 
-		matchList= new Match(myIP.getIp());
+		matchList= new Connector(myIP.getIp(),"match");
 
 		text1 = findViewById(R.id.textView);
 		text3 = findViewById(R.id.textView3);
