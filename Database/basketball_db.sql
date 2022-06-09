@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 03:29 PM
+-- Generation Time: Jun 09, 2022 at 04:16 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -1594,7 +1594,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `create_time`) VALUES
-('admin', 'superpassword', '2022-06-09 13:17:26');
+('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '2022-06-09 14:15:49'),
+('webadmin', 'c6c6dc4efdd314700252330e1e36db2ef1b1cc2d703b884168c541963336a0c8', '2022-06-09 14:15:49');
 
 --
 -- Indexes for dumped tables
