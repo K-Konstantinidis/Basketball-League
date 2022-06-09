@@ -67,24 +67,49 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.fragment_player_stats_live_user, container, false);
+		View view;
 
-		live_stats = new Connector(myIP.getIp(), "player-live-stats");
+		if(true){
+			 view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);
 
-		pName = view.findViewById(R.id.player_stats_live_playerName);
-		pRating = view.findViewById(R.id.player_stats_live_rating_value);
-		pPts = view.findViewById(R.id.player_stats_live_pts_value);
-		pFg = view.findViewById(R.id.player_stats_live_fg_value);
-		p3Fg = view.findViewById(R.id.player_stats_live_3fg_value);
+			live_stats = new Connector(myIP.getIp(), "player-live-stats");
 
-		pPercentfg = view.findViewById(R.id.player_stats_live_percentfg_value);
-		pReb = view.findViewById(R.id.player_stats_live_reb_value);
-		pAst = view.findViewById(R.id.player_stats_live_ast_value);
-		pStl = view.findViewById(R.id.player_stats_live_stl_value);
-		pBlock = view.findViewById(R.id.player_stats_live_block_value);
+			pName = view.findViewById(R.id.player_stats_live_playerName);
+			pRating = view.findViewById(R.id.player_stats_live_rating_value);
+			pPts = view.findViewById(R.id.player_stats_live_pts_value);
+			pFg = view.findViewById(R.id.player_stats_live_fg_value);
+			p3Fg = view.findViewById(R.id.player_stats_live_3fg_value);
 
-		pFls = view.findViewById(R.id.player_stats_live_foul_value);
-		pTurnover = view.findViewById(R.id.player_stats_live_turnover_value);
+			pPercentfg = view.findViewById(R.id.player_stats_live_percentfg_value);
+			pReb = view.findViewById(R.id.player_stats_live_reb_value);
+			pAst = view.findViewById(R.id.player_stats_live_ast_value);
+			pStl = view.findViewById(R.id.player_stats_live_stl_value);
+			pBlock = view.findViewById(R.id.player_stats_live_block_value);
+
+			pFls = view.findViewById(R.id.player_stats_live_foul_value);
+			pTurnover = view.findViewById(R.id.player_stats_live_turnover_value);
+		}
+		else{
+			view = inflater.inflate(R.layout.fragment_player_stats_live_user, container, false);
+
+			live_stats = new Connector(myIP.getIp(), "player-live-stats");
+
+			pName = view.findViewById(R.id.player_stats_live_playerName);
+			pRating = view.findViewById(R.id.player_stats_live_rating_value);
+			pPts = view.findViewById(R.id.player_stats_live_pts_value);
+			pFg = view.findViewById(R.id.player_stats_live_fg_value);
+			p3Fg = view.findViewById(R.id.player_stats_live_3fg_value);
+
+			pPercentfg = view.findViewById(R.id.player_stats_live_percentfg_value);
+			pReb = view.findViewById(R.id.player_stats_live_reb_value);
+			pAst = view.findViewById(R.id.player_stats_live_ast_value);
+			pStl = view.findViewById(R.id.player_stats_live_stl_value);
+			pBlock = view.findViewById(R.id.player_stats_live_block_value);
+
+			pFls = view.findViewById(R.id.player_stats_live_foul_value);
+			pTurnover = view.findViewById(R.id.player_stats_live_turnover_value);
+		}
+
 
 
 

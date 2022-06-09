@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true">
+
+	<FrameLayout
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		tools:context=".FragmentPlayerStatsLiveUser">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/player_live_stats_header"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:background="@color/primary_color"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintVertical_bias="0.0">
+
+				<TextView
+					android:id="@+id/player_stats_live_player_name"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/player_stats_player_name"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.1"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_rating"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="80dp"
+					android:layout_marginLeft="80dp"
+					android:gravity="center"
+					android:text="@string/rating"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_player_name"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_pts"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/player_stats_pts"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_rating"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_fg"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/fg"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_pts"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_3fg"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/_3fg"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_fg"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_percentfg"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/percentfg"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_3fg"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_reb"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/player_stats_reb"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_percentfg"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_ast"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/player_stats_ast"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_reb"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_stl"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/stl"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_ast"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_blk"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/blk"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_stl"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_fls"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:gravity="center"
+					android:text="@string/fouls"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_blk"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/player_stats_live_to"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="20dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginEnd="10dp"
+					android:layout_marginRight="10dp"
+					android:gravity="center"
+					android:text="@string/to"
+					android:textColor="@color/white"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_bias="0.0"
+					app:layout_constraintStart_toEndOf="@id/player_stats_live_fls"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.cardview.widget.CardView
+				android:id="@+id/playerStatsLiveCardView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/player_live_stats_header"
+				app:layout_constraintVertical_bias="0.0"
+				app:cardElevation="0dp">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+
+					<ImageView
+						android:id="@+id/player_stats_live_team_logo"
+						android:layout_width="24dp"
+						android:layout_height="24dp"
+						android:contentDescription="@string/player_stats_team_logo"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintHorizontal_bias="0.01"
+						app:srcCompat="@drawable/esake_logo" />
+
+					<TextView
+						android:id="@+id/player_stats_live_playerName"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="5dp"
+						android:layout_marginLeft="5dp"
+						android:text="@string/player_stats_playerName"
+						android:maxEms="8"
+						android:ellipsize="end"
+						android:maxLines="1"
+						android:textSize="12dp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toStartOf="@id/lineBetweenPlayerAndPoints_live"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_live_team_logo"
+						app:layout_constraintTop_toTopOf="parent"/>
+
+					<View
+						android:id="@+id/lineBetweenPlayerAndPoints_live"
+						android:layout_width="2dp"
+						android:layout_height="30dp"
+						android:layout_marginStart="145dp"
+						android:background="@color/black"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_live_team_logo"
+						app:layout_constraintTop_toTopOf="parent"/>
+
+					<TextView
+						android:id="@+id/player_stats_live_rating_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="15dp"
+						android:layout_marginLeft="15dp"
+						android:gravity="center"
+						android:text="69"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/lineBetweenPlayerAndPoints_live"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_pts_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="35dp"
+						android:layout_marginLeft="35dp"
+						android:gravity="center"
+						android:text="@string/player_stats_pts_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/player_stats_live_rating_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_fg_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="26dp"
+						android:layout_marginLeft="26dp"
+						android:gravity="center"
+						android:text="@string/player_stats_fg_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/player_stats_live_pts_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_3fg_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="27dp"
+						android:layout_marginLeft="27dp"
+						android:gravity="center"
+						android:text="@string/player_stats_3fg_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/player_stats_live_fg_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_percentfg_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginLeft="30dp"
+						android:gravity="center"
+						android:text="@string/player_stats_percentfg_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/player_stats_live_3fg_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_reb_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginLeft="30dp"
+						android:gravity="center"
+						android:text="@string/player_stats_reb_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/player_stats_live_percentfg_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_ast_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginLeft="30dp"
+						android:gravity="center"
+						android:text="@string/player_stats_ast_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@id/player_stats_live_reb_value"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/player_stats_live_stl_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginLeft="30dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_live_ast_value"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.5" />
+
+					<TextView
+						android:id="@+id/player_stats_live_block_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="28dp"
+						android:layout_marginLeft="28dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_live_stl_value"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0.5" />
+
+					<TextView
+						android:id="@+id/player_stats_live_foul_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="29dp"
+						android:layout_marginLeft="29dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_live_block_value"
+						app:layout_constraintTop_toTopOf="parent"/>
+
+					<TextView
+						android:id="@+id/player_stats_live_turnover_value"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="24dp"
+						android:layout_marginLeft="24dp"
+						android:layout_marginEnd="10dp"
+						android:layout_marginRight="10dp"
+						android:gravity="center"
+						android:text="@string/player_stats_stl_value"
+						android:textSize="14sp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.0"
+						app:layout_constraintStart_toEndOf="@+id/player_stats_live_foul_value"
+						app:layout_constraintTop_toTopOf="parent"/>
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</FrameLayout>
+</HorizontalScrollView>
