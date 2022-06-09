@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +56,36 @@ public class FragmentTeamStats extends Fragment {
         }
     }
 
+	private Connector team_stats;
+	private TextView tName;
+	private TextView tPts, tFg;
+	private TextView t3Fg, tPercentfg;
+	private TextView tReb, tAst;
+	private TextView tStl,tBlock;
+	private TextView tFls, tTurnover;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_team_stats, container, false);
+		View view = inflater.inflate(R.layout.fragment_team_stats, container, false);
+
+		team_stats = new Connector(myIP.getIp(), "team-stats");
+
+		tName = view.findViewById(R.id.team_stats_teamName);
+		tPts = view.findViewById(R.id.team_stats_pts_value);
+		tFg = view.findViewById(R.id.team_stats_fg_value);
+		t3Fg = view.findViewById(R.id.team_stats_3fg_value);
+
+		tPercentfg = view.findViewById(R.id.team_stats_percentfg_value);
+		tReb = view.findViewById(R.id.team_stats_reb_value);
+		tAst = view.findViewById(R.id.team_stats_ast_value);
+		tStl = view.findViewById(R.id.team_stats_stl_value);
+		tBlock = view.findViewById(R.id.team_stats_block_value);
+
+		tFls = view.findViewById(R.id.team_stats_foul_value);
+		tTurnover = view.findViewById(R.id.team_stats_turnover_value);
+
+		return view;
     }
 }

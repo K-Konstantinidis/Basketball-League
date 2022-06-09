@@ -93,6 +93,7 @@ public class OkHttpHandler {
 	private String changeString(String s){
 		return "Gameweek "+s;
 	}
+
 	//code for League Table
 	ArrayList<LeagueRank> getDataforLeague(String url) throws Exception {
 		ArrayList<LeagueRank> Ranking = new ArrayList<LeagueRank>();

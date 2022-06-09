@@ -25,7 +25,7 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
     private String mParam1;
     private String mParam2;
 
-	private Match game;
+	private Connector game;
 
     public FragmentMatchOverviewStatsManager() {
         // Required empty public constructor
@@ -64,7 +64,7 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
                              Bundle savedInstanceState) {
 
 		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_match_overview_stats_manager, null);
-		game = new Match(myIP.getIp());
+		game = new Connector(myIP.getIp(),"match");
 
 		TextView team1 = root.findViewById(R.id.homeTeamName_statsManager);
 		TextView team2 = root.findViewById(R.id.awayTeamName_statsManager);
