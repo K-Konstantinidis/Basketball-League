@@ -208,6 +208,11 @@ def insert_matchups(conn,teams):
 
         for match in fixtures[i]:
             j+=1
+            if i==6 and j==3:
+                status = 1
+            elif i==6 and j>3:
+                status = 2
+
             db_cursor.execute("INSERT INTO game (championship_id, round_id, id, home_team_id, away_team_id, game_status) VALUES (%s, %s, %s, %s, %s, %s)", (fk_championship_id, round_id, j, match[0], match[1], status,))
                 #save changes
     conn.commit()
