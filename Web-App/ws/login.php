@@ -9,39 +9,24 @@ require_once '../resources/config.php';
 $login_status = -1;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-	if(isset($_POST['username']) && isset($_POST['password_sha256']) && !empty($_POST['username']) && !empty($_POST['password_sha256']))
-	{
+	if( isset($_POST['username']) && !empty($_POST['username']) &&
+		isset($_POST['password_sha256']) &&  !empty($_POST['password_sha256'])
+	) {
 		$username = $_POST['username'];
 		$password_sha256 = $_POST['password_sha256'];
 		
 		$link = connectDB();
-		$sql = 'SELECT username, password FROM user WHERE username = :username';
+		$sql = 'SELECT id FROM user WHERE username = :username AND password = :hashed_password';
 		
 		if($stmt = $link->prepare($sql)) {
 			// Bind and set the prepared statement
-			$stmt->bindParam(':username', $param_username, PDO::PARAM_STR);
-			
-			$param_username = $username;
+			$stmt->bindParam(':username', 		 $username,			PDO::PARAM_STR);
+			$stmt->bindParam(':hashed_password', $password_sha256,	PDO::PARAM_STR);
 
 			if($stmt->execute()) {
 				if($stmt->rowCount() == 1) {
-					// Get the results
-					if($row = $stmt->fetch()) {
-						$hashed_password = $row['password'];
-
-						//Correct credentials
-						if($password_sha256 === $hashed_password) {
-							$login_status = 1;
-						}
-						else {
-							// Password is invalid
-							$login_status = 0;
-						}
-					}
-					else {
-						// Failed to fetch the results
-						$login_status = -1;
-					}
+					// Correct credentials
+					$login_status = 1;
 				}
 				else {
 					// Username doesn't exist
@@ -59,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Set the body of the page to be JSON
-header("Content-Type: application/json");
+header('Content-Type: application/json');
 
 // Create the JSON
 $data = array();
