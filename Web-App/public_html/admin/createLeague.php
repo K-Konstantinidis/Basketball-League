@@ -90,7 +90,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 						echo '		<input type="checkbox" name="t[]" value="' . $row['id'] . '" class="custom-control-input" id=' . $row['id'] . '>' . "\n";
 						echo '		<span class="lead mb-3"> '. $row['name_en'] . '</span><br>' . "\n";
 						echo '		<label class="custom-control-label" for="'. $row['id'] . '">' . "\n";
-						echo '			<img src="https://source.unsplash.com/640x426/" alt="team- '. $row['id'] . '" class="img-fluid" />' . "\n"; // $row['logo_path']
+						echo '			<img src="'. $_SERVER['HTTP_HOST'] . $row['logo_path'] . '" alt="team- '. $row['id'] . '" class="img-fluid" />' . "\n";
 						echo '		</label>' . "\n";
 						echo '	</div>' . "\n";
 						echo '</div>' . "\n";
