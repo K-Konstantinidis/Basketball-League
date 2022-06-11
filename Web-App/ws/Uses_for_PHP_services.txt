@@ -1,0 +1,94 @@
+Services per fragment
+
+STATS MANAGER
+
+--LOGIN
+	login.php
+	
+--HOME FRAGMENT (matches for current gameweek)
+	
+	getCurrentGameweek.php (redirects to getGameweekMatches.php with the given championship id)
+		getCurrentGameweek.php?cid=1
+	
+	getGameweekMatches.php (for games on a given round, called upon choosing a round from spinner)
+		getGameweekMatches.php?cid=1&rid=2
+	
+--MATCH OVERVIEW
+
+-Before match starts
+
+Team player spinner:
+	getTeamPlayers.php
+		getTeamPlayers.php?lang=gr&tid=2
+
+-On game start
+
+	startGame.php
+		startGame.php?cid=1&rid=7&gid=4&thid=6&taid=4
+
+-While game is running
+
+	Top bar (total score), detailed score (ongoing match, or right after match finishes):
+	getMatchDetailedScore.php
+		getMatchDetailedScore.php?lang=gr&cid=1&rid=7&gid=3
+		
+	Updating stats upon new action: 
+	updateStats.php
+		updateStats.php?cid=1&rid=7&gid=3&pid=15&q=2&(action_param=value)
+
+-When match ends
+	{not ready yet}
+	
+
+
+
+
+USER
+
+--HOME FRAGMENT (matches for any given gameweek)
+	getAllGameweeks.php (for round IDs)
+		getAllGameweeks.php?cid=1
+		
+	getGameweekMatches.php (for games on a given round, called upon choosing a round from spinner)
+		getGameweekMatches.php?cid=1&rid=2
+		
+--LEAGUE RANKING
+	getLeagueRanking.php
+		getLeagueRanking.php?lang=gr&cid=1
+		
+--Championship team stats
+	getChampionshipTeamStats.php
+		getChampionshipTeamStats.php?lang=gr&cid=1
+		
+--Championship player stats
+	getChampionshipPlayerStats.php
+		getChampionshipPlayerStats.php?lang=gr&cid=1
+		
+--Top 5
+	getRoundTop5.php
+		getRoundTop5.php?lang=gr&cid=1&rid=5
+		
+--MATCH OVERVIEW
+
+Top bar (total score), detailed score (ongoing match, or right after match finishes):
+	getMatchDetailedScore.php
+		getMatchDetailedScore.php?lang=gr&cid=1&rid=7&gid=3
+
+Live team stats:
+	getOngoingMatchTeamStats.php
+		getOngoingMatchTeamStats.php?lang=gr&cid=1&rid=7&gid=3
+		
+Live player stats:
+	getOngoingMatchPlayerStats.php
+		getOngoingMatchPlayerStats.php?lang=gr&cid=1&rid=7&gid=3
+	
+Finished match team stats:
+	getFinishedMatchTeamStats.php
+		getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2
+		
+Finished match player stats:
+	getFinishedMatchPlayerStats.php
+		getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=5&gid=2
+		
+	
+

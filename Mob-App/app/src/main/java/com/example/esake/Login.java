@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity {
 				TextView username = (TextView) findViewById(R.id.username);
 				TextView password = (TextView) findViewById(R.id.password);
 
-				startActivity(new Intent(Login.this, HomeActivity.class));
+				//startActivity(new Intent(Login.this, HomeActivity.class));
 
 				//Try to log in
 				int status = login(username.getText().toString(), password.getText().toString());
