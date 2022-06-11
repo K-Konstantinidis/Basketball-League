@@ -66,8 +66,8 @@ public class OkHttpHandler {
 	}
 
 	//Code for Game weeks
-	ArrayList<Day> getGameWeeks(String url) throws Exception {
-		ArrayList<Day> weeks = new ArrayList<>();
+	ArrayList<GameWeek> getGameWeeks(String url) throws Exception {
+		ArrayList<GameWeek> weeks = new ArrayList<>();
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
 		Request request = new Request.Builder().url(url).method("POST", body).build();
@@ -80,7 +80,7 @@ public class OkHttpHandler {
 				JSONObject obj = jsonArray.getJSONObject(i);
 				String round = obj.getString("round_id");
 				round = changeString(round);
-				Day week = new Day(round);
+				GameWeek week = new GameWeek(round);
 				weeks.add(week);
 			}
 		} catch (JSONException e) {
@@ -90,6 +90,7 @@ public class OkHttpHandler {
 		return weeks;
 	}
 
+	//function to change the String
 	private String changeString(String s){
 		return "Gameweek "+s;
 	}
@@ -130,12 +131,39 @@ public class OkHttpHandler {
 		return Ranking;
 	}
 
-
-	public void logHistory(String url) throws Exception {
+	ArrayList<Top5> getDataForTop5(String url) throws Exception {
+		ArrayList<Top5> top5 = new ArrayList<>();
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
 		Request request = new Request.Builder().url(url).method("POST", body).build();
 		Response response = client.newCall(request).execute();
-		System.out.println("My Response: " + response);
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while(keys.hasNext()) {
+				String id = keys.next();
+				String logo = json.getJSONObject(id).getString("team_logo");
+				String name= json.getJSONObject(id).getString("surname");
+				String pos = json.getJSONObject(id).getString("position");
+				String points = json.getJSONObject(id).getString("total_points");
+				String rating = json.getJSONObject(id).getString("rating");
+
+
+				//Code to add from Json to Screen
+				Top5 newTop5 = new Top5(name,pos,Integer.parseInt(rating),Integer.parseInt(points));
+				top5.add(newTop5);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return top5;
 	}
+
+
+
 }

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -63,10 +64,13 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private GameWeek match;
 
 //    ImageView myImage;
 //    private String imageUri;
+	private Connector top5;
+	private ImageView imageTop5;
+	private TextView nameTop5, posTop5, ratingTop5, pointsTop5;
+
 
 
     @Override
@@ -76,11 +80,6 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         //Get the spinner from the xml.
         Spinner dropdown = (Spinner) root.findViewById(R.id.spinner);
 
-
-        //Create a list of items for the spinner.
-        //String[] items = new String[]{"Week 1", "Week 2", "Week 3", "etc"};
-
-		//match = new GameWeek(myIP.getIp());
         super.onCreate(savedInstanceState);
 
         //Create an adapter to describe how the items are displayed, adapters are used in several places in android.
@@ -96,6 +95,19 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 
         //Picasso.with(getApplicationContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
         // Picasso resizing will be useful somewhere
+
+		top5 = new Connector(myIP.getIp(), "top5");
+
+		imageTop5 = root.findViewById(R.id.imgTop5);
+		nameTop5 = root.findViewById(R.id.nameTop5);
+		posTop5 = root.findViewById(R.id.positionTop5);
+		ratingTop5 = root.findViewById(R.id.ratingTop5);
+
+//		imageTop5.setImageResource();
+		nameTop5.setText(top5.getTop5Name(0));
+		posTop5.setText(top5.getTop5Position(0));
+		ratingTop5.setText(top5.getTop5Rating(0));
+
         return root;
     }
 
