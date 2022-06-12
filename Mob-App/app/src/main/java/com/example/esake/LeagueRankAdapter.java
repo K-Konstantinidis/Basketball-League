@@ -27,7 +27,7 @@ public class LeagueRankAdapter extends RecyclerView.Adapter<LeagueRankAdapter.Le
 	@Override
 	public LeagueRankHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		LayoutInflater inflater = LayoutInflater.from(mCtx);
-		View view = inflater.inflate(R.layout.league_table_row, null);
+		View view = inflater.inflate(R.layout.row_league_table, null);
 		return new LeagueRankHolder(view);
 	}
 
