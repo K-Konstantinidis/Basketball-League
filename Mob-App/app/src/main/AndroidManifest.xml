@@ -38,7 +38,7 @@
 			android:name=".MainActivity"
 			android:exported="false" >
 		</activity>
-		<!--	Run tabbed pages -->
+<!--	Run tabbed pages -->
 		<activity
 			android:name=".Tabbed_User"
 			android:exported="false"

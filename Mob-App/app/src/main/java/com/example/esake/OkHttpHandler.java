@@ -107,13 +107,11 @@ public class OkHttpHandler {
 		Request request = new Request.Builder().url(url).method("POST", body).build();
 		Response response = client.newCall(request).execute();
 		String data = response.body().string();
-		//System.out.println("My Response: " + data);
 		try {
 			JSONObject json = new JSONObject(data);
 			Iterator<String> keys = json.keys();
 
 			//Getting json from WS
-
 			while(keys.hasNext()) {
 				String id = keys.next();
 				String logo_path = json.getJSONObject(id).getString("logo");
@@ -124,8 +122,8 @@ public class OkHttpHandler {
 				String Losses = json.getJSONObject(id).getString("losses");
 
 				//Code to add from Json to Screen
-				LeagueRank rank = new LeagueRank(logo_path,name_en,	Integer.parseInt(MatchesPlayed),
-					Integer.parseInt(Points),Integer.parseInt(Wins),Integer.parseInt(Losses));
+				LeagueRank rank = new LeagueRank(logo_path, name_en, Integer.parseInt(MatchesPlayed),
+					Integer.parseInt(Points), Integer.parseInt(Wins), Integer.parseInt(Losses));
 				Ranking.add(rank);
 			}
 		} catch (JSONException e) {
