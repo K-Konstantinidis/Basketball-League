@@ -184,6 +184,8 @@ public class Connector {
 	public ArrayList<LeagueRank> getRanking(){return Ranking;}
 	//Pass the List with the player stats of a finished game
 	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
+	//Pass the List with the player games
+	public ArrayList<GameWeek> getMatches(){return matches;}
 
 	//functions for top5
 //	public String getTop5Logo(int id){
