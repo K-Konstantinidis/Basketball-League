@@ -49,6 +49,7 @@ public class FragmentUserHome extends Fragment {
 	private ImageView logoHome, logoAway;
 	private TextView homeScore, awayScore;
 	private String round_id;
+	private int game_status;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +68,7 @@ public class FragmentUserHome extends Fragment {
 		//Selected round
 		String round = gameweekSpinner.getSelectedItem().toString();
 		round_id = round.substring(round.length() - 1);
+		int roundID = Integer.parseInt(round_id);
 
 		gameweekSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
@@ -75,6 +77,7 @@ public class FragmentUserHome extends Fragment {
 
 				String round = gameweekSpinner.getSelectedItem().toString();
 				round_id = round.substring(round.length() - 1);
+				int roundID = Integer.parseInt(round_id);
 
 				weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
@@ -84,8 +87,8 @@ public class FragmentUserHome extends Fragment {
 				homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
 				awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
 
-				homeScore.setText(weekMatches.getHomeScore(0));
-				awayScore.setText(weekMatches.getAwayScore(0));
+				homeScore.setText(weekMatches.getHomeScore(roundID));
+				awayScore.setText(weekMatches.getAwayScore(roundID));
 
 				int game_status = weekMatches.getGameStatus(0);
 			}
@@ -104,12 +107,10 @@ public class FragmentUserHome extends Fragment {
 		homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
 		awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
 
-		homeScore.setText(weekMatches.getHomeScore(0));
-		awayScore.setText(weekMatches.getAwayScore(0));
+		homeScore.setText(weekMatches.getHomeScore(roundID));
+		awayScore.setText(weekMatches.getAwayScore(roundID));
 
-		int game_status = weekMatches.getGameStatus(0);
-
-
+		game_status = weekMatches.getGameStatus(0);
 
 		// Get the button
 		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
@@ -117,6 +118,13 @@ public class FragmentUserHome extends Fragment {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(getContext(), Tabbed_User.class);
+				intent.putExtra("round", round_id);
+				intent.putExtra("status", game_status);
+
+				String game;
+				game = weekMatches.getGameId(Integer.parseInt(round_id));
+				intent.putExtra("game", Integer.parseInt(game));
+
 				startActivity(intent);
 			}
 		});

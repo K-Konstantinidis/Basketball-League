@@ -1,6 +1,7 @@
 package com.example.esake;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -12,6 +13,9 @@ import com.google.android.material.tabs.TabLayout;
 public class Tabbed_User extends AppCompatActivity {
 
     private ActivityTabbedUserBinding binding;
+    private Connector tabUser;
+    private TextView homeScore, awayScore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +23,42 @@ public class Tabbed_User extends AppCompatActivity {
         binding = ActivityTabbedUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
 
-        viewPager.setAdapter(sectionsPagerAdapter);
+		Bundle b = new Bundle();
+		b = getIntent().getExtras();
+		String round = b.getString("round");
+		int gameStatus = b.getInt("status");
+		int gameID = b.getInt("game");
+
+		String url = "getMatchDetailedScore.php?lang=gr&cid=1&rid="+round+"&gid="+
+			String.valueOf(gameID);
+
+		tabUser = new Connector(myIP.getIp(),"tabbed-User",url);
+
+		homeScore = findViewById(R.id.home_team_score_user);
+		awayScore = findViewById(R.id.away_team_score_user);
+
+		homeScore.setText(tabUser.getOverviewScore(0));
+		awayScore.setText(tabUser.getOverviewScore(1));
+
+		FragmentMatchOverviewUser viewUser = FragmentMatchOverviewUser.newInstance(round,
+			String.valueOf(gameStatus),String.valueOf(gameID));
+
+		FragmentPlayerStatsLiveUser playerS = FragmentPlayerStatsLiveUser.newInstance(round,
+			String.valueOf(gameStatus),String.valueOf(gameID));
+		FragmentTeamStatsLiveUser teamS = FragmentTeamStatsLiveUser.newInstance(round,
+			String.valueOf(gameStatus),String.valueOf(gameID));
+
+
+		sectionsPagerAdapter.AddFragment(viewUser,"Game");
+		sectionsPagerAdapter.AddFragment(teamS, "Team Stats");
+		sectionsPagerAdapter.AddFragment(playerS, "Player Stats");
+
+		viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
     }
+
 }

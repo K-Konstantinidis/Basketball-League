@@ -19,10 +19,12 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+	private static final String ARG_PARAM3 = "param3";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+	private String mParam3;
 
     public FragmentPlayerStatsLiveUser() {
         // Required empty public constructor
@@ -37,11 +39,12 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
      * @return A new instance of fragment FragmentPlayerStatsLiveUser.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentPlayerStatsLiveUser newInstance(String param1, String param2) {
+    public static FragmentPlayerStatsLiveUser newInstance(String param1, String param2, String param3) {
         FragmentPlayerStatsLiveUser fragment = new FragmentPlayerStatsLiveUser();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+		args.putString(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,6 +55,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+			mParam3 = getArguments().getString(ARG_PARAM3);
         }
     }
 
@@ -69,10 +73,13 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
         // Inflate the layout for this fragment
 		View view;
 
-		if(true){
+		//normally == 0 here
+		if(Integer.parseInt(mParam2)==0){
 			 view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);
 
-			finished_stats = new Connector(myIP.getIp(), "player-finished-stats");
+			 String url = "getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=" + mParam1+ "&gid=" + mParam3;
+
+			finished_stats = new Connector(myIP.getIp(), "player-finished-stats", url);
 
 			pName = view.findViewById(R.id.player_stats_live_playerName);
 			pRating = view.findViewById(R.id.player_stats_live_rating_value);
@@ -126,9 +133,6 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 			pFls = view.findViewById(R.id.player_stats_live_foul_value);
 			pTurnover = view.findViewById(R.id.player_stats_live_turnover_value);
 		}
-
-
-
 
 		return view;
     }

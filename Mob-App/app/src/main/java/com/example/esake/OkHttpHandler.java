@@ -43,16 +43,16 @@ public class OkHttpHandler {
 				//delete this if you add image code
 
 				String gameid = keys.next();
-				String home_team = json.getJSONObject(gameid).getString("home_team");
-				String home_teamscore = json.getJSONObject(gameid).getString("home_team_score");
-				String away_team = json.getJSONObject(gameid).getString("away_team");
-				String away_teamscore = json.getJSONObject(gameid).getString("away_team_score");
+//				String home_team = json.getJSONObject(gameid).getString("name");
+				String home_teamscore = json.getJSONObject(gameid).getString("total_score");
+//				String away_team = json.getJSONObject(gameid).getString("away_team");
+//				String away_teamscore = json.getJSONObject(gameid).getString("away_team_score");
 
 				int homeScore = 0;
 				int awayScore = 0;
 				homeScore = Integer.parseInt(home_teamscore);
-				awayScore = Integer.parseInt(away_teamscore);
-				Game newGame = new Game(gameid,homeScore,awayScore,home_team,away_team);
+//				awayScore = Integer.parseInt(away_teamscore);
+				Game newGame = new Game(gameid,homeScore,awayScore,"home_team","away_team");
 
 				game.add(newGame);
 

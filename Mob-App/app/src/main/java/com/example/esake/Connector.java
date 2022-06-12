@@ -10,6 +10,7 @@ public class Connector {
 	private ArrayList<PlayerStats> fpstats = new ArrayList<>();
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
+	private ArrayList<Game> gameOverview = new ArrayList<>();
 
 	public Connector(String ip, String string){
 		if(string.equals("player-finished-stats")) {
@@ -82,7 +83,7 @@ public class Connector {
 	public Connector(String ip,String string, String param) {
 
 		if (string.equals("player-finished-stats")) {
-			String url = "http://" + ip + "/ws/getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=5&gid=2";
+			String url = "http://" + ip +"/ws/"+ param;
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				fpstats = okHttpHandler.getDataForFPlayers(url);
@@ -97,8 +98,18 @@ public class Connector {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (string.equals("team-finished-stats")) {
-			String url = "http://" + ip + "/ws/getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2";
+
+		} else if (string.equals("tabbed-User")) {
+			String url = "http://" + ip + "/ws/"+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				gameOverview = okHttpHandler.getDataforMatches(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}else if (string.equals("team-finished-stats")) {
+			String url = "http://" + ip + "/ws/"+param;
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				ftstats = okHttpHandler.getDataForFTeams(url);
@@ -151,6 +162,9 @@ public class Connector {
 		return temp;
 	}
 
+	//functions for game overview User
+	public String getOverviewScore(int id){return String.valueOf(this.gameOverview.get(id).getScore1());}
+
 	//functions for game Week Matches
 
 //	public String getHomeLogo(int id){
@@ -159,6 +173,7 @@ public class Connector {
 //	public String getAwayLogo(int id){
 //		return this.matches.get(id);
 //	}
+	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
 	public String getAwayScore(int id){
 		return this.matches.get(id).getAwayScore();
