@@ -55,7 +55,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
         }
     }
 
-	private Connector live_stats;
+	private Connector live_stats, finished_stats;
 	private TextView pName, pRating;
 	private TextView pPts, pFg;
 	private TextView p3Fg, pPercentfg;
@@ -72,7 +72,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 		if(true){
 			 view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);
 
-			live_stats = new Connector(myIP.getIp(), "player-live-stats");
+			finished_stats = new Connector(myIP.getIp(), "player-finished-stats");
 
 			pName = view.findViewById(R.id.player_stats_live_playerName);
 			pRating = view.findViewById(R.id.player_stats_live_rating_value);
@@ -88,6 +88,23 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 
 			pFls = view.findViewById(R.id.player_stats_live_foul_value);
 			pTurnover = view.findViewById(R.id.player_stats_live_turnover_value);
+
+			pName.setText(finished_stats.getfinishedPlayerSurname(0));
+			pRating.setText(finished_stats.getfinishedPlayerRating(0));
+			pPts.setText(finished_stats.getfinishedPlayerTotal_points(0));
+			pFg.setText(finished_stats.getfinishedPlayerShots_made(0));
+			p3Fg.setText(finished_stats.getfinishedPlayerPerc_3_in(0));
+
+			pPercentfg.setText(finished_stats.getfinishedPlayerPerc_freethrows_in(0));
+			pReb.setText(finished_stats.getfinishedPlayerTotal_rebounds(0));
+			pAst.setText(finished_stats.getfinishedPlayerTotal_assists(0));
+			pStl.setText(finished_stats.getfinishedPlayerTotal_steals(0));
+			pBlock.setText(finished_stats.getfinishedPlayerTotal_blocks(0));
+
+			pFls.setText(finished_stats.getfinishedPlayerTotal_fouls(0));
+			pTurnover.setText(finished_stats.getfinishedPlayerTotal_turnovers(0));
+
+
 		}
 		else{
 			view = inflater.inflate(R.layout.fragment_player_stats_live_user, container, false);

@@ -1,13 +1,12 @@
 package com.example.esake;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,13 +67,10 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
 
 		TextView team1 = root.findViewById(R.id.homeTeamName_statsManager);
 		TextView team2 = root.findViewById(R.id.awayTeamName_statsManager);
-		team1.setText(game.getTeamList(2,true));
-		team2.setText(game.getTeamList(2,false));
 
 		TextView score1 = root.findViewById(R.id.SHomeScore_statsManager);
 		TextView score2 = root.findViewById(R.id.SAwayScore_statsManager);
-		score1.setText(game.getScoreList(2, true));
-		score2.setText(game.getScoreList(2,false));
+
 
     	return root;
     }

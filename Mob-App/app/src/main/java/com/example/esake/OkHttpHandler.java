@@ -164,6 +164,61 @@ public class OkHttpHandler {
 		return top5;
 	}
 
+	//function for Finished Matches
+	ArrayList<PlayerStats> getDataForFinishedMatches(String url) throws Exception {
+		ArrayList<PlayerStats> playerStats = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while(keys.hasNext()) {
+				String id = keys.next();
+//				String logo = json.getJSONObject(id).getString("logo");
+				String surname= json.getJSONObject(id).getString("surname");
+				String total_points = json.getJSONObject(id).getString("total_points");
+				String rating = json.getJSONObject(id).getString("rating");
+				String shots_made = json.getJSONObject(id).getString("shots_made");
+				String perc_2_in = json.getJSONObject(id).getString("perc_2_in");
+				String perc_3_in = json.getJSONObject(id).getString("perc_3_in");
+				String perc_freethrows_in = json.getJSONObject(id).getString("perc_freethrows_in");
+				String total_rebounds = json.getJSONObject(id).getString("total_rebounds");
+				String total_offensive_rebounds = json.getJSONObject(id).getString("total_offensive_rebounds");
+				String total_defensive_rebounds = json.getJSONObject(id).getString("total_defensive_rebounds");
+				String total_assists = json.getJSONObject(id).getString("total_assists");
+				String total_blocks = json.getJSONObject(id).getString("total_blocks");
+				String total_steals = json.getJSONObject(id).getString("total_steals");
+				String total_turnovers = json.getJSONObject(id).getString("total_turnovers");
+				String total_fouls = json.getJSONObject(id).getString("total_fouls");
+
+
+
+				//Code to add from Json to Screen
+				PlayerStats pStats = new PlayerStats(surname,Integer.parseInt(total_points),
+					Integer.parseInt(rating),
+					Integer.parseInt(shots_made),Integer.parseInt(perc_2_in),
+					Integer.parseInt(perc_3_in),Integer.parseInt(perc_freethrows_in),
+					Integer.parseInt(total_rebounds),Integer.parseInt(total_offensive_rebounds),
+					Integer.parseInt(total_defensive_rebounds),Integer.parseInt(total_assists),
+					Integer.parseInt(total_blocks),Integer.parseInt(total_steals),
+					Integer.parseInt(total_turnovers),
+					Integer.parseInt(total_fouls));
+				playerStats.add(pStats);
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return playerStats;
+	}
+
 
 
 }
