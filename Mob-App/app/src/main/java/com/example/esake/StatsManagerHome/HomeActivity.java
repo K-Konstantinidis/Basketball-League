@@ -39,7 +39,5 @@ public class HomeActivity extends AppCompatActivity {
 		text1 = findViewById(R.id.textView);
 		text3 = findViewById(R.id.textView3);
 
-		text1.setText(matchList.getScoreList(0, true));
-		text3.setText(matchList.getScoreList(0,false));
     }
 }
