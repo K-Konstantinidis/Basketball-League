@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$password_sha256 = $_POST['password_sha256'];
 		
 		$link = connectDB();
-		$sql = 'SELECT id FROM user WHERE username = :username AND password = :hashed_password';
+		$sql = 'SELECT * FROM user WHERE username = :username AND password = :hashed_password';
 		
 		if($stmt = $link->prepare($sql)) {
 			// Bind and set the prepared statement

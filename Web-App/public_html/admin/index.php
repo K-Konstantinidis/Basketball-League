@@ -7,8 +7,8 @@ require_once '../../resources/config.php';
 $currPage = 'start';
 
 // If the user is not logged in, he gets redirected at the loggin page.
-if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
-	header('Location: ../login/?lr');
+if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
+	header('Location: ' . AREF_LOGIN . 'lr');
 	die();
 }
 
@@ -46,23 +46,23 @@ if(!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"] === true) {
 			<br>
 
 			<div class="mb-5">
-				<p>Προτού ξεκινήσετε οτιδήποτε, θα πρέπει να έχετε δημιουργήσει το πρωτάθλημά σας</p>
-				<a href="./createLeague.php" class="btn btn-success" role="button">Δημιουργία Πρωταθλήματος</a>
+				<p>Προτού ξεκινήσετε οτιδήποτε, θα πρέπει να έχετε δημιουργήσει ομάδες</p>
+				<a href="<?php echo AREF_ADMIN_CREATE_TEAM ?>" class="btn btn-primary" role="button">Δημιουργία Ομάδας</a>
 			</div>
 
 			<div class="mb-5">
-				<p>Αφετέρου, πρέπει να δημιουργήσετε παίκτες που έπειτα θα υπάγονται σε ομάδες</p>
-				<a href="./createPlayer.php" class="btn btn-primary" role="button">Δημιουργία Παίκτη</a>
+				<p>Αφετέρου, πρέπει να δημιουργήσετε παίκτες που θα υπάγονται στις ομάδες</p>
+				<a href="<?php echo AREF_ADMIN_CREATE_PLAYER ?>" class="btn btn-primary" role="button">Δημιουργία Παίκτη</a>
 			</div>
 
 			<div class="mb-5">
-				<p>Έπειτα, πρέπει να δημιουργήσετε τις ομάδες</p>
-				<a href="./createTeam.php" class="btn btn-primary" role="button">Δημιουργία Ομάδας</a>
+			<p>Και τέλος, θα μπορείτε να δημιουργήσετε και να κληρώσετε το πρωτάθλημα!</p>
+				<a href="<?php echo AREF_ADMIN_CREATE_LEAGUE ?>" class="btn btn-warning" role="button">Δημιουργία Πρωταθλήματος</a>
 			</div>
 
 			<div class="mb-5">
-			<p>Και τέλος, θα μπορείτε να κληρώσετε το πρωτάθλημα!</p>
-					<a href="./drawLeague.php" class="btn btn-warning" role="button">Κλήρωση Πρωταθλήματος</a>
+			<p>Επίσης, μπορείτε να δείτε τα διαθέσιμα πρωταθλήματα, και να εκτελέσετε διάφορες ενέργειες σε αυτά</p>
+				<a href="<?php echo AREF_ADMIN_AVAILABLE_LEAGUES ?>" class="btn btn-success" role="button">Διαθέσιμα Πρωταθλήματα</a>
 			</div>
 
 			<br>
