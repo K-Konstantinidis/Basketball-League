@@ -210,209 +210,16 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_subs_lineup_statsManager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_subs_statsManager"
-				app:layout_constraintVertical_bias="0.0">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Spinner
-                        android:id="@+id/spinner1.6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0" />
-
-					<Spinner
-						android:id="@+id/spinner2.6"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:contentDescription="@string/spinner"
-						android:minHeight="48dp"
-						android:spinnerMode="dropdown"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintHorizontal_bias="0.9"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent"
-						app:layout_constraintVertical_bias="0.0" />
-
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner1.7"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner1.6"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner1.8"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner1.7"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner1.9"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner1.8"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner1.10"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner1.9"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner1.11"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner1.10"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner1.12"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner1.11"-->
-<!--                        app:layout_constraintVertical_bias="0.01"/>-->
-
-
-
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner2.7"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.9"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner2.6"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner2.8"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.9"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner2.7"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner2.9"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.9"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner2.8"-->
-<!--                        app:layout_constraintVertical_bias="0.01" />-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner2.10"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.9"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner2.9"-->
-<!--                        app:layout_constraintVertical_bias="0.01"/>-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner2.11"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.9"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner2.10"-->
-<!--                        app:layout_constraintVertical_bias="0.01"/>-->
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spinner2.12"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:contentDescription="@string/spinner"-->
-<!--                        android:minHeight="48dp"-->
-<!--                        android:spinnerMode="dropdown"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintHorizontal_bias="0.9"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/spinner2.11"/>-->
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recViewSubs"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintVertical_bias="0.0"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/linear_subs_statsManager" />
 
 			<LinearLayout
 				android:layout_width="wrap_content"
@@ -421,7 +228,7 @@
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/card_subs_lineup_statsManager"
+				app:layout_constraintTop_toBottomOf="@+id/recViewSubs"
 				app:layout_constraintVertical_bias="0.0">
 
 				<Button
