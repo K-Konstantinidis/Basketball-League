@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Connector {
 
+	private ArrayList<GameWeek> matches = new ArrayList<>();
 	private ArrayList<GameWeek> weeks = new ArrayList<>();
 	private ArrayList<LeagueRank> Ranking = new ArrayList<>();
 	private ArrayList<PlayerStats> fpstats = new ArrayList<>();
@@ -20,7 +21,7 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-		if(string.equals("player-live-stats")) {
+		else if(string.equals("player-live-stats")) {
 			String url = "http://" + ip + "/ws/.php";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
@@ -29,7 +30,7 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-		if(string.equals("team-finished-stats")) {
+		else if(string.equals("team-finished-stats")) {
 			String url = "http://" + ip + "/ws/getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
@@ -38,8 +39,17 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
+		else if(string.equals("week-matches")){
+			String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=2";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				matches = okHttpHandler.getGameweekMatches(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		else if(string.equals("gameweeks")){
-			String url = "http://" + ip + "/ws/populateRounds.php";
+			String url = "http://" + ip + "/ws/getAllGameweeks.php?cid=1";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				weeks = okHttpHandler.getGameWeeks(url);
@@ -68,6 +78,11 @@ public class Connector {
 
 	}
 
+	//maybe we will use this to add the round instead of the above
+	public Connector(String ip,String type, String round){
+
+	}
+
 
 	//functions for game weeks
 
@@ -79,19 +94,30 @@ public class Connector {
 		return temp;
 	}
 
-	//functions for league
+	//functions for game Week Matches
 
+//	public String getHomeLogo(int id){
+//		return this.matches.get(id);
+//	}
+//	public String getAwayLogo(int id){
+//		return this.matches.get(id);
+//	}
+	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
+	public String getAwayScore(int id){
+		return this.matches.get(id).getAwayScore();
+	}
+	public int getGameStatus(int id){
+		return this.matches.get(id).getGameStatus();
+	}
+
+	//functions for league
 	public String getLeagueRankTeamLogo(int teamid){
 		return this.Ranking.get(teamid).getTeamlogo();
 	}
-
 	public String getLeagueRankName(int teamid){
 		return this.Ranking.get(teamid).getName();
 	}
-
-	public String getLeagueRankMatchesPlayed(int teamid){
-		return this.Ranking.get(teamid).getMatchesPlayed();
-	}
+	public String getLeagueRankMatchesPlayed(int teamid){return this.Ranking.get(teamid).getMatchesPlayed();}
 	public String getLeagueRankPoints(int teamid){
 		return this.Ranking.get(teamid).getPoints();
 	}

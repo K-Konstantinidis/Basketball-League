@@ -2,7 +2,6 @@ package com.example.esake;
 
 import android.os.StrictMode;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -74,14 +73,20 @@ public class OkHttpHandler {
 		Response response = client.newCall(request).execute();
 		String data = response.body().string();
 		try {
-			JSONObject jObj = new JSONObject(data);
-			JSONArray jsonArray = jObj.getJSONArray("rounds");
-			for (int i=0; i<jsonArray.length(); i++){
-				JSONObject obj = jsonArray.getJSONObject(i);
-				String round = obj.getString("round_id");
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while(keys.hasNext()) {
+				String id = keys.next();
+				String round = json.getJSONObject(id).getString("id").toString();
+
 				round = changeString(round);
-				GameWeek week = new GameWeek(round);
-				weeks.add(week);
+
+				GameWeek newWeek = new GameWeek(round);
+				weeks.add(newWeek);
+
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -129,6 +134,40 @@ public class OkHttpHandler {
 		}
 
 		return Ranking;
+	}
+
+	ArrayList<GameWeek> getGameweekMatches(String url) throws Exception {
+		ArrayList<GameWeek> gameWeeks = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while(keys.hasNext()) {
+				String id = keys.next();
+				String gameId = json.getJSONObject(id).getString("game");
+				String logoHome = json.getJSONObject(id).getString("home_logo");
+				String logoAway = json.getJSONObject(id).getString("away_logo");
+				String homeScore= json.getJSONObject(id).getString("home_team_score");
+				String awayScore = json.getJSONObject(id).getString("away_team_score");
+				String gameStatus = json.getJSONObject(id).getString("game_status");
+
+				//Code to add from Json to Screen
+				GameWeek Gweek = new GameWeek(Integer.parseInt(gameId),Integer.parseInt(homeScore),
+					Integer.parseInt(awayScore), Integer.parseInt(gameStatus));
+				gameWeeks.add(Gweek);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return gameWeeks;
 	}
 
 	ArrayList<Top5> getDataForTop5(String url) throws Exception {
