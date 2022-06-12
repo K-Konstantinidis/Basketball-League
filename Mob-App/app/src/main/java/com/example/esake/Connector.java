@@ -8,6 +8,7 @@ public class Connector {
 	private ArrayList<GameWeek> weeks = new ArrayList<>();
 	private ArrayList<LeagueRank> Ranking = new ArrayList<>();
 	private ArrayList<PlayerStats> fpstats = new ArrayList<>();
+	private ArrayList<PlayerStats> lpstats = new ArrayList<>();
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
 
@@ -167,8 +168,10 @@ public class Connector {
 		return this.matches.get(id).getGameStatus();
 	}
 
-	//Pass the List with the ranking
+	//Pass the List with the ranking of the teams (Table Ranking)
 	public ArrayList<LeagueRank> getRanking(){return Ranking;}
+	//Pass the List with the player stats of a finished game
+	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
 
 	//functions for top5
 //	public String getTop5Logo(int id){
