@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Connector {
 
-	private ArrayList<Game> match = new ArrayList<>();
 	private ArrayList<GameWeek> weeks = new ArrayList<>();
 	private ArrayList<LeagueRank> Ranking = new ArrayList<>();
 	private ArrayList<PlayerStats> fpstats = new ArrayList<>();
+	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
 
 	public Connector(String ip, String string){
@@ -15,7 +15,7 @@ public class Connector {
 			String url = "http://" + ip + "/ws/getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=5&gid=2";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				fpstats = okHttpHandler.getDataForFinishedMatches(url);
+				fpstats = okHttpHandler.getDataForFPlayers(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -30,10 +30,10 @@ public class Connector {
 			}
 		}
 		if(string.equals("team-finished-stats")) {
-			String url = "http://" + ip + "/ws/.php";
+			String url = "http://" + ip + "/ws/getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				//weeks = okHttpHandler.getGameWeeks(url);
+				ftstats = okHttpHandler.getDataForFTeams(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -133,4 +133,21 @@ public class Connector {
 	public String getfinishedPlayerTotal_steals(int id) {return this.fpstats.get(id).getTotal_steals();}
 	public String getfinishedPlayerTotal_turnovers(int id) {return this.fpstats.get(id).getTotal_turnovers();}
 	public String getfinishedPlayerTotal_fouls(int id) {return this.fpstats.get(id).getTotal_fouls();}
+
+	//functions for finished Team Stats
+	public String getfinishedTeamName(int id) {return this.ftstats.get(id).getName();}
+	public String getfinishedTeamTotal_points(int id) {return this.ftstats.get(id).getTotal_points();}
+	public String getfinishedTeamShots_made(int id) {return this.ftstats.get(id).getShots_made();}
+	public String getfinishedTeamPerc_2_in(int id) {return this.ftstats.get(id).getPerc_2_in();}
+	public String getfinishedTeamPerc_3_in(int id) {return this.ftstats.get(id).getPerc_3_in();}
+	public String getfinishedTeamPerc_freethrows_in(int id) {return this.ftstats.get(id).getPerc_freethrows_in();}
+	public String getfinishedTeamTotal_rebounds(int id) {return this.ftstats.get(id).getTotal_rebounds();}
+	public String getfinishedTeamTotal_offensive_rebounds(int id) {return this.ftstats.get(id).getTotal_offensive_rebounds();}
+	public String getfinishedTeamTotal_defensive_rebounds(int id) {return this.ftstats.get(id).getTotal_defensive_rebounds();}
+	public String getfinishedTeamTotal_assists(int id) {return this.ftstats.get(id).getTotal_assists();}
+	public String getfinishedTeamTotal_blocks(int id) {return this.ftstats.get(id).getTotal_blocks();}
+	public String getfinishedTeamTotal_steals(int id) {return this.ftstats.get(id).getTotal_steals();}
+	public String getfinishedTeamTotal_turnovers(int id) {return this.ftstats.get(id).getTotal_turnovers();}
+	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getTotal_fouls();}
 }
+
