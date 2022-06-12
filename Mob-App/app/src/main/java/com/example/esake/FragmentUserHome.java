@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,6 +48,7 @@ public class FragmentUserHome extends Fragment {
 	private Connector weeks, weekMatches;
 	private ImageView logoHome, logoAway;
 	private TextView homeScore, awayScore;
+	private String round_id;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,13 +58,45 @@ public class FragmentUserHome extends Fragment {
 
 		gameweekSpinner = (Spinner) view.findViewById(R.id.gameweek_selection_spinner);
 
-		weeks = new Connector(myIP.getIp(),"gameweeks");
+		weeks = new Connector(myIP.getIp(),"gameweeks",null);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, weeks.getWeeks());
 		// Set the spinners adapter to the previously created one.
 		gameweekSpinner.setAdapter(adapter);
 
-		weekMatches = new Connector(myIP.getIp(),"week-matches");
+		//Selected round
+		String round = gameweekSpinner.getSelectedItem().toString();
+		round_id = round.substring(round.length() - 1);
+
+		gameweekSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		{
+			@Override
+			public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
+
+				String round = gameweekSpinner.getSelectedItem().toString();
+				round_id = round.substring(round.length() - 1);
+
+				weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
+
+				logoHome = view.findViewById(R.id.gameweek_team1_logo);
+				logoAway = view.findViewById(R.id.gameweek_team2_logo);
+
+				homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
+				awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
+
+				homeScore.setText(weekMatches.getHomeScore(0));
+				awayScore.setText(weekMatches.getAwayScore(0));
+
+				int game_status = weekMatches.getGameStatus(0);
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView)
+			{
+
+			}
+		});
+
+		weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
 		logoHome = view.findViewById(R.id.gameweek_team1_logo);
 		logoAway = view.findViewById(R.id.gameweek_team2_logo);
@@ -74,8 +108,6 @@ public class FragmentUserHome extends Fragment {
 		awayScore.setText(weekMatches.getAwayScore(0));
 
 		int game_status = weekMatches.getGameStatus(0);
-
-
 
 
 
@@ -91,4 +123,6 @@ public class FragmentUserHome extends Fragment {
 
 		return view;
 	}
+
+
 }
