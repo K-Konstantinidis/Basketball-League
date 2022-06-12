@@ -167,27 +167,6 @@ public class Connector {
 		return this.matches.get(id).getGameStatus();
 	}
 
-	//functions for league
-	public String getLeagueRankTeamLogo(int teamid){
-		return this.Ranking.get(teamid).getTeamlogo();
-	}
-
-	public ArrayList<LeagueRank> getRanking(){return Ranking;}
-	public String getLeagueRankName(int teamid){
-		return this.Ranking.get(teamid).getName();
-	}
-
-	public String getLeagueRankMatchesPlayed(int teamid){ return this.Ranking.get(teamid).getMatchesPlayed(); }
-	public String getLeagueRankPoints(int teamid){
-		return this.Ranking.get(teamid).getPoints();
-	}
-	public String getLeagueRankWins(int teamid){
-		return this.Ranking.get(teamid).getWins();
-	}
-	public String getLeagueRankLosses(int teamid){
-		return this.Ranking.get(teamid).getLosses();
-	}
-
 	//functions for top5
 //	public String getTop5Logo(int id){
 //		return this.top5.get(id).getlogo();
