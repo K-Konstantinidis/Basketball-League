@@ -95,36 +95,6 @@ public class OkHttpHandler {
 		return weeks;
 	}
 
-	Game getScoreDataForMatch(String url) throws Exception {
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-		Request request = new Request.Builder().url(url).method("POST", body).build();
-		Response response = client.newCall(request).execute();
-		String data = response.body().string();
-		//System.out.println("My Response: " + data);
-		try {
-			JSONObject json = new JSONObject(data);
-			Iterator<String> keys = json.keys();
-			while(keys.hasNext()) {
-				String id = keys.next();
-				String homeTeamName = json.getJSONObject(id).getString("name");
-				int homeTeamTotalScore = Integer.parseInt(json.getJSONObject(id).getString("total_score"));
-				String homeTeamTotalscores = json.getJSONObject(id).getString("scores");
-
-				id = keys.next();
-				String awayTeamName = json.getJSONObject(id).getString("name");
-				int awayTeamTotalScore = Integer.parseInt(json.getJSONObject(id).getString("total_score"));
-				String awayTeamTotalscores = json.getJSONObject(id).getString("scores");
-
-				return new Game(homeTeamName, homeTeamTotalScore, homeTeamTotalscores,
-					awayTeamName, awayTeamTotalScore, awayTeamTotalscores);
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	private String changeString(String s){
 		return "Gameweek "+s;
 	}
