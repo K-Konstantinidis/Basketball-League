@@ -200,7 +200,7 @@ public class OkHttpHandler {
 		return top5;
 	}
 
-	//function for Finished Matches
+	//function for Finished Matches Players
 	ArrayList<PlayerStats> getDataForFPlayers(String url) throws Exception {
 		ArrayList<PlayerStats> playerStats = new ArrayList<>();
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -232,7 +232,6 @@ public class OkHttpHandler {
 				String total_steals = json.getJSONObject(id).getString("total_steals");
 				String total_turnovers = json.getJSONObject(id).getString("total_turnovers");
 				String total_fouls = json.getJSONObject(id).getString("total_fouls");
-
 
 
 				//Code to add from Json to Screen
