@@ -216,7 +216,7 @@ public class OkHttpHandler {
 
 			while(keys.hasNext()) {
 				String id = keys.next();
-//				String logo = json.getJSONObject(id).getString("logo");
+				String logo = json.getJSONObject(id).getString("logo");
 				String surname= json.getJSONObject(id).getString("surname");
 				String total_points = json.getJSONObject(id).getString("total_points");
 				String rating = json.getJSONObject(id).getString("rating");
@@ -225,8 +225,8 @@ public class OkHttpHandler {
 				String perc_3_in = json.getJSONObject(id).getString("perc_3_in");
 				String perc_freethrows_in = json.getJSONObject(id).getString("perc_freethrows_in");
 				String total_rebounds = json.getJSONObject(id).getString("total_rebounds");
-				String total_offensive_rebounds = json.getJSONObject(id).getString("total_offensive_rebounds");
-				String total_defensive_rebounds = json.getJSONObject(id).getString("total_defensive_rebounds");
+/*				String total_offensive_rebounds = json.getJSONObject(id).getString("total_offensive_rebounds");
+				String total_defensive_rebounds = json.getJSONObject(id).getString("total_defensive_rebounds");*/
 				String total_assists = json.getJSONObject(id).getString("total_assists");
 				String total_blocks = json.getJSONObject(id).getString("total_blocks");
 				String total_steals = json.getJSONObject(id).getString("total_steals");
@@ -235,12 +235,11 @@ public class OkHttpHandler {
 
 
 				//Code to add from Json to Screen
-				PlayerStats pStats = new PlayerStats(surname,Integer.parseInt(total_points),
+				PlayerStats pStats = new PlayerStats(logo, surname,Integer.parseInt(total_points),
 					Integer.parseInt(rating),
 					Integer.parseInt(shots_made),Integer.parseInt(perc_2_in),
 					Integer.parseInt(perc_3_in),Integer.parseInt(perc_freethrows_in),
-					Integer.parseInt(total_rebounds),Integer.parseInt(total_offensive_rebounds),
-					Integer.parseInt(total_defensive_rebounds),Integer.parseInt(total_assists),
+					Integer.parseInt(total_rebounds),Integer.parseInt(total_assists),
 					Integer.parseInt(total_blocks),Integer.parseInt(total_steals),
 					Integer.parseInt(total_turnovers),
 					Integer.parseInt(total_fouls));
@@ -268,10 +267,10 @@ public class OkHttpHandler {
 
 			//Getting json from WS
 
-			while(keys.hasNext()) {
+			while (keys.hasNext()) {
 				String id = keys.next();
-//				String logo = json.getJSONObject(id).getString("logo");
-				String name= json.getJSONObject(id).getString("name");
+				String logo = json.getJSONObject(id).getString("logo");
+				String name = json.getJSONObject(id).getString("name");
 				String total_points = json.getJSONObject(id).getString("total_shots");
 				String shots_made = json.getJSONObject(id).getString("shots_made");
 				String perc_2_in = json.getJSONObject(id).getString("perc_2_in");
@@ -287,12 +286,12 @@ public class OkHttpHandler {
 				String total_fouls = json.getJSONObject(id).getString("total_fouls");
 
 				//Code to add from Json to Screen
-				TeamStats tStats = new TeamStats(name,Integer.parseInt(total_points),
-					Integer.parseInt(shots_made),Double.parseDouble(perc_2_in),
-					Double.parseDouble(perc_3_in),Double.parseDouble(perc_freethrows_in),
-					Integer.parseInt(total_rebounds),Integer.parseInt(total_offensive_rebounds),
-					Integer.parseInt(total_defensive_rebounds),Integer.parseInt(total_assists),
-					Integer.parseInt(total_blocks),Integer.parseInt(total_steals),
+				TeamStats tStats = new TeamStats(logo, name, Integer.parseInt(total_points),
+					Integer.parseInt(shots_made), Double.parseDouble(perc_2_in),
+					Double.parseDouble(perc_3_in), Double.parseDouble(perc_freethrows_in),
+					Integer.parseInt(total_rebounds), Integer.parseInt(total_offensive_rebounds),
+					Integer.parseInt(total_defensive_rebounds), Integer.parseInt(total_assists),
+					Integer.parseInt(total_blocks), Integer.parseInt(total_steals),
 					Integer.parseInt(total_turnovers),
 					Integer.parseInt(total_fouls));
 				teamStats.add(tStats);
@@ -307,4 +306,41 @@ public class OkHttpHandler {
 
 
 
+	//function for Finished Matches Score and team emblems
+	Game getDataForFinishedMatchTeams(String url) throws Exception {
+		Game g;
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while (keys.hasNext()) {
+				String homeTeamId = keys.next();
+				String homeTeamLogo = json.getJSONObject(homeTeamId).getString("logo");
+				String homeTeamScore = json.getJSONObject(homeTeamId).getString("total_score");
+
+				String awayTeamId = keys.next();
+				String awayTeamLogo = json.getJSONObject(awayTeamId).getString("logo");
+				String awayTeamScore = json.getJSONObject(awayTeamId).getString("total_score");
+
+
+				//Code to add from Json to Screen
+				g = new Game(Integer.parseInt(homeTeamId),homeTeamLogo,Integer.parseInt(homeTeamScore),
+					Integer.parseInt(awayTeamId),awayTeamLogo,Integer.parseInt(awayTeamScore));
+
+				return g;
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+	return null;
+	}
 }

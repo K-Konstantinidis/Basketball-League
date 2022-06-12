@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentTeamStatsLiveUser#newInstance} factory method to
@@ -85,6 +87,8 @@ public class FragmentTeamStatsLiveUser extends Fragment {
 			team_finished_stats = new Connector(myIP.getIp(), "team-finished-stats");
 
 //			homeName = view.findViewById(R.id.team_stats_teamName);
+			imgHomeTeam = (ImageView) view.findViewById(R.id.imageteam1);
+			Picasso.with(getContext()).load(team_finished_stats.getfinishedTeamLogo(0)).fit().into(imgHomeTeam);
 			homePts = view.findViewById(R.id.fieldGoalsHome);
 			homeFg = view.findViewById(R.id.fieldGoalsMadeHome);
 			home2Fg = view.findViewById(R.id.twoPtsPercentHome);
@@ -139,6 +143,9 @@ public class FragmentTeamStatsLiveUser extends Fragment {
 			awayTurnover = view.findViewById(R.id.turnoversAway);
 
 //			awayName.setText(team_finished_stats.getfinishedTeamName(0));
+			imgAwayTeam = (ImageView) view.findViewById(R.id.imageteam2);
+			Picasso.with(getContext()).load(team_finished_stats.getfinishedTeamLogo(1)).fit().into(imgAwayTeam);
+
 			awayPts.setText(team_finished_stats.getfinishedTeamTotal_points(1));
 			awayFg.setText(team_finished_stats.getfinishedTeamShots_made(1));
 			away2Fg.setText(team_finished_stats.getfinishedTeamPerc_2_in(1));

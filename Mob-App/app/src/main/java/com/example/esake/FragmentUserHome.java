@@ -98,28 +98,28 @@ public class FragmentUserHome extends Fragment {
 
 		weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
-		logoHome = view.findViewById(R.id.gameweek_team1_logo);
+		/*logoHome = view.findViewById(R.id.gameweek_team1_logo);
 		logoAway = view.findViewById(R.id.gameweek_team2_logo);
 
 		homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
 		awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
 
 		homeScore.setText(weekMatches.getHomeScore(0));
-		awayScore.setText(weekMatches.getAwayScore(0));
+		awayScore.setText(weekMatches.getAwayScore(0));*/
 
-		int game_status = weekMatches.getGameStatus(0);
+		//int game_status = weekMatches.getGameStatus(0);
 
 
 
 		// Get the button
-		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
+		/*Button game = view.findViewById(R.id.gameweek_preview_gameButton);
 		game.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(getContext(), Tabbed_User.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 
 		return view;
 	}

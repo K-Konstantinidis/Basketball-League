@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.PlayerStatsHolder>{
@@ -34,13 +36,13 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 	public void onBindViewHolder(@NonNull PlayerStatsHolder holder, int position) {
 		PlayerStats playerStats = playerStatsList.get(position);
 
-		holder.imageView.setImageResource(R.drawable.five);
+		Picasso.with(mCtx.getApplicationContext()).load(playerStats.getLogo()).fit().into(holder.imageView);
 		holder.textViewPlayerName.setText(playerStats.getSurname());
-		holder.TextViewPlayerRating.setText(playerStats.getRating());
+		holder.TextViewPlayerRating.setText(playerStats.getPRating());
 		holder.textViewPlayerPoints.setText(playerStats.getTotal_points());
 		holder.textViewPlayerFg.setText(playerStats.getShots_made());
-		holder.textViewPlayer3Fg.setText(playerStats.get3ptsin());
-		holder.textViewPlayerPercentFg.setText(playerStats.getPlayerPercentFg());
+/*		holder.textViewPlayer3Fg.setText(playerStats.get3ptsin());
+		holder.textViewPlayerPercentFg.setText(playerStats.getPlayerPercentFg());*/
 		holder.textViewPlayerReb.setText(playerStats.getTotal_rebounds());
 		holder.textViewPlayerAst.setText(playerStats.getTotal_assists());
 		holder.textViewPlayerStl.setText(playerStats.getTotal_steals());
@@ -63,7 +65,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 		public PlayerStatsHolder(View itemView) {
 			super(itemView);
 
-			imageView = itemView.findViewById(R.id.player_stats_fn_player_logo);
+			imageView = (ImageView) itemView.findViewById(R.id.player_stats_fn_player_logo);
 			textViewPlayerName = itemView.findViewById(R.id.player_stats_fn_playerName);
 			TextViewPlayerRating = itemView.findViewById(R.id.player_stats_fn_rating_value);
 			textViewPlayerPoints = itemView.findViewById(R.id.player_stats_fn_pts_value);

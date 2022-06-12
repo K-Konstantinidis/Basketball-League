@@ -40,9 +40,12 @@
 		</activity>
 <!--	Run tabbed pages -->
 		<activity
+
 			android:name=".Tabbed_User"
-			android:exported="false"
-			android:theme="@style/Theme.Esake.NoActionBar" >
+			android:exported="true"
+			android:theme="@style/Theme.Esake.NoActionBar"
+
+			>
 		</activity>
 		<activity
 			android:name=".Tabbed_Stats_Manager"

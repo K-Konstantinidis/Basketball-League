@@ -10,6 +10,8 @@ public class Game {
 	private String gameid;
 	private Team homeTeam, awayTeam;
 	private String homeTeamName, awayTeamName;
+	private int homeTeamId, awayTeamId;
+	private String homeTeamLogo, awayTeamLogo;
     private int score1;
     private int score2;
     private int Q1score1, Q1score2;
@@ -51,6 +53,17 @@ public class Game {
 		this.Q2score2 = Integer.parseInt(scores.get(1));
 		this.Q3score2 = Integer.parseInt(scores.get(2));
 		this.Q4score2 = Integer.parseInt(scores.get(3));
+	}
+
+	public Game(int homeTeamId, String homeTeamLogo, int homeTeamScore, int awayTeamId, String awayTeamLogo, int awayTeamScore) {
+		this.homeTeamId=homeTeamId;
+		this.homeTeamLogo=homeTeamLogo;
+		this.score1=homeTeamScore;
+
+		this.awayTeamId=awayTeamId;
+		this.awayTeamLogo=awayTeamLogo;
+		this.score2=awayTeamScore;
+
 	}
 
 
@@ -104,7 +117,23 @@ public class Game {
 			return awayTeamName;
 	}
 
-//	public void setNameTeams(String team1, String team2){
+	public int getHomeTeamId() {
+		return homeTeamId;
+	}
+
+	public int getAwayTeamId() {
+		return awayTeamId;
+	}
+
+	public String getHomeTeamLogo() {
+		return "http://"+myIP.getIp()+homeTeamLogo;
+	}
+
+	public String getAwayTeamLogo() {
+		return "http://"+myIP.getIp()+awayTeamLogo;
+	}
+
+	//	public void setNameTeams(String team1, String team2){
 //    	this.awayTeam.setName(team1);
 //    	this.homeTeam.setName(team2);
 //	}
