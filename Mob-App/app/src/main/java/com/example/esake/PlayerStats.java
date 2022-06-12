@@ -209,12 +209,21 @@ public class PlayerStats {
 		return (tmp_rating > 0) ? tmp_rating : 0;
 	}
 
+	//Ftiaxte me kapou ta percentages pvw ta vriskei
+	//Gia na ta pername sthn PlayerStatsAdapter.java
+	//Ayto paizei na einai teleiow lathos apla to evala gia na mhn
+	//me petaei error oti den exv perasei kati
+	public int getPlayerPercentFg() {
+		return (perc_2_in + perc_3_in + perc_freethrows_in) / 3;
+	}
+
 	//Getters for Data
 	//public String getLogo() {return logo;}
 
 	public String getSurname() {return surname;}
 	public String getTotal_points() {return String.valueOf(total_points);}
 	public String getPRating() {return String.valueOf(rating);}
+	public String get3ptsin() {return String.valueOf(three_points_in);}
 	public String getShots_made() {return String.valueOf(shots_made);}
 	public String getPerc_2_in() {return String.valueOf(perc_2_in);}
 	public String getPerc_3_in() {return String.valueOf(perc_3_in);}
