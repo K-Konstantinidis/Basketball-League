@@ -8,6 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,22 +73,25 @@ public class FragmentLeagueTable extends Fragment {
 
 		View v =  inflater.inflate(R.layout.fragment_league_table, container, false);
 
-		logo_path = (ImageView) v.findViewById(R.id.league_table_team_logo);
-		team_name = v.findViewById(R.id.league_table_teamName);
-		MatchesPlayed=v.findViewById(R.id.league_table_games_value);
-		Points=v.findViewById(R.id.league_table_points_value);
-		Wins=v.findViewById(R.id.league_table_wins_value);
-		Losses=	v.findViewById(R.id.league_table_losses_value);
+		//Find the recyclerView
+		RecyclerView recyclerView = v.findViewById(R.id.recView);
+		//Create an adapter
+		LeagueRankAdapter adapter;
+		//Create a list for the team ranking
+		List<LeagueRank> leagueRankList = new ArrayList<>();
 
+		//Set a vertical layout manager
+		//If you are in an Activity class pass 'this'. But since
+		//we are in a Fragment Class we have to pass getContext()
+		recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+
+		//Make a connection with the database via php
 		Lr = new Connector(myIP.getIp(),"league");
 
-		//logo_path.setText(Lr.getLeagueRankTeamLogo(0));
-		logo_path.setImageResource(R.drawable.five);
-		team_name.setText(Lr.getLeagueRankName(0));
-		MatchesPlayed.setText(String.valueOf(Lr.getLeagueRankMatchesPlayed(0)));
-		Points.setText(String.valueOf(Lr.getLeagueRankPoints(0)));
-		Wins.setText(String.valueOf(Lr.getLeagueRankWins(0)));
-		Losses.setText(String.valueOf(Lr.getLeagueRankLosses(0)));
+		leagueRankList = Lr.getRanking();
+
+		adapter = new LeagueRankAdapter(getContext(), leagueRankList);
+		recyclerView.setAdapter(adapter);
 
 		return v;
     }
