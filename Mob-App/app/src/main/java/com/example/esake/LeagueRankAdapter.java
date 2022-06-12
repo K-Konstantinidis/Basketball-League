@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class LeagueRankAdapter extends RecyclerView.Adapter<LeagueRankAdapter.LeagueRankHolder>{
@@ -35,13 +37,12 @@ public class LeagueRankAdapter extends RecyclerView.Adapter<LeagueRankAdapter.Le
 	public void onBindViewHolder(@NonNull LeagueRankHolder holder, int position) {
 		LeagueRank leagueRank = leagueRankList.get(position);
 
+		Picasso.with(mCtx.getApplicationContext()).load(leagueRank.getTeamlogo()).fit().into(holder.imageView);
 		holder.textViewTeamName.setText(leagueRank.getName());
 		holder.textViewTeamGames.setText(leagueRank.getMatchesPlayed());
 		holder.textViewTeamPoints.setText(leagueRank.getPoints());
 		holder.textViewTeamWins.setText(leagueRank.getWins());
 		holder.textViewTeamLosses.setText(leagueRank.getLosses());
-		holder.imageView.setImageResource(R.drawable.five);
-
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class LeagueRankAdapter extends RecyclerView.Adapter<LeagueRankAdapter.Le
 		public LeagueRankHolder(View itemView) {
 			super(itemView);
 
-			imageView = itemView.findViewById(R.id.league_table_team_logo);
+			imageView = (ImageView) itemView.findViewById(R.id.league_table_team_logo);
 			textViewTeamName = itemView.findViewById(R.id.league_table_teamName);
 			textViewTeamGames = itemView.findViewById(R.id.league_table_games_value);
 			textViewTeamPoints = itemView.findViewById(R.id.league_table_points_value);
