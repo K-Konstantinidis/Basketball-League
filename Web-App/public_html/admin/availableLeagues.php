@@ -26,7 +26,7 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 		<!-- Bootstrap and other required CSS -->
 		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="./css/base.css"/>
-		<link rel="stylesheet" href="./css/index.css"/>
+		<link rel="stylesheet" href="./css/availableLeagues.css"/>
 		<script src="../js/bootstrap.bundle.min.js"></script>
   	</head>
 
@@ -67,9 +67,9 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 						foreach($data as $row) {
 							echo '<th><h4 class="pt-2">' . $i++ . '</h4></th>' . "\n";
 							echo '<td><h4 class="pt-2">' . $row['name'] . '</h4></td>' . "\n";
-							echo '<td><a href="'. AREF_ADMIN_DISPLAY_LEAGUE .'?cid='. $row['id'] .'" class="btn btn-success me-2 mt-1 mb-1" role="button">Προβολή</a>
-							 		  <a href="./" class="btn btn-warning me-2 mt-1 mb-1 disabled" role="button">Επεξεργασία</a>
-							 		  <a href="./" class="btn btn-danger me-2 mt-1 mb-1 disabled" role="button">Διαγραφή</a></td>';
+							echo '<td><a href="'. AREF_ADMIN_DISPLAY_LEAGUE .'?cid='. $row['id'] .'" class="btn btn-success btn-enlarge me-2 mt-1 mb-1" role="button">Προβολή</a>
+							 		  <a href="./" class="btn btn-warning btn-enlarge me-2 mt-1 mb-1 disabled" role="button">Επεξεργασία</a>
+							 		  <a href="./" class="btn btn-danger btn-enlarge me-2 mt-1 mb-1 disabled" role="button">Διαγραφή</a></td>';
 						}
 					}
 					catch(PDOException $ex) {
@@ -79,7 +79,7 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 					?>
 				</tbody>
 			</table>
-
+			
 			<div class="d-flex flex-grow-1 justify-content-center align-items-center">
 				<a href="<?php echo AREF_DIR_ADMIN ?>" class="btn btn-primary mt-5 mb-5" role="button">Αρχική</a>
 			</div>
