@@ -167,6 +167,9 @@ public class Connector {
 		return this.matches.get(id).getGameStatus();
 	}
 
+	//Pass the List with the ranking
+	public ArrayList<LeagueRank> getRanking(){return Ranking;}
+
 	//functions for top5
 //	public String getTop5Logo(int id){
 //		return this.top5.get(id).getlogo();
