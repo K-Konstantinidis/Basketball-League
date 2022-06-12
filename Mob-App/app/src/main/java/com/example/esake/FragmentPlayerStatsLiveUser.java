@@ -132,4 +132,5 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 
 		return view;
     }
+
 }

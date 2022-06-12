@@ -79,7 +79,7 @@ public class Connector {
 	}
 
 	//maybe we will use this to add the round instead of the above
-	public Connector(String ip,String type, String round){
+	public Connector(String ip,String type, String url){
 
 	}
 
