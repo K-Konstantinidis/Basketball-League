@@ -68,14 +68,41 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
 
 		TextView team1 = root.findViewById(R.id.homeTeamName_statsManager);
 		TextView team2 = root.findViewById(R.id.awayTeamName_statsManager);
-		team1.setText(game.getTeamList(2,true));
-		team2.setText(game.getTeamList(2,false));
+		//team1.setText(game.getTeamList(2,true));
+		//team2.setText(game.getTeamList(2,false));
 
-		TextView score1 = root.findViewById(R.id.SHomeScore_statsManager);
-		TextView score2 = root.findViewById(R.id.SAwayScore_statsManager);
-		score1.setText(game.getScoreList(2, true));
-		score2.setText(game.getScoreList(2,false));
+		team1.setText(game.getTeamName(true));
+		team2.setText(game.getTeamName(false));
 
-    	return root;
+		Game g = game.getGame();
+
+		TextView totalScore1 = root.findViewById(R.id.SHomeScore_statsManager);
+		TextView totalScore2 = root.findViewById(R.id.SAwayScore_statsManager);
+		totalScore1.setText(g.getScore(true));
+		totalScore2.setText(g.getScore(false));
+
+		TextView homeTeamQ1 = root.findViewById(R.id.Q1HomeScore_statsManager);
+		TextView homeTeamQ2 = root.findViewById(R.id.Q2HomeScore_statsManager);
+		TextView homeTeamQ3 = root.findViewById(R.id.Q3HomeScore_statsManager);
+		TextView homeTeamQ4 = root.findViewById(R.id.Q4HomeScore_statsManager);
+
+		TextView awayTeamQ1 = root.findViewById(R.id.Q1AwayScore_statsManager);
+		TextView awayTeamQ2 = root.findViewById(R.id.Q2AwayScore_statsManager);
+		TextView awayTeamQ3 = root.findViewById(R.id.Q3AwayScore_statsManager);
+		TextView awayTeamQ4 = root.findViewById(R.id.Q4AwayScore_statsManager);
+
+		homeTeamQ1.setText(g.getQ1score1());
+		homeTeamQ2.setText(g.getQ2score1());
+		homeTeamQ3.setText(g.getQ3score1());
+		homeTeamQ4.setText(g.getQ4score1());
+
+		awayTeamQ1.setText(g.getQ1score2());
+		awayTeamQ2.setText(g.getQ2score2());
+		awayTeamQ3.setText(g.getQ3score2());
+		awayTeamQ4.setText(g.getQ4score2());
+
+
+
+		return root;
     }
 }

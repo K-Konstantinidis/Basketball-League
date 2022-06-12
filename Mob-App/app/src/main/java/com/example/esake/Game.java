@@ -1,6 +1,9 @@
 package com.example.esake;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Game {
 
@@ -28,6 +31,26 @@ public class Game {
 //	    this.teams = new ArrayList<>();
 //        this.team1Id = team1Id;
 //        this.team2Id = team2Id;
+	}
+
+	public Game(String homeTeamName, int homeTeamTotalScore, String homeTeamQuarterScores,
+				String awayTeamName, int awayTeamTotalScore, String awayTeamQuarterScores) {
+
+		this.homeTeamName = homeTeamName;
+		this.score1 = homeTeamTotalScore;
+		List<String> scores = Arrays.asList(homeTeamQuarterScores.split(","));
+		this.Q1score1 = Integer.parseInt(scores.get(0));
+		this.Q2score1 = Integer.parseInt(scores.get(1));
+		this.Q3score1 = Integer.parseInt(scores.get(2));
+		this.Q4score1 = Integer.parseInt(scores.get(3));
+
+		this.awayTeamName = awayTeamName;
+		this.score2 = awayTeamTotalScore;
+		scores = Arrays.asList(awayTeamQuarterScores.split(","));
+		this.Q1score2 = Integer.parseInt(scores.get(0));
+		this.Q2score2 = Integer.parseInt(scores.get(1));
+		this.Q3score2 = Integer.parseInt(scores.get(2));
+		this.Q4score2 = Integer.parseInt(scores.get(3));
 	}
 
 

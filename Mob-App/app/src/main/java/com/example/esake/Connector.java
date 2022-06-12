@@ -8,6 +8,7 @@ public class Connector {
 	private ArrayList<Day> weeks = new ArrayList<>();
 	private ArrayList<LeagueRank> Ranking = new ArrayList<>();
 	private ArrayList<PlayerStats> pstats = new ArrayList<>();
+	private Game game;
 
 	public Connector(String ip, String string){
 		if(string.equals("player-stats")) {
@@ -19,7 +20,7 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-		if(string.equals("player-live-stats")) {
+		else if(string.equals("player-live-stats")) {
 			String url = "http://" + ip + "/ws/.php";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
@@ -28,7 +29,7 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-		if(string.equals("team-stats")) {
+		else if(string.equals("team-stats")) {
 			String url = "http://" + ip + "/ws/.php";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
@@ -56,10 +57,12 @@ public class Connector {
 			}
 		}
 		else if(string.equals("match")){
-			String url= "http://"+ip+"/ws/getGameweekMatches.php?round_id=2";
+			//String url= "http://"+ip+"/ws/getGameweekMatches.php?cid=1&rid=2";
+			String url= "http://"+ip+"/ws/getMatchDetailedScore.php?lang=gr&cid=1&rid=2&gid=2";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				match = okHttpHandler.getDataforMatches(url);
+				//match = okHttpHandler.getDataforMatches(url);
+				game = okHttpHandler.getScoreDataForMatch(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -110,4 +113,7 @@ public class Connector {
 	public String getScoreList(int matchIndex, boolean isHomeTeam){
 		return String.valueOf(this.match.get(matchIndex).getScore(isHomeTeam));
 	}
+
+	public String getTeamName(boolean isHomeTeam) { return this.game.getTeamName(isHomeTeam); }
+	public Game getGame() { return this.game; }
 }
