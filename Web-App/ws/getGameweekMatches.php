@@ -35,26 +35,26 @@ $dbh = connectDB();
 $data = array();
 
 $sql =
-"SELECT h_team_info.rid AS round, h_team_info.gid AS game, 
-	h_team_info.logo AS home_logo, h_team_info.total_score AS home_team_score, 
-	a_team_info.logo AS away_logo, a_team_info.total_score AS away_team_score, h_team_info.game_status AS game_status
+"SELECT h_team_info.game_id AS game, h_team_info.logo AS home_logo, h_team_info.score AS home_team_score, a_team_info.logo AS away_logo, a_team_info.score AS away_team_score, h_team_info.game_status
 FROM 
-	(SELECT q_score.round_id AS rid, q_score.game_id AS gid, h_team.logo_path AS logo, SUM(quarter_score) AS total_score, g.game_status AS game_status
-	FROM `team_score_per_quarter` AS q_score
-	JOIN team h_team ON q_score.team_id = h_team.id
-	JOIN game g ON (g.championship_id = q_score.championship_id AND g.round_id = q_score.round_id AND g.id = q_score.game_id AND g.home_team_id = q_score.team_id)
-	WHERE q_score.championship_id = :cid AND q_score.round_id = :rid
-	GROUP BY q_score.championship_id, q_score.round_id, q_score.game_id, q_score.team_id
-	ORDER BY q_score.round_id, q_score.game_id, q_score.team_id, q_score.quarter) AS h_team_info
-JOIN 
-	(SELECT q_score.round_id AS rid, q_score.game_id AS gid, a_team.logo_path AS logo, SUM(quarter_score) AS total_score
-	FROM `team_score_per_quarter` AS q_score
-	JOIN team a_team ON q_score.team_id = a_team.id
-	JOIN game g ON (g.championship_id = q_score.championship_id AND g.round_id = q_score.round_id AND g.id = q_score.game_id AND g.away_team_id = q_score.team_id)
-	WHERE q_score.championship_id = :cid AND q_score.round_id = :rid
-	GROUP BY q_score.championship_id, q_score.round_id, q_score.game_id, q_score.team_id
-	ORDER BY q_score.round_id, q_score.game_id, q_score.team_id, q_score.quarter) AS a_team_info
-ON (h_team_info.rid = a_team_info.rid AND h_team_info.gid = a_team_info.gid)";
+	(SELECT g.id AS game_id, h_team.logo_path AS logo, g.game_status AS game_status, 
+	CASE WHEN g.game_status = 2 THEN -1 ELSE SUM(spq.quarter_score) END AS score
+    FROM `game` g
+    JOIN team h_team ON h_team.id = g.home_team_id
+    LEFT JOIN team_score_per_quarter spq ON spq.championship_id=g.championship_id AND spq.round_id=g.round_id AND g.home_team_id=spq.team_id
+    WHERE g.championship_id = :cid AND g.round_id = :rid
+    GROUP BY (g.home_team_id)
+    ORDER BY g.id) AS h_team_info
+JOIN
+	(SELECT g.id AS game_id, a_team.logo_path AS logo,
+	CASE WHEN g.game_status = 2 THEN -1 ELSE SUM(spq.quarter_score) END AS score
+    FROM `game` g
+    JOIN team a_team ON a_team.id = g.away_team_id
+    LEFT JOIN team_score_per_quarter spq ON spq.championship_id=g.championship_id AND spq.round_id=g.round_id AND g.away_team_id=spq.team_id
+    WHERE g.championship_id = :cid AND g.round_id = :rid
+    GROUP BY (g.away_team_id)
+    ORDER BY g.id) AS a_team_info
+ON h_team_info.game_id = a_team_info.game_id";
 
 // Prepare the statement
 $stmt = $dbh->prepare($sql);
@@ -77,7 +77,7 @@ catch(PDOException $ex) {
 foreach($result as $row) {
 	$nested_data = array();
 
-	$nested_data['round']			= $row['round'];
+	//$nested_data['round']			= $row['round'];
 	$nested_data['game']			= $row['game'];
 	$nested_data['home_logo']		= $row['home_logo'];
 	$nested_data['home_team_score']	= $row['home_team_score'];

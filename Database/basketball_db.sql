@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 04:16 PM
+-- Generation Time: Jun 09, 2022 at 05:07 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -1285,16 +1285,16 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`id`, `city_id`, `name_en`, `name_gr`, `short_name_en`, `short_name_gr`, `logo_path`) VALUES
-(1, 1, 'OLYMPIACOS', 'ΟΛΥΜΠΙΑΚΟΣ', 'OLY', 'ΟΛΥ', '/resources/images/teams/0001.jpg'),
-(2, 2, 'AEK', 'ΑΕΚ', 'AEK', 'ΑΕΚ', '/resources/images/teams/0002.jpg'),
-(3, 3, 'PAOK', 'ΠΑΟΚ', 'PAOK', 'ΠΑΟΚ', '/resources/images/teams/0003.jpg'),
-(4, 3, 'ARIS', 'ΑΡΗΣ', 'ARIS', 'ΑΡΗΣ', '/resources/images/teams/0004.jpg'),
-(5, 4, 'APOLLON', 'ΑΠΟΛΛΩΝ', 'APOL', 'ΑΠΟΛ', '/resources/images/teams/0005.jpg'),
-(6, 2, 'PANATHINAIKOS', 'ΠΑΝΑΘΗΝΑΙΚΟΣ', 'PAO', 'ΠΑΟ', '/resources/images/teams/0006.jpg'),
-(7, 5, 'LARISSA BC', 'ΛΑΡΙΣΑ BC', 'LAR', 'ΛΑΡ', '/resources/images/teams/0007.jpg'),
-(8, 4, 'PROMITHEAS', 'ΠΡΟΜΗΘΕΑΣ', 'PROM', 'ΠΡΟΜ', '/resources/images/teams/0008.jpg'),
-(9, 6, 'LAVRIO BC', 'ΛΑΥΡΙΟ BC', 'LAV', 'ΛΑΥ', '/resources/images/teams/0009.jpg'),
-(10, 2, 'PERISTERI BC', 'ΠΕΡΙΣΤΕΡΙ BC', 'PER', 'ΠΕΡ', '/resources/images/teams/0010.jpg');
+(1, 1, 'OLYMPIACOS', 'ΟΛΥΜΠΙΑΚΟΣ', 'OLY', 'ΟΛΥ', '/resources/images/teams/0001.png'),
+(2, 2, 'AEK', 'ΑΕΚ', 'AEK', 'ΑΕΚ', '/resources/images/teams/0002.png'),
+(3, 3, 'PAOK', 'ΠΑΟΚ', 'PAOK', 'ΠΑΟΚ', '/resources/images/teams/0003.png'),
+(4, 3, 'ARIS', 'ΑΡΗΣ', 'ARIS', 'ΑΡΗΣ', '/resources/images/teams/0004.png'),
+(5, 4, 'APOLLON', 'ΑΠΟΛΛΩΝ', 'APOL', 'ΑΠΟΛ', '/resources/images/teams/0005.png'),
+(6, 2, 'PANATHINAIKOS', 'ΠΑΝΑΘΗΝΑΙΚΟΣ', 'PAO', 'ΠΑΟ', '/resources/images/teams/0006.png'),
+(7, 5, 'LARISSA BC', 'ΛΑΡΙΣΑ BC', 'LAR', 'ΛΑΡ', '/resources/images/teams/0007.png'),
+(8, 4, 'PROMITHEAS', 'ΠΡΟΜΗΘΕΑΣ', 'PROM', 'ΠΡΟΜ', '/resources/images/teams/0008.png'),
+(9, 6, 'LAVRIO BC', 'ΛΑΥΡΙΟ BC', 'LAV', 'ΛΑΥ', '/resources/images/teams/0009.png'),
+(10, 2, 'PERISTERI BC', 'ΠΕΡΙΣΤΕΡΙ BC', 'PER', 'ΠΕΡ', '/resources/images/teams/0010.png');
 
 -- --------------------------------------------------------
 

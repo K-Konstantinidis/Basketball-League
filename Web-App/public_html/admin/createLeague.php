@@ -79,19 +79,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 				}
 
 				$conn = connectDB();
-				$data = $conn->query("SELECT * FROM team")->fetchAll();
+				$data = $conn->query('SELECT id, name_gr, logo_path FROM team')->fetchAll();
 					
 				if($data != null) {
 					echo '<form class="row" method="POST" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . '">' . "\n";
-
+					
 					foreach($data as $row) {
-						echo '<div class="col-md-2 border pb-3 m-1 text-center">' . "\n";
-						echo '	<div class="custom-control custom-checkbox image-checkbox">' . "\n";
-						echo '		<input type="checkbox" name="t[]" value="' . $row['id'] . '" class="custom-control-input" id=' . $row['id'] . '>' . "\n";
-						echo '		<span class="lead mb-3"> '. $row['name_en'] . '</span><br>' . "\n";
-						echo '		<label class="custom-control-label" for="'. $row['id'] . '">' . "\n";
-						echo '			<img src="https://source.unsplash.com/640x426/" alt="team- '. $row['id'] . '" class="img-fluid" />' . "\n"; // $row['logo_path']
-						echo '		</label>' . "\n";
+						echo '<div class="col-xl-2 mb-3">' . "\n";
+						echo '	<div class="border pb-3 m-1 text-center">' . "\n";
+						echo '		<div class="custom-control custom-checkbox image-checkbox">' . "\n";
+						echo '			<input type="checkbox" name="t[]" value="' . $row['id'] . '" class="custom-control-input" id=' . $row['id'] . '>' . "\n";
+						echo '			<span class="lead mb-3"> '. $row['name_gr'] . '</span><br>' . "\n";
+						echo '			<label class="custom-control-label" for="'. $row['id'] . '">' . "\n";
+						echo '				<img src="' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $row['logo_path'] . '" alt="team-'. $row['id'] . '" class="img-fluid" />' . "\n";
+						echo '			</label>' . "\n";
+						echo '		</div>' . "\n";
 						echo '	</div>' . "\n";
 						echo '</div>' . "\n";
 					}
@@ -102,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 					echo '	<button type="submit" class="btn btn-success mt-5 me-3">Δημιουργία Πρωταθλήματος</button>' . "\n";
 					echo '</div>' . "\n";
 				}
-				else { //There are no teams in the database
+				else { // There are no teams in the database
 					displayWarningBanner('Δεν βρέθηκαν ομάδες για να συμπεριληφθούν στο πρωτάθλημα.' .
 						'<br/><a class="alert-link" href='. AREF_ADMIN_CREATE_TEAM .'>Δημιουργήστε</a> ομάδες και ξαναπροσπαθήστε');
 				}

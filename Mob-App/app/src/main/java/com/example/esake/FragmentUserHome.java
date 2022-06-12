@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,7 +22,7 @@ public class FragmentUserHome extends Fragment {
 //    private String mParam2;
 
 	Spinner gameweekSpinner;
-	static String urlAddress = "http://"+myIP.getIp()+"/ws/populateRounds.php";
+	static String urlAddress = "http://"+myIP.getIp()+"/ws/getAllGameweeks.php?cid=1";
 
 	public FragmentUserHome() {}
 
@@ -42,7 +44,9 @@ public class FragmentUserHome extends Fragment {
 //        }
 //    }
 
-	private Connector weeks;
+	private Connector weeks, weekMatches;
+	private ImageView logoHome, logoAway;
+	private TextView homeScore, awayScore;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,8 +55,6 @@ public class FragmentUserHome extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_home_user, null);
 
 		gameweekSpinner = (Spinner) view.findViewById(R.id.gameweek_selection_spinner);
-//		Downloader downloader = new Downloader(view.getContext(), urlAddress, gameweekSpinner);
-//		downloader.execute();
 
 		weeks = new Connector(myIP.getIp(),"gameweeks");
 
@@ -60,13 +62,23 @@ public class FragmentUserHome extends Fragment {
 		// Set the spinners adapter to the previously created one.
 		gameweekSpinner.setAdapter(adapter);
 
-		// Inflate the layout for this fragment
-		// Return inflater.inflate(R.layout.fragment_home_user, container, false);
-		//@SuppressLint("InflateParams") ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_home_user, null);
+		weekMatches = new Connector(myIP.getIp(),"week-matches");
 
-		// Get the spinner
-//		Spinner dropdown = (Spinner) v.findViewById(R.id.gameweek_selection_spinner);
-//
+		logoHome = view.findViewById(R.id.gameweek_team1_logo);
+		logoAway = view.findViewById(R.id.gameweek_team2_logo);
+
+		homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
+		awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
+
+		homeScore.setText(weekMatches.getHomeScore(0));
+		awayScore.setText(weekMatches.getAwayScore(0));
+
+		int game_status = weekMatches.getGameStatus(0);
+
+
+
+
+
 		// Get the button
 		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
 		game.setOnClickListener(new View.OnClickListener() {
@@ -76,15 +88,7 @@ public class FragmentUserHome extends Fragment {
 				startActivity(intent);
 			}
 		});
-//
-//		// Create a list of items for the spinner.
-//		String[] items = new String[]{"Gameweek 1", "Gameweek 2", "Gameweek 3", "etc..."};
-//
-//		// Create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//		// There are multiple variations of this, but this is the basic variant.
-//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(v.getContext(), android.R.layout.simple_spinner_dropdown_item, items);
-//		// Set the spinners adapter to the previously created one.
-//		dropdown.setAdapter(adapter);
+
 		return view;
 	}
 }
