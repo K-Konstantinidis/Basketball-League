@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<androidx.cardview.widget.CardView
+		android:id="@+id/gameweekGameCardView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="5dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.0">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/gameweek_game_layout_border">
+
+			<ImageView
+				android:id="@+id/gameweek_team1_logo"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:contentDescription="@string/gameweek_team1_logo"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.03"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:srcCompat="@drawable/esake_logo" />
+
+			<TextView
+				android:id="@+id/gameweek_preview_team1_score"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gameweek_preview_score1"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/gameweek_team2_logo"
+				app:layout_constraintHorizontal_bias="0.1"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/gameweekDashBetweenScores"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gameweekDashBetweenScores"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/gameweek_preview_team2_score"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_preview_team1_score"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/gameweek_preview_team2_score"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gameweek_preview_score2"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/gameweek_team2_logo"
+				app:layout_constraintHorizontal_bias="0.9"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_team1_logo"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<ImageView
+				android:id="@+id/gameweek_team2_logo"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:contentDescription="@string/gameweek_team2_logo"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.45"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:srcCompat="@drawable/esake_logo" />
+
+			<Button
+				android:id="@+id/gameweek_preview_gameButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:enabled="true"
+				android:minHeight="48dp"
+				android:text="@string/gameweek_watch_gameButton"
+				android:textColor="@color/white"
+				android:textSize="11sp"
+				app:backgroundTint="@color/primary_color"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias=".9"
+				app:layout_constraintStart_toEndOf="@+id/gameweek_team2_logo"
+				app:layout_constraintTop_toTopOf="parent"/>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
