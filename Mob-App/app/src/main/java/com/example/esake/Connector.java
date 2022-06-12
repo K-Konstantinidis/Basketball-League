@@ -84,13 +84,11 @@ public class Connector {
 		return this.Ranking.get(teamid).getTeamlogo();
 	}
 
+	public ArrayList<LeagueRank> getRanking(){return Ranking;}
 	public String getLeagueRankName(int teamid){
 		return this.Ranking.get(teamid).getName();
 	}
-
-	public String getLeagueRankMatchesPlayed(int teamid){
-		return this.Ranking.get(teamid).getMatchesPlayed();
-	}
+	public String getLeagueRankMatchesPlayed(int teamid){ return this.Ranking.get(teamid).getMatchesPlayed(); }
 	public String getLeagueRankPoints(int teamid){
 		return this.Ranking.get(teamid).getPoints();
 	}
