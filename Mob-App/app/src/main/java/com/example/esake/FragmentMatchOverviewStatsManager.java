@@ -63,22 +63,12 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
                              Bundle savedInstanceState) {
 
 		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_match_overview_stats_manager, null);
-		game = new Connector(myIP.getIp(),"match");
 
 		TextView team1 = root.findViewById(R.id.homeTeamName_statsManager);
 		TextView team2 = root.findViewById(R.id.awayTeamName_statsManager);
-		//team1.setText(game.getTeamList(2,true));
-		//team2.setText(game.getTeamList(2,false));
-
-		team1.setText(game.getTeamName(true));
-		team2.setText(game.getTeamName(false));
-
-		Game g = game.getGame();
 
 		TextView totalScore1 = root.findViewById(R.id.SHomeScore_statsManager);
 		TextView totalScore2 = root.findViewById(R.id.SAwayScore_statsManager);
-		totalScore1.setText(g.getScore(true));
-		totalScore2.setText(g.getScore(false));
 
 		TextView homeTeamQ1 = root.findViewById(R.id.Q1HomeScore_statsManager);
 		TextView homeTeamQ2 = root.findViewById(R.id.Q2HomeScore_statsManager);
@@ -89,18 +79,6 @@ public class FragmentMatchOverviewStatsManager extends Fragment {
 		TextView awayTeamQ2 = root.findViewById(R.id.Q2AwayScore_statsManager);
 		TextView awayTeamQ3 = root.findViewById(R.id.Q3AwayScore_statsManager);
 		TextView awayTeamQ4 = root.findViewById(R.id.Q4AwayScore_statsManager);
-
-		homeTeamQ1.setText(g.getQ1score1());
-		homeTeamQ2.setText(g.getQ2score1());
-		homeTeamQ3.setText(g.getQ3score1());
-		homeTeamQ4.setText(g.getQ4score1());
-
-		awayTeamQ1.setText(g.getQ1score2());
-		awayTeamQ2.setText(g.getQ2score2());
-		awayTeamQ3.setText(g.getQ3score2());
-		awayTeamQ4.setText(g.getQ4score2());
-
-
 
 		return root;
     }
