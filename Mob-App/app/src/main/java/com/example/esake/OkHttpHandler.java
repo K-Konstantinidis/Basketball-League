@@ -156,7 +156,7 @@ public class OkHttpHandler {
 				String gameStatus = json.getJSONObject(id).getString("game_status");
 
 				//Code to add from Json to Screen
-				GameWeek Gweek = new GameWeek(Integer.parseInt(gameId),Integer.parseInt(homeScore),
+				GameWeek Gweek = new GameWeek(logoHome, logoAway, Integer.parseInt(gameId),Integer.parseInt(homeScore),
 					Integer.parseInt(awayScore), Integer.parseInt(gameStatus));
 				gameWeeks.add(Gweek);
 			}
