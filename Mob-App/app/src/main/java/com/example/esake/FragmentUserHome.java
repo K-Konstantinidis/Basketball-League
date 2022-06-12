@@ -13,37 +13,42 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentUserHome extends Fragment {
 
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    private String mParam1;
-//    private String mParam2;
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
 
 	Spinner gameweekSpinner;
 	static String urlAddress = "http://"+myIP.getIp()+"/ws/getAllGameweeks.php?cid=1";
 
 	public FragmentUserHome() {}
 
-//    public static FragmentUserHome newInstance(String param1, String param2) {
-//        FragmentUserHome fragment = new FragmentUserHome();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
+    public static FragmentUserHome newInstance(String param1, String param2) {
+        FragmentUserHome fragment = new FragmentUserHome();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
 
 	private Connector weeks, weekMatches;
 	private ImageView logoHome, logoAway;
@@ -91,25 +96,27 @@ public class FragmentUserHome extends Fragment {
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parentView)
-			{
-
-			}
+			{}
 		});
 
 		weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
-		/*logoHome = view.findViewById(R.id.gameweek_team1_logo);
-		logoAway = view.findViewById(R.id.gameweek_team2_logo);
+		RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
 
-		homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
-		awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
+		HomeUserAdapter adapter1;
+		List<GameWeek> homeUserGamesList = new ArrayList<>();
 
-		homeScore.setText(weekMatches.getHomeScore(0));
-		awayScore.setText(weekMatches.getAwayScore(0));*/
+		recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+		//Make a connection with the database via php
+		Connector Lr = new Connector(myIP.getIp(),"week-matches");
+
+		homeUserGamesList = Lr.getMatches();
+
+		adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
+		recyclerView.setAdapter(adapter1);
 
 		//int game_status = weekMatches.getGameStatus(0);
-
-
 
 		// Get the button
 		/*Button game = view.findViewById(R.id.gameweek_preview_gameButton);
@@ -123,6 +130,4 @@ public class FragmentUserHome extends Fragment {
 
 		return view;
 	}
-
-
 }
