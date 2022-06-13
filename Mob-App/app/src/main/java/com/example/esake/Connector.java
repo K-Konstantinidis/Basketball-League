@@ -13,6 +13,7 @@ public class Connector {
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<TeamStats> tstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
+	private Game overViewGame;
 	private Game finishedGame;
 	private ArrayList<Player> players = new ArrayList<>();
 
@@ -129,6 +130,15 @@ public class Connector {
 				e.printStackTrace();
 			}
 
+		}else if (string.equals("overview-stats")) {
+			String url = "http://" + ip + "/ws/"+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				overViewGame = okHttpHandler.getDataForFinishedScores(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}else if (string.equals("team-finished-stats")) {
 			String url = "http://" + ip + "/ws/"+param;
 			try {
@@ -185,6 +195,10 @@ public class Connector {
 
 	//GETTERS
 	//Pass the List with the ranking
+	//functions for game overview User
+	public String getOverviewScore(int id){return String.valueOf(this.finishedGame.getScore1());}
+	//Function for a game overview
+	public Game getOverViewFinishedGame() { return this.overViewGame; }
 	public ArrayList<LeagueRank> getRanking(){return Ranking;}
 	//Pass the List with the player stats of a finished game
 	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
@@ -200,17 +214,14 @@ public class Connector {
 	public ArrayList<Top5> getTop5(){return top5;}
 	//Pass the List with the player games
 	public ArrayList<GameWeek> getMatches(){return matches;}
-
-
-
-
-
 	//Pass the List with the player games
 	public Game getFinishedGame() { return this.finishedGame; }
 
 
+
+
+
 	//function for game overview User
-	public String getOverviewScore(int id){return String.valueOf(this.finishedGame.getScore1());}
 	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
 	public String getAwayScore(int id){
@@ -219,7 +230,6 @@ public class Connector {
 	public int getGameStatus(int id){
 		return this.matches.get(id).getGameStatus();
 	}
-
 
 	//functions for top5
 //	public String getTop5Logo(int id){
@@ -268,8 +278,5 @@ public class Connector {
 	public String getfinishedTeamTotal_steals(int id) {return this.ftstats.get(id).getTotal_steals();}
 	public String getfinishedTeamTotal_turnovers(int id) {return this.ftstats.get(id).getTotal_turnovers();}
 	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getTotal_fouls();}
-
 	public String getfinishedTeamLogo(int id) {return this.ftstats.get(id).getLogo();}
-
-
 }
