@@ -3,11 +3,16 @@ package com.example.esake;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +66,27 @@ public class FragmentTeamManagementStatsManager extends Fragment {
                              Bundle savedInstanceState) {
 		//Get the view
 		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
+
+		//Find the recyclerView
+		RecyclerView recyclerView = root.findViewById(R.id.recViewSubs);
+		//Create an adapter
+		PlayerAdapter adapter;
+		//Create a list for the team ranking
+		List<Player> playerList = new ArrayList<>();
+
+		//Set a vertical layout manager
+		//If you are in an Activity class pass 'this'. But since
+		//we are in a Fragment Class we have to pass getContext()
+		recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+
+		//Make a connection with the database via php
+		Connector lr = new Connector(myIP.getIp(), "players");
+
+
+		//THIS 3 NEEDS FIXING
+//		playerList = lr.getPlayer();
+//		adapter = new PlayerAdapter(getContext(), playerList);
+//		recyclerView.setAdapter(adapter);
 
 		//Get the start game button
 		Button startGameBtn = root.findViewById(R.id.startGameButton);

@@ -11,16 +11,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentTop5#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelectedListener{
 
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -32,15 +31,6 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentTop5.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentTop5 newInstance(String param1, String param2) {
         FragmentTop5 fragment = new FragmentTop5();
         Bundle args = new Bundle();
@@ -70,33 +60,32 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Get the view
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_top5, null);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_top5, null);
+
         //Get the spinner from the xml.
-        Spinner dropdown = (Spinner) root.findViewById(R.id.spinner);
+        Spinner dropdown = (Spinner) view.findViewById(R.id.spinner);
 
-        super.onCreate(savedInstanceState);
+		//Find the recyclerView
+		RecyclerView recyclerView = view.findViewById(R.id.recViewTop5);
+		//Create an adapter
+		Top5Adapter adapter;
+		//Create a list for the team ranking
+		List<Top5> top5List = new ArrayList<>();
 
-//
-//        imageUri = cbl.lookup("Nissan", "Sunny").getImage();
-//        myImage= (ImageView) root.findViewById(R.id.imgTop5);
-//        Picasso.with(root.getContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
+		//Set a vertical layout manager
+		//If you are in an Activity class pass 'this'. But since
+		//we are in a Fragment Class we have to pass getContext()
+		recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        //Picasso.with(getApplicationContext()).load(Uri.parse(imageUri)).resize(300, 0).into(myImage);
-        // Picasso resizing will be useful somewhere
+		//Make a connection with the database via php
+		Connector lr = new Connector(myIP.getIp(), "top5"); //Tha ginei dynamika gia na allazei to round
 
-		top5 = new Connector(myIP.getIp(), "top5");
+		top5List = lr.getTop5();
 
-		imageTop5 = root.findViewById(R.id.imgTop5);
-		nameTop5 = root.findViewById(R.id.nameTop5);
-		posTop5 = root.findViewById(R.id.positionTop5);
-		ratingTop5 = root.findViewById(R.id.ratingTop5);
+		adapter = new Top5Adapter(getContext(), top5List);
+		recyclerView.setAdapter(adapter);
 
-//		imageTop5.setImageResource();
-		nameTop5.setText(top5.getTop5Name(0));
-		posTop5.setText(top5.getTop5Position(0));
-		ratingTop5.setText(top5.getTop5Rating(0));
-
-        return root;
+        return view;
     }
 
     @Override

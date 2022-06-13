@@ -20,9 +20,7 @@ public class FragmentLeagueTable extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-	private Connector Lr;
-
-    public FragmentLeagueTable() {
+	public FragmentLeagueTable() {
         // Required empty public constructor
     }
 
@@ -30,7 +28,6 @@ public class FragmentLeagueTable extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-			// TODO: Rename and change types of parameters
 			String mParam1 = getArguments().getString(ARG_PARAM1);
 			String mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -55,9 +52,9 @@ public class FragmentLeagueTable extends Fragment {
 		recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
 
 		//Make a connection with the database via php
-		Lr = new Connector(myIP.getIp(),"league");
+		Connector lr = new Connector(myIP.getIp(), "league");
 
-		leagueRankList = Lr.getRanking();
+		leagueRankList = lr.getRanking();
 
 		adapter = new LeagueRankAdapter(getContext(), leagueRankList);
 		recyclerView.setAdapter(adapter);
