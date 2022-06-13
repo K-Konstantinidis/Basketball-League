@@ -9,9 +9,12 @@ public class Connector {
 	private ArrayList<LeagueRank> Ranking = new ArrayList<>();
 	private ArrayList<PlayerStats> fpstats = new ArrayList<>();
 	private ArrayList<PlayerStats> lpstats = new ArrayList<>();
+	private ArrayList<PlayerStats> pstats = new ArrayList<>();
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
+	private ArrayList<TeamStats> tstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
 	private Game finishedGame;
+	private ArrayList<Player> players = new ArrayList<>();
 
 	public Connector(String ip, String string){
 		if(string.equals("player-finished-stats")) {
@@ -27,7 +30,16 @@ public class Connector {
 			String url = "http://" + ip + "/ws/.php";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				//weeks = okHttpHandler.getGameWeeks(url);
+				lpstats = okHttpHandler.getDataForFPlayers(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(string.equals("player-stats")) {
+			String url = "http://" + ip + "/ws/getChampionshipPlayerStats.php?lang=gr&cid=1";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				pstats = okHttpHandler.getDataForFPlayers(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -37,6 +49,15 @@ public class Connector {
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				ftstats = okHttpHandler.getDataForFTeams(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(string.equals("team-stats")) {
+			String url = "http://" + ip + "/ws/getChampionshipTeamStats.php?lang=gr&cid=1";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				tstats = okHttpHandler.getDataForFTeams(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -77,7 +98,6 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	//maybe we will use this to add the round instead of the above
@@ -92,10 +112,10 @@ public class Connector {
 				e.printStackTrace();
 			}
 		} else if (string.equals("player-live-stats")) {
-			String url = "http://" + ip + "/ws/.php";
+			String url = "http://" + ip + "/ws/"+param;
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				//weeks = okHttpHandler.getGameWeeks(url);
+				lpstats = okHttpHandler.getDataForFPlayers(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -163,25 +183,34 @@ public class Connector {
 		return temp;
 	}
 
-	//functions for game overview User
-	public String getOverviewScore(int id){return String.valueOf(this.finishedGame.getScore1());}
-
-	//functions for game Week Matches
-
-//	public String getHomeLogo(int id){
-//		return this.matches.get(id);
-//	}
-//	public String getAwayLogo(int id){
-//		return this.matches.get(id);
-//	}
-
+	//GETTERS
 	//Pass the List with the ranking
 	public ArrayList<LeagueRank> getRanking(){return Ranking;}
-
 	//Pass the List with the player stats of a finished game
 	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
+	//Pass the List with the player stats of a live game
+	public ArrayList<PlayerStats> getLivePlayerStats(){return lpstats;}
+	//Pass the List with all the player stats
+	public ArrayList<PlayerStats> getPlayerStats(){return pstats;}
+	//Pass the List with the team stats of a finished game
+	public ArrayList<TeamStats> getFinishedTeamStats(){return ftstats;}
+	//Pass the List with all the team stats
+	public ArrayList<TeamStats> getTeamStats(){return tstats;}
+	//Pass the List with the Top 5
+	public ArrayList<Top5> getTop5(){return top5;}
+	//Pass the List with the player games
+	public ArrayList<GameWeek> getMatches(){return matches;}
 
+
+
+
+
+	//Pass the List with the player games
 	public Game getFinishedGame() { return this.finishedGame; }
+
+
+	//function for game overview User
+	public String getOverviewScore(int id){return String.valueOf(this.finishedGame.getScore1());}
 	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
 	public String getAwayScore(int id){
@@ -190,8 +219,7 @@ public class Connector {
 	public int getGameStatus(int id){
 		return this.matches.get(id).getGameStatus();
 	}
-	//Pass the List with the player games
-	public ArrayList<GameWeek> getMatches(){return matches;}
+
 
 	//functions for top5
 //	public String getTop5Logo(int id){
