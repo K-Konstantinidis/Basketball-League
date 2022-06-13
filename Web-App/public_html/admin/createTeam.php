@@ -141,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			//
 			// Get the max number that exists
 			//$max_img_num_db = $conn
-			//	->query("SELECT MAX(CAST(SUBSTRING(logo_path,27,4) AS INT)) AS MAX_NUM FROM team")
+			//	->query("SELECT MAX(CAST(SUBSTRING(logo_path,25,4) AS INT)) AS MAX_NUM FROM team")
 			//	->fetch();
 			//
 			//$img_final_name = canonicalizeStrNumber((int) $max_img_num_db['MAX_NUM'] + 1, 4);
