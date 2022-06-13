@@ -37,7 +37,7 @@ public class Tabbed_User extends AppCompatActivity {
 		int gameStatus = b.getInt("status");
 		String gameID = b.getString("game");
 
-		String url = "getMatchDetailedScore.php?lang=gr&cid=1&rid="+round+"&gid="+
+		String url = "getMatchScores.php?lang=gr&cid=1&rid="+round+"&gid="+
 			gameID;
 
 		tabUser = new Connector(myIP.getIp(),"tabbed-User",url);

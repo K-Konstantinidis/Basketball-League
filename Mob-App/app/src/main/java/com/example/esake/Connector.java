@@ -182,6 +182,7 @@ public class Connector {
 	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
 
 	public Game getFinishedGame() { return this.finishedGame; }
+
 	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
 	public String getAwayScore(int id){
