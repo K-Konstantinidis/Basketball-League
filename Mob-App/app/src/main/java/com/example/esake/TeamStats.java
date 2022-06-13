@@ -4,25 +4,25 @@ public class TeamStats {
 
 	private String logo;
 	private String name;
-	private int total_points;
-	private int shots_made;
+	private double total_points;
+	private double shots_made;
 	private double perc_2_in;
 	private double perc_3_in;
 	private double perc_freethrows_in;
-	private int total_rebounds;
-	private int total_offensive_rebounds;
-	private int total_defensive_rebounds;
-	private int total_assists;
-	private int total_blocks;
-	private int total_steals;
-	private int total_turnovers;
-	private int total_fouls;
+	private double total_rebounds;
+	private double total_offensive_rebounds;
+	private double total_defensive_rebounds;
+	private double total_assists;
+	private double total_blocks;
+	private double total_steals;
+	private double total_turnovers;
+	private double total_fouls;
 
 	//Constructor
-	public TeamStats(String logo, String name, int total_points, int shots_made, double perc_2_in, double perc_3_in,
-					 double perc_freethrows_in, int total_rebounds, int total_offensive_rebounds,
-					 int total_defensive_rebounds, int total_assists, int total_blocks,
-					 int total_steals, int total_turnovers, int total_fouls) {
+	public TeamStats(String logo, String name, double total_points, double shots_made, double perc_2_in, double perc_3_in,
+					 double perc_freethrows_in, double total_rebounds, double total_offensive_rebounds,
+					 double total_defensive_rebounds, double total_assists, double total_blocks,
+					 double total_steals, double total_turnovers, double total_fouls) {
 		this.logo = logo;
 		this.name = name;
 		this.total_points = total_points;
@@ -56,4 +56,16 @@ public class TeamStats {
 	public String getTotal_steals() {return String.valueOf(total_steals);}
 	public String getTotal_turnovers() {return String.valueOf(total_turnovers);}
 	public String getTotal_fouls() {return String.valueOf(total_fouls);}
+
+	public String getIntTotal_points() {return String.valueOf((int) total_points);}
+	public String getIntShots_made() {return String.valueOf((int) shots_made);}
+	public String getIntTotal_rebounds() {return String.valueOf((int) total_rebounds);}
+	public String getIntTotal_offensive_rebounds() {return String.valueOf((int) total_offensive_rebounds);}
+	public String getIntTotal_defensive_rebounds() {return String.valueOf((int) total_defensive_rebounds);}
+	public String getIntTotal_assists() {return String.valueOf((int) total_assists);}
+	public String getIntTotal_blocks() {return String.valueOf((int) total_blocks);}
+	public String getIntTotal_steals() {return String.valueOf((int) total_steals);}
+	public String getIntTotal_turnovers() {return String.valueOf((int) total_turnovers);}
+	public String getIntTotal_fouls() {return String.valueOf((int) total_fouls);}
+
 }

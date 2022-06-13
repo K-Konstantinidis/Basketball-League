@@ -52,7 +52,7 @@ public class FragmentPlayerStats extends Fragment {
 		//Make a connection with the database via php
 		Connector lr = new Connector(myIP.getIp(), "player-stats");
 
-	//	playerStatsList = lr.getPlayerStats();
+		playerStatsList = lr.getPlayerStats();
 
 		adapter = new PlayerStatsAdapter(getContext(), playerStatsList);
 		recyclerView.setAdapter(adapter);

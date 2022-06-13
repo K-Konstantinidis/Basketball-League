@@ -1,5 +1,6 @@
 package com.example.esake;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,7 +85,9 @@ public class FragmentMatchOverviewUser extends Fragment {
 			awayName = view.findViewById(R.id.awayTeamName_user);;
 
 			scoreHome = view.findViewById(R.id.SHomeScore_user);
+			scoreHome.setTextColor(Color.BLACK);
 			scoreAway = view.findViewById(R.id.SAwayScore_user);
+			scoreAway.setTextColor(Color.BLACK);
 
 			Q1Home = view.findViewById(R.id.Q1HomeScore_user);
 			Q2Home = view.findViewById(R.id.Q2HomeScore_user);
@@ -105,12 +108,13 @@ public class FragmentMatchOverviewUser extends Fragment {
 			Q2Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ2score1()));
 			Q3Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ3score1()));
 			Q4Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ4score1()));
+			Q4Home.setTextColor(Color.BLACK);
 
 			Q1Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ1score2()));
 			Q2Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ2score2()));
 			Q3Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ3score2()));
 			Q4Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ4score2()));
-
+			Q4Away.setTextColor(Color.BLACK);
 
 		}
 		else{
