@@ -58,7 +58,7 @@ public class Connector {
 			String url = "http://" + ip + "/ws/getChampionshipTeamStats.php?lang=gr&cid=1";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				tstats = okHttpHandler.getDataForFTeams(url);
+				tstats = okHttpHandler.getDataForTeams(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
