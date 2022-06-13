@@ -79,42 +79,40 @@ public class FragmentUserHome extends Fragment {
 			public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
 
 				String round = gameweekSpinner.getSelectedItem().toString();
-				round_id = round.substring(round.length() - 1);
+				round_id = round.substring(round.length() - 2);
 
-				weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
+				RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
 
-				logoHome = view.findViewById(R.id.gameweek_team1_logo);
-				logoAway = view.findViewById(R.id.gameweek_team2_logo);
+				HomeUserAdapter adapter1;
+				List<GameWeek> homeUserGamesList = new ArrayList<>();
 
-				homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
-				awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
+				recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-				homeScore.setText(weekMatches.getHomeScore(0));
-				awayScore.setText(weekMatches.getAwayScore(0));
+				//Make a connection with the database via php
+				Connector weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
-				int game_status = weekMatches.getGameStatus(0);
+				homeUserGamesList = weekMatches.getMatches();
+
+				adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
+				recyclerView.setAdapter(adapter1);
+
+//				weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
+//
+//				logoHome = view.findViewById(R.id.gameweek_team1_logo);
+//				logoAway = view.findViewById(R.id.gameweek_team2_logo);
+//
+//				homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
+//				awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
+//
+//				homeScore.setText(weekMatches.getHomeScore(0));
+//				awayScore.setText(weekMatches.getAwayScore(0));
+//
+//				int game_status = weekMatches.getGameStatus(0);
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parentView)
 			{}
 		});
-
-		weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
-
-		RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
-
-		HomeUserAdapter adapter1;
-		List<GameWeek> homeUserGamesList = new ArrayList<>();
-
-		recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
-		//Make a connection with the database via php
-		Connector Lr = new Connector(myIP.getIp(),"week-matches");
-
-		homeUserGamesList = Lr.getMatches();
-
-		adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
-		recyclerView.setAdapter(adapter1);
 
 		//int game_status = weekMatches.getGameStatus(0);
 
