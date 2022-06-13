@@ -20,9 +20,10 @@ header("Content-Type: application/json");
 
 // Check if all the necessary parameters are given
 if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
-	isset($_GET['cid']) &&  !empty($_GET['cid']) &&
-	isset($_GET['rid']) &&  !empty($_GET['rid'])
-) {
+	isset($_GET['cid']) && !empty($_GET['cid']) &&
+	isset($_GET['rid']) && !empty($_GET['rid'])
+) 
+{
 	if($_GET['lang'] === 'en') {
 		$lang_stmt = 'p.surname_en AS surname,';
 	}
@@ -37,7 +38,9 @@ if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
 	$round_id			= $_GET['rid'];
 }
 else {
-	die('Not all of the necessary parameters were passed');
+	// An empty JSON will be returned if any needed
+	//  parameter is not given.
+	die();
 }
 
 // Connect to the database
@@ -52,7 +55,7 @@ $sql =
 FROM (SELECT t.logo_path AS team_logo, 
 		temp.surname_gr AS surname, 
     	ps1.player_id as pid,
-		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position, total_points
+		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position
     FROM `player_stats` AS ps1
     JOIN team t ON t.id = ps1.team_id
     JOIN 
@@ -85,14 +88,15 @@ LEFT JOIN (SELECT t.logo_path AS logo2,
     GROUP BY ps1.player_id) f2
 ON f1.position = f2.position2 AND f1.rating < f2.rating2
 WHERE f2.rating2 IS NULL
+GROUP BY position
 ORDER BY rating DESC';
 
 // Prepare the statement
 $stmt = $dbh->prepare($sql);
 
 // Bind the parameters
-$stmt->bindParam(':cid', $championship_id,	PDO::PARAM_INT);
-$stmt->bindParam(':rid', $round_id,			PDO::PARAM_INT);
+$stmt->bindParam(':cid',	$championship_id, PDO::PARAM_INT);
+$stmt->bindParam(':rid',	$round_id, PDO::PARAM_INT);
 
 // Execute the statement and fetch the results
 try {
