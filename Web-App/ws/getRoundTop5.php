@@ -51,7 +51,7 @@ $data = array();
 
 // The query
 $sql =
-'SELECT team_logo, surname, pid, rating, total_points, position
+'SELECT team_logo, surname, pid, rating, position
 FROM (SELECT t.logo_path AS team_logo, 
 		temp.surname_gr AS surname, 
     	ps1.player_id as pid,
@@ -115,7 +115,6 @@ foreach($result as $row) {
 	$top_player['team_logo']	= $row['team_logo'];
 	$top_player['surname']		= $row['surname'];
 	$top_player['rating']		= $row['rating'];
-	$top_player['total_points']	= $row['total_points'];
 	$top_player['position']		= $row['position'];
 	
 	$data[$row['pid']] = $top_player;
