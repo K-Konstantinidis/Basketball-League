@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -115,22 +114,32 @@ public class FragmentUserHome extends Fragment {
 
 		//int game_status = weekMatches.getGameStatus(0);
 
-		// Get the button
-		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
-		game.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(getContext(), Tabbed_User.class);
-				intent.putExtra("round", round_id);
-				intent.putExtra("status", game_status);
+		Intent intent = new Intent(getContext(), Tabbed_User.class);
+		intent.putExtra("round", round_id);
+		intent.putExtra("status", game_status);
 
-				String game;
-				game = weekMatches.getGameId(Integer.parseInt(round_id));
-				intent.putExtra("game", Integer.parseInt(game));
+		String game;
+		game = weekMatches.getGameId(Integer.parseInt(round_id));
+		intent.putExtra("game", Integer.parseInt(game));
 
-				startActivity(intent);
-			}
-		});
+		startActivity(intent);
+
+//		// Get the button
+//		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
+//		game.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View view) {
+//				Intent intent = new Intent(getContext(), Tabbed_User.class);
+//				intent.putExtra("round", round_id);
+//				intent.putExtra("status", game_status);
+//
+//				String game;
+//				game = weekMatches.getGameId(Integer.parseInt(round_id));
+//				intent.putExtra("game", Integer.parseInt(game));
+//
+//				startActivity(intent);
+//			}
+//		});
 
 		return view;
 	}
