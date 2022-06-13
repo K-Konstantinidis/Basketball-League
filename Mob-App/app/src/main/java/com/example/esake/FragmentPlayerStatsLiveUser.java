@@ -56,7 +56,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);;
+		View view;
 
 		//true will change
 		//We will have a flag from database to
@@ -87,9 +87,8 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 			adapter = new PlayerStatsFinishedAdapter(getContext(), playerStatsList);
 			recyclerView.setAdapter(adapter);
 
-			return view;
 		}
-		else if(Integer.parseInt(mParam2)==1){
+		else {
 			view = inflater.inflate(R.layout.fragment_player_stats_live_user, container, false);
 
 			//Find the recyclerView
@@ -109,7 +108,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 
 			live_stats = new Connector(myIP.getIp(), "player-live-stats", url);
 
-			//playerStatsList = live_stats.getLivePlayerStats();
+			playerStatsList = live_stats.getLivePlayerStats();
 
 			adapter = new PlayerStatsLiveAdapter(getContext(), playerStatsList);
 			recyclerView.setAdapter(adapter);
@@ -117,7 +116,6 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 
 			live_stats = new Connector(myIP.getIp(), "player-live-stats");
 
-			return view;
 		}
 		return view;
     }
