@@ -40,7 +40,7 @@ public class HomeUserAdapter extends RecyclerView.Adapter<HomeUserAdapter.HomeUs
 		return new HomeUserAdapter.HomeUserHolder(view);
 	}
 
-	@SuppressLint("ResourceAsColor")
+	@SuppressLint("SetTextI18n")
 	@Override
 	public void onBindViewHolder(@NonNull HomeUserAdapter.HomeUserHolder holder, int position) {
 		GameWeek gameWeek = homeUserGamesList.get(position);

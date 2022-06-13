@@ -4,7 +4,7 @@ public class Top5 {
 
 	private String name;
 	private String pos;
-//	private String logoPath;
+	private String logoPath;
 	private int rating;
 	private int points;
 
@@ -12,12 +12,13 @@ public class Top5 {
 	public Top5(String name, String pos, int rating, int points) {
 		this.name = name;
 		this.pos = pos;
-//		this.logoPath = logoPath;
+		this.logoPath = logoPath;
 		this.rating = rating;
 		this.points = points;
 	}
 
 	//Getters
+	public String getLogoPath() { return "http://"+myIP.getIp()+logoPath;};
 
 	public String getName() { return name; }
 

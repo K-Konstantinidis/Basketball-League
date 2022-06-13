@@ -56,7 +56,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-		View view;
+		View view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);;
 
 		//true will change
 		//We will have a flag from database to
@@ -68,7 +68,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 			//Find the recyclerView
 			RecyclerView recyclerView = view.findViewById(R.id.recViewHomePlayerStatsFinished);
 			//Create an adapter
-			PlayerStatsAdapter adapter;
+			PlayerStatsFinishedAdapter adapter;
 			//Create a list for the team ranking
 			List<PlayerStats> playerStatsList = new ArrayList<>();
 
@@ -84,14 +84,40 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 
 			playerStatsList = finished_stats.getFinishedPlayerStats();
 
-			adapter = new PlayerStatsAdapter(getContext(), playerStatsList);
+			adapter = new PlayerStatsFinishedAdapter(getContext(), playerStatsList);
 			recyclerView.setAdapter(adapter);
+
+			return view;
 		}
-		else{
+		else if(Integer.parseInt(mParam2)==1){
+			view = inflater.inflate(R.layout.fragment_player_stats_live_user, container, false);
+
+			//Find the recyclerView
+			RecyclerView recyclerView = view.findViewById(R.id.recViewHomePlayerStatsLive);
+			//Create an adapter
+			PlayerStatsLiveAdapter adapter;
+			//Create a list for the team ranking
+			List<PlayerStats> playerStatsList = new ArrayList<>();
+
+			//Set a vertical layout manager
+			//If you are in an Activity class pass 'this'. But since
+			//we are in a Fragment Class we have to pass getContext()
+			recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+			//Make a connection with the database via php
+			String url = "getOngoingMatchPlayerStats.php?lang=gr&cid=1&rid=" + mParam1+ "&gid=" + mParam3;
+
+			live_stats = new Connector(myIP.getIp(), "player-live-stats", url);
+
+			playerStatsList = live_stats.getLivePlayerStats();
+
+			adapter = new PlayerStatsLiveAdapter(getContext(), playerStatsList);
+			recyclerView.setAdapter(adapter);
 			view = inflater.inflate(R.layout.fragment_player_stats_live_user, container, false);
 
 			live_stats = new Connector(myIP.getIp(), "player-live-stats");
 
+			return view;
 		}
 		return view;
     }

@@ -1,6 +1,8 @@
 package com.example.esake.StatsManagerHome;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,7 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 		return new HomeSmAdapter.HomeSmHolder(view);
 	}
 
+	@SuppressLint("SetTextI18n")
 	@Override
 	public void onBindViewHolder(@NonNull HomeSmHolder holder, int position) {
 		GameWeek gameWeek = homeSmList.get(position);
@@ -47,11 +50,20 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 		game_status = gameWeek.getGameStatus();
 		switch(game_status){
 			case -1:
-				holder.button.setText("Game Summary");
+				holder.button.setText("Live Game");
+				holder.button.setEnabled(false);
+				holder.button.setClickable(false);
+				holder.button.setBackgroundColor(Color.RED);
+				break;
 			case 0:
-				holder.button.setText("Watch Live");
+				holder.button.setText("Start Game");
+				break;
 			case 1:
 				holder.button.setText("Scheduled");
+				holder.button.setEnabled(false);
+				holder.button.setClickable(false);
+				holder.button.setBackgroundColor(Color.GRAY);
+				break;
 		}
 	}
 
