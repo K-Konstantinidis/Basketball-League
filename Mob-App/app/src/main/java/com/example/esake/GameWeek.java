@@ -5,7 +5,7 @@ public class GameWeek {
 	private String gameweek;
 //	private int round;
 	private int gameId;
-//	private String homeLogo, awayLogo;
+	private String homeLogo, awayLogo;
 	private int homeScore, awayScore;
 	private int gameStatus;
 
@@ -13,7 +13,9 @@ public class GameWeek {
 		this.gameweek = gameweek;
 	}
 
-	public GameWeek(int gameId, int homeScore, int awayScore, int gameStatus) {
+	public GameWeek(String homeLogo, String awayLogo, int gameId, int homeScore, int awayScore, int gameStatus) {
+		this.homeLogo = homeLogo;
+		this.awayLogo = awayLogo;
 		this.gameId = gameId;
 		this.homeScore = homeScore;
 		this.awayScore = awayScore;
@@ -26,8 +28,8 @@ public class GameWeek {
 
 //	public int getRound() {return round;}
 	public String getGameId() {return String.valueOf(gameId);}
-//	public String getHomeLogo() {return homeLogo;}
-//	public String getAwayLogo() {return awayLogo;}
+	public String getHomeLogo() {return "http://"+myIP.getIp()+this.homeLogo;}
+	public String getAwayLogo() {return "http://"+myIP.getIp()+this.awayLogo;}
 	public String getHomeScore() {return String.valueOf(homeScore);}
 	public String getAwayScore() {return String.valueOf(awayScore);}
 	public int getGameStatus() {return gameStatus;}

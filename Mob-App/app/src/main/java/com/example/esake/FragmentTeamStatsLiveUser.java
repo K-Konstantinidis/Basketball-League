@@ -18,45 +18,50 @@ import com.squareup.picasso.Picasso;
  */
 public class FragmentTeamStatsLiveUser extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+	// TODO: Rename parameter arguments, choose names that match
+	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+	private static final String ARG_PARAM1 = "param1";
+	private static final String ARG_PARAM2 = "param2";
+	private static final String ARG_PARAM3 = "param3";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+	// TODO: Rename and change types of parameters
+	private String mParam1;
+	private String mParam2;
+	private String mParam3;
 
-    public FragmentTeamStatsLiveUser() {
-        // Required empty public constructor
-    }
+	public FragmentTeamStatsLiveUser() {
+		// Required empty public constructor
+	}
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentTeamStatsLiveUser.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentTeamStatsLiveUser newInstance(String param1, String param2) {
-        FragmentTeamStatsLiveUser fragment = new FragmentTeamStatsLiveUser();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+	/**
+	 * Use this factory method to create a new instance of
+	 * this fragment using the provided parameters.
+	 *
+	 * @param param1 Parameter 1.
+	 * @param param2 Parameter 2.
+	 * @return A new instance of fragment FragmentPlayerStatsLiveUser.
+	 */
+	// TODO: Rename and change types and number of parameters
+	public static FragmentTeamStatsLiveUser newInstance(String param1, String param2, String param3) {
+		FragmentTeamStatsLiveUser fragment = new FragmentTeamStatsLiveUser();
+		Bundle args = new Bundle();
+		args.putString(ARG_PARAM1, param1);
+		args.putString(ARG_PARAM2, param2);
+		args.putString(ARG_PARAM3, param3);
+		fragment.setArguments(args);
+		return fragment;
+	}
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (getArguments() != null) {
+			mParam1 = getArguments().getString(ARG_PARAM1);
+			mParam2 = getArguments().getString(ARG_PARAM2);
+			mParam3 = getArguments().getString(ARG_PARAM3);
+		}
+	}
+
 
 	private Connector team_finished_stats, team_live_stats;
 	private ImageView imgHomeTeam, imgAwayTeam;
@@ -81,10 +86,13 @@ public class FragmentTeamStatsLiveUser extends Fragment {
 		// Inflate the layout for this fragment
 		View view;
 
-		if(true){
+		//normally == 0 here
+		if(Integer.parseInt(mParam2)==0){
 			view = inflater.inflate(R.layout.fragment_team_stats_finished_user, container, false);
 
-			team_finished_stats = new Connector(myIP.getIp(), "team-finished-stats");
+			String url = "getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=" + mParam1+ "&gid=" + mParam3;
+
+			team_finished_stats = new Connector(myIP.getIp(), "team-finished-stats", url);
 
 //			homeName = view.findViewById(R.id.team_stats_teamName);
 			imgHomeTeam = (ImageView) view.findViewById(R.id.imageteam1);

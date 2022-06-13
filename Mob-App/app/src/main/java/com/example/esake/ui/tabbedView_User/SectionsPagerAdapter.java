@@ -1,18 +1,11 @@
 package com.example.esake.ui.tabbedView_User;
 
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.esake.FragmentLineupsUser;
-import com.example.esake.FragmentMatchOverviewUser;
-import com.example.esake.FragmentPlayerStatsLiveUser;
-import com.example.esake.FragmentTeamStatsLiveUser;
-import com.example.esake.R;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -20,40 +13,31 @@ import com.example.esake.R;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_1_user, R.string.tab_2_user, R.string.tab_3_user, R.string.tab_4_user};
-    private final Context mContext;
+	private final List<Fragment> listFragment = new ArrayList<>();
+	private final List<String> listTitle = new ArrayList<>();
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
-        mContext = context;
     }
 
-    @NonNull
+
+	public Fragment getItem(int position) {
+		return listFragment.get(position);
+	}
+
 	@Override
-    public Fragment getItem(int position) {
-        switch (position){
-            case 0:
-                return new FragmentMatchOverviewUser();
-            case 1:
-                return new FragmentTeamStatsLiveUser();
-            case 2:
-                return new FragmentPlayerStatsLiveUser();
-            case 3:
-                return new FragmentLineupsUser();
-            default:
-                return new PlaceholderFragment();
-        }
-    }
+	public int getCount() {
+		return listTitle.size();
+	}
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return mContext.getResources().getString(TAB_TITLES[position]);
-    }
+	@Override
+	public CharSequence getPageTitle(int position) {
+		return listTitle.get(position);
+	}
 
-    @Override
-    public int getCount() {
-        // Show 4 pages.
-        return 4;
-    }
+
+	public void AddFragment (Fragment fragment, String title){
+		listFragment.add(fragment);
+		listTitle.add(title);
+	}
 }

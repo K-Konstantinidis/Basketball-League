@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,19 +15,38 @@ import java.util.List;
 public class FragmentPlayerStatsLiveUser extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+	private static final String ARG_PARAM3 = "param3";
 
-	public FragmentPlayerStatsLiveUser() {
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+	private String mParam3;
+
+    public FragmentPlayerStatsLiveUser() {
         // Required empty public constructor
+    }
+
+    // TODO: Rename and change types and number of parameters
+    public static FragmentPlayerStatsLiveUser newInstance(String param1, String param2, String param3) {
+        FragmentPlayerStatsLiveUser fragment = new FragmentPlayerStatsLiveUser();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+		args.putString(ARG_PARAM3, param3);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-			String mParam1 = getArguments().getString(ARG_PARAM1);
-			String mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+			mParam3 = getArguments().getString(ARG_PARAM3);
         }
     }
 
@@ -43,8 +61,9 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 		//true will change
 		//We will have a flag from database to
 		//find out if the game has finished or not
-		if(true){
-			view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);
+		//normally == 0 here
+		if(Integer.parseInt(mParam2)==0){
+			 view = inflater.inflate(R.layout.fragment_player_stats_finished_user, container, false);
 
 			//Find the recyclerView
 			RecyclerView recyclerView = view.findViewById(R.id.recViewHomePlayerStatsFinished);
@@ -59,7 +78,9 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 			recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 			//Make a connection with the database via php
-			finished_stats = new Connector(myIP.getIp(), "player-finished-stats");
+			 String url = "getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=" + mParam1+ "&gid=" + mParam3;
+
+			finished_stats = new Connector(myIP.getIp(), "player-finished-stats", url);
 
 			playerStatsList = finished_stats.getFinishedPlayerStats();
 
