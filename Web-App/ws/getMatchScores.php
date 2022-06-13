@@ -20,18 +20,16 @@ require_once '../resources/config.php';
 header('Content-Type: application/json');
 
 // Check if all the necessary parameters are given
-if(	isset($_GET['cid']) &&
-	isset($_GET['rid']) && isset($_GET['gid']))
-{
-
+if(	isset($_GET['cid']) && !empty($_GET['cid']) &&
+	isset($_GET['rid']) && !empty($_GET['rid']) &&
+	isset($_GET['gid']) && !empty($_GET['gid'])
+) {
 	$championship_id	= $_GET['cid'];
 	$round_id			= $_GET['rid'];
 	$game_id			= $_GET['gid'];
 }
 else {
-	// An empty JSON will be returned if any needed
-	//  parameter is not given.
-	die();
+	die('Not all of the necessary parameters were passed');
 }
 
 // Connect to the database

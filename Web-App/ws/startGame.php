@@ -25,8 +25,8 @@ if(	isset($_GET['cid'])  && !empty($_GET['cid']) &&
 	isset($_GET['rid'])  && !empty($_GET['rid']) &&
 	isset($_GET['gid'])  && !empty($_GET['gid']) &&
 	isset($_GET['thid']) && !empty($_GET['thid']) &&
-	isset($_GET['taid']) && !empty($_GET['taid']))
-{
+	isset($_GET['taid']) && !empty($_GET['taid'])
+) {
 	$championship_id = $_GET['cid'];
 	$round_id		 = $_GET['rid'];
 	$game_id		 = $_GET['gid'];

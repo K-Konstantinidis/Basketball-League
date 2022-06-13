@@ -17,7 +17,7 @@ require_once '../resources/config.php';
 header('Content-Type: application/json');
 
 // Check if all the necessary parameters are given
-if(	isset($_GET['cid'])  && !empty($_GET['cid']) ) {
+if(isset($_GET['cid']) && !empty($_GET['cid']) ) {
 	$championship_id = $_GET['cid'];
 }
 else {

@@ -12,8 +12,7 @@
 require_once '../resources/config.php';
 
 // Check if all the necessary parameters are given
-if(	isset($_GET['cid'])  && !empty($_GET['cid']))
-{
+if(isset($_GET['cid']) && !empty($_GET['cid'])) {
 	$championship_id = $_GET['cid'];
 }
 else {
@@ -31,6 +30,7 @@ $sql = 'SELECT id FROM `round` WHERE championship_id = :cid';
 $stmt = $dbh->prepare($sql);
 $stmt->bindParam(':cid', $championship_id, PDO::PARAM_INT);
 
+// Execute the statement and fetch the results
 try {
 	$stmt->execute();
 	$result = $stmt->fetchAll();
@@ -40,6 +40,7 @@ catch(PDOException $ex) {
 	die();
 }
 
+// Convert the returned results to a JSON compatible array
 foreach($result as $round) {
 	$round_id = array();
 	
