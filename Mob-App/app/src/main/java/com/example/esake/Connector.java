@@ -11,6 +11,7 @@ public class Connector {
 	private ArrayList<PlayerStats> lpstats = new ArrayList<>();
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
+	private Game overViewGame;
 	private Game finishedGame;
 	private ArrayList<Player> players = new ArrayList<>();
 
@@ -110,6 +111,15 @@ public class Connector {
 				e.printStackTrace();
 			}
 
+		}else if (string.equals("overview-stats")) {
+			String url = "http://" + ip + "/ws/"+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				overViewGame = okHttpHandler.getDataForFinishedScores(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}else if (string.equals("team-finished-stats")) {
 			String url = "http://" + ip + "/ws/"+param;
 			try {
@@ -183,6 +193,10 @@ public class Connector {
 //	public String getAwayLogo(int id){
 //		return this.matches.get(id);
 //	}
+
+	//Function for a game overview
+	public Game getOverViewFinishedGame() { return this.overViewGame; }
+
 
 	//Pass the List with the ranking
 	public ArrayList<LeagueRank> getRanking(){return Ranking;}
