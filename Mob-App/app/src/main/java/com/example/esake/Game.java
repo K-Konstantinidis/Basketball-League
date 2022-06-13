@@ -47,11 +47,11 @@ public class Game {
 
 		this.awayTeamName = awayTeamName;
 		this.score2 = awayTeamTotalScore;
-		scores = Arrays.asList(awayTeamQuarterScores.split(","));
-		this.Q1score2 = Integer.parseInt(scores.get(0));
-		this.Q2score2 = Integer.parseInt(scores.get(1));
-		this.Q3score2 = Integer.parseInt(scores.get(2));
-		this.Q4score2 = Integer.parseInt(scores.get(3));
+		List<String> scores2 = Arrays.asList(awayTeamQuarterScores.split(","));
+		this.Q1score2 = Integer.parseInt(scores2.get(0));
+		this.Q2score2 = Integer.parseInt(scores2.get(1));
+		this.Q3score2 = Integer.parseInt(scores2.get(2));
+		this.Q4score2 = Integer.parseInt(scores2.get(3));
 	}
 
 	public Game(int homeTeamId, String homeTeamLogo, int homeTeamScore, int awayTeamId, String awayTeamLogo, int awayTeamScore) {

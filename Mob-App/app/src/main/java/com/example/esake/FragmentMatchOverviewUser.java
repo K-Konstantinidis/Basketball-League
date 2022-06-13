@@ -88,13 +88,13 @@ public class FragmentMatchOverviewUser extends Fragment {
 
 			Q1Home = view.findViewById(R.id.Q1HomeScore_user);
 			Q2Home = view.findViewById(R.id.Q2HomeScore_user);
-			Q3Home = view.findViewById(R.id.Q2HomeScore_user);
-			Q4Home = view.findViewById(R.id.Q3HomeScore_user);
+			Q3Home = view.findViewById(R.id.Q3HomeScore_user);
+			Q4Home = view.findViewById(R.id.Q4HomeScore_user);
 
 			Q1Away = view.findViewById(R.id.Q1AwayScore_user);
 			Q2Away = view.findViewById(R.id.Q2AwayScore_user);
-			Q3Away = view.findViewById(R.id.Q2AwayScore_user);
-			Q4Away = view.findViewById(R.id.Q3AwayScore_user);
+			Q3Away = view.findViewById(R.id.Q3AwayScore_user);
+			Q4Away = view.findViewById(R.id.Q4AwayScore_user);
 
 			homeName.setText(userOverViewFinished.getOverViewFinishedGame().getHomeTeamName());
 			awayName.setText(userOverViewFinished.getOverViewFinishedGame().getAwayTeamName());
