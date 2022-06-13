@@ -182,8 +182,6 @@ public class OkHttpHandler {
 				String perc_3_in = json.getJSONObject(id).getString("perc_3_in");
 				String perc_freethrows_in = json.getJSONObject(id).getString("perc_freethrows_in");
 				String total_rebounds = json.getJSONObject(id).getString("total_rebounds");
-/*				String total_offensive_rebounds = json.getJSONObject(id).getString("total_offensive_rebounds");
-				String total_defensive_rebounds = json.getJSONObject(id).getString("total_defensive_rebounds");*/
 				String total_assists = json.getJSONObject(id).getString("total_assists");
 				String total_blocks = json.getJSONObject(id).getString("total_blocks");
 				String total_steals = json.getJSONObject(id).getString("total_steals");
