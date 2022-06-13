@@ -235,9 +235,7 @@ public class Connector {
 	}
 
 	//functions for top5
-//	public String getTop5Logo(int id){
-//		return this.top5.get(id).getlogo();
-//	}
+
 	public String getTop5Name(int id){
 		return this.top5.get(id).getName();
 	}
