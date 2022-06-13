@@ -2,7 +2,7 @@ package com.example.esake;
 
 public class TeamStats {
 
-//	private String logo;
+	private String logo;
 	private String name;
 	private int total_points;
 	private int shots_made;
@@ -19,11 +19,11 @@ public class TeamStats {
 	private int total_fouls;
 
 	//Constructor
-	public TeamStats(String name, int total_points, int shots_made, double perc_2_in, double perc_3_in,
+	public TeamStats(String logo, String name, int total_points, int shots_made, double perc_2_in, double perc_3_in,
 					 double perc_freethrows_in, int total_rebounds, int total_offensive_rebounds,
 					 int total_defensive_rebounds, int total_assists, int total_blocks,
 					 int total_steals, int total_turnovers, int total_fouls) {
-//		this.logo = logo;
+		this.logo = logo;
 		this.name = name;
 		this.total_points = total_points;
 		this.shots_made = shots_made;
@@ -41,7 +41,7 @@ public class TeamStats {
 	}
 
 	//Getters
-	//public String getLogo() {return logo;}
+	public String getLogo() {return "http://"+myIP.getIp()+logo;}
 
 
 	public String getName() {return name;}

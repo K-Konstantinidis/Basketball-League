@@ -19,7 +19,7 @@ public class LeagueRank {
 	}
 
 	public String getTeamlogo() {
-		return String.valueOf(Logo_path);
+		return "http://"+myIP.getIp()+this.Logo_path;
 	}
 
 	public String getName() {
