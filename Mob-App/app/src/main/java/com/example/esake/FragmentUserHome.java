@@ -1,16 +1,13 @@
 package com.example.esake;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -69,6 +66,7 @@ public class FragmentUserHome extends Fragment {
 
 		gameweekSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
+			@SuppressLint("SetTextI18n")
 			@Override
 			public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
 
@@ -87,30 +85,13 @@ public class FragmentUserHome extends Fragment {
 
 				homeUserGamesList = weekMatches.getMatches();
 
-				adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
+				adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList, round_id);
 				recyclerView.setAdapter(adapter1);
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parentView)
 			{}
 		});
-
-		// Get the button
-		/*Button game = view.findViewById(R.id.gameweek_preview_gameButton);
-		game.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(getContext(), Tabbed_User.class);
-				intent.putExtra("round", round_id);
-				intent.putExtra("status", game_status);
-
-				String game;
-				game = weekMatches.getGameId(Integer.parseInt(round_id));
-				intent.putExtra("game", Integer.parseInt(game));
-
-				startActivity(intent);
-			}
-		});*/
 
 		return view;
 	}

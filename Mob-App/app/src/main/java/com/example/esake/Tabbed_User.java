@@ -16,7 +16,6 @@ public class Tabbed_User extends AppCompatActivity {
 
     private ActivityTabbedUserBinding binding;
     private Connector tabUser;
-    private TextView homeScore, awayScore;
 
     private ImageView homeTeamImage, awayTeamImage;
     private TextView homeTeamScore, awayTeamScore;
@@ -36,21 +35,19 @@ public class Tabbed_User extends AppCompatActivity {
 		b = getIntent().getExtras();
 		String round = b.getString("round");
 		int gameStatus = b.getInt("status");
-		int gameID = b.getInt("game");
+		String gameID = b.getString("game");
 
 		String url = "getMatchDetailedScore.php?lang=gr&cid=1&rid="+round+"&gid="+
-			String.valueOf(gameID);
+			gameID;
 
 		tabUser = new Connector(myIP.getIp(),"tabbed-User",url);
 
 		FragmentMatchOverviewUser viewUser = FragmentMatchOverviewUser.newInstance(round,
-			String.valueOf(gameStatus),String.valueOf(gameID));
-
+			String.valueOf(gameStatus),gameID);
 		FragmentPlayerStatsLiveUser playerS = FragmentPlayerStatsLiveUser.newInstance(round,
-			String.valueOf(gameStatus),String.valueOf(gameID));
+			String.valueOf(gameStatus),gameID);
 		FragmentTeamStatsLiveUser teamS = FragmentTeamStatsLiveUser.newInstance(round,
-			String.valueOf(gameStatus),String.valueOf(gameID));
-
+			String.valueOf(gameStatus),gameID);
 
 		sectionsPagerAdapter.AddFragment(viewUser,"Game");
 		sectionsPagerAdapter.AddFragment(teamS, "Team Stats");
@@ -72,6 +69,5 @@ public class Tabbed_User extends AppCompatActivity {
 
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getHomeTeamLogo()).fit().into(homeTeamImage);
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getAwayTeamLogo()).fit().into(awayTeamImage);
-
 	}
 }
