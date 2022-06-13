@@ -287,7 +287,7 @@ public class OkHttpHandler {
 
 				//Code to add from Json to Screen
 				return new Game(Integer.parseInt(homeTeamId),homeTeamLogo,Integer.parseInt(homeTeamScore),
-					Integer.parseInt(awayTeamId),awayTeamLogo,Integer.parseInt(awayTeamScore));;
+					Integer.parseInt(awayTeamId),awayTeamLogo,Integer.parseInt(awayTeamScore));
 
 			}
 		} catch (JSONException e) {
