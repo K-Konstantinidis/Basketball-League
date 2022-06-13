@@ -43,12 +43,6 @@ public class Tabbed_User extends AppCompatActivity {
 
 		tabUser = new Connector(myIP.getIp(),"tabbed-User",url);
 
-		homeScore = findViewById(R.id.home_team_score_user);
-		awayScore = findViewById(R.id.away_team_score_user);
-
-		homeScore.setText(tabUser.getOverviewScore(0));
-		awayScore.setText(tabUser.getOverviewScore(1));
-
 		FragmentMatchOverviewUser viewUser = FragmentMatchOverviewUser.newInstance(round,
 			String.valueOf(gameStatus),String.valueOf(gameID));
 
