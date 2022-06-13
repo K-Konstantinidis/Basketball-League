@@ -6,15 +6,13 @@ public class Top5 {
 	private String pos;
 	private String logoPath;
 	private int rating;
-	private int points;
 
 	//Constructor
-	public Top5(String name, String pos, int rating, int points) {
+	public Top5(String name, String pos, String logoPath, int rating) {
 		this.name = name;
 		this.pos = pos;
 		this.logoPath = logoPath;
 		this.rating = rating;
-		this.points = points;
 	}
 
 	//Getters
@@ -25,6 +23,4 @@ public class Top5 {
 	public String getPos() { return pos; }
 
 	public String getRating() { return String.valueOf(rating); }
-
-	public String getPoints() { return String.valueOf(points); }
 }

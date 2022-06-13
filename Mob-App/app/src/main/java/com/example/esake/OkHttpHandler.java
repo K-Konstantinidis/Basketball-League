@@ -142,12 +142,11 @@ public class OkHttpHandler {
 				String logo = json.getJSONObject(id).getString("team_logo");
 				String name= json.getJSONObject(id).getString("surname");
 				String pos = json.getJSONObject(id).getString("position");
-				String points = json.getJSONObject(id).getString("total_points");
 				String rating = json.getJSONObject(id).getString("rating");
 
 
 				//Code to add from Json to Screen
-				Top5 newTop5 = new Top5(name,pos,Integer.parseInt(rating),Integer.parseInt(points));
+				Top5 newTop5 = new Top5(name,pos,logo,Integer.parseInt(rating));
 				top5.add(newTop5);
 			}
 		} catch (JSONException e) {
@@ -241,14 +240,14 @@ public class OkHttpHandler {
 				String total_fouls = json.getJSONObject(id).getString("total_fouls");
 
 				//Code to add from Json to Screen
-				TeamStats tStats = new TeamStats(logo, name, Integer.parseInt(total_points),
-					Integer.parseInt(shots_made), Double.parseDouble(perc_2_in),
+				TeamStats tStats = new TeamStats(logo, name, Double.parseDouble(total_points),
+					Double.parseDouble(shots_made), Double.parseDouble(perc_2_in),
 					Double.parseDouble(perc_3_in), Double.parseDouble(perc_freethrows_in),
-					Integer.parseInt(total_rebounds), Integer.parseInt(total_offensive_rebounds),
-					Integer.parseInt(total_defensive_rebounds), Integer.parseInt(total_assists),
-					Integer.parseInt(total_blocks), Integer.parseInt(total_steals),
-					Integer.parseInt(total_turnovers),
-					Integer.parseInt(total_fouls));
+					Double.parseDouble(total_rebounds), Double.parseDouble(total_offensive_rebounds),
+					Double.parseDouble(total_defensive_rebounds), Double.parseDouble(total_assists),
+					Double.parseDouble(total_blocks), Double.parseDouble(total_steals),
+					Double.parseDouble(total_turnovers),
+					Double.parseDouble(total_fouls));
 				teamStats.add(tStats);
 
 			}
@@ -291,14 +290,14 @@ public class OkHttpHandler {
 				String total_fouls = json.getJSONObject(id).getString("avg_fouls");
 
 				//Code to add from Json to Screen
-				TeamStats tStats = new TeamStats(logo, name, Integer.parseInt(total_points),
-					Integer.parseInt(shots_made), Double.parseDouble(perc_2_in),
+				TeamStats tStats = new TeamStats(logo, name, Double.parseDouble(total_points),
+					Double.parseDouble(shots_made), Double.parseDouble(perc_2_in),
 					Double.parseDouble(perc_3_in), Double.parseDouble(perc_freethrows_in),
-					Integer.parseInt(total_rebounds), Integer.parseInt(total_offensive_rebounds),
-					Integer.parseInt(total_defensive_rebounds), Integer.parseInt(total_assists),
-					Integer.parseInt(total_blocks), Integer.parseInt(total_steals),
-					Integer.parseInt(total_turnovers),
-					Integer.parseInt(total_fouls));
+					Double.parseDouble(total_rebounds), Double.parseDouble(total_offensive_rebounds),
+					Double.parseDouble(total_defensive_rebounds), Double.parseDouble(total_assists),
+					Double.parseDouble(total_blocks), Double.parseDouble(total_steals),
+					Double.parseDouble(total_turnovers),
+					Double.parseDouble(total_fouls));
 				teamStats.add(tStats);
 
 			}
