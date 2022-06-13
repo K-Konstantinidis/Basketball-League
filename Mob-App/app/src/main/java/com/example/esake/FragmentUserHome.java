@@ -28,7 +28,6 @@ public class FragmentUserHome extends Fragment {
     private String mParam2;
 
 	Spinner gameweekSpinner;
-	static String urlAddress = "http://"+myIP.getIp()+"/ws/getAllGameweeks.php?cid=1";
 
 	public FragmentUserHome() {}
 
@@ -54,6 +53,7 @@ public class FragmentUserHome extends Fragment {
 	private ImageView logoHome, logoAway;
 	private TextView homeScore, awayScore;
 	private String round_id;
+	private int game_status;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,10 +68,6 @@ public class FragmentUserHome extends Fragment {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, weeks.getWeeks());
 		// Set the spinners adapter to the previously created one.
 		gameweekSpinner.setAdapter(adapter);
-
-		//Selected round
-		String round = gameweekSpinner.getSelectedItem().toString();
-		round_id = round.substring(round.length() - 1);
 
 		gameweekSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
@@ -114,14 +110,19 @@ public class FragmentUserHome extends Fragment {
 			{}
 		});
 
-		//int game_status = weekMatches.getGameStatus(0);
-
 		// Get the button
 		/*Button game = view.findViewById(R.id.gameweek_preview_gameButton);
 		game.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(getContext(), Tabbed_User.class);
+				intent.putExtra("round", round_id);
+				intent.putExtra("status", game_status);
+
+				String game;
+				game = weekMatches.getGameId(Integer.parseInt(round_id));
+				intent.putExtra("game", Integer.parseInt(game));
+
 				startActivity(intent);
 			}
 		});*/
