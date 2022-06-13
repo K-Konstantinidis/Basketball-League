@@ -42,8 +42,6 @@ public class TeamStats {
 
 	//Getters
 	public String getLogo() {return "http://"+myIP.getIp()+logo;}
-
-
 	public String getName() {return name;}
 	public String getTotal_points() {return String.valueOf(total_points);}
 	public String getShots_made() {return String.valueOf(shots_made);}
