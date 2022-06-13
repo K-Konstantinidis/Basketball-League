@@ -7,11 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentUserHome extends Fragment {
 
@@ -43,9 +49,7 @@ public class FragmentUserHome extends Fragment {
         }
     }
 
-	private Connector weeks, weekMatches;
-	private ImageView logoHome, logoAway;
-	private TextView homeScore, awayScore;
+	private Connector weeks;
 	private String round_id;
 	private int game_status;
 
@@ -63,86 +67,51 @@ public class FragmentUserHome extends Fragment {
 		// Set the spinners adapter to the previously created one.
 		gameweekSpinner.setAdapter(adapter);
 
-		//Selected round
-		String round = gameweekSpinner.getSelectedItem().toString();
-		round_id = round.substring(round.length() - 1);
-		int roundID = Integer.parseInt(round_id);
-
 		gameweekSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
 
 				String round = gameweekSpinner.getSelectedItem().toString();
-				round_id = round.substring(round.length() - 1);
-				int roundID = Integer.parseInt(round_id);
+				round_id = round.substring(round.length() - 2);
 
-				weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
+				RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
 
-				logoHome = view.findViewById(R.id.gameweek_team1_logo);
-				logoAway = view.findViewById(R.id.gameweek_team2_logo);
+				HomeUserAdapter adapter1;
+				List<GameWeek> homeUserGamesList = new ArrayList<>();
 
-				homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
-				awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
+				recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-				homeScore.setText(weekMatches.getHomeScore(roundID));
-				awayScore.setText(weekMatches.getAwayScore(roundID));
+				//Make a connection with the database via php
+				Connector weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
-				int game_status = weekMatches.getGameStatus(0);
+				homeUserGamesList = weekMatches.getMatches();
+
+				adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
+				recyclerView.setAdapter(adapter1);
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parentView)
 			{}
 		});
 
-		weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
+		// Get the button
+		/*Button game = view.findViewById(R.id.gameweek_preview_gameButton);
+		game.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getContext(), Tabbed_User.class);
+				intent.putExtra("round", round_id);
+				intent.putExtra("status", game_status);
 
-//		RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
-//
-//		HomeUserAdapter adapter1;
-//		List<GameWeek> homeUserGamesList = new ArrayList<>();
-//
-//		recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-//
-//		//Make a connection with the database via php
-//		Connector Lr = new Connector(myIP.getIp(),"week-matches");
-//
-//		homeUserGamesList = Lr.getMatches();
-//
-//		adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
-//		recyclerView.setAdapter(adapter1);
+				String game;
+				game = weekMatches.getGameId(Integer.parseInt(round_id));
+				intent.putExtra("game", Integer.parseInt(game));
 
-		//int game_status = weekMatches.getGameStatus(0);
-
-		Intent intent = new Intent(getContext(), Tabbed_User.class);
-		intent.putExtra("round", round_id);
-		intent.putExtra("status", game_status);
-
-		String game;
-		game = weekMatches.getGameId(Integer.parseInt(round_id));
-		intent.putExtra("game", Integer.parseInt(game));
-
-		startActivity(intent);
-
-//		// Get the button
-//		Button game = view.findViewById(R.id.gameweek_preview_gameButton);
-//		game.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View view) {
-//				Intent intent = new Intent(getContext(), Tabbed_User.class);
-//				intent.putExtra("round", round_id);
-//				intent.putExtra("status", game_status);
-//
-//				String game;
-//				game = weekMatches.getGameId(Integer.parseInt(round_id));
-//				intent.putExtra("game", Integer.parseInt(game));
-//
-//				startActivity(intent);
-//			}
-//		});
+				startActivity(intent);
+			}
+		});*/
 
 		return view;
 	}
-
-
 }
