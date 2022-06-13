@@ -343,4 +343,35 @@ public class OkHttpHandler {
 
 	return null;
 	}
+
+	ArrayList<Player> getTeamPlayers(String url) throws Exception {
+		ArrayList<Player> players = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while (keys.hasNext()) {
+				String playerId = keys.next();
+				String teamId = json.getJSONObject(playerId).getString("team_id");
+				String surname = json.getJSONObject(playerId).getString("surname");
+
+				//Code to add from Json to Screen
+				players.add(new Player(surname, Integer.parseInt(playerId),Integer.parseInt(teamId)));
+
+
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return players;
+	}
 }

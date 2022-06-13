@@ -12,6 +12,7 @@ public class Connector {
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
 	private Game finishedGame;
+	private ArrayList<Player> players = new ArrayList<>();
 
 	public Connector(String ip, String string){
 		if(string.equals("player-finished-stats")) {
@@ -148,6 +149,14 @@ public class Connector {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (string.equals("players")) {
+			String url = "http://" + ip + "/ws/getTeamPlayers.php?lang=gr&tid="+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				players = okHttpHandler.getTeamPlayers(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -234,6 +243,8 @@ public class Connector {
 	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getTotal_fouls();}
 
 	public String getfinishedTeamLogo(int id) {return this.ftstats.get(id).getLogo();}
+
+	public ArrayList<Player> getTeamPlayers(int id) { return this.players; }
 
 
 }
