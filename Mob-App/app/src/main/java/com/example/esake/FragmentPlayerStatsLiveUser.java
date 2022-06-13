@@ -109,7 +109,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 
 			live_stats = new Connector(myIP.getIp(), "player-live-stats", url);
 
-			playerStatsList = live_stats.getLivePlayerStats();
+			//playerStatsList = live_stats.getLivePlayerStats();
 
 			adapter = new PlayerStatsLiveAdapter(getContext(), playerStatsList);
 			recyclerView.setAdapter(adapter);
