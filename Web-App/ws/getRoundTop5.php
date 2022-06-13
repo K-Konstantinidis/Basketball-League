@@ -51,11 +51,11 @@ $data = array();
 
 // The query
 $sql =
-'SELECT team_logo, surname, pid, rating, total_points, position
+'SELECT team_logo, surname, pid, rating, position
 FROM (SELECT t.logo_path AS team_logo, 
 		temp.surname_gr AS surname, 
     	ps1.player_id as pid,
-		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position, total_points
+		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position
     FROM `player_stats` AS ps1
     JOIN team t ON t.id = ps1.team_id
     JOIN 
@@ -88,6 +88,7 @@ LEFT JOIN (SELECT t.logo_path AS logo2,
     GROUP BY ps1.player_id) f2
 ON f1.position = f2.position2 AND f1.rating < f2.rating2
 WHERE f2.rating2 IS NULL
+GROUP BY position
 ORDER BY rating DESC';
 
 // Prepare the statement
@@ -114,7 +115,6 @@ foreach($result as $row) {
 	$top_player['team_logo']	= $row['team_logo'];
 	$top_player['surname']		= $row['surname'];
 	$top_player['rating']		= $row['rating'];
-	$top_player['total_points']	= $row['total_points'];
 	$top_player['position']		= $row['position'];
 	
 	$data[$row['pid']] = $top_player;

@@ -1,6 +1,5 @@
 <?php
 
-// Check if all the necessary parameters are given
 /**
  * Web service which returns the statistics of a given ongoing match.
  * The data is returned as a JSON file.
@@ -20,9 +19,8 @@ header("Content-Type: application/json");
 
 // Check if all the necessary parameters are given
 if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
-	isset($_GET['cid']) && !empty($_GET['cid'])
-)
-{
+	isset($_GET['cid'])  && !empty($_GET['cid'])
+) {
 	if($_GET['lang'] === 'en') {
 		$lang_stmt = 'p.surname_en AS surname,';
 	}
@@ -36,9 +34,7 @@ if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
 	$championship_id	= $_GET['cid'];
 }
 else {
-	// An empty JSON will be returned if any needed
-	//  parameter is not given.
-	die();
+	die('Not all of the necessary parameters were passed');
 }
 
 // Connect to the database

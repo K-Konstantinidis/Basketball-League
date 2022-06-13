@@ -21,11 +21,10 @@ header("Content-Type: application/json");
 
 // Check if all the necessary parameters are given
 if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
-	isset($_GET['cid']) && !empty($_GET['cid']) &&
-	isset($_GET['rid']) && !empty($_GET['rid']) &&
-	isset($_GET['gid']) && !empty($_GET['gid'])
-)
-{
+	isset($_GET['cid'])  && !empty($_GET['cid']) &&
+	isset($_GET['rid'])  && !empty($_GET['rid']) &&
+	isset($_GET['gid'])  && !empty($_GET['gid'])
+) {
 	if($_GET['lang'] === 'en') {
 		$lang_stmt = 't.short_name_en AS name,';
 	}
@@ -41,9 +40,7 @@ if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
 	$game_id			= $_GET['gid'];
 }
 else {
-	// An empty JSON will be returned if any needed
-	//  parameter is not given.
-	die();
+	die('Not all of the necessary parameters were passed');
 }
 
 // Connect to the database
@@ -81,9 +78,9 @@ GROUP BY (t.id)';
 $stmt = $dbh->prepare($sql);
 
 // Bind the parameters
-$stmt->bindParam(':championship_id',	$championship_id, PDO::PARAM_INT);
-$stmt->bindParam(':round_id',			$round_id, PDO::PARAM_INT);
-$stmt->bindParam(':game_id',			$game_id, PDO::PARAM_INT);
+$stmt->bindParam(':championship_id',	$championship_id,	PDO::PARAM_INT);
+$stmt->bindParam(':round_id',			$round_id,			PDO::PARAM_INT);
+$stmt->bindParam(':game_id',			$game_id,			PDO::PARAM_INT);
 
 // Execute the statement and fetch the results
 try {
