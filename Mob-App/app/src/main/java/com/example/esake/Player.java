@@ -9,6 +9,7 @@ public class Player
 	private Team playing_team;
 	private PlayerPosition position;
 	private ArrayList<PlayerStats> statistics;
+	private int teamID;
 	
 	public Player() {
 		this.name = null;
@@ -24,6 +25,12 @@ public class Player
 		this.playing_team = playing_team;
 		this.position = position;
 		this.statistics = new ArrayList<>();
+	}
+
+	public Player(String name, int number, int teamId) {
+		this.name = name;
+		this.number = number;
+		this.teamID = teamId;
 	}
 
 	// Getters and setters

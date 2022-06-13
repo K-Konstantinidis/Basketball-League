@@ -142,12 +142,11 @@ public class OkHttpHandler {
 				String logo = json.getJSONObject(id).getString("team_logo");
 				String name= json.getJSONObject(id).getString("surname");
 				String pos = json.getJSONObject(id).getString("position");
-				String points = json.getJSONObject(id).getString("total_points");
 				String rating = json.getJSONObject(id).getString("rating");
 
 
 				//Code to add from Json to Screen
-				Top5 newTop5 = new Top5(name,pos,Integer.parseInt(rating),Integer.parseInt(points));
+				Top5 newTop5 = new Top5(name,pos,logo,Integer.parseInt(rating));
 				top5.add(newTop5);
 			}
 		} catch (JSONException e) {
@@ -182,8 +181,6 @@ public class OkHttpHandler {
 				String perc_3_in = json.getJSONObject(id).getString("perc_3_in");
 				String perc_freethrows_in = json.getJSONObject(id).getString("perc_freethrows_in");
 				String total_rebounds = json.getJSONObject(id).getString("total_rebounds");
-/*				String total_offensive_rebounds = json.getJSONObject(id).getString("total_offensive_rebounds");
-				String total_defensive_rebounds = json.getJSONObject(id).getString("total_defensive_rebounds");*/
 				String total_assists = json.getJSONObject(id).getString("total_assists");
 				String total_blocks = json.getJSONObject(id).getString("total_blocks");
 				String total_steals = json.getJSONObject(id).getString("total_steals");
@@ -243,14 +240,14 @@ public class OkHttpHandler {
 				String total_fouls = json.getJSONObject(id).getString("total_fouls");
 
 				//Code to add from Json to Screen
-				TeamStats tStats = new TeamStats(logo, name, Integer.parseInt(total_points),
-					Integer.parseInt(shots_made), Double.parseDouble(perc_2_in),
+				TeamStats tStats = new TeamStats(logo, name, Double.parseDouble(total_points),
+					Double.parseDouble(shots_made), Double.parseDouble(perc_2_in),
 					Double.parseDouble(perc_3_in), Double.parseDouble(perc_freethrows_in),
-					Integer.parseInt(total_rebounds), Integer.parseInt(total_offensive_rebounds),
-					Integer.parseInt(total_defensive_rebounds), Integer.parseInt(total_assists),
-					Integer.parseInt(total_blocks), Integer.parseInt(total_steals),
-					Integer.parseInt(total_turnovers),
-					Integer.parseInt(total_fouls));
+					Double.parseDouble(total_rebounds), Double.parseDouble(total_offensive_rebounds),
+					Double.parseDouble(total_defensive_rebounds), Double.parseDouble(total_assists),
+					Double.parseDouble(total_blocks), Double.parseDouble(total_steals),
+					Double.parseDouble(total_turnovers),
+					Double.parseDouble(total_fouls));
 				teamStats.add(tStats);
 
 			}
@@ -261,7 +258,55 @@ public class OkHttpHandler {
 		return teamStats;
 	}
 
+	//function for Finished Matches
+	ArrayList<TeamStats> getDataForTeams(String url) throws Exception {
+		ArrayList<TeamStats> teamStats = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
 
+			//Getting json from WS
+			while (keys.hasNext()) {
+				String id = keys.next();
+				String logo = json.getJSONObject(id).getString("logo");
+				String name = json.getJSONObject(id).getString("name");
+				String total_points = json.getJSONObject(id).getString("avg_total_points");
+				String shots_made = json.getJSONObject(id).getString("avg_total_shots");
+				String perc_2_in = json.getJSONObject(id).getString("avg_perc_2_in");
+				String perc_3_in = json.getJSONObject(id).getString("avg_perc_3_in");
+				String perc_freethrows_in = json.getJSONObject(id).getString("avg_perc_freethrows_in");
+				String total_rebounds = json.getJSONObject(id).getString("avg_total_rebounds");
+				String total_offensive_rebounds = json.getJSONObject(id).getString("avg_offensive_rebounds");
+				String total_defensive_rebounds = json.getJSONObject(id).getString("avg_defensive_rebounds");
+				String total_assists = json.getJSONObject(id).getString("avg_assists");
+				String total_blocks = json.getJSONObject(id).getString("avg_blocks");
+				String total_steals = json.getJSONObject(id).getString("avg_steals");
+				String total_turnovers = json.getJSONObject(id).getString("avg_turnovers");
+				String total_fouls = json.getJSONObject(id).getString("avg_fouls");
+
+				//Code to add from Json to Screen
+				TeamStats tStats = new TeamStats(logo, name, Double.parseDouble(total_points),
+					Double.parseDouble(shots_made), Double.parseDouble(perc_2_in),
+					Double.parseDouble(perc_3_in), Double.parseDouble(perc_freethrows_in),
+					Double.parseDouble(total_rebounds), Double.parseDouble(total_offensive_rebounds),
+					Double.parseDouble(total_defensive_rebounds), Double.parseDouble(total_assists),
+					Double.parseDouble(total_blocks), Double.parseDouble(total_steals),
+					Double.parseDouble(total_turnovers),
+					Double.parseDouble(total_fouls));
+				teamStats.add(tStats);
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return teamStats;
+	}
 
 	//function for Finished Matches Score and team emblems
 	Game getDataForFinishedMatchTeams(String url) throws Exception {
@@ -288,10 +333,8 @@ public class OkHttpHandler {
 
 
 				//Code to add from Json to Screen
-				g = new Game(Integer.parseInt(homeTeamId),homeTeamLogo,Integer.parseInt(homeTeamScore),
+				return new Game(Integer.parseInt(homeTeamId),homeTeamLogo,Integer.parseInt(homeTeamScore),
 					Integer.parseInt(awayTeamId),awayTeamLogo,Integer.parseInt(awayTeamScore));
-
-				return g;
 
 			}
 		} catch (JSONException e) {
@@ -299,5 +342,64 @@ public class OkHttpHandler {
 		}
 
 	return null;
+	}
+
+	ArrayList<Player> getTeamPlayers(String url) throws Exception {
+		ArrayList<Player> players = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while (keys.hasNext()) {
+				String playerId = keys.next();
+				String teamId = json.getJSONObject(playerId).getString("team_id");
+				String surname = json.getJSONObject(playerId).getString("surname");
+
+				//Code to add from Json to Screen
+				players.add(new Player(surname, Integer.parseInt(playerId),Integer.parseInt(teamId)));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return players;
+	}
+
+	Game getDataForFinishedScores(String url) throws Exception {
+		Game game;
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+			while(keys.hasNext()) {
+				String id = keys.next();
+				String homeTeamName = json.getJSONObject(id).getString("name");
+				int homeTeamTotalScore = Integer.parseInt(json.getJSONObject(id).getString("total_score"));
+				String homeTeamTotalscores = json.getJSONObject(id).getString("scores");
+
+				id = keys.next();
+				String awayTeamName = json.getJSONObject(id).getString("name");
+				int awayTeamTotalScore = Integer.parseInt(json.getJSONObject(id).getString("total_score"));
+				String awayTeamTotalscores = json.getJSONObject(id).getString("scores");
+
+				return new Game(homeTeamName, homeTeamTotalScore, homeTeamTotalscores,
+					awayTeamName, awayTeamTotalScore, awayTeamTotalscores);
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

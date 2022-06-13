@@ -7,7 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,15 +64,121 @@ public class FragmentTeamManagementStatsManager extends Fragment {
         }
     }
 
+    private Connector homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", "2");
+    private List<Player> allHomeTeamPlayers = new ArrayList<>();
+	private Player[] selectedHomeTeamPlayers = new Player[]{null,null,null,null,null};
+
+	private Connector awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", "5");
+	private List<Player> allAwayTeamPlayers = new ArrayList<>();
+	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
+
+	private Spinner[] homeTeamSpinners,awayTeamSpinners;
+
+	private Team homeTeam, awayTeam;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 		//Get the view
 		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
 
+		homeTeamSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinner1_1),
+			(Spinner) root.findViewById(R.id.spinner1_2),
+			(Spinner) root.findViewById(R.id.spinner1_3),
+			(Spinner) root.findViewById(R.id.spinner1_4),
+			(Spinner) root.findViewById(R.id.spinner1_5) };
+
+		awayTeamSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinner2_1),
+			(Spinner) root.findViewById(R.id.spinner2_2),
+			(Spinner) root.findViewById(R.id.spinner2_3),
+			(Spinner) root.findViewById(R.id.spinner2_4),
+			(Spinner) root.findViewById(R.id.spinner2_5) };
+
+		allHomeTeamPlayers.add(0,new Player("",-1,-1));
+		allHomeTeamPlayers.addAll(homeTeamPlayerConnector.getTeamPlayers(0));
+
+		PlayerSpinnerAdapter homeTeamPlayersAdapter = new PlayerSpinnerAdapter(getContext(),
+			android.R.layout.simple_spinner_dropdown_item, allHomeTeamPlayers);
+
+		setAdapter(homeTeamSpinners, homeTeamPlayersAdapter, selectedHomeTeamPlayers);
+
+		//Away team
+		allAwayTeamPlayers.add(0,new Player("",-1,-1));
+		allAwayTeamPlayers.addAll(awayTeamPlayerConnector.getTeamPlayers(1));
+
+		PlayerSpinnerAdapter awayTeamPlayersAdapter = new PlayerSpinnerAdapter(getContext(),
+			android.R.layout.simple_spinner_dropdown_item, allAwayTeamPlayers);
+
+		setAdapter(awayTeamSpinners, awayTeamPlayersAdapter, selectedAwayTeamPlayers);
+
 		//Get the start game button
 		Button startGameBtn = root.findViewById(R.id.startGameButton);
+		startGameBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
+				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)) {
+					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+
+
+				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers);
+				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers);
+
+				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent)
+					Toast.makeText(getContext(),"The game will start with the chosen players",Toast.LENGTH_SHORT).show();
+				else
+					Toast.makeText(getContext(),"Teams cannot contain duplicate players!",Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		return root;
     }
+
+	private boolean selectedTeamPlayersContainsEmptyElement(Player[] selectedTeamPlayers) {
+    	for (Player p:selectedTeamPlayers) {
+			if (p==null || p.getNumber()==-1) return true;
+		}
+
+		return false;
+    }
+
+	private void setAdapter(Spinner[] teamSpinners, PlayerSpinnerAdapter teamPlayersAdapter, Player[] selectedTeamPlayers) {
+
+		for (int i = 0; i< teamSpinners.length; i++) {
+			teamSpinners[i].setAdapter(teamPlayersAdapter);
+			int finalI = i;
+			teamSpinners[i].setSelection(0,true);
+			teamSpinners[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+					Player chosenPlayer = teamPlayersAdapter.getItem(position);
+					selectedTeamPlayers[finalI] = chosenPlayer;
+
+					if (position == 0)
+						Toast.makeText(getContext(), "BLANK PLAYER", Toast.LENGTH_SHORT).show();
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> adapterView) {
+
+				}
+			});
+		}
+	}
+
+	private boolean checkForAllUniquePlayers(Player[] selectedTeamPlayers) {
+    	for (int i=0;i<selectedTeamPlayers.length;i++) {
+			for (int j = i + 1; j < selectedTeamPlayers.length; j++) {
+				if (selectedTeamPlayers[i].equals(selectedTeamPlayers[j])) {
+					return false;
+				}
+			}
+		}
+    	return true;
+	}
 }

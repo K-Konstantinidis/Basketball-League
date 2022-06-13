@@ -37,7 +37,7 @@ public class Tabbed_User extends AppCompatActivity {
 		int gameStatus = b.getInt("status");
 		String gameID = b.getString("game");
 
-		String url = "getMatchDetailedScore.php?lang=gr&cid=1&rid="+round+"&gid="+
+		String url = "getMatchScores.php?lang=gr&cid=1&rid="+round+"&gid="+
 			gameID;
 
 		tabUser = new Connector(myIP.getIp(),"tabbed-User",url);
@@ -65,7 +65,7 @@ public class Tabbed_User extends AppCompatActivity {
 
 		homeTeamScore.setText(String.valueOf(tabUser.getFinishedGame().getScore1()));
 		awayTeamScore.setText(String.valueOf(tabUser.getFinishedGame().getScore2()));
-		timer.setText("69'");
+		timer.setText("40'");
 
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getHomeTeamLogo()).fit().into(homeTeamImage);
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getAwayTeamLogo()).fit().into(awayTeamImage);

@@ -67,7 +67,6 @@ public class PlayerStats {
 	public String getSurname() {return surname;}
 	public String getTotal_points() {return String.valueOf(total_points);}
 	public String getPRating() {return String.valueOf(rating);}
-
 	public String getShots_made() {return String.valueOf(shots_made);}
 	public String getPerc_2_in() {return String.valueOf(perc_2_in);}
 	public String getPerc_3_in() {return String.valueOf(perc_3_in);}
@@ -214,7 +213,7 @@ public class PlayerStats {
 	}
 
 	//Ftiaxte me kapou ta percentages pvw ta vriskei
-	//Gia na ta pername sthn PlayerStatsAdapter.java
+	//Gia na ta pername sthn PlayerStatsFinishedAdapter.java
 	//Ayto paizei na einai teleiow lathos apla to evala gia na mhn
 	//me petaei error oti den exv perasei kati
 	public int getPlayerPercentFg() {

@@ -9,9 +9,13 @@ public class Connector {
 	private ArrayList<LeagueRank> Ranking = new ArrayList<>();
 	private ArrayList<PlayerStats> fpstats = new ArrayList<>();
 	private ArrayList<PlayerStats> lpstats = new ArrayList<>();
+	private ArrayList<PlayerStats> pstats = new ArrayList<>();
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
+	private ArrayList<TeamStats> tstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
+	private Game overViewGame;
 	private Game finishedGame;
+	private ArrayList<Player> players = new ArrayList<>();
 
 	public Connector(String ip, String string){
 		if(string.equals("player-finished-stats")) {
@@ -27,7 +31,16 @@ public class Connector {
 			String url = "http://" + ip + "/ws/.php";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				//weeks = okHttpHandler.getGameWeeks(url);
+				lpstats = okHttpHandler.getDataForFPlayers(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(string.equals("player-stats")) {
+			String url = "http://" + ip + "/ws/getChampionshipPlayerStats.php?lang=gr&cid=1";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				pstats = okHttpHandler.getDataForFPlayers(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -37,6 +50,15 @@ public class Connector {
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				ftstats = okHttpHandler.getDataForFTeams(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(string.equals("team-stats")) {
+			String url = "http://" + ip + "/ws/getChampionshipTeamStats.php?lang=gr&cid=1";
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				tstats = okHttpHandler.getDataForTeams(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -77,7 +99,6 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	//maybe we will use this to add the round instead of the above
@@ -92,10 +113,10 @@ public class Connector {
 				e.printStackTrace();
 			}
 		} else if (string.equals("player-live-stats")) {
-			String url = "http://" + ip + "/ws/.php";
+			String url = "http://" + ip + "/ws/"+param;
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				//weeks = okHttpHandler.getGameWeeks(url);
+				lpstats = okHttpHandler.getDataForFPlayers(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -105,6 +126,15 @@ public class Connector {
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				finishedGame = okHttpHandler.getDataForFinishedMatchTeams(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}else if (string.equals("overview-stats")) {
+			String url = "http://" + ip + "/ws/"+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				overViewGame = okHttpHandler.getDataForFinishedScores(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -149,6 +179,14 @@ public class Connector {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (string.equals("players")) {
+			String url = "http://" + ip + "/ws/getTeamPlayers.php?lang=gr&tid="+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				players = okHttpHandler.getTeamPlayers(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -163,25 +201,30 @@ public class Connector {
 		return temp;
 	}
 
+	//GETTERS
+	//Pass the List with the ranking
 	//functions for game overview User
 	public String getOverviewScore(int id){return String.valueOf(this.finishedGame.getScore1());}
-
-	//functions for game Week Matches
-
-//	public String getHomeLogo(int id){
-//		return this.matches.get(id);
-//	}
-//	public String getAwayLogo(int id){
-//		return this.matches.get(id);
-//	}
-
-	//Pass the List with the ranking
+	//Function for a game overview
+	public Game getOverViewFinishedGame() { return this.overViewGame; }
 	public ArrayList<LeagueRank> getRanking(){return Ranking;}
-
 	//Pass the List with the player stats of a finished game
 	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
-
+	//Pass the List with the player stats of a live game
+	public ArrayList<PlayerStats> getLivePlayerStats(){return lpstats;}
+	//Pass the List with all the player stats
+	public ArrayList<PlayerStats> getPlayerStats(){return pstats;}
+	//Pass the List with the team stats of a finished game
+	public ArrayList<TeamStats> getFinishedTeamStats(){return ftstats;}
+	//Pass the List with all the team stats
+	public ArrayList<TeamStats> getTeamStats(){return tstats;}
+	//Pass the List with the Top 5
+	public ArrayList<Top5> getTop5(){return top5;}
+	//Pass the List with the player games
+	public ArrayList<GameWeek> getMatches(){return matches;}
+	//Pass the List with the player games
 	public Game getFinishedGame() { return this.finishedGame; }
+
 	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
 	public String getAwayScore(int id){
@@ -190,22 +233,15 @@ public class Connector {
 	public int getGameStatus(int id){
 		return this.matches.get(id).getGameStatus();
 	}
-	//Pass the List with the player games
-	public ArrayList<GameWeek> getMatches(){return matches;}
 
 	//functions for top5
-//	public String getTop5Logo(int id){
-//		return this.top5.get(id).getlogo();
-//	}
+
 	public String getTop5Name(int id){
 		return this.top5.get(id).getName();
 	}
 	public String getTop5Position(int id){ return this.top5.get(id).getPos(); }
 	public String getTop5Rating(int id){
 		return this.top5.get(id).getRating();
-	}
-	public String getTop5Points(int id){
-		return this.top5.get(id).getPoints();
 	}
 
 	//functions for finished Player Stats
@@ -227,21 +263,22 @@ public class Connector {
 
 	//functions for finished Team Stats
 	public String getfinishedTeamName(int id) {return this.ftstats.get(id).getName();}
-	public String getfinishedTeamTotal_points(int id) {return this.ftstats.get(id).getTotal_points();}
-	public String getfinishedTeamShots_made(int id) {return this.ftstats.get(id).getShots_made();}
+	public String getfinishedTeamTotal_points(int id) {return this.ftstats.get(id).getIntTotal_points();}
+	public String getfinishedTeamShots_made(int id) {return this.ftstats.get(id).getIntShots_made();}
 	public String getfinishedTeamPerc_2_in(int id) {return this.ftstats.get(id).getPerc_2_in();}
 	public String getfinishedTeamPerc_3_in(int id) {return this.ftstats.get(id).getPerc_3_in();}
 	public String getfinishedTeamPerc_freethrows_in(int id) {return this.ftstats.get(id).getPerc_freethrows_in();}
-	public String getfinishedTeamTotal_rebounds(int id) {return this.ftstats.get(id).getTotal_rebounds();}
-	public String getfinishedTeamTotal_offensive_rebounds(int id) {return this.ftstats.get(id).getTotal_offensive_rebounds();}
-	public String getfinishedTeamTotal_defensive_rebounds(int id) {return this.ftstats.get(id).getTotal_defensive_rebounds();}
-	public String getfinishedTeamTotal_assists(int id) {return this.ftstats.get(id).getTotal_assists();}
-	public String getfinishedTeamTotal_blocks(int id) {return this.ftstats.get(id).getTotal_blocks();}
-	public String getfinishedTeamTotal_steals(int id) {return this.ftstats.get(id).getTotal_steals();}
-	public String getfinishedTeamTotal_turnovers(int id) {return this.ftstats.get(id).getTotal_turnovers();}
-	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getTotal_fouls();}
-
+	public String getfinishedTeamTotal_rebounds(int id) {return this.ftstats.get(id).getIntTotal_rebounds();}
+	public String getfinishedTeamTotal_offensive_rebounds(int id) {return this.ftstats.get(id).getIntTotal_offensive_rebounds();}
+	public String getfinishedTeamTotal_defensive_rebounds(int id) {return this.ftstats.get(id).getIntTotal_defensive_rebounds();}
+	public String getfinishedTeamTotal_assists(int id) {return this.ftstats.get(id).getIntTotal_assists();}
+	public String getfinishedTeamTotal_blocks(int id) {return this.ftstats.get(id).getIntTotal_blocks();}
+	public String getfinishedTeamTotal_steals(int id) {return this.ftstats.get(id).getIntTotal_steals();}
+	public String getfinishedTeamTotal_turnovers(int id) {return this.ftstats.get(id).getIntTotal_turnovers();}
+	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getIntTotal_fouls();}
 	public String getfinishedTeamLogo(int id) {return this.ftstats.get(id).getLogo();}
+
+	public ArrayList<Player> getTeamPlayers(int id) { return this.players; }
 
 
 }
