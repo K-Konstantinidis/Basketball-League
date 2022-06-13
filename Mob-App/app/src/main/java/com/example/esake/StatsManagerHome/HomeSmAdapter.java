@@ -38,12 +38,21 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 	@Override
 	public void onBindViewHolder(@NonNull HomeSmHolder holder, int position) {
 		GameWeek gameWeek = homeSmList.get(position);
+		int game_status;
 
 		Picasso.with(mCtx.getApplicationContext()).load(gameWeek.getHomeLogo()).fit().into(holder.imageViewHome);
 		Picasso.with(mCtx.getApplicationContext()).load(gameWeek.getAwayLogo()).fit().into(holder.imageViewAway);
 		holder.textViewScore1.setText(gameWeek.getHomeScore());
 		holder.textViewScore2.setText(gameWeek.getAwayScore());
-		holder.button.setText("Changed Text"); //Ayto tha ginei gameWeek.getGameStatus()
+		game_status = gameWeek.getGameStatus();
+		switch(game_status){
+			case -1:
+				holder.button.setText("Game Summary");
+			case 0:
+				holder.button.setText("Watch Live");
+			case 1:
+				holder.button.setText("Scheduled");
+		}
 	}
 
 	@Override
