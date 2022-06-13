@@ -107,7 +107,7 @@ $err_msg = '';
 					for($i = 0; $i < $num_games; ++$i) {
 						echo '<div class="col-lg-4 text-center">' . "\n";
 							echo '<div class="border p-3 m-3">' . "\n";
-								echo '<h5>Αγωνιστική ' . $i + 1 . '</h5>' . "\n";
+								echo '<h5>Αγωνιστική ' . ($i + 1) . '</h5>' . "\n";
 								echo '<hr>' . "\n";
 
 								for($j = 0; $j < $matches_per_round; ++$j) {
