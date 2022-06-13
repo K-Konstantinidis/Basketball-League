@@ -49,9 +49,7 @@ public class FragmentUserHome extends Fragment {
         }
     }
 
-	private Connector weeks, weekMatches;
-	private ImageView logoHome, logoAway;
-	private TextView homeScore, awayScore;
+	private Connector weeks;
 	private String round_id;
 	private int game_status;
 
@@ -91,19 +89,6 @@ public class FragmentUserHome extends Fragment {
 
 				adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
 				recyclerView.setAdapter(adapter1);
-
-//				weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
-//
-//				logoHome = view.findViewById(R.id.gameweek_team1_logo);
-//				logoAway = view.findViewById(R.id.gameweek_team2_logo);
-//
-//				homeScore = view.findViewById(R.id.gameweek_preview_team1_score);
-//				awayScore = view.findViewById(R.id.gameweek_preview_team2_score);
-//
-//				homeScore.setText(weekMatches.getHomeScore(0));
-//				awayScore.setText(weekMatches.getAwayScore(0));
-//
-//				int game_status = weekMatches.getGameStatus(0);
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parentView)
