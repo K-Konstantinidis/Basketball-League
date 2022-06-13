@@ -16,7 +16,13 @@ public class Team {
 		this.city = null;
 		this.players = new ArrayList<>();
 	}
-	
+
+	public Team(String name, String code, ArrayList<Player> players) {
+		this.name = name;
+		this.code = code;
+		this.players = players;
+	}
+
 	public Team(String name, String code, City city) {
 		this.name = name;
 		this.code = code;
@@ -49,8 +55,11 @@ public class Team {
 	public void setCity(City city) {
 		this.city = city;
 	}
-	
-	
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
 	// Functions
 	
 	public boolean addPlayer(Player new_player) {

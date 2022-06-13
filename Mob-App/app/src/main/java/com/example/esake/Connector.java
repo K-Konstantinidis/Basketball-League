@@ -179,6 +179,14 @@ public class Connector {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (string.equals("players")) {
+			String url = "http://" + ip + "/ws/getTeamPlayers.php?lang=gr&tid="+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				players = okHttpHandler.getTeamPlayers(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -217,11 +225,6 @@ public class Connector {
 	//Pass the List with the player games
 	public Game getFinishedGame() { return this.finishedGame; }
 
-
-
-
-
-	//function for game overview User
 	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
 	public String getAwayScore(int id){
@@ -279,4 +282,8 @@ public class Connector {
 	public String getfinishedTeamTotal_turnovers(int id) {return this.ftstats.get(id).getTotal_turnovers();}
 	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getTotal_fouls();}
 	public String getfinishedTeamLogo(int id) {return this.ftstats.get(id).getLogo();}
+
+	public ArrayList<Player> getTeamPlayers(int id) { return this.players; }
+
+
 }
