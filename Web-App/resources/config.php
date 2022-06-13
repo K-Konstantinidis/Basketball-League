@@ -11,6 +11,9 @@ define('DIR_CSS',           DIR_HTML . 'css/');
 define('BOOTSTRAP_CSS',     DIR_CSS . 'bootstrap.min.css');
 define('DIR_LOGIN',         DIR_HTML . 'login/');
 define('DIR_RESOURCES',     DIR_BASE . 'resources/');
+define('DIR_RES_IMAGES',    DIR_RESOURCES . 'images/');
+define('DIR_PLAYER_IMAGES', DIR_RES_IMAGES . 'players/');
+define('DIR_TEAM_IMAGES',   DIR_RES_IMAGES . 'teams/');
 define('ADMIN_NAVIGATION',  DIR_RESOURCES . 'admin_navbar.php');
 define('MAIN_FOOTER',       DIR_RESOURCES . 'main_footer.php');
 
@@ -137,6 +140,77 @@ function findBasePathToDir($php_self, $to) {
 	else {
 		return substr($php_self, 0, $rpos);
 	}
+}
+
+/**
+ * Adds zeros infront of a number, until the number is "$length"
+ * digits long.
+ * 
+ * @param string $number_str The number to be canonicalized
+ * @param string $length Total number of digits for the number to be
+ * @return number_str The canonicalized number
+ */
+function canonicalizeStrNumber(string $number_str, int $length) {
+	while(strlen($number_str) < $length) {
+		$number_str = '0' . $number_str;
+	}
+
+	return $number_str;
+}
+
+/**
+ * An alternative to PHP's "uniqid".
+ * 
+ * Because "uniqid" uses "microtime", if you call it in a loop,
+ *  you will get the same output multiple times.
+ */
+function uniqidReal($lenght = 13) {
+    // uniqid gives 13 chars, but you could adjust it to your needs.
+    if (function_exists("random_bytes")) {
+        $bytes = random_bytes(ceil($lenght / 2));
+    }
+	elseif (function_exists("openssl_random_pseudo_bytes")) {
+        $bytes = openssl_random_pseudo_bytes(ceil($lenght / 2));
+    }
+	else {
+        throw new Exception("No cryptographically secure random function available");
+    }
+    return substr(bin2hex($bytes), 0, $lenght);
+}
+
+/**
+ * 
+ */
+function fileUploadErrorMessages($code) {
+	switch ($code) {
+		case UPLOAD_ERR_INI_SIZE:
+			$message = "The uploaded file exceeds the upload_max_filesize directive in php.ini";
+			break;
+		case UPLOAD_ERR_FORM_SIZE:
+			$message = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form";
+			break;
+		case UPLOAD_ERR_PARTIAL:
+			$message = "The uploaded file was only partially uploaded";
+			break;
+		case UPLOAD_ERR_NO_FILE:
+			$message = "No file was uploaded";
+			break;
+		case UPLOAD_ERR_NO_TMP_DIR:
+			$message = "Missing a temporary folder";
+			break;
+		case UPLOAD_ERR_CANT_WRITE:
+			$message = "Failed to write file to disk";
+			break;
+		case UPLOAD_ERR_EXTENSION:
+			$message = "File upload stopped by extension";
+			break;
+
+		default:
+			$message = "Unknown upload error";
+			break;
+	}
+
+	return $message;
 }
 
 ?>
