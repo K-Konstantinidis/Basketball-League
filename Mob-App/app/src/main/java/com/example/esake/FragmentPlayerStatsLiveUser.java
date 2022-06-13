@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,14 +29,6 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentPlayerStatsLiveUser.
-     */
     // TODO: Rename and change types and number of parameters
     public static FragmentPlayerStatsLiveUser newInstance(String param1, String param2, String param3) {
         FragmentPlayerStatsLiveUser fragment = new FragmentPlayerStatsLiveUser();
@@ -55,6 +46,7 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+			mParam3 = getArguments().getString(ARG_PARAM3);
         }
     }
 
@@ -86,7 +78,6 @@ public class FragmentPlayerStatsLiveUser extends Fragment {
 			recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 			//Make a connection with the database via php
-			finished_stats = new Connector(myIP.getIp(), "player-finished-stats");
 			 String url = "getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=" + mParam1+ "&gid=" + mParam3;
 
 			finished_stats = new Connector(myIP.getIp(), "player-finished-stats", url);

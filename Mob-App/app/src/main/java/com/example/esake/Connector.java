@@ -11,7 +11,6 @@ public class Connector {
 	private ArrayList<PlayerStats> lpstats = new ArrayList<>();
 	private ArrayList<TeamStats> ftstats = new ArrayList<>();
 	private ArrayList<Top5> top5 = new ArrayList<>();
-	private ArrayList<Game> gameOverview = new ArrayList<>();
 	private Game finishedGame;
 
 	public Connector(String ip, String string){
@@ -78,15 +77,6 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
-		else if(string.equals("finished-match-team-scores")){
-			String url = "http://"+ip+"/ws/getMatchScores.php?cid=1&rid=2&gid=4";
-			try {
-				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				finishedGame = okHttpHandler.getDataForFinishedMatchTeams(url);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 
 	}
 
@@ -114,7 +104,7 @@ public class Connector {
 			String url = "http://" + ip + "/ws/"+param;
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
-				gameOverview = okHttpHandler.getDataforMatches(url);
+				finishedGame = okHttpHandler.getDataForFinishedMatchTeams(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -174,7 +164,7 @@ public class Connector {
 	}
 
 	//functions for game overview User
-	public String getOverviewScore(int id){return String.valueOf(this.gameOverview.get(id).getScore1());}
+	public String getOverviewScore(int id){return String.valueOf(this.finishedGame.getScore1());}
 
 	//functions for game Week Matches
 
@@ -185,6 +175,12 @@ public class Connector {
 //		return this.matches.get(id);
 //	}
 
+	//Pass the List with the ranking
+	public ArrayList<LeagueRank> getRanking(){return Ranking;}
+
+	//Pass the List with the player stats of a finished game
+	public ArrayList<PlayerStats> getFinishedPlayerStats(){return fpstats;}
+
 	public Game getFinishedGame() { return this.finishedGame; }
 	public String getGameId(int id){ return this.matches.get(id).getGameId(); }
 	public String getHomeScore(int id){ return this.matches.get(id).getHomeScore(); }
@@ -194,6 +190,8 @@ public class Connector {
 	public int getGameStatus(int id){
 		return this.matches.get(id).getGameStatus();
 	}
+	//Pass the List with the player games
+	public ArrayList<GameWeek> getMatches(){return matches;}
 
 	//functions for top5
 //	public String getTop5Logo(int id){

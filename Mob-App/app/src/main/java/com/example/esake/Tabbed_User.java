@@ -1,6 +1,5 @@
 package com.example.esake;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +21,6 @@ public class Tabbed_User extends AppCompatActivity {
     private ImageView homeTeamImage, awayTeamImage;
     private TextView homeTeamScore, awayTeamScore;
     private TextView timer;
-	private Connector c;
 
 
     @Override
@@ -74,14 +72,12 @@ public class Tabbed_User extends AppCompatActivity {
 		awayTeamScore = findViewById(R.id.away_team_score_user);
 		timer = findViewById(R.id.timeline_user);
 
-		c = new Connector(myIP.getIp(),"finished-match-team-scores");
-
-		homeTeamScore.setText(String.valueOf(c.getFinishedGame().getScore1()));
-		awayTeamScore.setText(String.valueOf(c.getFinishedGame().getScore2()));
+		homeTeamScore.setText(String.valueOf(tabUser.getFinishedGame().getScore1()));
+		awayTeamScore.setText(String.valueOf(tabUser.getFinishedGame().getScore2()));
 		timer.setText("69'");
 
-		Picasso.with(getApplicationContext()).load(c.getFinishedGame().getHomeTeamLogo()).fit().into(homeTeamImage);
-		Picasso.with(getApplicationContext()).load(c.getFinishedGame().getAwayTeamLogo()).fit().into(awayTeamImage);
+		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getHomeTeamLogo()).fit().into(homeTeamImage);
+		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getAwayTeamLogo()).fit().into(awayTeamImage);
 
 	}
 }

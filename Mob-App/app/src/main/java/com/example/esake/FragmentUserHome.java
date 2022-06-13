@@ -13,11 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FragmentUserHome extends Fragment {
 
@@ -28,7 +23,6 @@ public class FragmentUserHome extends Fragment {
     private String mParam2;
 
 	Spinner gameweekSpinner;
-	static String urlAddress = "http://"+myIP.getIp()+"/ws/getAllGameweeks.php?cid=1";
 
 	public FragmentUserHome() {}
 
@@ -104,20 +98,20 @@ public class FragmentUserHome extends Fragment {
 
 		weekMatches = new Connector(myIP.getIp(),"week-matches",round_id);
 
-		RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
-
-		HomeUserAdapter adapter1;
-		List<GameWeek> homeUserGamesList = new ArrayList<>();
-
-		recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
-		//Make a connection with the database via php
-		Connector Lr = new Connector(myIP.getIp(),"week-matches");
-
-		homeUserGamesList = Lr.getMatches();
-
-		adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
-		recyclerView.setAdapter(adapter1);
+//		RecyclerView recyclerView = view.findViewById(R.id.recViewHomeUser);
+//
+//		HomeUserAdapter adapter1;
+//		List<GameWeek> homeUserGamesList = new ArrayList<>();
+//
+//		recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//
+//		//Make a connection with the database via php
+//		Connector Lr = new Connector(myIP.getIp(),"week-matches");
+//
+//		homeUserGamesList = Lr.getMatches();
+//
+//		adapter1 = new HomeUserAdapter(getContext(), homeUserGamesList);
+//		recyclerView.setAdapter(adapter1);
 
 		//int game_status = weekMatches.getGameStatus(0);
 

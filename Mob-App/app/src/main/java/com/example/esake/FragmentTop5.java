@@ -50,8 +50,6 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         return fragment;
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
