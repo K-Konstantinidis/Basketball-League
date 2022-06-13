@@ -1,6 +1,5 @@
 package com.example.esake;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +67,16 @@ public class Game {
 
 
 	//Getters
+
+
+	public String getHomeTeamName() {
+		return homeTeamName;
+	}
+
+	public String getAwayTeamName() {
+		return awayTeamName;
+	}
+
 	public int getQ1score1() {return Q1score1; }
 
 	public int getQ1score2() {return Q1score2; }

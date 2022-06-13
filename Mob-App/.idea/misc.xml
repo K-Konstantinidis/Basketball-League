@@ -5,17 +5,15 @@
       <map>
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/bottom_nav_menu.xml" value="0.131" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/bottom_nav_menu_rounded.xml" value="0.131" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/custom_mail_icon.xml" value="0.119" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/gameweek_game_layout_border.xml" value="0.2595" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/signinup_buttons_border.xml" value="0.1525" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout-v21/fragment_team_management_startingteam_stats_manager.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_index_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_stats_manager.xml" value="0.1" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.1" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_game_management_stats_manager.xml" value="0.4" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_stats_manager.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_game_management_stats_manager.xml" value="0.1" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_stats_manager.xml" value="0.4" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_user.xml" value="0.4" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_league_table.xml" value="0.264" />
@@ -23,29 +21,16 @@
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_stats_manager.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_user.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats.xml" value="0.264" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_finished_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_live_user.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_stats_manager_pages.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_management_livegame_stats_manager.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_management_startingteam_stats_manager.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats.xml" value="0.264" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats_finished_user.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats_live_user.xml" value="0.2" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats_live_user.xml" value="0.11764705882352941" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_top5.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_user_pages.xml" value="0.2210144927536232" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/league_table_row.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_home_stats_manager.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_home_user.xml" value="0.264" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_league_table.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_player_stats.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_player_stats_finished_user.xml" value="0.264" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_player_stats_live_user.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_team_management_startingteam_stats_manager.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_team_stats.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_top5.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/single_fixture.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/user_home_recycle.xml" value="0.20380434782608695" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/Basketball-League/src/main/res/layout/fragment_dashboard.xml" value="0.3809064609450338" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.25416666666666665" />
@@ -132,17 +117,20 @@
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2575" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Esake/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2575" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_stats_manager.xml" value="0.24365942028985507" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_user.xml" value="0.24365942028985507" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_stats_manager.xml" value="0.24365942028985507" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_finished_user.xml" value="0.264" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_management_startingteam_stats_manager.xml" value="0.24365942028985507" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats_live_user.xml" value="0.23052536231884058" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_player_stats.xml" value="0.4" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_player_stats_finished_user.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_team_management_startingteam_stats_manager.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Dimitris/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/row_team_stats.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Giannis/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.21829710144927536" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_stats_manager.xml" value="0.1" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.16" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_stats_manager.xml" value="0.2" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_user.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_league_table.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_finished_user.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_stats_manager.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_user.xml" value="0.16" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_finished_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_top5.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_user_pages.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/Giannis/exercise/Basketball-League/Mob-App/app/src/main/res/layout/league_table_row.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/Giannis/exercise/Basketball-League/app/src/main/res/layout-w1240dp/activity_car_details.xml" value="0.15078125" />
         <entry key="..\:/Users/Giannis/exercise/Basketball-League/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/Giannis/exercise/Basketball-League/app/src/main/res/layout/activity_index_page.xml" value="0.11302083333333333" />
@@ -195,18 +183,6 @@
         <entry key="..\:/Users/stavr/AndroidStudioProjects/Basketball-League/app/src/main/res/menu/bottom_nav_menu.xml" value="0.38958333333333334" />
         <entry key="..\:/Users/stavr/AndroidStudioProjects/Basketball-League/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3625" />
         <entry key="..\:/Users/stavr/AndroidStudioProjects/Basketball-League/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3625" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/activity_tabbed_user.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_user.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_league_table.xml" value="0.264" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_user.xml" value="0.1" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats.xml" value="0.4" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_finished_user.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats_live_user.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats_finished_user.xml" value="0.2" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_team_stats_live_user.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/tiger/exercise/Basketball-League/Mob-App/app/src/main/res/layout/fragment_top5.xml" value="0.16799999999999998" />
       </map>
     </option>
   </component>
