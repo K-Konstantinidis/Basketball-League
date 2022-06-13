@@ -120,12 +120,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	
 	// Check the logo
-	if(empty($_POST['logo_path'])) {
-		$teamLogo_err = "Παρακαλώ ανεβάστε την εικόνα της ομάδας";
+	// Error 4 means the file variable is set, but no file was uploaded
+	if(!isset($_FILES['logo']) || $_FILES['logo']['error'] == 4) {
+		$teamLogo_err = 'Παρακαλώ ανεβάστε την εικόνα της ομάδας';
 	}
 	else {
-		$teamLogo = $_POST['logo_path'];
-		$count++;
+		$img_name		= $_FILES['logo']['name'];
+		$img_tmp_name	= $_FILES['logo']['tmp_name'];
+		$img_error		= $_FILES['logo']['error'];
+		$img_ext		= pathinfo($img_name, PATHINFO_EXTENSION);
+
+		// No errors were encountered, procceed
+		if($img_error == 0) {
+			// The following line of code may cause problems.
+			// It fetches the database to find the largest image number.
+			// The problems are:
+			//		1. What if the user didn't populate the database with the example data?
+			//		2. What if the team with the largest image number gets deleted, but their logo doesn't?
+			// That's why the "uniqid" is used.
+			//
+			// Get the max number that exists
+			//$max_img_num_db = $conn
+			//	->query("SELECT MAX(CAST(SUBSTRING(logo_path,25,4) AS INT)) AS MAX_NUM FROM team")
+			//	->fetch();
+			//
+			//$img_final_name = canonicalizeStrNumber((int) $max_img_num_db['MAX_NUM'] + 1, 4);
+
+			$img_final_name = uniqid("team-");
+			$img_final_name .= '.' . strtolower($img_ext); //Add the image's extension
+
+			// Prepare the path to be added in the database
+			$teamLogo = DIR_TEAM_IMAGES . $img_final_name;
+			$count++;
+		}
+		else {
+			// An error occurred
+			$teamLogo_err = fileUploadErrorMessages($img_error);
+		}
 	}
 
 	// All fields were completed successfully
@@ -149,7 +180,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			try {
 				$result = $city_stmt->fetch();
 				$teamCity = $result['id'];
-				$count++;
 			}
 			catch(PDOException $e) {
 				$e->getMessage();
@@ -157,6 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 
 		// Create the team
+		move_uploaded_file($img_tmp_name,  $teamLogo);
 		$stmt->execute();
 		$suc_msg = 'Η ομάδα <strong>' . filter_data($_POST['name_gr']) . '</strong> δημιουργήθηκε επιτυχώς';
 		unset($_POST);
@@ -332,7 +363,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<label for="teamLogo" class="mb-1">Σήμα Ομάδας</label>
 				<input
 					type="file"
-					name="logo_path"
+					name="logo"
 					class="form-control mb-5 <?php echo ($teamLogo_err) ? ' is-invalid' : '' ?>"
 					id="teamLogo"
 					accept="image/*"

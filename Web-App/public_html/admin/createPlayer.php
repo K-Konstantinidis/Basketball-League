@@ -95,17 +95,49 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		$count++;
 	}
 
-	// Check if there is an image uploaded
-	if(!isset($_POST['img']) || !filter_data($_POST['img'])) {
+	// Check if there is an image uploaded.
+	// Error 4 means the file variable is set, but no file was uploaded
+	if(!isset($_FILES['img']) || $_FILES['img']['error'] == 4) {
 		$playerImg_err = 'Παρακαλώ ανεβάστε την εικόνα του παίκτη';
 	}
 	else {
-		$playerImg = $_POST['img'];
-		$count++;
+		$img_name		= $_FILES['img']['name'];
+		$img_tmp_name	= $_FILES['img']['tmp_name'];
+		$img_error		= $_FILES['img']['error'];
+		$img_ext		= pathinfo($img_name, PATHINFO_EXTENSION);
+
+		// No errors were encountered, procceed
+		if($img_error == 0) {
+			// Get the max number that exists
+			$max_img_num_db = $conn
+				->query("SELECT MAX(CAST(SUBSTRING(img_path,27,4) AS INT)) AS MAX_NUM FROM player")
+				->fetch();
+
+			// The following line of code may cause problems.
+			// It fetches the database to find the largest image number.
+			// The problems are:
+			//		1. What if the user didn't populate the database with the example data?
+			//		2. What if the player with the largest image number gets deleted, but their file doesn't?
+			// That's why the "uniqid" is used.
+			//
+			//$img_final_name = canonicalizeStrNumber((int) $max_img_num_db['MAX_NUM'] + 1, 4);
+
+			$img_final_name = uniqid("player-");
+			$img_final_name .= '.' . strtolower($img_ext); //Add the image's extension
+
+			// Prepare the path to be added in the database
+			$playerImg = DIR_PLAYER_IMAGES . $img_final_name;
+			$count++;
+		}
+		else {
+			// An error occurred
+			$playerImg_err = fileUploadErrorMessages($img_error);
+		}
 	}
 	
 	// If all fields were filled successfully, insert the new player
 	if($count == 7) {
+		move_uploaded_file($img_tmp_name,  $playerImg);
 		$stmt->execute();
 		$suc_msg = 'Ο παίκτης <strong>' . filter_data($_POST['name_gr']) . '</strong> δημιουργήθηκε επιτυχώς';
 		unset($_POST);
@@ -155,7 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 				}
 			?>
 
-			<form method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+			<form method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data">
 				<!-- Name (in Greek) -->
 				<div class="form-floating mb-5">
 					<input
@@ -228,11 +260,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 								foreach($data as $row) {
 									// Remember the user selection, if he has made one
 									$selected = '';
-									if(isset($_POST['player_position_code']) && $row["position_code"] == $_POST['player_position_code']) {
+									if(isset($_POST['player_position_code']) && $row["code"] == $_POST['player_position_code']) {
 										$selected = 'selected';
 									}
 									
-									echo '<option value="' . $row["position_code"] . '" ' . $selected . '>' . $row["position_name"] . '</option>' . "\n";
+									echo '<option value="' . $row["code"] . '" ' . $selected . '>' . $row["name"] . '</option>' . "\n";
 								}
 							}
 
@@ -278,14 +310,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 				<!-- Player Image Selection -->
 				<div class="mb-5">
 					<label for="playerImg">Φωτογραφία Παίκτη</label>
-					<input type="file" name="img" class="form-control mt-1 <?php echo ($playerImg_err) ? ' is-invalid' : '' ?>" id="playerImg" accept="image/*">
-					<?php if($playerSurnameGR_err) formInvalidFeedback($playerSurnameGR_err) ?>
+					<input type="file"
+							name="img"
+							class="form-control mt-1 <?php echo ($playerImg_err) ? ' is-invalid' : '' ?>"
+							id="playerImg"
+							accept="image/*"
+						>
+					<?php if($playerImg_err) formInvalidFeedback($playerImg_err) ?>
 				</div>
 			
 				<!-- Buttons -->
 				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-5">
-					<a href="<?php echo AREF_DIR_ADMIN ?>" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
-					<a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="btn btn-danger me-3" role="button">Εκκαθάριση Φόρμας</a>
+					<a href="<?= AREF_DIR_ADMIN ?>" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
+					<a href="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="btn btn-danger me-3" role="button">Εκκαθάριση Φόρμας</a>
 					<button type="submit" class="btn btn-success me-3">Καταχώριση Παίκτη</button>
 				</div>
 			</form>
