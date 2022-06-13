@@ -117,8 +117,8 @@ function formInvalidFeedback(string $msg) {
  * Generic function which removes spaces, slashes and converts
  * the special characters of HTML, to prevent XSS attacks.
  * 
- * @param data The data of the form
- * @return data The filtered data
+ * @param string data The data of the form
+ * @return string data The filtered data
  */
 function filter_data($data) {
 	$data = trim($data);
