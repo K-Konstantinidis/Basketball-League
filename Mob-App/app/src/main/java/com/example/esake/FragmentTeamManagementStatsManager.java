@@ -67,10 +67,12 @@ public class FragmentTeamManagementStatsManager extends Fragment {
     private Connector homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", "2");
     private List<Player> allHomeTeamPlayers = new ArrayList<>();
 	private Player[] selectedHomeTeamPlayers = new Player[]{null,null,null,null,null};
+	private List<Player> homeTeamSubstitutes = new ArrayList<>();
 
 	private Connector awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", "5");
 	private List<Player> allAwayTeamPlayers = new ArrayList<>();
 	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
+	private List<Player> awayTeamSubstitutes = new ArrayList<>();
 
 	private Spinner[] homeTeamSpinners,awayTeamSpinners;
 
@@ -123,8 +125,6 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
 					return;
 				}
-
-
 
 				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers);
 				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers);
