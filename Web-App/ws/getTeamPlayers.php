@@ -19,9 +19,8 @@ header("Content-Type: application/json");
 
 // Check if all the necessary parameters are given
 if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
-	isset($_GET['tid']) && !empty($_GET['tid'])
-) 
-{
+	isset($_GET['tid'])  && !empty($_GET['tid'])
+) {
 	if($_GET['lang'] === 'en') {
 		$lang_stmt = 'p.surname_en AS surname,';
 	}
@@ -32,12 +31,10 @@ if(	isset($_GET['lang']) && !empty($_GET['lang']) &&
 		die('Invalid language');
 	}
 
-	$team_id			= $_GET['tid'];
+	$team_id = $_GET['tid'];
 }
 else {
-	// An empty JSON will be returned if any needed
-	//  parameter is not given.
-	die();
+	die('Not all of the necessary parameters were passed');
 }
 
 // Connect to the database
