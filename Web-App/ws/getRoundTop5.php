@@ -51,15 +51,14 @@ $data = array();
 
 // The query
 $sql =
-'SELECT team_logo, surname, pid, rating, position
-FROM (SELECT t.logo_path AS team_logo, 
+'SELECT image, surname, pid, rating, position
+FROM (SELECT temp.image,
 		temp.surname_gr AS surname, 
     	ps1.player_id as pid,
 		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position
     FROM `player_stats` AS ps1
-    JOIN team t ON t.id = ps1.team_id
     JOIN 
-		(SELECT p.id AS p_id, p.surname_gr, p.player_position_code as position,
+		(SELECT p.id AS p_id, p.surname_gr, p.img_path as image, p.player_position_code as position,
         SUM(freethrows_in+2*two_points_in+3*three_points_in) AS total_points,
         SUM(offensive_rebounds+defensive_rebounds) AS total_rebounds
         FROM `player_stats` 
@@ -69,14 +68,13 @@ FROM (SELECT t.logo_path AS team_logo,
     ON temp.p_id = ps1.`player_id`
     WHERE championship_id = :cid AND round_id = :rid
     GROUP BY ps1.player_id) AS f1
-LEFT JOIN (SELECT t.logo_path AS logo2, 
+LEFT JOIN (SELECT temp.image AS image2, 
 		temp.surname_gr AS surname2, 
     	ps1.player_id as pid2,
 		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating2, position AS position2
     FROM `player_stats` AS ps1
-    JOIN team t ON t.id = ps1.team_id
     JOIN 
-		(SELECT p.id AS p_id, p.surname_gr, p.player_position_code as position,
+		(SELECT p.id AS p_id, p.surname_gr, p.img_path AS image, p.player_position_code as position,
         SUM(freethrows_in+2*two_points_in+3*three_points_in) AS total_points,
         SUM(offensive_rebounds+defensive_rebounds) AS total_rebounds
         FROM `player_stats` 
@@ -112,10 +110,10 @@ catch(PDOException $ex) {
 foreach($result as $row) {
 	$top_player = array();
 	
-	$top_player['team_logo']	= $row['team_logo'];
-	$top_player['surname']		= $row['surname'];
-	$top_player['rating']		= $row['rating'];
-	$top_player['position']		= $row['position'];
+	$top_player['image']	= $row['image'];
+	$top_player['surname']	= $row['surname'];
+	$top_player['rating']	= $row['rating'];
+	$top_player['position']	= $row['position'];
 	
 	$data[$row['pid']] = $top_player;
 }
