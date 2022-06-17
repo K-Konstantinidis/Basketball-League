@@ -64,7 +64,7 @@ public class Connector {
 			}
 		}
 		else if(string.equals("week-matches")){
-			String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=2";
+			String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=7";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				matches = okHttpHandler.getGameweekMatches(url);
@@ -168,6 +168,14 @@ public class Connector {
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				Ranking = okHttpHandler.getDataforLeague(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (string.equals("GameweeksTop5")) {
+			String url = "http://" + ip + "/ws/getEligibleTop5Rounds.php?lang=gr&cid=1&rid="+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				weeks = okHttpHandler.getGameWeeks(url);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
