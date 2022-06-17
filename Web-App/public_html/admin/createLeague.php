@@ -15,6 +15,7 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 }
 
 $warn = $err = '';
+$championshipNameErr = '';
 
 // Create the league
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +34,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$_SESSION['teams_in_league'] = serialize($_POST['t']);
 			header('Location: '. AREF_ADMIN_LOADING_LEAGUE);
 		}
+	}
+
+	if(!isset($_POST['championship_name']) || empty($_POST['championship_name'])) {
+		$championshipNameErr = 'Παρακαλώ συμπληρώστε το πεδίο';
+	}
+	else {
+		$_SESSION['new_championship_name'] = $_POST['championship_name'];
 	}
 }
 
@@ -83,6 +91,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 					
 				if($data != null) {
 					echo '<form class="row" method="POST" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . '">' . "\n";
+					echo '<div class="form-floating mb-5">
+							<input
+								type="text"
+								name="championship_name"
+								class="form-control"
+								id="champ_name"
+								placeholder=""
+								value=""
+							>
+							<label for="champ_name">Όνομα Πρωταθλήματος</label>
+						 </div>';
 					
 					foreach($data as $row) {
 						echo '<div class="col-xl-2 mb-3">' . "\n";
