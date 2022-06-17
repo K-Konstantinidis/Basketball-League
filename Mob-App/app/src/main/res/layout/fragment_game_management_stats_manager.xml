@@ -67,7 +67,8 @@
 						android:maxEms="9"
 						android:maxLines="1"
 						android:text="Someone Someonidis"
-						android:textSize="14sp" />
+						android:textSize="14sp"
+						tools:ignore="DuplicateSpeakableTextCheck" />
 
 					<RadioButton
 						android:id="@+id/playerAway1"
@@ -234,7 +235,7 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_freeThrow"
-                        android:layout_width="140dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_free_throw"
                         android:text="Free Throw"
@@ -251,7 +252,7 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_freeThrowMissed"
-                        android:layout_width="140dp"
+                        android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_free_throwmissed"
                         android:text="FT Miss"
@@ -301,7 +302,7 @@
 
 					<androidx.appcompat.widget.AppCompatButton
 						android:id="@+id/button_assist"
-						android:layout_width="140dp"
+						android:layout_width="130dp"
 						android:layout_height="wrap_content"
 						android:background="@drawable/rounded_button_other_actions"
 						android:text="AST"
@@ -315,7 +316,7 @@
 
 					<androidx.appcompat.widget.AppCompatButton
 						android:id="@+id/button_foul"
-						android:layout_width="140dp"
+						android:layout_width="130dp"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:background="@drawable/rounded_button_other_actions"
@@ -326,6 +327,21 @@
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toBottomOf="@+id/button_assist"
+						app:layout_constraintVertical_bias="0.015" />
+
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_turnover"
+						android:layout_width="130dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="TO"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/button_foul"
 						app:layout_constraintVertical_bias="0.015" />
 
 					<androidx.appcompat.widget.AppCompatButton
@@ -340,7 +356,7 @@
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintHorizontal_bias="0.15"
+						app:layout_constraintHorizontal_bias="0.1"
 						app:layout_constraintTop_toBottomOf="@+id/button_turnover"
 						app:layout_constraintVertical_bias="0.015"/>
 
@@ -356,24 +372,9 @@
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintHorizontal_bias="0.85"
+						app:layout_constraintHorizontal_bias="0.9"
 						app:layout_constraintTop_toBottomOf="@+id/button_turnover"
 						app:layout_constraintVertical_bias="0.015"/>
-
-					<androidx.appcompat.widget.AppCompatButton
-						android:id="@+id/button_turnover"
-						android:layout_width="140dp"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="20dp"
-						android:background="@drawable/rounded_button_other_actions"
-						android:text="TO"
-						android:textSize="16sp"
-						android:textStyle="bold"
-						app:layout_constraintBottom_toBottomOf="parent"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toBottomOf="@+id/button_foul"
-						app:layout_constraintVertical_bias="0.015" />
 
 					<androidx.appcompat.widget.AppCompatButton
 						android:id="@+id/button_block"
@@ -385,7 +386,7 @@
 						android:text="blk"
 						android:textSize="16sp"
 						android:textStyle="bold"
-						app:layout_constraintHorizontal_bias="0.15"
+						app:layout_constraintHorizontal_bias="0.1"
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
@@ -402,7 +403,7 @@
 						android:text="STL"
 						android:textSize="16sp"
 						android:textStyle="bold"
-						app:layout_constraintHorizontal_bias="0.85"
+						app:layout_constraintHorizontal_bias="0.9"
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
