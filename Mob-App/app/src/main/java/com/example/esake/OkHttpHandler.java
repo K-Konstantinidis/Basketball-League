@@ -229,7 +229,7 @@ public class OkHttpHandler {
 				String logo = json.getJSONObject(id).getString("logo");
 				String surname= json.getJSONObject(id).getString("surname");
 				String rating = json.getJSONObject(id).getString("rating");
-				String totalPoints = json.getJSONObject(id).getString("total_shots");
+				String totalShots = json.getJSONObject(id).getString("total_shots");
 				String twoPointsIn = json.getJSONObject(id).getString("perc_2_in");
 				String threePointsIn = json.getJSONObject(id).getString("perc_3_in");
 				String freethrowsIn = json.getJSONObject(id).getString("perc_freethrows_in");
@@ -241,7 +241,7 @@ public class OkHttpHandler {
 				String fouls = json.getJSONObject(id).getString("total_fouls");
 
 				//Code to add from Json to Screen
-				PlayerStats pStats = new PlayerStats(logo, surname, Integer.parseInt(totalPoints),
+				PlayerStats pStats = new PlayerStats(logo, surname, Integer.parseInt(totalShots),
 					Integer.parseInt(rating), Double.parseDouble(twoPointsIn),
 					Double.parseDouble(threePointsIn), Double.parseDouble(freethrowsIn),
 					Integer.parseInt(totalRebounds), Integer.parseInt(assists),
