@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Check the logo
 	// Error 4 means the file variable is set, but no file was uploaded
 	if(!isset($_FILES['logo']) || $_FILES['logo']['error'] == 4) {
-		$teamLogo_err = 'Παρακαλώ ανεβάστε την εικόνα της ομάδας';
+		$teamLogo_err = 'Παρακαλώ ανεβάστε την εικόνα της ομάδας ' . fileUploadErrorMessages($_FILES['logo']['error']);
 	}
 	else {
 		$img_name		= $_FILES['logo']['name'];
@@ -238,7 +238,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				}
 			?>
 
-			<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+			<form method="POST" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data">
 				<!-- Name (Greek) -->
 				<div class="form-floating mb-5">
 					<input
@@ -360,33 +360,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				</div>
 
 				<!-- Logo -->
-				<label for="teamLogo" class="mb-1">Σήμα Ομάδας</label>
+				<label for="logo" class="mb-1">Σήμα Ομάδας</label>
 				<input
 					type="file"
 					name="logo"
-					class="form-control mb-5 <?php echo ($teamLogo_err) ? ' is-invalid' : '' ?>"
+					class="form-control mb-1 <?php echo ($teamLogo_err) ? ' is-invalid' : '' ?>"
 					id="teamLogo"
 					accept="image/*"
 				>
+				<?php if($teamLogo_err) formInvalidFeedback($teamLogo_err) ?>
 				
-				<div class="d-flex flex-grow-1 justify-content-center align-items-center mb-3">
+				<div class="d-flex flex-grow-1 justify-content-center align-items-center mt-5 mb-3">
 					<a href="./" class="btn btn-secondary me-3 btn-single-line" role="button">Αρχική</a>
-					<a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="btn btn-danger me-3" role="button">Εκκαθάριση Φόρμας</a>
+					<a href="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="btn btn-danger me-3" role="button">Εκκαθάριση Φόρμας</a>
 					<button type="submit" class="btn btn-success me-3">Καταχώριση Ομάδας</button>
 				</div>
-
 			</form>
 
 			<br>
 			<br>
 		</div>
 		</main>
-		<script>
-
-			
-
-		</script>
-
+		
 		<!-- Footer -->
 		<?php require_once MAIN_FOOTER ?>
 
