@@ -136,14 +136,12 @@ public class OkHttpHandler {
 			Iterator<String> keys = json.keys();
 
 			//Getting json from WS
-
 			while(keys.hasNext()) {
 				String id = keys.next();
-				String logo = json.getJSONObject(id).getString("team_logo");
+				String logo = json.getJSONObject(id).getString("image");
 				String name= json.getJSONObject(id).getString("surname");
 				String pos = json.getJSONObject(id).getString("position");
 				String rating = json.getJSONObject(id).getString("rating");
-
 
 				//Code to add from Json to Screen
 				Top5 newTop5 = new Top5(name,pos,logo,Integer.parseInt(rating));
