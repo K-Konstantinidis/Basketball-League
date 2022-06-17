@@ -38,7 +38,7 @@ public class PlayerStatsFinishedAdapter extends RecyclerView.Adapter<PlayerStats
 		Picasso.with(mCtx.getApplicationContext()).load(playerStats.getLogo()).fit().into(holder.imageView);
 		holder.textViewPlayerName.setText(playerStats.getSurname());
 		holder.TextViewPlayerRating.setText(playerStats.getPRating());
-		holder.textViewPlayerPoints.setText(playerStats.getTotal_points());
+		holder.textViewPlayerPoints.setText(playerStats.getTotal_shots());
 		holder.textViewPlayerFg.setText(playerStats.getPerc_2_in());
 		holder.textViewPlayer3Fg.setText(playerStats.getPerc_3_in());
 		holder.textViewPlayerPercentFg.setText(playerStats.getPerc_freethrows_in());
