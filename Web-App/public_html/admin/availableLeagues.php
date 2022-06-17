@@ -6,7 +6,7 @@ require_once '../../resources/config.php';
 // Required for the navigation bar to load properly
 $currPage = 'availableLeagues';
 
-// If the user is not logged in, he gets redirected at the loggin page.
+// If the user is not logged in, he gets redirected at the login page.
 if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 	header('Location: ' . AREF_LOGIN . '/?lr');
 	die();
@@ -54,8 +54,7 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 					</tr>
 				</thead>
 				<tbody>
-					<?php
-
+				<?php
 					try {
 						$dbh = connectDB();
 
@@ -65,23 +64,33 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 						
 						$i = 1;
 						foreach($data as $row) {
-							echo '<th><h4 class="pt-2">' . $i++ . '</h4></th>' . "\n";
-							echo '<td><h4 class="pt-2">' . $row['name'] . '</h4></td>' . "\n";
-							echo '<td><a href="'. AREF_ADMIN_DISPLAY_LEAGUE .'?cid='. $row['id'] .'" class="btn btn-success btn-enlarge me-2 mt-1 mb-1" role="button">Προβολή</a>
-							 		  <a href="./" class="btn btn-warning btn-enlarge me-2 mt-1 mb-1 disabled" role="button">Επεξεργασία</a>
-							 		  <a href="./" class="btn btn-danger btn-enlarge me-2 mt-1 mb-1 disabled" role="button">Διαγραφή</a></td>';
+				?>
+					<tr>
+						<th>
+							<h4 class="pt-2"><?= $i++ ?></h4>
+						</th>
+						<td>
+							<h4 class="pt-2"><?= $row['name'] ?></h4>
+						</td>
+						<td>
+							<a href="<?= AREF_ADMIN_DISPLAY_LEAGUE ?>?cid=<?= $row['id'] ?>" class="btn btn-success btn-enlarge me-2 mt-1 mb-1" role="button">Προβολή</a>
+							<a href="./" class="btn btn-warning btn-enlarge me-2 mt-1 mb-1 disabled" role="button">Επεξεργασία</a>
+							<a href="./" class="btn btn-danger btn-enlarge me-2 mt-1 mb-1 disabled" role="button">Διαγραφή</a>
+						</td>
+					</tr>
+				<?php
 						}
 					}
 					catch(PDOException $ex) {
 						echo 'Failed to fetch the championships. Reason: ' . $ex->getMessage();
 					}
 					
-					?>
+				?>
 				</tbody>
 			</table>
 			
 			<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-				<a href="<?php echo AREF_DIR_ADMIN ?>" class="btn btn-primary mt-5 mb-5" role="button">Αρχική</a>
+				<a href="<?= AREF_DIR_ADMIN ?>" class="btn btn-primary mt-5 mb-5" role="button">Αρχική</a>
 			</div>
 
 		</div>
