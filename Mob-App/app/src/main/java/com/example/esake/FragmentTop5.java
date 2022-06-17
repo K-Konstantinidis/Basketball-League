@@ -21,11 +21,9 @@ import java.util.List;
 
 public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelectedListener{
 
-    // TODO: Rename parameter arguments, choose names that match
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -51,14 +49,8 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
-//    ImageView myImage;
-//    private String imageUri;
-	private Connector top5;
 	private Connector weeks;
-	private ImageView imageTop5;
-	private TextView nameTop5, posTop5, ratingTop5, pointsTop5;
 	private String round_id;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,7 +64,6 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_dropdown_item, weeks.getWeeks());
 		dropdown.setAdapter(spinnerAdapter);
 
-
 		dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@SuppressLint("SetTextI18n")
@@ -85,11 +76,10 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 				//Find the recyclerView
 				RecyclerView recyclerView = view.findViewById(R.id.recViewTop5);
 				//Create an adapter
+				Top5Adapter adapter2;
 
 				//Create a list for the team ranking
 				List<Top5> top5List = new ArrayList<>();
-
-				Top5Adapter adapter2;
 
 				//Set a vertical layout manager
 				//If you are in an Activity class pass 'this'. But since
@@ -97,7 +87,7 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 				recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 				//Make a connection with the database via php
-				Connector lr = new Connector(myIP.getIp(), "top5", round_id); //Tha ginei dynamika gia na allazei to round
+				Connector lr = new Connector(myIP.getIp(), "top5", round_id);
 
 				top5List = lr.getTop5();
 
