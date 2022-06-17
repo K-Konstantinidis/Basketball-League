@@ -74,7 +74,7 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
 	private List<Player> awayTeamSubstitutes = new ArrayList<>();
 
-	private Spinner[] homeTeamSpinners,awayTeamSpinners;
+	private Spinner[] homeTeamSpinners, awayTeamSpinners, homeTeamSubsSpinners, awayTeamSubsSpinners;
 
 	private Team homeTeam, awayTeam;
 
@@ -97,6 +97,24 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 			(Spinner) root.findViewById(R.id.spinner2_3),
 			(Spinner) root.findViewById(R.id.spinner2_4),
 			(Spinner) root.findViewById(R.id.spinner2_5) };
+
+		homeTeamSubsSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinner1_6),
+			(Spinner) root.findViewById(R.id.spinner1_7),
+			(Spinner) root.findViewById(R.id.spinner1_8),
+			(Spinner) root.findViewById(R.id.spinner1_9),
+			(Spinner) root.findViewById(R.id.spinner1_10),
+			(Spinner) root.findViewById(R.id.spinner1_11),
+			(Spinner) root.findViewById(R.id.spinner1_12) };
+
+		awayTeamSubsSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinner2_6),
+			(Spinner) root.findViewById(R.id.spinner2_7),
+			(Spinner) root.findViewById(R.id.spinner2_8),
+			(Spinner) root.findViewById(R.id.spinner2_9),
+			(Spinner) root.findViewById(R.id.spinner2_10),
+			(Spinner) root.findViewById(R.id.spinner2_11),
+			(Spinner) root.findViewById(R.id.spinner2_12) };
 
 		allHomeTeamPlayers.add(0,new Player("",-1,-1));
 		allHomeTeamPlayers.addAll(homeTeamPlayerConnector.getTeamPlayers(0));
