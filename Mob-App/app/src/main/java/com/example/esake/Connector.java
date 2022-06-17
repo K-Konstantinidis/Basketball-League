@@ -16,6 +16,7 @@ public class Connector {
 	private Game overViewGame;
 	private Game finishedGame;
 	private ArrayList<Player> players = new ArrayList<>();
+	private String currentMinute;
 
 	public Connector(String ip, String string){
 		if(string.equals("player-finished-stats")) {
@@ -196,6 +197,15 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
+		else if(string.equals("ongoing-game-minute")){
+			String url = "http://" + ip + "/ws/"+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				currentMinute = okHttpHandler.getCurrentMinute(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 
@@ -250,7 +260,18 @@ public class Connector {
 	public String getfinishedTeamTotal_fouls(int id) {return this.ftstats.get(id).getIntTotal_fouls();}
 	public String getfinishedTeamLogo(int id) {return this.ftstats.get(id).getLogo();}
 
-	public ArrayList<Player> getTeamPlayers(int id) { return this.players; }
+	public String getCurrentMinute(int gameStatus) {
+		switch (gameStatus) {
+			case 2:
+				return "—";
+			case 1:
+				return this.currentMinute + "'";
+			case 0:
+				return "40'";
+		}
+		return null;
+	}
 
+	public ArrayList<Player> getTeamPlayers(int id) { return this.players; }
 
 }
