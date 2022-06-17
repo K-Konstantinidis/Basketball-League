@@ -405,4 +405,21 @@ public class OkHttpHandler {
 		}
 		return null;
 	}
+
+	String getCurrentMinute(String url) throws Exception {
+		ArrayList<Player> players = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			String currentMinute = json.getString("current_minute");
+			return currentMinute;
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
