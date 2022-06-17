@@ -164,5 +164,6 @@
     <string name="table_games_value">Value</string>
 	<string name="starting_player_1">starting player 1</string>
 	<string name="start_game">Start Game</string>
+    <string name="Twofg" translatable="false">2fg</string>
 
 </resources>

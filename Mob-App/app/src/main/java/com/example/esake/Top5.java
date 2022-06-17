@@ -4,19 +4,19 @@ public class Top5 {
 
 	private String name;
 	private String pos;
-	private String logoPath;
+	private String image;
 	private int rating;
 
 	//Constructor
-	public Top5(String name, String pos, String logoPath, int rating) {
+	public Top5(String name, String pos, String image, int rating) {
 		this.name = name;
 		this.pos = pos;
-		this.logoPath = logoPath;
+		this.image = image;
 		this.rating = rating;
 	}
 
 	//Getters
-	public String getLogoPath() { return "http://"+myIP.getIp()+logoPath;};
+	public String getLogoPath() { return "http://"+myIP.getIp()+image;};
 
 	public String getName() { return name; }
 

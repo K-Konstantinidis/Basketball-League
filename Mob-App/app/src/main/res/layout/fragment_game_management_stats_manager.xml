@@ -220,7 +220,6 @@
                         android:layout_width="80dp"
                         android:layout_height="150dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
                         android:background="@drawable/rounded_button_2missed"
                         android:text="2 PTS Miss"
                         android:textColor="@color/white"
@@ -231,7 +230,7 @@
                         app:layout_constraintHorizontal_bias="0.02"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/button_2points"
-                        app:layout_constraintVertical_bias="0.5"/>
+                        app:layout_constraintVertical_bias="0.1"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_freeThrow"
@@ -288,7 +287,6 @@
                         android:layout_width="80dp"
                         android:layout_height="150dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
                         android:background="@drawable/rounded_button_3missed"
                         android:text="3 Pts Miss"
                         android:textColor="@color/white"
@@ -299,99 +297,119 @@
                         app:layout_constraintHorizontal_bias="0.98"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/button_3points"
-                        app:layout_constraintVertical_bias="0.5" />
+                        app:layout_constraintVertical_bias="0.1" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_assist"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@drawable/rounded_button_other_actions"
-                        android:text="AST"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/button_2pointsMissed"
-                        app:layout_constraintTop_toBottomOf="@+id/button_freeThrowMissed"
-                        app:layout_constraintVertical_bias="0.05" />
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_assist"
+						android:layout_width="140dp"
+						android:layout_height="wrap_content"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="AST"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/button_freeThrowMissed"
+						app:layout_constraintVertical_bias="0.052" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_foul"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_button_other_actions"
-                        android:text="Foul"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button_3points"
-                        app:layout_constraintHorizontal_bias="0.98"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/button_freeThrowMissed"
-                        app:layout_constraintVertical_bias="0.05" />
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_foul"
+						android:layout_width="140dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="Foul"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/button_assist"
+						app:layout_constraintVertical_bias="0.015" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_rebound"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_button_other_actions"
-                        android:text="REB"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/button_steal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.02"
-                        app:layout_constraintStart_toEndOf="@+id/button_2pointsMissed"
-                        app:layout_constraintTop_toBottomOf="@+id/button_assist" />
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_rebound"
+						android:layout_width="130dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="OFFENSIVE REB"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintHorizontal_bias="0.15"
+						app:layout_constraintTop_toBottomOf="@+id/button_turnover"
+						app:layout_constraintVertical_bias="0.015"/>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_turnover"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_button_other_actions"
-                        android:text="TO"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/button_block"
-                        app:layout_constraintEnd_toStartOf="@+id/button_3pointsMissed"
-                        app:layout_constraintHorizontal_bias="0.98"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/button_foul" />
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_reboundDefensive"
+						android:layout_width="130dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="DEFENSIVE REB"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintHorizontal_bias="0.85"
+						app:layout_constraintTop_toBottomOf="@+id/button_turnover"
+						app:layout_constraintVertical_bias="0.015"/>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_block"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_button_other_actions"
-                        android:text="blk"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.02"
-                        app:layout_constraintStart_toEndOf="@+id/button_2pointsMissed"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.93" />
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_turnover"
+						android:layout_width="140dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="TO"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/button_foul"
+						app:layout_constraintVertical_bias="0.015" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button_steal"
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_button_other_actions"
-                        android:text="STL"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/button_3pointsMissed"
-                        app:layout_constraintHorizontal_bias="0.98"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.93" />
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_block"
+						android:layout_width="130dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:layout_marginBottom="10dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="blk"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintHorizontal_bias="0.15"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/button_rebound"
+						app:layout_constraintVertical_bias="0.015" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+					<androidx.appcompat.widget.AppCompatButton
+						android:id="@+id/button_steal"
+						android:layout_width="130dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:layout_marginBottom="10dp"
+						android:background="@drawable/rounded_button_other_actions"
+						android:text="STL"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						app:layout_constraintHorizontal_bias="0.85"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/button_rebound"
+						app:layout_constraintVertical_bias="0.015" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
 			<com.example.esake.ToggleButtonGroupTableLayout
