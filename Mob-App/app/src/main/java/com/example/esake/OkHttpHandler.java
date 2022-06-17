@@ -136,15 +136,17 @@ public class OkHttpHandler {
 			Iterator<String> keys = json.keys();
 
 			//Getting json from WS
+
 			while(keys.hasNext()) {
 				String id = keys.next();
-				String logo = json.getJSONObject(id).getString("image");
+				String image = json.getJSONObject(id).getString("image");
 				String name= json.getJSONObject(id).getString("surname");
 				String pos = json.getJSONObject(id).getString("position");
 				String rating = json.getJSONObject(id).getString("rating");
 
+
 				//Code to add from Json to Screen
-				Top5 newTop5 = new Top5(name,pos,logo,Integer.parseInt(rating));
+				Top5 newTop5 = new Top5(name,pos,image,Integer.parseInt(rating));
 				top5.add(newTop5);
 			}
 		} catch (JSONException e) {
@@ -172,29 +174,32 @@ public class OkHttpHandler {
 				String id = keys.next();
 				String logo = json.getJSONObject(id).getString("logo");
 				String surname= json.getJSONObject(id).getString("surname");
-				String total_points = json.getJSONObject(id).getString("total_points");
-				String rating = json.getJSONObject(id).getString("rating");
-				String shots_made = json.getJSONObject(id).getString("shots_made");
-				String perc_2_in = json.getJSONObject(id).getString("perc_2_in");
-				String perc_3_in = json.getJSONObject(id).getString("perc_3_in");
-				String perc_freethrows_in = json.getJSONObject(id).getString("perc_freethrows_in");
-				String total_rebounds = json.getJSONObject(id).getString("total_rebounds");
-				String total_assists = json.getJSONObject(id).getString("total_assists");
-				String total_blocks = json.getJSONObject(id).getString("total_blocks");
-				String total_steals = json.getJSONObject(id).getString("total_steals");
-				String total_turnovers = json.getJSONObject(id).getString("total_turnovers");
-				String total_fouls = json.getJSONObject(id).getString("total_fouls");
-
+				String avgTotalShots = json.getJSONObject(id).getString("avg_total_shots");
+				String avgRating = json.getJSONObject(id).getString("avg_rating");
+				String avgTwoPointsIn = json.getJSONObject(id).getString("avg_perc_2_in");
+				String avgTwoPointsOut = json.getJSONObject(id).getString("avg_two_points_out");
+				String avgThreePointsIn = json.getJSONObject(id).getString("avg_perc_3_in");
+				String avgThreePointsOut = json.getJSONObject(id).getString("avg_three_points_out");
+				String avgFreethrowsIn = json.getJSONObject(id).getString("avg_perc_freethrows_in");
+				String avgFreethrowsOut = json.getJSONObject(id).getString("avg_freethrows_out");
+				String avgTotalRebounds = json.getJSONObject(id).getString("avg_total_rebounds");
+				String avgOffensiveRebounds = json.getJSONObject(id).getString("avg_offensive_rebounds");
+				String avgDefensiveRebounds = json.getJSONObject(id).getString("avg_defensive_rebounds");
+				String avgAssists = json.getJSONObject(id).getString("avg_assists");
+				String avgBlocks = json.getJSONObject(id).getString("avg_blocks");
+				String avgSteals = json.getJSONObject(id).getString("avg_steals");
+				String avgTurnovers = json.getJSONObject(id).getString("avg_turnovers");
+				String avgFouls = json.getJSONObject(id).getString("avg_fouls");
 
 				//Code to add from Json to Screen
-				PlayerStats pStats = new PlayerStats(logo, surname,Integer.parseInt(total_points),
-					Integer.parseInt(rating),
-					Integer.parseInt(shots_made),Integer.parseInt(perc_2_in),
-					Integer.parseInt(perc_3_in),Integer.parseInt(perc_freethrows_in),
-					Integer.parseInt(total_rebounds),Integer.parseInt(total_assists),
-					Integer.parseInt(total_blocks),Integer.parseInt(total_steals),
-					Integer.parseInt(total_turnovers),
-					Integer.parseInt(total_fouls));
+				PlayerStats pStats = new PlayerStats(logo, surname, Double.parseDouble(avgRating),
+					Double.parseDouble(avgFreethrowsIn), Double.parseDouble(avgFreethrowsOut),
+					Double.parseDouble(avgTwoPointsIn), Double.parseDouble(avgTwoPointsOut),
+					Double.parseDouble(avgThreePointsIn), Double.parseDouble(avgThreePointsOut),
+					Double.parseDouble(avgTotalShots), Double.parseDouble(avgTotalRebounds),
+					Double.parseDouble(avgOffensiveRebounds), Double.parseDouble(avgDefensiveRebounds),
+					Double.parseDouble(avgBlocks), Double.parseDouble(avgAssists), Double.parseDouble(avgSteals),
+					Double.parseDouble(avgTurnovers), Double.parseDouble(avgFouls));
 				playerStats.add(pStats);
 
 			}

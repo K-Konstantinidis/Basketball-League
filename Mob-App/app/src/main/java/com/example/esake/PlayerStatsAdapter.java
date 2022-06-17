@@ -37,17 +37,17 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 
 		Picasso.with(mCtx.getApplicationContext()).load(playerStats.getLogo()).fit().into(holder.imageView);
 		holder.textViewPlayerName.setText(playerStats.getSurname());
-		holder.TextViewPlayerRating.setText(playerStats.getPRating());
-		holder.textViewPlayerPoints.setText(playerStats.getTotal_points());
-		holder.textViewPlayerFg.setText(playerStats.getPerc_2_in());
-		holder.textViewPlayer3Fg.setText(playerStats.getPerc_3_in());
-		holder.textViewPlayerPercentFg.setText(playerStats.getPerc_freethrows_in());
-		holder.textViewPlayerReb.setText(playerStats.getTotal_rebounds());
-		holder.textViewPlayerAst.setText(playerStats.getTotal_assists());
-		holder.textViewPlayerStl.setText(playerStats.getTotal_steals());
-		holder.textViewPlayerBlock.setText(playerStats.getTotal_blocks());
-		holder.textViewPlayerFoul.setText(playerStats.getTotal_fouls());
-		holder.textViewPlayerTO.setText(playerStats.getTotal_turnovers());
+		holder.TextViewPlayerRating.setText(playerStats.getAvgRating());
+		holder.textViewPlayerShots.setText(playerStats.getAvgTotalShots());
+		holder.textViewPlayerFg.setText(playerStats.getAvgTwoPointsIn());
+		holder.textViewPlayer3Fg.setText(playerStats.getAvgThreePointsIn());
+		holder.textViewPlayerPercentFg.setText(playerStats.getAvgFreethrowsIn());
+		holder.textViewPlayerReb.setText(playerStats.getAvgTotalRebounds());
+		holder.textViewPlayerAst.setText(playerStats.getAvgAssists());
+		holder.textViewPlayerStl.setText(playerStats.getAvgSteals());
+		holder.textViewPlayerBlock.setText(playerStats.getAvgBlocks());
+		holder.textViewPlayerFoul.setText(playerStats.getAvgFouls());
+		holder.textViewPlayerTO.setText(playerStats.getAvgTurnovers());
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 	public class PlayerStatsHolder extends RecyclerView.ViewHolder {
 
 		ImageView imageView;
-		TextView textViewPlayerName, TextViewPlayerRating, textViewPlayerPoints,
+		TextView textViewPlayerName, TextViewPlayerRating, textViewPlayerShots,
 			textViewPlayerFg, textViewPlayer3Fg, textViewPlayerPercentFg,
 			textViewPlayerReb, textViewPlayerAst, textViewPlayerStl,
 			textViewPlayerBlock, textViewPlayerFoul, textViewPlayerTO;
@@ -67,7 +67,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 			imageView = (ImageView) itemView.findViewById(R.id.player_stats_team_logo);
 			textViewPlayerName = itemView.findViewById(R.id.player_stats_playerName);
 			TextViewPlayerRating = itemView.findViewById(R.id.player_stats_rating_value);
-			textViewPlayerPoints = itemView.findViewById(R.id.player_stats_pts_value);
+			textViewPlayerShots = itemView.findViewById(R.id.player_stats_pts_value);
 			textViewPlayerFg = itemView.findViewById(R.id.player_stats_fg_value);
 			textViewPlayer3Fg = itemView.findViewById(R.id.player_stats_3fg_value);
 			textViewPlayerPercentFg = itemView.findViewById(R.id.player_stats_percentfg_value);

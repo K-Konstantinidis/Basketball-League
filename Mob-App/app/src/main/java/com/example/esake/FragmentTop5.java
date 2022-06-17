@@ -57,7 +57,7 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
         //Get the view
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_top5, null);
 
-		weeks = new Connector(myIP.getIp(),"GameweeksTop5",null);
+		weeks = new Connector(myIP.getIp(),"gameweeks",null);
         //Get the spinner from the xml.
         Spinner dropdown = (Spinner) view.findViewById(R.id.spinner);
 
@@ -98,6 +98,9 @@ public class FragmentTop5 extends Fragment implements AdapterView.OnItemSelected
 			public void onNothingSelected(AdapterView<?> parentView)
 			{}
 		});
+
+
+
 
         return view;
     }
