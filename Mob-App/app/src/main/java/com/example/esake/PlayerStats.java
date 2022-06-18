@@ -24,7 +24,7 @@ public class PlayerStats {
 
 	private String logo;
 	private String surname;
-	private int total_shots;
+	private int total_points;
 	private int rating;
 	private int shots_made;
 	private double perc_2_in;
@@ -59,12 +59,12 @@ public class PlayerStats {
 		this.played_game = played_game;
 	}
 
-	public PlayerStats(String logo, String surname, int total_shots, int rating,
-					   double perc_2_in, double perc_3_in, double perc_freethrows_in, int total_rebounds, int total_assists,
+	public PlayerStats(String logo, String surname, int total_points, int rating,
+					   int perc_2_in, int perc_3_in, int perc_freethrows_in, int total_rebounds, int total_assists,
 					   int total_blocks, int total_steals, int total_turnovers, int total_fouls) {
 		this.logo = logo;
 		this.surname = surname;
-		this.total_shots = total_shots;
+		this.total_points = total_points;
 		this.rating = rating;
 		this.perc_2_in = perc_2_in;
 		this.perc_3_in = perc_3_in;
@@ -105,7 +105,7 @@ public class PlayerStats {
 	public String getLogo() {return "http://"+myIP.getIp()+logo;}
 
 	public String getSurname() {return surname;}
-	public String getTotal_shots() {return String.valueOf(total_shots);}
+	public String getTotal_points() {return String.valueOf(total_points);}
 	public String getPRating() {return String.valueOf(rating);}
 	public String getPerc_2_in() {return String.valueOf(perc_2_in);}
 	public String getPerc_3_in() {return String.valueOf(perc_3_in);}
