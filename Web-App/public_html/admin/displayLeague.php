@@ -49,16 +49,22 @@ $err_msg = '';
 			<br>
 
 			<?php
-				if($err_msg) {
-					displayErrorBanner($err_msg);
+				// There was a database related error while creating the championship
+				if(isset($_SESSION['db_err'])) {
+					displayErrorBanner($_SESSION['db_err']);
+					unset($_SESSION['db_err']);
 				}
-
-				// Newly created league
-				if(isset($_GET['nl'])) {
-					displaySuccessBanner('Η αγωνιστική δημιουργήθηκε επιτυχώς.');
+				// Invalid parameters were passed at "drawLeague"
+				elseif(isset($_GET['inv_param'])) {
+					displayWarningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
 				}
-
+				// A championship ID was given, display it
 				if(isset($_GET['cid']) && !empty($_GET['cid'])) {
+					// Newly created championship
+					if(isset($_GET['nl'])) {
+						displaySuccessBanner('Η αγωνιστική δημιουργήθηκε επιτυχώς.');
+					}
+
 					$championship_id = $_GET['cid'];
 
 					$dbh = connectDB();
@@ -106,23 +112,20 @@ $err_msg = '';
 
 					for($i = 0; $i < $num_games; ++$i) {
 						echo '<div class="col-lg-4 text-center">' . "\n";
-							echo '<div class="border p-3 m-3">' . "\n";
-								echo '<h5>Αγωνιστική ' . ($i + 1) . '</h5>' . "\n";
-								echo '<hr>' . "\n";
+						echo '	<div class="border p-3 m-3">' . "\n";
+						echo '		<h5>Αγωνιστική ' . ($i + 1) . '</h5>' . "\n";
+						echo '		<hr>' . "\n";
 
-								for($j = 0; $j < $matches_per_round; ++$j) {
-									echo '<span> ' . $results[$j + $i*$matches_per_round]['home_team'] .
-										 ' - ' . $results[$j + $i*$matches_per_round]['away_team'] . "<br>\n";
-								}
+						for($j = 0; $j < $matches_per_round; ++$j) {
+						echo '		<span> ' . $results[$j + $i*$matches_per_round]['home_team'] .
+									' - ' . $results[$j + $i*$matches_per_round]['away_team'] . "<br>\n";
+						}
 
-							echo '</div>' . "\n";
+						echo '	</div>' . "\n";
 						echo '</div>' . "\n";
 					}
 
 					echo '</div>' . "\n";
-				}
-				elseif(isset($_GET['inv_param'])) {
-					displayWarningBanner('Κάτι δεν πήγε καλά. Προσπαθήστε ξανά αργότερα');
 				}
 				else {
 					displayWarningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');
@@ -131,8 +134,8 @@ $err_msg = '';
 		</div>
 			
 		<div class="d-flex flex-grow-1 justify-content-center align-items-center">
-			<a href="<?php echo AREF_DIR_ADMIN ?>" class="btn btn-primary mb-5 me-3" role="button">Αρχική</a>
-			<a href="<?php echo AREF_ADMIN_AVAILABLE_LEAGUES ?>" class="btn btn-success mb-5 me-3" role="button">Διαθέσιμα Πρωταθλήματα</a>
+			<a href="<?= AREF_DIR_ADMIN ?>" class="btn btn-primary mb-5 me-3" role="button">Αρχική</a>
+			<a href="<?= AREF_ADMIN_AVAILABLE_LEAGUES ?>" class="btn btn-success mb-5 me-3" role="button">Διαθέσιμα Πρωταθλήματα</a>
 		</div>
 
 		<br><br>
