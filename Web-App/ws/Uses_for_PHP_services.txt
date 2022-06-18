@@ -73,6 +73,10 @@ USER
 Top bar (total score), detailed score (ongoing match, or right after match finishes):
 	getMatchDetailedScore.php
 		getMatchDetailedScore.php?lang=gr&cid=1&rid=7&gid=3
+		
+Live log:
+	getNewestMatchEvents.php
+		getNewestMatchEvents.php?lang=gr&cid=1&rid=7&gid=4
 
 Live team stats:
 	getOngoingMatchTeamStats.php

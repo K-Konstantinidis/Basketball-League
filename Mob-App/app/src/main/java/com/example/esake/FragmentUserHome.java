@@ -48,11 +48,8 @@ public class FragmentUserHome extends Fragment {
 
 	private Connector weeks;
 	private String round_id;
-	private int game_status;
-
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		//Get the view
 		View view = inflater.inflate(R.layout.fragment_home_user, null);
 

@@ -141,8 +141,8 @@
 	<string name="fouls">FLS</string>
 	<string name="fg">FG</string>
 	<string name="blk">BLK</string>
-	<string name="percentfg">%FG</string>
-	<string name="_3fg">3FG</string>
+	<string name="percentfg">FT%</string>
+	<string name="_3fg">3%</string>
 	<string name="stl">STL</string>
 	<string name="to">TO</string>
     <string name="player_stats_pts_value">10</string>
@@ -164,5 +164,6 @@
     <string name="table_games_value">Value</string>
 	<string name="starting_player_1">starting player 1</string>
 	<string name="start_game">Start Game</string>
+    <string name="Twofg" translatable="false">2%</string>
 
 </resources>

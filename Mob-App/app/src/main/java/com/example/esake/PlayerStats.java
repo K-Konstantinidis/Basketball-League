@@ -37,19 +37,35 @@ public class PlayerStats {
 	private int total_turnovers;
 	private int total_fouls;
 
+	private double avgRating;
+	private double avgFreethrowsIn;
+	private double avgFreethrowsOut;
+	private double avgTwoPointsIn;
+	private double avgTwoPointsOut;
+	private double avgThreePointsIn;
+	private double avgThreePointsOut;
+	private double avgTotalShots;
+	private double avgTotalRebounds;
+	private double avgOffensiveRebounds;
+	private double avgDefensiveRebounds;
+	private double avgBlocks;
+	private double avgAssists;
+	private double avgSteals;
+	private double avgTurnovers;
+	private double avgFouls;
+
 	//first Constructor
 	public PlayerStats(Game played_game) {
 		this.played_game = played_game;
 	}
 
-	public PlayerStats(String logo, String surname, int total_points, int rating, int shots_made,
+	public PlayerStats(String logo, String surname, int total_points, int rating,
 					   int perc_2_in, int perc_3_in, int perc_freethrows_in, int total_rebounds, int total_assists,
 					   int total_blocks, int total_steals, int total_turnovers, int total_fouls) {
 		this.logo = logo;
 		this.surname = surname;
 		this.total_points = total_points;
 		this.rating = rating;
-		this.shots_made = shots_made;
 		this.perc_2_in = perc_2_in;
 		this.perc_3_in = perc_3_in;
 		this.perc_freethrows_in = perc_freethrows_in;
@@ -61,13 +77,36 @@ public class PlayerStats {
 		this.total_fouls = total_fouls;
 	}
 
+	public PlayerStats(String logo, String surname, double avgRating, double avgFreethrowsIn, double avgFreethrowsOut,
+					   double avgTwoPointsIn, double avgTwoPointsOut, double avgThreePointsIn, double avgThreePointsOut,
+					   double avgTotalShots, double avgTotalRebounds, double avgOffensiveRebounds, double avgDefensiveRebounds,
+					   double avgBlocks, double avgAssists, double avgSteals, double avgTurnovers, double avgFouls) {
+		this.logo = logo;
+		this.surname = surname;
+		this.avgRating = avgRating;
+		this.avgFreethrowsIn = avgFreethrowsIn;
+		this.avgFreethrowsOut = avgFreethrowsOut;
+		this.avgTwoPointsIn = avgTwoPointsIn;
+		this.avgTwoPointsOut = avgTwoPointsOut;
+		this.avgThreePointsIn = avgThreePointsIn;
+		this.avgThreePointsOut = avgThreePointsOut;
+		this.avgTotalShots = avgTotalShots;
+		this.avgTotalRebounds = avgTotalRebounds;
+		this.avgOffensiveRebounds = avgOffensiveRebounds;
+		this.avgDefensiveRebounds = avgDefensiveRebounds;
+		this.avgBlocks = avgBlocks;
+		this.avgAssists = avgAssists;
+		this.avgSteals = avgSteals;
+		this.avgTurnovers = avgTurnovers;
+		this.avgFouls = avgFouls;
+	}
+
 	//Getters for Data
 	public String getLogo() {return "http://"+myIP.getIp()+logo;}
 
 	public String getSurname() {return surname;}
 	public String getTotal_points() {return String.valueOf(total_points);}
 	public String getPRating() {return String.valueOf(rating);}
-	public String getShots_made() {return String.valueOf(shots_made);}
 	public String getPerc_2_in() {return String.valueOf(perc_2_in);}
 	public String getPerc_3_in() {return String.valueOf(perc_3_in);}
 	public String getPerc_freethrows_in() {return String.valueOf(perc_freethrows_in);}
@@ -77,6 +116,26 @@ public class PlayerStats {
 	public String getTotal_steals() {return String.valueOf(total_steals);}
 	public String getTotal_turnovers() {return String.valueOf(total_turnovers);}
 	public String getTotal_fouls() {return String.valueOf(total_fouls);}
+
+	public String getAvgRating() {	return String.valueOf(avgRating); }
+	public String getAvgFreethrowsOut() {	return String.valueOf(avgFreethrowsOut); }
+	public String getAvgFreethrowsIn() {	return String.valueOf(avgFreethrowsIn); }
+	public String getAvgTwoPointsOut() {	return String.valueOf(avgTwoPointsOut); }
+	public String getAvgTwoPointsIn() {	return String.valueOf(avgTwoPointsIn); }
+	public String getAvgThreePointsOut() {	return String.valueOf(avgThreePointsOut); }
+	public String getAvgThreePointsIn() {	return String.valueOf(avgThreePointsIn); }
+	public String getAvgTotalShots() {	return String.valueOf(avgTotalShots); }
+	public String getAvgTotalRebounds() {	return String.valueOf(avgTotalRebounds); }
+	public String getAvgOffensiveRebounds() {	return String.valueOf(avgOffensiveRebounds); }
+	public String getAvgDefensiveRebounds() {	return String.valueOf(avgDefensiveRebounds); }
+	public String getAvgAssists() {	return String.valueOf(avgAssists); }
+	public String getAvgBlocks() {	return String.valueOf(avgBlocks); }
+	public String getAvgSteals() {	return String.valueOf(avgSteals); }
+	public String getAvgTurnovers() {	return String.valueOf(avgTurnovers); }
+	public String getAvgFouls() {	return String.valueOf(avgFouls); }
+
+
+
 
 	// Point adding functions
 /*	public void addFreeThrowIn() 	{ ++freethrows_in; }

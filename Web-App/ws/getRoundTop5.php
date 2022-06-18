@@ -74,8 +74,8 @@ LEFT JOIN
 			FROM `player_stats` 
 			JOIN player p ON p.id = player_stats.player_id
 			WHERE championship_id = :cid AND round_id = :rid
-                GROUP BY p.id) AS temp2
-     	GROUP BY temp2.p_id) AS f2
+      GROUP BY p.id) AS temp2
+   GROUP BY temp2.p_id) AS f2
 ON f1.position = f2.position2 AND f1.rating < f2.rating2
 WHERE f2.rating2 IS NULL
 GROUP BY position
