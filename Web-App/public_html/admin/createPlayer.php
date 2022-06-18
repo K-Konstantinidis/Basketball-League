@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	if($count == 7) {
 		move_uploaded_file($img_tmp_name,  $playerImg);
 		$stmt->execute();
-		$suc_msg = 'Ο παίκτης <strong>' . filter_data($_POST['name_gr']) . '</strong> δημιουργήθηκε επιτυχώς';
+		$suc_msg = 'Ο παίκτης <strong>' . filter_data($_POST['name_gr']) . ' ' . filter_data($_POST['surname_gr']) . '</strong> δημιουργήθηκε επιτυχώς';
 		unset($_POST);
 	}
 }
