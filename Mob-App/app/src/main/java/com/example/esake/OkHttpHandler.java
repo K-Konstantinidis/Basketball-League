@@ -210,6 +210,53 @@ public class OkHttpHandler {
 		return playerStats;
 	}
 
+	//function for Finished Match Players Tabbed
+	ArrayList<PlayerStats> getDataForFPlayersTabbed(String url) throws Exception {
+		ArrayList<PlayerStats> playerStats = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+
+			//Getting json from WS
+
+			while(keys.hasNext()) {
+				String id = keys.next();
+				String logo = json.getJSONObject(id).getString("logo");
+				String surname= json.getJSONObject(id).getString("surname");
+				String rating = json.getJSONObject(id).getString("rating");
+				String totalPoints = json.getJSONObject(id).getString("total_points");
+				String twoPointsIn = json.getJSONObject(id).getString("perc_2_in");
+				String threePointsIn = json.getJSONObject(id).getString("perc_3_in");
+				String freethrowsIn = json.getJSONObject(id).getString("perc_freethrows_in");
+				String totalRebounds = json.getJSONObject(id).getString("total_rebounds");
+				String assists = json.getJSONObject(id).getString("total_assists");
+				String blocks = json.getJSONObject(id).getString("total_blocks");
+				String steals = json.getJSONObject(id).getString("total_steals");
+				String turnovers = json.getJSONObject(id).getString("total_turnovers");
+				String fouls = json.getJSONObject(id).getString("total_fouls");
+
+				//Code to add from Json to Screen
+				PlayerStats pStats = new PlayerStats(logo, surname, Integer.parseInt(totalPoints),
+					Integer.parseInt(rating), Integer.parseInt(twoPointsIn),
+					Integer.parseInt(threePointsIn), Integer.parseInt(freethrowsIn),
+					Integer.parseInt(totalRebounds), Integer.parseInt(assists),
+					Integer.parseInt(blocks), Integer.parseInt(steals),
+					Integer.parseInt(turnovers), Integer.parseInt(fouls));
+				playerStats.add(pStats);
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return playerStats;
+	}
+
 	//function for Finished Matches
 	ArrayList<TeamStats> getDataForFTeams(String url) throws Exception {
 		ArrayList<TeamStats> teamStats = new ArrayList<>();
@@ -400,6 +447,23 @@ public class OkHttpHandler {
 					awayTeamName, awayTeamTotalScore, awayTeamTotalscores);
 
 			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	String getCurrentMinute(String url) throws Exception {
+		ArrayList<Player> players = new ArrayList<>();
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			String currentMinute = json.getString("current_minute");
+			return currentMinute;
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

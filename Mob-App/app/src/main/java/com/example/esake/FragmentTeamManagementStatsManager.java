@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -67,14 +69,14 @@ public class FragmentTeamManagementStatsManager extends Fragment {
     private Connector homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", "2");
     private List<Player> allHomeTeamPlayers = new ArrayList<>();
 	private Player[] selectedHomeTeamPlayers = new Player[]{null,null,null,null,null};
-	private List<Player> homeTeamSubstitutes = new ArrayList<>();
+	private Player[] selectedHomeTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
 
 	private Connector awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", "5");
 	private List<Player> allAwayTeamPlayers = new ArrayList<>();
 	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
-	private List<Player> awayTeamSubstitutes = new ArrayList<>();
+	private Player[] selectedAwayTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
 
-	private Spinner[] homeTeamSpinners,awayTeamSpinners;
+	private Spinner[] homeTeamSpinners, awayTeamSpinners, homeTeamSubsSpinners, awayTeamSubsSpinners;
 
 	private Team homeTeam, awayTeam;
 
@@ -98,6 +100,24 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 			(Spinner) root.findViewById(R.id.spinner2_4),
 			(Spinner) root.findViewById(R.id.spinner2_5) };
 
+		homeTeamSubsSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinner1_6),
+			(Spinner) root.findViewById(R.id.spinner1_7),
+			(Spinner) root.findViewById(R.id.spinner1_8),
+			(Spinner) root.findViewById(R.id.spinner1_9),
+			(Spinner) root.findViewById(R.id.spinner1_10),
+			(Spinner) root.findViewById(R.id.spinner1_11),
+			(Spinner) root.findViewById(R.id.spinner1_12) };
+
+		awayTeamSubsSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinner2_6),
+			(Spinner) root.findViewById(R.id.spinner2_7),
+			(Spinner) root.findViewById(R.id.spinner2_8),
+			(Spinner) root.findViewById(R.id.spinner2_9),
+			(Spinner) root.findViewById(R.id.spinner2_10),
+			(Spinner) root.findViewById(R.id.spinner2_11),
+			(Spinner) root.findViewById(R.id.spinner2_12) };
+
 		allHomeTeamPlayers.add(0,new Player("",-1,-1));
 		allHomeTeamPlayers.addAll(homeTeamPlayerConnector.getTeamPlayers(0));
 
@@ -105,6 +125,11 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 			android.R.layout.simple_spinner_dropdown_item, allHomeTeamPlayers);
 
 		setAdapter(homeTeamSpinners, homeTeamPlayersAdapter, selectedHomeTeamPlayers);
+
+		PlayerSpinnerAdapter homeTeamSubsAdapter = new PlayerSpinnerAdapter(getContext(),
+			android.R.layout.simple_spinner_dropdown_item, allHomeTeamPlayers);
+
+		setAdapter(homeTeamSubsSpinners, homeTeamSubsAdapter, selectedHomeTeamSubstitutes);
 
 		//Away team
 		allAwayTeamPlayers.add(0,new Player("",-1,-1));
@@ -115,19 +140,26 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 
 		setAdapter(awayTeamSpinners, awayTeamPlayersAdapter, selectedAwayTeamPlayers);
 
+		PlayerSpinnerAdapter awayTeamSubsAdapter = new PlayerSpinnerAdapter(getContext(),
+			android.R.layout.simple_spinner_dropdown_item, allAwayTeamPlayers);
+
+		setAdapter(awayTeamSubsSpinners, awayTeamSubsAdapter, selectedAwayTeamSubstitutes);
+
 		//Get the start game button
 		Button startGameBtn = root.findViewById(R.id.startGameButton);
 		startGameBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
-				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)) {
+				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)
+				|| selectedTeamPlayersContainsEmptyElement(selectedHomeTeamSubstitutes)
+					|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamSubstitutes)) {
 					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
 					return;
 				}
 
-				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers);
-				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers);
+				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes);
+				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
 
 				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent)
 					Toast.makeText(getContext(),"The game will start with the chosen players",Toast.LENGTH_SHORT).show();
@@ -143,13 +175,12 @@ public class FragmentTeamManagementStatsManager extends Fragment {
     	for (Player p:selectedTeamPlayers) {
 			if (p==null || p.getNumber()==-1) return true;
 		}
-
 		return false;
     }
 
 	private void setAdapter(Spinner[] teamSpinners, PlayerSpinnerAdapter teamPlayersAdapter, Player[] selectedTeamPlayers) {
 
-		for (int i = 0; i< teamSpinners.length; i++) {
+		for (int i = 0; i < teamSpinners.length; i++) {
 			teamSpinners[i].setAdapter(teamPlayersAdapter);
 			int finalI = i;
 			teamSpinners[i].setSelection(0,true);
@@ -171,10 +202,18 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 		}
 	}
 
-	private boolean checkForAllUniquePlayers(Player[] selectedTeamPlayers) {
-    	for (int i=0;i<selectedTeamPlayers.length;i++) {
-			for (int j = i + 1; j < selectedTeamPlayers.length; j++) {
-				if (selectedTeamPlayers[i].equals(selectedTeamPlayers[j])) {
+	private boolean checkForAllUniquePlayers(Player[] selectedTeamPlayers, Player[] selectedTeamSubs) {
+		Player[] allSelectedPlayers = new Player[selectedTeamPlayers.length+selectedTeamSubs.length];
+
+		for (int i=0;i<selectedTeamPlayers.length;i++)
+			allSelectedPlayers[i] = selectedTeamPlayers[i];
+
+		for (int i=selectedTeamPlayers.length;i<selectedTeamPlayers.length+selectedTeamSubs.length;i++)
+			allSelectedPlayers[i] = selectedTeamSubs[i-selectedTeamPlayers.length];
+
+		for (int i=0;i<allSelectedPlayers.length;i++) {
+			for (int j = i + 1; j < allSelectedPlayers.length; j++) {
+				if (allSelectedPlayers[i].equals(allSelectedPlayers[j])) {
 					return false;
 				}
 			}

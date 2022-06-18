@@ -77,6 +77,15 @@ public class HomeUserAdapter extends RecyclerView.Adapter<HomeUserAdapter.HomeUs
 				holder.button.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
+						Intent intent = new Intent(mCtx, Tabbed_User.class);
+						intent.putExtra("round", round_id);
+						intent.putExtra("status", game_status);
+
+						String game;
+						game = gameWeek.getGameId();
+						intent.putExtra("game", game);
+
+						mCtx.startActivity(intent);
 
 					}
 				});

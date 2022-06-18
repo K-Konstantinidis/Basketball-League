@@ -2,7 +2,9 @@ package com.example.esake.StatsManagerHome;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.esake.GameWeek;
 import com.example.esake.R;
+import com.example.esake.Tabbed_Stats_Manager;
+import com.example.esake.Tabbed_User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,25 +49,54 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 
 		Picasso.with(mCtx.getApplicationContext()).load(gameWeek.getHomeLogo()).fit().into(holder.imageViewHome);
 		Picasso.with(mCtx.getApplicationContext()).load(gameWeek.getAwayLogo()).fit().into(holder.imageViewAway);
-		holder.textViewScore1.setText(gameWeek.getHomeScore());
-		holder.textViewScore2.setText(gameWeek.getAwayScore());
+
 		game_status = gameWeek.getGameStatus();
+
+		setScoreText(holder.textViewScore1, gameWeek, game_status, true);
+		setScoreText(holder.textViewScore2, gameWeek, game_status, false);
 		switch(game_status){
-			case -1:
+			case 0:
+				holder.button.setText("Game Summary");
+				holder.button.setEnabled(false);
+				holder.button.setClickable(false);
+
+				holder.button.setBackgroundColor(Color.GRAY);
+				break;
+			case 1:
 				holder.button.setText("Live Game");
 				holder.button.setEnabled(false);
 				holder.button.setClickable(false);
 				holder.button.setBackgroundColor(Color.RED);
 				break;
-			case 0:
+			case 2:
 				holder.button.setText("Start Game");
+				holder.button.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(mCtx, Tabbed_Stats_Manager.class);
+						mCtx.startActivity(intent);
+					}
+				});
 				break;
-			case 1:
-				holder.button.setText("Scheduled");
-				holder.button.setEnabled(false);
-				holder.button.setClickable(false);
-				holder.button.setBackgroundColor(Color.GRAY);
-				break;
+		}
+	}
+
+	private void setScoreText(TextView textViewScore, GameWeek gameWeek, int gameStatus, boolean isHomeTeam) {
+		textViewScore.setText(getStringScore(gameWeek,isHomeTeam, gameStatus));
+		textViewScore.setTypeface(Typeface.DEFAULT_BOLD);
+		if (gameStatus==1)
+			textViewScore.setTextColor(Color.RED);
+	}
+
+	@NonNull
+	private String getStringScore(GameWeek gameWeek, boolean isHomeTeam, int gameStatus) {
+		if (gameStatus==2)
+			return "—";
+		else {
+			if (isHomeTeam)
+				return gameWeek.getHomeScore();
+			else
+				return gameWeek.getAwayScore();
 		}
 	}
 
