@@ -15,7 +15,7 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 }
 
 $warn = $err = '';
-$championshipNameErr = '';
+$championshipNameErr = $teamSelectionErr = '';
 
 // Create the league
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,13 +24,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	// Invalid parameters were passed
 	if(!isset($_POST['t']) || !is_array($_POST['t'])) {
-		$warn = 'Δεν ορίσθηκαν σωστά οι παράμετροι για τη δημιουργία του πρωταθλήματος.<br>Προσπαθήστε ξανά αργότερα.';
+		$teamSelectionErr = 'Παρακαλώ, επιλέξτε ομάδες για να συμμετάσχουν στο πρωτάθλημα.';
 	}
 	else {
 		// To create a league, at least 4 teams must participate and the number of
 		//  participating teams must be an even number.
 		if(count($_POST['t']) % 2 != 0 || count($_POST['t']) < 4) {
-			$err = 'Πρέπει να επιλέξετε τουλάχιστον 4 ομάδες, και το πλήθος των ομάδων να είναι ζυγός αριθμός.';
+			$teamSelectionErr = 'Πρέπει να επιλέξετε τουλάχιστον 4 ομάδες, και το πλήθος των ομάδων να είναι ζυγός αριθμός.';
 		}
 		else {
 			// Serialize the participating teams array, and display the loading page
@@ -94,6 +94,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 				if($warn) {
 					displayWarningBanner($warn);
 				}
+				if($teamSelectionErr) {
+					displayErrorBanner($teamSelectionErr);
+				}
 
 				$conn = connectDB();
 				$data = $conn->query('SELECT id, name_gr, logo_path FROM team')->fetchAll();
@@ -113,10 +116,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 					if($championshipNameErr) formInvalidFeedback($championshipNameErr);
 					
 					echo '</div>' . "\n";
-					echo '<div class="row">' . "\n";
+					echo '<div class="row ' . (($teamSelectionErr) ? 'border border-danger' : ''). '">' . "\n";
 					
 					foreach($data as $row) {
-						echo '<div class="col-xl-2 mb-3">' . "\n";
+						echo '<div class="col-xl-2 mt-2 mb-2">' . "\n";
 						echo '	<div class="border pb-3 m-1 text-center">' . "\n";
 						echo '		<div class="custom-control custom-checkbox image-checkbox">' . "\n";
 						echo '			<input type="checkbox" name="t[]" value="' . $row['id'] . '" class="custom-control-input" id=' . $row['id'] . '>' . "\n";
