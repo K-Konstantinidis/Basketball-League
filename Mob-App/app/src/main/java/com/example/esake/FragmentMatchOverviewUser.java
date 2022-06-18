@@ -60,14 +60,14 @@ public class FragmentMatchOverviewUser extends Fragment {
 		}
 	}
 
-	private Connector userOverViewFinished;
+	private Connector userOverViewFinished, newestEvents;
 	private TextView homeName, awayName;
 	private TextView scoreHome, scoreAway;
 	private TextView Q1Home, Q1Away;
 	private TextView Q2Home, Q2Away;
 	private TextView Q3Home, Q3Away;
 	private TextView Q4Home, Q4Away;
-	private TextView[] recentEvents = {null,null,null};
+	private TextView[] recentEventViews = {null,null,null};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -121,6 +121,9 @@ public class FragmentMatchOverviewUser extends Fragment {
 		else{
 			view = inflater.inflate(R.layout.fragment_match_overview_user, container, false);
 
+			String url = "getNewestMatchEvents.php?lang=gr&cid=1&rid="+mParam1+"&gid="+mParam3;
+			newestEvents = new Connector(myIP.getIp(),"newest-events",url);
+
 			homeName = view.findViewById(R.id.homeTeamName_user);
 			awayName = view.findViewById(R.id.awayTeamName_user);
 
@@ -139,30 +142,33 @@ public class FragmentMatchOverviewUser extends Fragment {
 			Q3Away = view.findViewById(R.id.Q3AwayScore_user);
 			Q4Away = view.findViewById(R.id.Q4AwayScore_user);
 
-			recentEvents[0] = view.findViewById(R.id.log1);
-			recentEvents[1] = view.findViewById(R.id.log2);
-			recentEvents[2] = view.findViewById(R.id.log3);
+			recentEventViews[0] = view.findViewById(R.id.log1);
+			recentEventViews[1] = view.findViewById(R.id.log2);
+			recentEventViews[2] = view.findViewById(R.id.log3);
 
-			scoreHome.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getScore1()));
-			scoreAway.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getScore2()));
-			Q1Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ1score1()));
-			Q2Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ2score1()));
-			Q3Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ3score1()));
-			Q4Home.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ4score1()));
+			scoreHome.setText("—");
+			scoreAway.setText("—");
+			Q1Home.setText("—");
+			Q2Home.setText("—");
+			Q3Home.setText("—");
+			Q4Home.setText("—");
 			Q4Home.setTextColor(Color.BLACK);
 
-			Q1Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ1score2()));
-			Q2Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ2score2()));
-			Q3Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ3score2()));
-			Q4Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ4score2()));
+			Q1Away.setText("—");
+			Q2Away.setText("—");
+			Q3Away.setText("—");
+			Q4Away.setText("—");
 			Q4Away.setTextColor(Color.BLACK);
 
-			/*recentEvents[0].setText();
-			recentEvents[1].setText();
-			recentEvents[2].setText();*/
-
+			populateRecentEventViews(recentEventViews, newestEvents.getMostRecentEvents());
 
 		}
 		 return view;
+    }
+
+	private void populateRecentEventViews(TextView[] recentEventViews, String[] mostRecentEvents) {
+		for (int i=0;i < mostRecentEvents.length ; i++) {
+			recentEventViews[i].setText(mostRecentEvents[i]);
+		}
     }
 }

@@ -17,6 +17,7 @@ public class Connector {
 	private Game finishedGame;
 	private ArrayList<Player> players = new ArrayList<>();
 	private String currentMinute;
+	private String[] mostRecentEvents;
 
 	public Connector(String ip, String string){
 		if(string.equals("player-finished-stats")) {
@@ -65,7 +66,8 @@ public class Connector {
 			}
 		}
 		else if(string.equals("week-matches")){
-			String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=7";
+			//String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=7";
+			String url = "http://" + ip + "/ws/getCurrentGameweek?cid=1";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				matches = okHttpHandler.getGameweekMatches(url);
@@ -206,6 +208,15 @@ public class Connector {
 				e.printStackTrace();
 			}
 		}
+		else if(string.equals("newest-events")){
+			String url = "http://" + ip + "/ws/"+param;
+			try {
+				OkHttpHandler okHttpHandler = new OkHttpHandler();
+				mostRecentEvents = okHttpHandler.getNewestEvents(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 
@@ -274,4 +285,7 @@ public class Connector {
 
 	public ArrayList<Player> getTeamPlayers(int id) { return this.players; }
 
+	public String[] getMostRecentEvents() {
+		return mostRecentEvents;
+	}
 }

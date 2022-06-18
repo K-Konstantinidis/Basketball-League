@@ -39,7 +39,7 @@
     <string name="top5_player_image">Player Image</string>
     <!-- Home Page Stats Manager -->
     <string name="action_stats">Watch Game</string>
-    <string name="Gameweek_stats">Gameweek #</string>
+    <string name="Gameweek_stats">Current Gameweek</string>
     <string name="dash">-</string>
     <string name="home_score_stats">100</string>
     <string name="away_score_stats">2</string>
