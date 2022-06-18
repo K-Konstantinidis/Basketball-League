@@ -27,9 +27,9 @@ public class PlayerStats {
 	private int total_points;
 	private int rating;
 	private int shots_made;
-	private double perc_2_in;
-	private double perc_3_in;
-	private double perc_freethrows_in;
+	private int perc_2_in;
+	private int perc_3_in;
+	private int perc_freethrows_in;
 	private int total_rebounds;
 	private int total_assists;
 	private int total_blocks;
