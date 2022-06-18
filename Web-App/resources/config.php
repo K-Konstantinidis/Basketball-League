@@ -67,7 +67,9 @@ function connectDB() {
  */
 function displayErrorBanner(string $text, string $title = 'Σφάλμα!') {
 	echo '<div class="alert alert-danger fade show" role="alert">';
-	echo '<strong>'. $title . '</strong><br>';
+	if(!empty($title)) {
+		echo '<strong>'. $title . '</strong><br>';
+	}
 	echo $text;
 	echo '</div><br>';
 }
@@ -81,7 +83,9 @@ function displayErrorBanner(string $text, string $title = 'Σφάλμα!') {
  */
 function displayWarningBanner(string $text, string $title = 'Προσοχή!') {
 	echo '<div class="alert alert-warning fade show" role="alert">';
-	echo '<strong>'. $title . '</strong><br>';
+	if(!empty($title)) {
+		echo '<strong>'. $title . '</strong><br>';
+	}
 	echo $text;
 	echo '</div><br>';
 }
@@ -95,7 +99,9 @@ function displayWarningBanner(string $text, string $title = 'Προσοχή!') {
  */
 function displaySuccessBanner(string $text, string $title = 'Επιτυχία!') {
 	echo '<div class="alert alert-success fade show" role="alert">';
-	echo '<strong>'. $title . '</strong><br>';
+	if(!empty($title)) {
+		echo '<strong>'. $title . '</strong><br>';
+	}
 	echo $text;
 	echo '</div><br>';
 }
