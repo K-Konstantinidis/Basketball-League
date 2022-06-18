@@ -86,7 +86,7 @@ public class FragmentTeamStatsLiveUser extends Fragment {
 		// Inflate the layout for this fragment
 		View view;
 
-		//normally == 0 here
+		//== 0 here for finished
 		if(Integer.parseInt(mParam2)==0){
 			view = inflater.inflate(R.layout.fragment_team_stats_finished_user, container, false);
 
@@ -172,6 +172,7 @@ public class FragmentTeamStatsLiveUser extends Fragment {
 			awayTurnover.setText(team_finished_stats.getfinishedTeamTotal_turnovers(1));
 
 		}
+		//live
 		else{
 			view = inflater.inflate(R.layout.fragment_team_stats_live_user, container, false);
 		}
