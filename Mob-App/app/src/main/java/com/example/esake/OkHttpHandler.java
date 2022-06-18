@@ -5,8 +5,11 @@ import android.os.StrictMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -468,5 +471,78 @@ public class OkHttpHandler {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+    public String[] getNewestEvents(String url) throws Exception {
+		String[] newestEvents = {"","",""};
+		OkHttpClient client = new OkHttpClient().newBuilder().build();
+		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+		Request request = new Request.Builder().url(url).method("POST", body).build();
+		Response response = client.newCall(request).execute();
+		String data = response.body().string();
+		try {
+			JSONObject json = new JSONObject(data);
+			Iterator<String> keys = json.keys();
+			int index=0;
+			while(keys.hasNext()) {
+				String uid = keys.next();
+				String minute = json.getJSONObject(uid).getString("minute");
+				String templateText = json.getJSONObject(uid).getString("template_text");
+				String surname = json.getJSONObject(uid).getString("surname");
+				String teamName = json.getJSONObject(uid).getString("team_name");
+				String extraSurname = json.getJSONObject(uid).getString("extra_surname");
+				String extraTeam = json.getJSONObject(uid).getString("extra_team");
+
+				newestEvents[index] =
+					formLogString(minute, templateText, surname, teamName, extraSurname,extraTeam);
+
+				index++;
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return newestEvents;
+    }
+
+	private String formLogString(String minute, String templateText, String surname, String teamName, String extraSurname, String extraTeam) {
+		String logString="";
+		List<Integer> separatorIndexes = locateSeparators(templateText);
+
+		if (separatorIndexes==null) return null;
+
+		int occurrences = separatorIndexes.size();
+
+		logString += minute + "': " + templateText.substring(0,separatorIndexes.get(0))
+						+ surname + " (" + teamName + ")";
+
+		switch (occurrences) {
+			case 2:
+				logString += templateText.substring(separatorIndexes.get(0)+1, separatorIndexes.get(1))
+							+ extraSurname + " (" + extraTeam + ")" + templateText.substring(separatorIndexes.get(1)+1);
+				break;
+			case 1:
+				logString+= templateText.substring(separatorIndexes.get(0)+1);
+				break;
+			default:
+				break;
+		}
+
+		return logString;
+	}
+
+	private List<Integer> locateSeparators(String templateText) {
+		List<Integer> separatorIndexes = new ArrayList<>();
+		int offset = 0;
+		int index = 0;
+		if (!templateText.contains(",")) return null;
+		while (true) {
+			index = templateText.indexOf(',', offset);
+			if (index==-1) break;
+			separatorIndexes.add(index);
+			offset=index+1;
+		}
+
+		return separatorIndexes;
 	}
 }
