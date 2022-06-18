@@ -20,7 +20,6 @@ public class PlayerSpinnerAdapter extends ArrayAdapter<Player> {
 		super(context, textViewResourceId, players);
 		this.context=context;
 		this.players=players;
-
 	}
 
 	@Override

@@ -73,8 +73,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " ευστοχεί σε σουτ 2 πόντων", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -84,8 +86,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " αστοχεί σε σουτ 2 πόντων", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -95,8 +99,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " ευστοχεί σε σουτ 3 πόντων", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
 		});
@@ -106,8 +112,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " αστοχεί σε σουτ 3 πόντων", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -117,8 +125,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " βάζει μία ελεύθερη βολή", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -128,8 +138,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " χάνει μία ελεύθερη βολή", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -139,8 +151,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Η ασσίστ ανήκει στον " + player.getText(), Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -150,8 +164,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Υπάρχει σφύριγμα για φάουλ που χρεώνεται στον " + player.getText(), Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -161,8 +177,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
 				radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " υποπίπτει σε λάθος και χάνει την κατοχή της μπάλας", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
 		});
@@ -172,8 +190,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " μαζεύει το επιθετικό ριμπάουντ", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -183,8 +203,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
 				radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " μαζεύει το αμυντικό ριμπάουντ", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
 		});
@@ -194,8 +216,10 @@ public class FragmentGameManagementStatsManager extends Fragment{
                 radioOpp.setVisibility(View.GONE);
 
 			RadioButton player = getPlayer(rdg1, root);
-			if(!(player == null))
+			if(player != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " κόβει τον αντίπαλό του", Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+			}
 			else
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
         });
@@ -207,8 +231,11 @@ public class FragmentGameManagementStatsManager extends Fragment{
 			RadioButton player = getPlayer(rdg1, root);
 			RadioButton opponent = getPlayer(radioOpp, root);
 
-			if(!(player == null) && !(opponent == null))
+			if(player != null && opponent != null) {
 				Toast.makeText(getContext(), "Ο " + player.getText() + " κλέβει την μπάλα από τον " + opponent.getText(), Toast.LENGTH_SHORT).show();
+				player.setChecked(false);
+				opponent.setChecked(false);
+			}
 			else if(player == null)
 				Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
 			else

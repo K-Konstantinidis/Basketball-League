@@ -69,7 +69,7 @@ public class Tabbed_User extends AppCompatActivity {
 		awayTeamScore.setText(String.valueOf(tabUser.getFinishedGame().getScore2()));
 
 		//timer.setText(timeTracker.getCurrentMinute(gameStatus));
-		timer.setText("40");
+		timer.setText("40'");
 
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getHomeTeamLogo()).fit().into(homeTeamImage);
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getAwayTeamLogo()).fit().into(awayTeamImage);

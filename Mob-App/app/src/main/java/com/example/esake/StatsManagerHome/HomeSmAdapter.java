@@ -56,7 +56,7 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 		setScoreText(holder.textViewScore2, gameWeek, game_status, false);
 		switch(game_status){
 			case 0:
-				holder.button.setText("Game Summary");
+				holder.button.setText("Game Finished");
 				holder.button.setEnabled(false);
 				holder.button.setClickable(false);
 
@@ -66,10 +66,10 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 				holder.button.setText("Live Game");
 				holder.button.setEnabled(false);
 				holder.button.setClickable(false);
-				holder.button.setBackgroundColor(Color.RED);
+				holder.button.setBackgroundColor(Color.DKGRAY);
 				break;
 			case 2:
-				holder.button.setText("Start Game");
+				holder.button.setText("Manage Game");
 				holder.button.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -85,7 +85,7 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 		textViewScore.setText(getStringScore(gameWeek,isHomeTeam, gameStatus));
 		textViewScore.setTypeface(Typeface.DEFAULT_BOLD);
 		if (gameStatus==1)
-			textViewScore.setTextColor(Color.RED);
+			textViewScore.setTextColor(Color.DKGRAY);
 	}
 
 	@NonNull

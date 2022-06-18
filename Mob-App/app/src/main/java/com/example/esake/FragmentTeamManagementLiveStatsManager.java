@@ -1,0 +1,150 @@
+package com.example.esake;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*DON'T TOUCH PLS*/
+public class FragmentTeamManagementLiveStatsManager extends Fragment {
+	// TODO: Rename parameter arguments, choose names that match
+	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+	private static final String ARG_PARAM1 = "param1";
+	private static final String ARG_PARAM2 = "param2";
+
+	// TODO: Rename and change types of parameters
+	private String mParam1;
+	private String mParam2;
+
+	public FragmentTeamManagementLiveStatsManager() {
+		// Required empty public constructor
+	}
+
+	/**
+	 * Use this factory method to create a new instance of
+	 * this fragment using the provided parameters.
+	 *
+	 * @param param1 Parameter 1.
+	 * @param param2 Parameter 2.
+	 * @return A new instance of fragment FragmentTeamManagementStatsManager.
+	 */
+	// TODO: Rename and change types and number of parameters
+	public static FragmentTeamManagementStatsManager newInstance(String param1, String param2) {
+		FragmentTeamManagementStatsManager fragment = new FragmentTeamManagementStatsManager();
+		Bundle args = new Bundle();
+		args.putString(ARG_PARAM1, param1);
+		args.putString(ARG_PARAM2, param2);
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (getArguments() != null) {
+			mParam1 = getArguments().getString(ARG_PARAM1);
+			mParam2 = getArguments().getString(ARG_PARAM2);
+		}
+	}
+
+	private Connector homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", "2");
+	private List<Player> allHomeTeamPlayers = new ArrayList<>();
+	private Player[] selectedHomeTeamPlayers = new Player[]{null,null,null,null,null};
+	private Player[] selectedHomeTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
+
+	private Connector awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", "5");
+	private List<Player> allAwayTeamPlayers = new ArrayList<>();
+	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
+	private Player[] selectedAwayTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
+
+	private Spinner[] homeTeamSpinners, awayTeamSpinners;
+
+	private ViewGroup newRoot = null;
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+		//Get the view
+		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_livegame_stats_manager, null);
+
+		homeTeamSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinnerLive1_1),
+			(Spinner) root.findViewById(R.id.spinnerLive1_2),
+			(Spinner) root.findViewById(R.id.spinnerLive1_3),
+			(Spinner) root.findViewById(R.id.spinnerLive1_4),
+			(Spinner) root.findViewById(R.id.spinnerLive1_5) };
+
+		awayTeamSpinners = new Spinner[]{
+			(Spinner) root.findViewById(R.id.spinnerLive2_1),
+			(Spinner) root.findViewById(R.id.spinnerLive2_2),
+			(Spinner) root.findViewById(R.id.spinnerLive2_3),
+			(Spinner) root.findViewById(R.id.spinnerLive2_4),
+			(Spinner) root.findViewById(R.id.spinnerLive2_5) };
+
+		allHomeTeamPlayers.addAll(homeTeamPlayerConnector.getTeamPlayers(0));
+
+		PlayerSpinnerAdapter homeTeamPlayersAdapter = new PlayerSpinnerAdapter(getContext(),
+			android.R.layout.simple_spinner_dropdown_item, allHomeTeamPlayers);
+
+		setAdapter(homeTeamSpinners, homeTeamPlayersAdapter, selectedHomeTeamPlayers);
+
+		//Away team
+		allAwayTeamPlayers.addAll(awayTeamPlayerConnector.getTeamPlayers(1));
+
+		PlayerSpinnerAdapter awayTeamPlayersAdapter = new PlayerSpinnerAdapter(getContext(),
+			android.R.layout.simple_spinner_dropdown_item, allAwayTeamPlayers);
+
+		setAdapter(awayTeamSpinners, awayTeamPlayersAdapter, selectedAwayTeamPlayers);
+
+		return root;
+	}
+
+	private void setAdapter(Spinner[] teamSpinners, PlayerSpinnerAdapter teamPlayersAdapter, Player[] selectedTeamPlayers) {
+
+		for (int i = 0; i < teamSpinners.length; i++) {
+			teamSpinners[i].setAdapter(teamPlayersAdapter);
+			int finalI = i;
+			teamSpinners[i].setSelection(0,false);
+			teamSpinners[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+					Player chosenPlayer = teamPlayersAdapter.getItem(position);
+					selectedTeamPlayers[finalI] = chosenPlayer;
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> adapterView) {
+
+				}
+			});
+		}
+	}
+
+	/*private boolean checkForAllUniquePlayers(Player[] selectedTeamPlayers, Player[] selectedTeamSubs) {
+		Player[] allSelectedPlayers = new Player[selectedTeamPlayers.length+selectedTeamSubs.length];
+
+		for (int i=0;i<selectedTeamPlayers.length;i++)
+			allSelectedPlayers[i] = selectedTeamPlayers[i];
+
+		for (int i=selectedTeamPlayers.length;i<selectedTeamPlayers.length+selectedTeamSubs.length;i++)
+			allSelectedPlayers[i] = selectedTeamSubs[i-selectedTeamPlayers.length];
+
+		for (int i=0;i<allSelectedPlayers.length;i++) {
+			for (int j = i + 1; j < allSelectedPlayers.length; j++) {
+				if (allSelectedPlayers[i].equals(allSelectedPlayers[j])) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}*/
+}
