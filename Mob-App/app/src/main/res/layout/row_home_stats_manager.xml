@@ -84,19 +84,18 @@
 
 			<Button
 				android:id="@+id/watchGame"
-				android:layout_width="wrap_content"
+				android:layout_width="134dp"
 				android:layout_height="wrap_content"
 				android:minHeight="48dp"
 				android:clickable="true"
 				android:enabled="true"
-				android:minWidth="120dp"
 				android:text="@string/action_stats"
 				android:textColor="@color/white"
 				android:textSize="11sp"
 				app:backgroundTint="@color/primary_color"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias=".9"
+				app:layout_constraintHorizontal_bias=".8"
 				app:layout_constraintStart_toEndOf="@+id/imageView2"
 				app:layout_constraintTop_toTopOf="parent"/>
 
