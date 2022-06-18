@@ -66,8 +66,8 @@ public class Connector {
 			}
 		}
 		else if(string.equals("week-matches")){
-			String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=7";
-			//String url = "http://" + ip + "/ws/getCurrentGameweek?cid=1";
+			//String url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=7";
+			String url = "http://" + ip + "/ws/getCurrentGameweek.php?cid=1";
 			try {
 				OkHttpHandler okHttpHandler = new OkHttpHandler();
 				matches = okHttpHandler.getGameweekMatches(url);
