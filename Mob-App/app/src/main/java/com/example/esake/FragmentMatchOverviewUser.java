@@ -116,7 +116,6 @@ public class FragmentMatchOverviewUser extends Fragment {
 			Q4Away.setText(String.valueOf(userOverViewFinished.getOverViewFinishedGame().getQ4score2()));
 			Q4Away.setTextColor(Color.BLACK);
 
-
 		}
 		else{
 			view = inflater.inflate(R.layout.fragment_match_overview_user, container, false);
@@ -161,7 +160,6 @@ public class FragmentMatchOverviewUser extends Fragment {
 			Q4Away.setTextColor(Color.BLACK);
 
 			populateRecentEventViews(recentEventViews, newestEvents.getMostRecentEvents());
-
 		}
 		 return view;
     }
