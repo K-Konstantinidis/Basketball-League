@@ -1,22 +1,18 @@
 package com.example.esake;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -84,7 +80,7 @@ public class FragmentTeamManagementStatsManager extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 		//Get the view
-		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
+		View root = inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
 
 		homeTeamSpinners = new Spinner[]{
 			(Spinner) root.findViewById(R.id.spinner1_1),
@@ -147,22 +143,28 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 
 		//Get the start game button
 		Button startGameBtn = root.findViewById(R.id.startGameButton);
+
 		startGameBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view) {
-				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
-				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)
-				|| selectedTeamPlayersContainsEmptyElement(selectedHomeTeamSubstitutes)
-					|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamSubstitutes)) {
-					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
-					return;
-				}
+			public void onClick(View v) {
+//				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
+//				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)
+//				|| selectedTeamPlayersContainsEmptyElement(selectedHomeTeamSubstitutes)
+//					|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamSubstitutes)) {
+//					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
+//					return;
+//				}
 
-				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes);
-				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
+//				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes);
+//				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
 
-				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent){
+				Intent i = new Intent(getContext(), TeamManagementLiveStatsManager.class);
+				//allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent
+				if (true){
+
 					Toast.makeText(getContext(),"The game will start with the chosen players",Toast.LENGTH_SHORT).show();
+					//intent.putExtra("KEY_NAME", myObject);
+					startActivity(i);
 				}
 				else
 					Toast.makeText(getContext(),"Teams cannot contain duplicate players!",Toast.LENGTH_SHORT).show();
