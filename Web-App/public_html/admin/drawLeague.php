@@ -51,8 +51,8 @@ else {
 		unsetParams();
 		
 		// Store the error in a session variable to display it
-		$_SESSION['1'] = $ex->getMessage();
-		header('Location: ' . AREF_ADMIN_DISPLAY_LEAGUE . '?db_err=1');
+		$_SESSION['db_err'] = $ex->getMessage();
+		header('Location: ' . AREF_ADMIN_DISPLAY_LEAGUE . '?db_err');
 		die();
 	}
 
@@ -61,10 +61,11 @@ else {
 		$num_days = count($days);
 		for($i = 0; $i < $num_days; ++$i) {
 			// Create the round
-			$sql = "INSERT INTO round (championship_id) VALUES (:cid)";
+			$sql = "INSERT INTO round (id, championship_id) VALUES (:rid, :cid)";
 
 			$stmt = $dbh->prepare($sql);
-			$stmt->bindParam(':cid', $new_cid, PDO::PARAM_INT);
+			$stmt->bindParam(':cid', $new_cid,	PDO::PARAM_INT);
+			$stmt->bindParam(':rid', $i,		PDO::PARAM_INT);
 			$stmt->execute();
 
 			// Create the round's games
@@ -90,8 +91,8 @@ else {
 		unsetParams();
 
 		// Store the error in a session variable to display it
-		$_SESSION['2'] = $ex->getMessage();
-		header('Location: ' . AREF_ADMIN_DISPLAY_LEAGUE . '?db_err=2');
+		$_SESSION['db_err'] = $ex->getMessage();
+		header('Location: ' . AREF_ADMIN_DISPLAY_LEAGUE . '?db_err');
 		die();
 	}
 
