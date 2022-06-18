@@ -68,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Checks the length of the given code
 		$len = strlen( filter_data($_POST['short_name_gr']) );
 
-		if($len < 3 || $len > 4) {
-			$teamCodeGR_err = "Ο κωδικός της ομάδας πρέπει να είναι 3 εως 4 χαρακτήρες";
+		if($len < 1 || $len > 8) {
+			$teamCodeGR_err = "Ο κωδικός της ομάδας πρέπει να είναι 3 εως 4 χαρακτήρες $len";
 		}
 		else {
 			$teamCodeGR = filter_data($_POST['short_name_gr']);
@@ -265,19 +265,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<label for="teamNameEN">Όνομα Ομάδας (Αγγλικά)</label>
 					<?php if($teamNameEN_err) formInvalidFeedback($teamNameEN_err) ?>
 				</div>
-				<!-- Team Code (English) -->
-				<div class="form-floating mb-5">
-					<input
-						type="text"
-						name="short_name_en"
-						class="form-control <?php echo ($teamCodeEN_err) ? ' is-invalid' : '' ?>"
-						id="teamCodeEN"
-						placeholder=""
-						value="<?php echo (isset($_POST['short_name_en'])) ? htmlspecialchars($_POST['short_name_en']) : '' ?>"
-					>
-					<label for="teamCodeEN">Κωδικός ομάδας (Αγγλικά)</label>
-					<?php if($teamCodeEN_err) formInvalidFeedback($teamCodeEN_err) ?>
-				</div>
+
 				<!-- Team Code (Greek) -->
 				<div class="form-floating mb-5">
 					<input
@@ -290,6 +278,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					>
 					<label for="teamCodeGR">Κωδικός ομάδας (Ελληνικά)</label>
 					<?php if($teamCodeGR_err) formInvalidFeedback($teamCodeGR_err) ?>
+				</div>
+				<!-- Team Code (English) -->
+				<div class="form-floating mb-5">
+					<input
+						type="text"
+						name="short_name_en"
+						class="form-control <?php echo ($teamCodeEN_err) ? ' is-invalid' : '' ?>"
+						id="teamCodeEN"
+						placeholder=""
+						value="<?php echo (isset($_POST['short_name_en'])) ? htmlspecialchars($_POST['short_name_en']) : '' ?>"
+					>
+					<label for="teamCodeEN">Κωδικός ομάδας (Αγγλικά)</label>
+					<?php if($teamCodeEN_err) formInvalidFeedback($teamCodeEN_err) ?>
 				</div>
 
 				<!-- City -->
