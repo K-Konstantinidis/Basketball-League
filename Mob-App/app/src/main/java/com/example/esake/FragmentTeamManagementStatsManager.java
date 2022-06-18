@@ -79,7 +79,6 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 	private Spinner[] homeTeamSpinners, awayTeamSpinners, homeTeamSubsSpinners, awayTeamSubsSpinners;
 
 	private Team homeTeam, awayTeam;
-	private ViewGroup newRoot = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,14 +163,13 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 
 				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent){
 					Toast.makeText(getContext(),"The game will start with the chosen players",Toast.LENGTH_SHORT).show();
-					newRoot = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_livegame_stats_manager, null);
 				}
 				else
 					Toast.makeText(getContext(),"Teams cannot contain duplicate players!",Toast.LENGTH_SHORT).show();
 			}
 		});
 
-		return (newRoot!=null) ? newRoot : root;
+		return root;
     }
 
 	private boolean selectedTeamPlayersContainsEmptyElement(Player[] selectedTeamPlayers) {
