@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 05:07 PM
+-- Generation Time: Jun 18, 2022 at 11:52 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -75,6 +75,25 @@ CREATE TABLE `event_info` (
   `id` int(11) NOT NULL,
   `template_text` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_info`
+--
+
+INSERT INTO `event_info` (`id`, `template_text`) VALUES
+(1, 'Ο , ευστοχεί σε σουτ 2 πόντων'),
+(2, 'Ο , αστοχεί σε σουτ 2 πόντων'),
+(3, 'Ο , ευστοχεί σε σουτ 3 πόντων'),
+(4, 'Ο , αστοχεί σε σουτ 3 πόντων'),
+(5, 'Ο , βάζει μία ελεύθερη βολή'),
+(6, 'Ο , χάνει τη βολή'),
+(7, 'Ο , μαζεύει το επιθετικό ριμπάουντ'),
+(8, 'Η ασσίστ ανήκει στον ,'),
+(9, 'Ο , κόβει τον αντίπαλό του'),
+(10, 'Ο , κλέβει την μπάλα από τον ,'),
+(11, 'Ο , υποπίπτει σε λάθος και χάνει την κατοχή της μπάλας'),
+(12, 'Υπάρχει σφύριγμα για φάουλ που χρεώνεται στον ,'),
+(13, 'Ο , μαζεύει το αμυντικό ριμπάουντ');
 
 -- --------------------------------------------------------
 
@@ -194,15 +213,27 @@ INSERT INTO `game` (`id`, `championship_id`, `round_id`, `home_team_id`, `away_t
 --
 
 CREATE TABLE `game_event` (
+  `uid` int(11) NOT NULL,
   `championship_id` int(11) NOT NULL,
   `round_id` int(11) NOT NULL,
   `game_id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   `minute` int(11) NOT NULL,
-  `event_counter_in_game` int(11) NOT NULL,
-  `parameters` varchar(256) DEFAULT NULL
+  `additional_player_id` int(11) DEFAULT NULL,
+  `last_modified` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `game_event`
+--
+
+INSERT INTO `game_event` (`uid`, `championship_id`, `round_id`, `game_id`, `player_id`, `event_id`, `minute`, `additional_player_id`, `last_modified`) VALUES
+(1, 1, 7, 4, 48, 1, 25, 0, '2022-06-16 20:05:50'),
+(2, 1, 7, 4, 48, 7, 30, NULL, '2022-06-16 20:22:07'),
+(3, 1, 7, 4, 50, 4, 31, NULL, '2022-06-16 20:22:12'),
+(4, 1, 7, 4, 50, 10, 32, 64, '2022-06-16 20:22:19'),
+(5, 1, 7, 4, 66, 4, 27, 0, '2022-06-16 20:05:50');
 
 -- --------------------------------------------------------
 
@@ -262,6 +293,27 @@ INSERT INTO `ongoing_game_player_stats` (`championship_id`, `round_id`, `game_id
 (1, 7, 3, 1, 5, 58, 2, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 2, '2022-06-09 13:17:31'),
 (1, 7, 3, 1, 5, 59, 7, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 3, '2022-06-09 13:17:31'),
 (1, 7, 3, 1, 5, 60, 2, 1, 2, 0, 0, 0, 0, 2, 1, 0, 1, 0, 1, '2022-06-09 13:17:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ongoing_match_time`
+--
+
+CREATE TABLE `ongoing_match_time` (
+  `championship_id` int(11) NOT NULL,
+  `round_id` int(11) NOT NULL,
+  `game_id` int(11) NOT NULL,
+  `current_minute` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ongoing_match_time`
+--
+
+INSERT INTO `ongoing_match_time` (`championship_id`, `round_id`, `game_id`, `current_minute`) VALUES
+(1, 7, 3, 25),
+(1, 7, 4, 34);
 
 -- --------------------------------------------------------
 
@@ -750,7 +802,7 @@ INSERT INTO `player_stats` (`championship_id`, `round_id`, `game_id`, `team_id`,
 (1, 3, 2, 10, 120, 1, 1, 0, 1, 0, 2, 3, 3, 1, 0, 0, 1, 0),
 (1, 3, 3, 2, 13, 1, 1, 2, 3, 0, 0, 0, 4, 2, 1, 1, 1, 3),
 (1, 3, 3, 2, 14, 4, 4, 1, 1, 0, 0, 1, 5, 1, 2, 0, 2, 4),
-(1, 3, 3, 2, 15, 2, 1, 0, 0, 0, 1, 3, 5, 2, 1, 0, 2, 3),
+(1, 3, 3, 2, 15, 2, 1, 1, 0, 0, 1, 3, 5, 2, 1, 0, 2, 3),
 (1, 3, 3, 2, 16, 1, 0, 0, 1, 1, 1, 2, 1, 3, 0, 0, 0, 2),
 (1, 3, 3, 2, 17, 1, 0, 1, 2, 1, 0, 2, 0, 2, 2, 1, 0, 1),
 (1, 3, 3, 2, 18, 5, 2, 2, 0, 0, 2, 0, 1, 2, 0, 0, 1, 1),
@@ -1236,6 +1288,7 @@ INSERT INTO `player_stats` (`championship_id`, `round_id`, `game_id`, `team_id`,
 --
 
 CREATE TABLE `round` (
+  `uid` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `championship_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1244,25 +1297,25 @@ CREATE TABLE `round` (
 -- Dumping data for table `round`
 --
 
-INSERT INTO `round` (`id`, `championship_id`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(17, 1),
-(18, 1);
+INSERT INTO `round` (`uid`, `id`, `championship_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1),
+(15, 15, 1),
+(16, 16, 1),
+(17, 17, 1),
+(18, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -1414,7 +1467,7 @@ INSERT INTO `team_score_per_quarter` (`championship_id`, `round_id`, `game_id`, 
 (1, 3, 2, 4, 10, 14),
 (1, 3, 3, 1, 2, 23),
 (1, 3, 3, 1, 6, 16),
-(1, 3, 3, 2, 2, 14),
+(1, 3, 3, 2, 2, 16),
 (1, 3, 3, 2, 6, 21),
 (1, 3, 3, 3, 2, 16),
 (1, 3, 3, 3, 6, 17),
@@ -1633,7 +1686,7 @@ ALTER TABLE `game`
 -- Indexes for table `game_event`
 --
 ALTER TABLE `game_event`
-  ADD PRIMARY KEY (`championship_id`,`round_id`,`game_id`,`player_id`,`event_id`),
+  ADD PRIMARY KEY (`uid`),
   ADD KEY `fk_game_event_player1_idx` (`player_id`),
   ADD KEY `fk_game_event_event_info1_idx` (`event_id`),
   ADD KEY `fk_game_event_game1_idx` (`game_id`,`championship_id`,`round_id`);
@@ -1646,6 +1699,14 @@ ALTER TABLE `ongoing_game_player_stats`
   ADD KEY `fk_ongoing_game_player_stats_player1_idx` (`player_id`),
   ADD KEY `fk_ongoing_game_player_stats_team1_idx` (`team_id`),
   ADD KEY `fk_ongoing_game_player_stats_game1_idx` (`game_id`,`championship_id`,`round_id`);
+
+--
+-- Indexes for table `ongoing_match_time`
+--
+ALTER TABLE `ongoing_match_time`
+  ADD PRIMARY KEY (`championship_id`,`round_id`,`game_id`),
+  ADD KEY `fk_round_id1` (`round_id`),
+  ADD KEY `fk_game_id1` (`game_id`);
 
 --
 -- Indexes for table `player`
@@ -1674,7 +1735,7 @@ ALTER TABLE `player_stats`
 -- Indexes for table `round`
 --
 ALTER TABLE `round`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`uid`),
   ADD KEY `fk_round_championship1_idx` (`championship_id`);
 
 --
@@ -1718,13 +1779,19 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `event_info`
 --
 ALTER TABLE `event_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `game_event`
+--
+ALTER TABLE `game_event`
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `player`
@@ -1736,7 +1803,7 @@ ALTER TABLE `player`
 -- AUTO_INCREMENT for table `round`
 --
 ALTER TABLE `round`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `team`
@@ -1753,7 +1820,7 @@ ALTER TABLE `team`
 --
 ALTER TABLE `game`
   ADD CONSTRAINT `fk_game_championship1` FOREIGN KEY (`championship_id`) REFERENCES `championship` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_game_round1` FOREIGN KEY (`round_id`) REFERENCES `round` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_game_round1` FOREIGN KEY (`round_id`) REFERENCES `round` (`uid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_game_team1` FOREIGN KEY (`home_team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_game_team2` FOREIGN KEY (`away_team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -1772,6 +1839,14 @@ ALTER TABLE `ongoing_game_player_stats`
   ADD CONSTRAINT `fk_ongoing_game_player_stats_game1` FOREIGN KEY (`game_id`,`championship_id`,`round_id`) REFERENCES `game` (`id`, `championship_id`, `round_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ongoing_game_player_stats_player1` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ongoing_game_player_stats_team1` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `ongoing_match_time`
+--
+ALTER TABLE `ongoing_match_time`
+  ADD CONSTRAINT `fk_championship_id1` FOREIGN KEY (`championship_id`) REFERENCES `game` (`championship_id`),
+  ADD CONSTRAINT `fk_game_id1` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`),
+  ADD CONSTRAINT `fk_round_id1` FOREIGN KEY (`round_id`) REFERENCES `game` (`round_id`);
 
 --
 -- Constraints for table `player`

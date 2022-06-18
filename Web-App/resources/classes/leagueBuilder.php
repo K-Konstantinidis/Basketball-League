@@ -323,7 +323,7 @@ class LeagueBuilder
 	/**
 	 * Returns the fixtures which "generateDays" has generated.
 	 * 
-	 * @return fixtures The generated fixtures.
+	 * @return Array The generated fixtures.
 	 */
 	public function getFixtures() {
 		return $this->fixtures;

@@ -52,38 +52,30 @@ $data = array();
 // The query
 $sql =
 'SELECT image, surname, pid, rating, position
-FROM (SELECT temp.image,
-		temp.surname_gr AS surname, 
-    	ps1.player_id as pid,
-		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position
-    FROM `player_stats` AS ps1
-    JOIN 
-		(SELECT p.id AS p_id, p.surname_gr, p.img_path as image, p.player_position_code as position,
-        SUM(freethrows_in+2*two_points_in+3*three_points_in) AS total_points,
-        SUM(offensive_rebounds+defensive_rebounds) AS total_rebounds
+FROM
+    (SELECT temp1.image,
+            temp1.surname, 
+            temp1.p_id as pid,
+            CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating, position
+    FROM (SELECT p.id AS p_id, '.$lang_stmt.' p.img_path as image, p.player_position_code as position, assists, steals, blocks, two_points_out, three_points_out, freethrows_out, turnovers,
+            SUM(freethrows_in+2*two_points_in+3*three_points_in) AS total_points,
+            SUM(offensive_rebounds+defensive_rebounds) AS total_rebounds
         FROM `player_stats` 
         JOIN player p ON p.id = player_stats.player_id
-        WHERE championship_id = :cid
-        GROUP BY (p.id)) AS temp
-    ON temp.p_id = ps1.`player_id`
-    WHERE championship_id = :cid AND round_id = :rid
-    GROUP BY ps1.player_id) AS f1
-LEFT JOIN (SELECT temp.image AS image2, 
-		temp.surname_gr AS surname2, 
-    	ps1.player_id as pid2,
-		CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating2, position AS position2
-    FROM `player_stats` AS ps1
-    JOIN 
-		(SELECT p.id AS p_id, p.surname_gr, p.img_path AS image, p.player_position_code as position,
-        SUM(freethrows_in+2*two_points_in+3*three_points_in) AS total_points,
-        SUM(offensive_rebounds+defensive_rebounds) AS total_rebounds
-        FROM `player_stats` 
-        JOIN player p ON p.id = player_stats.player_id
-        WHERE championship_id = :cid
-        GROUP BY (p.id)) AS temp
-    ON temp.p_id = ps1.`player_id`
-    WHERE championship_id = :cid AND round_id = :rid
-    GROUP BY ps1.player_id) f2
+        WHERE championship_id = :cid AND round_id = :rid
+        GROUP BY p.id) AS temp1 
+    GROUP BY temp1.p_id) AS f1
+LEFT JOIN 
+	(SELECT temp2.p_id as pid2,
+			CASE WHEN (SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)))>0 THEN SUM((total_points + total_rebounds + assists + steals + blocks) - (two_points_out + three_points_out + freethrows_out + turnovers)) ELSE 0 END AS rating2, position2
+		FROM (SELECT p.id AS p_id, p.player_position_code as position2, assists, steals, blocks, two_points_out, three_points_out, freethrows_out, turnovers,
+				SUM(freethrows_in+2*two_points_in+3*three_points_in) AS total_points,
+				SUM(offensive_rebounds+defensive_rebounds) AS total_rebounds
+			FROM `player_stats` 
+			JOIN player p ON p.id = player_stats.player_id
+			WHERE championship_id = :cid AND round_id = :rid
+      GROUP BY p.id) AS temp2
+   GROUP BY temp2.p_id) AS f2
 ON f1.position = f2.position2 AND f1.rating < f2.rating2
 WHERE f2.rating2 IS NULL
 GROUP BY position
