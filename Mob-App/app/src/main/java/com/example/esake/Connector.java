@@ -19,196 +19,119 @@ public class Connector {
 	private String currentMinute;
 	private String[] mostRecentEvents;
 
-	public Connector(String ip, String string){
+	public Connector(String ip, String requestedWS){
+		OkHttpHandler okHttpHandler = new OkHttpHandler();
+		String url = "http://" + ip + "/ws/";
 
-		String url;
-
-		switch(string){
-			case "player-finished-stats":
-				url = "http://" + ip + "/ws/getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=5&gid=2";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+		try {
+			switch(requestedWS){
+				case "player-finished-stats":
+					url += "getFinishedMatchPlayerStats.php?lang=gr&cid=1&rid=5&gid=2";
 					fpstats = okHttpHandler.getDataForFPlayers(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "player-live-stats":
-				url = "http://" + ip + "/ws/.php";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "player-live-stats":
+					// TODO: Add the parameters and WS name
+					url += ".php";
 					lpstats = okHttpHandler.getDataForFPlayers(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "player-stats":
-				url = "http://" + ip + "/ws/getChampionshipPlayerStats.php?lang=gr&cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "player-stats":
+					url += "getChampionshipPlayerStats.php?lang=gr&cid=1";
 					pstats = okHttpHandler.getDataForFPlayers(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "team-finished-stats":
-				url = "http://" + ip + "/ws/getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "team-finished-stats":
+					url += "getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2";
 					ftstats = okHttpHandler.getDataForFTeams(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "team-stats":
-				url = "http://" + ip + "/ws/getChampionshipTeamStats.php?lang=gr&cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "team-stats":
+					url += "getChampionshipTeamStats.php?lang=gr&cid=1";
 					tstats = okHttpHandler.getDataForTeams(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "week-matches":
-				url = "http://" + ip + "/ws/getCurrentGameweek.php?cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "week-matches":
+					url += "getCurrentGameweek.php?cid=1";
 					matches = okHttpHandler.getGameweekMatches(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "gameweeks":
-				url = "http://" + ip + "/ws/getAllGameweeks.php?cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "gameweeks":
+					url += "getAllGameweeks.php?cid=1";
 					weeks = okHttpHandler.getGameWeeks(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "league":
-				url= "http://"+ip+"/ws/getLeagueRanking.php?lang=gr&cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "league":
+					url += "getLeagueRanking.php?lang=gr&cid=1";
 					Ranking = okHttpHandler.getDataforLeague(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "top5":
-				url= "http://"+ip+"/ws/getRoundTop5.php?lang=gr&cid=1&rid=5";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "top5":
+					url += "getRoundTop5.php?lang=gr&cid=1&rid=5";
 					top5 = okHttpHandler.getDataForTop5(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					break;
+			}
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
 	//maybe we will use this to add the round instead of the above
-	public Connector(String ip,String string, String param) {
+	public Connector(String ip, String requestedWS, String param) {
+		OkHttpHandler okHttpHandler = new OkHttpHandler();
+		String url = "http://" + ip + "/ws/";
 
-		String url;
-
-		switch(string) {
-			case "player-finished-stats":
-				url = "http://" + ip +"/ws/"+ param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+		try {
+			switch (requestedWS) {
+				case "player-finished-stats":
+					url += param;
 					fpstats = okHttpHandler.getDataForFPlayersTabbed(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "player-live-stats":
-				url = "http://" + ip + "/ws/"+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "player-live-stats":
+					url += param;
 					lpstats = okHttpHandler.getDataForFPlayers(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "tabbed-User":
-				url = "http://" + ip + "/ws/"+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "tabbed-User":
+					url += param;
 					finishedGame = okHttpHandler.getDataForFinishedMatchTeams(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "overview-stats":
-				url = "http://" + ip + "/ws/"+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "overview-stats":
+					url += param;
 					overViewGame = okHttpHandler.getDataForFinishedScores(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "team-finished-stats":
-				url = "http://" + ip + "/ws/"+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "team-finished-stats":
+					url += param;
 					ftstats = okHttpHandler.getDataForFTeams(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "week-matches":
-				url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=" + param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "week-matches":
+					url += "getGameweekMatches.php?cid=1&rid=" + param;
 					matches = okHttpHandler.getGameweekMatches(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "gameweeks":
-				url = "http://" + ip + "/ws/getAllGameweeks.php?cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "gameweeks":
+					url += "getAllGameweeks.php?cid=1";
 					weeks = okHttpHandler.getGameWeeks(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "league":
-				url = "http://" + ip + "/ws/getLeagueRanking.php?lang=gr&cid=1";
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "league":
+					url += "getLeagueRanking.php?lang=gr&cid=1";
 					Ranking = okHttpHandler.getDataforLeague(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "GameweeksTop5":
-				url = "http://" + ip + "/ws/getEligibleTop5Rounds.php?lang=gr&cid=1&rid="+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "GameweeksTop5":
+					url += "getEligibleTop5Rounds.php?lang=gr&cid=1&rid=" + param;
 					weeks = okHttpHandler.getGameWeeks(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "top5":
-				url = "http://" + ip + "/ws/getRoundTop5.php?lang=gr&cid=1&rid="+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "top5":
+					url += "getRoundTop5.php?lang=gr&cid=1&rid=" + param;
 					top5 = okHttpHandler.getDataForTop5(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "players":
-				url = "http://" + ip + "/ws/getTeamPlayers.php?lang=gr&tid="+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "players":
+					url += "getTeamPlayers.php?lang=gr&tid=" + param;
 					players = okHttpHandler.getTeamPlayers(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "ongoing-game-minute":
-				url = "http://" + ip + "/ws/"+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "ongoing-game-minute":
+					url += param;
 					currentMinute = okHttpHandler.getCurrentMinute(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			case "newest-events":
-				url = "http://" + ip + "/ws/"+param;
-				try {
-					OkHttpHandler okHttpHandler = new OkHttpHandler();
+					break;
+				case "newest-events":
+					url += param;
 					mostRecentEvents = okHttpHandler.getNewestEvents(url);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					break;
+			}
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
