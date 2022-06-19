@@ -2,6 +2,7 @@ package com.example.esake;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,12 @@ public class FragmentMatchOverviewUser extends Fragment {
 	private String mParam1;
 	private String mParam2;
 	private String mParam3;
+
+	// Variables required for the live update of the
+	// match's progress (R4)
+	private Thread thread = null;
+	private volatile boolean running = false;
+	private volatile long refreshInterval = 10000; // The interval in millis. Eg: 1000 = 1 second
 
 	public FragmentMatchOverviewUser() {
 		// Required empty public constructor
@@ -60,7 +67,7 @@ public class FragmentMatchOverviewUser extends Fragment {
 		}
 	}
 
-	private Connector userOverViewFinished, newestEvents;
+	private Connector userOverViewFinished;
 	private TextView homeName, awayName;
 	private TextView scoreHome, scoreAway;
 	private TextView Q1Home, Q1Away;
@@ -120,8 +127,7 @@ public class FragmentMatchOverviewUser extends Fragment {
 		else{
 			view = inflater.inflate(R.layout.fragment_match_overview_user, container, false);
 
-			String url = "getNewestMatchEvents.php?lang=gr&cid=1&rid="+mParam1+"&gid="+mParam3;
-			newestEvents = new Connector(myIP.getIp(),"newest-events",url);
+			String liveUpdateUrl = "getNewestMatchEvents.php?lang=gr&cid=1&rid="+mParam1+"&gid="+mParam3;
 
 			homeName = view.findViewById(R.id.homeTeamName_user);
 			awayName = view.findViewById(R.id.awayTeamName_user);
@@ -159,14 +165,49 @@ public class FragmentMatchOverviewUser extends Fragment {
 			Q4Away.setText("—");
 			Q4Away.setTextColor(Color.BLACK);
 
-			populateRecentEventViews(recentEventViews, newestEvents.getMostRecentEvents());
+			this.running = true;
+			populateRecentEventViews(recentEventViews, liveUpdateUrl);
 		}
 		 return view;
     }
 
-	private void populateRecentEventViews(TextView[] recentEventViews, String[] mostRecentEvents) {
-		for (int i=0;i < mostRecentEvents.length ; i++) {
-			recentEventViews[i].setText(mostRecentEvents[i]);
-		}
+	private void populateRecentEventViews(TextView[] recentEventViews, String liveUpdateUrl) {
+		this.thread = new Thread() {
+			@Override
+			public void run() {
+				String[] mostRecentEvents;
+
+				try {
+					// While the fragment is displayed
+					while(running) {
+						// Get the recent events
+						mostRecentEvents = new Connector(myIP.getIp(), "newest-events",liveUpdateUrl).getMostRecentEvents();
+
+						// Update the thextViews
+						for (int i = 0; i < mostRecentEvents.length ; ++i) {
+							recentEventViews[i].setText(mostRecentEvents[i]);
+						}
+
+						// Sleep
+						sleep(refreshInterval);
+					}
+				}
+				catch (InterruptedException e) {
+					//Do nothing
+				}
+			}
+		};
+
+		thread.start();
     }
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+
+		if(this.thread != null) {
+			this.running = false;		// Inform the thread that the fragment is being destroyed
+			this.thread.interrupt();	// Interrupt it to stop running
+		}
+	}
 }
