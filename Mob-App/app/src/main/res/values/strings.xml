@@ -165,5 +165,18 @@
 	<string name="starting_player_1">starting player 1</string>
 	<string name="start_game">Start Game</string>
     <string name="Twofg" translatable="false">2%</string>
+    <string name="Plus2points" translatable="false">+2 \nPTS</string>
+	<string name="Missed2points" translatable="false">2 PTS Miss</string>
+	<string name="FreeThrowButton" translatable="false">Free Throw</string>
+	<string name="FreeThrowMissButton" translatable="false">FT Miss</string>
+	<string name="PlusThreePoints" translatable="false">+3 \nPTS</string>
+	<string name="MissedThreePoints" translatable="false">3 PTS Miss</string>
+	<string name="AssistButton" translatable="false">AST</string>
+	<string name="FoulButton" translatable="false">Foul</string>
+	<string name="TurnoverButton" translatable="false">TO</string>
+	<string name="OffensiveReboundButton" translatable="false">OFFENSIVE REB</string>
+	<string name="DefensiveReboundButton" translatable="false">DEFENSIVE REB</string>
+	<string name="BlockButton" translatable="false">BLK</string>
+	<string name="StealButton" translatable="false">STL</string>
 
 </resources>
