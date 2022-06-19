@@ -1,7 +1,5 @@
 <?php
 
-// TODO: Display the image from DB at the team selection
-
 session_start();
 require_once '../../resources/config.php';
 
