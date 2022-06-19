@@ -32,6 +32,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "player-live-stats":
 				url = "http://" + ip + "/ws/.php";
 				try {
@@ -40,6 +41,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "player-stats":
 				url = "http://" + ip + "/ws/getChampionshipPlayerStats.php?lang=gr&cid=1";
 				try {
@@ -48,6 +50,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "team-finished-stats":
 				url = "http://" + ip + "/ws/getFinishedMatchTeamStats.php?lang=gr&cid=1&rid=4&gid=2";
 				try {
@@ -56,6 +59,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "team-stats":
 				url = "http://" + ip + "/ws/getChampionshipTeamStats.php?lang=gr&cid=1";
 				try {
@@ -64,6 +68,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "week-matches":
 				url = "http://" + ip + "/ws/getCurrentGameweek.php?cid=1";
 				try {
@@ -72,6 +77,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "gameweeks":
 				url = "http://" + ip + "/ws/getAllGameweeks.php?cid=1";
 				try {
@@ -80,6 +86,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "league":
 				url= "http://"+ip+"/ws/getLeagueRanking.php?lang=gr&cid=1";
 				try {
@@ -88,6 +95,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "top5":
 				url= "http://"+ip+"/ws/getRoundTop5.php?lang=gr&cid=1&rid=5";
 				try {
@@ -96,6 +104,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 		}
 	}
 
@@ -113,6 +122,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "player-live-stats":
 				url = "http://" + ip + "/ws/"+param;
 				try {
@@ -121,6 +131,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "tabbed-User":
 				url = "http://" + ip + "/ws/"+param;
 				try {
@@ -129,6 +140,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "overview-stats":
 				url = "http://" + ip + "/ws/"+param;
 				try {
@@ -137,6 +149,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "team-finished-stats":
 				url = "http://" + ip + "/ws/"+param;
 				try {
@@ -145,6 +158,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "week-matches":
 				url = "http://" + ip + "/ws/getGameweekMatches.php?cid=1&rid=" + param;
 				try {
@@ -153,6 +167,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "gameweeks":
 				url = "http://" + ip + "/ws/getAllGameweeks.php?cid=1";
 				try {
@@ -161,6 +176,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "league":
 				url = "http://" + ip + "/ws/getLeagueRanking.php?lang=gr&cid=1";
 				try {
@@ -169,6 +185,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "GameweeksTop5":
 				url = "http://" + ip + "/ws/getEligibleTop5Rounds.php?lang=gr&cid=1&rid="+param;
 				try {
@@ -177,6 +194,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "top5":
 				url = "http://" + ip + "/ws/getRoundTop5.php?lang=gr&cid=1&rid="+param;
 				try {
@@ -185,6 +203,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "players":
 				url = "http://" + ip + "/ws/getTeamPlayers.php?lang=gr&tid="+param;
 				try {
@@ -193,6 +212,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "ongoing-game-minute":
 				url = "http://" + ip + "/ws/"+param;
 				try {
@@ -201,6 +221,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			case "newest-events":
 				url = "http://" + ip + "/ws/"+param;
 				try {
@@ -209,6 +230,7 @@ public class Connector {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 		}
 	}
 
