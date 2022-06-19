@@ -8,6 +8,7 @@ public class GameWeek {
 	private String homeLogo, awayLogo;
 	private int homeScore, awayScore;
 	private int gameStatus;
+	private int homeTeamId, awayTeamId;
 
 	public GameWeek(String gameweek) {
 		this.gameweek = gameweek;
@@ -33,4 +34,6 @@ public class GameWeek {
 	public String getHomeScore() {return String.valueOf(homeScore);}
 	public String getAwayScore() {return String.valueOf(awayScore);}
 	public int getGameStatus() {return gameStatus;}
+	public int getHomeTeamId() {return homeTeamId;}
+	public int getAwayTeamId() {return awayTeamId;}
 }

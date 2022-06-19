@@ -7,10 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.esake.ui.tabbedView_statsManager.SectionsPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +49,17 @@ public class FragmentTeamManagementStatsManager extends Fragment {
      * @return A new instance of fragment FragmentTeamManagementStatsManager.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentTeamManagementStatsManager newInstance(String param1, String param2) {
-        FragmentTeamManagementStatsManager fragment = new FragmentTeamManagementStatsManager();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
+	public static FragmentTeamManagementStatsManager newInstance(String param1, String param2) {
+		FragmentTeamManagementStatsManager fragment = new FragmentTeamManagementStatsManager();
+		Bundle args = new Bundle();
+		args.putString(ARG_PARAM1, param1);
+		args.putString(ARG_PARAM2, param2);
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,12 +70,12 @@ public class FragmentTeamManagementStatsManager extends Fragment {
         }
     }
 
-    private Connector homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", "2");
+    private Connector homeTeamPlayerConnector;
     private List<Player> allHomeTeamPlayers = new ArrayList<>();
 	private Player[] selectedHomeTeamPlayers = new Player[]{null,null,null,null,null};
 	private Player[] selectedHomeTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
 
-	private Connector awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", "5");
+	private Connector awayTeamPlayerConnector;
 	private List<Player> allAwayTeamPlayers = new ArrayList<>();
 	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
 	private Player[] selectedAwayTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
@@ -81,6 +89,9 @@ public class FragmentTeamManagementStatsManager extends Fragment {
                              Bundle savedInstanceState) {
 		//Get the view
 		View root = inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
+
+		homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", mParam1);
+		awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", mParam2);
 
 		homeTeamSpinners = new Spinner[]{
 			(Spinner) root.findViewById(R.id.spinner1_1),
@@ -144,27 +155,33 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 		//Get the start game button
 		Button startGameBtn = root.findViewById(R.id.startGameButton);
 
+		final FragmentTeamManagementStatsManager currentFragment = this;
+		//View f = root.findViewById(R.id.scrollView_start_lineup_statsManager);
+
 		startGameBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
-//				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)
-//				|| selectedTeamPlayersContainsEmptyElement(selectedHomeTeamSubstitutes)
-//					|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamSubstitutes)) {
-//					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
-//					return;
-//				}
+				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
+				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)
+				|| selectedTeamPlayersContainsEmptyElement(selectedHomeTeamSubstitutes)
+					|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamSubstitutes)) {
+					Toast.makeText(getContext(),"Cannot start match with empty positions!",Toast.LENGTH_SHORT).show();
+					return;
+				}
 
-//				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes);
-//				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
+				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes);
+				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
 
-				Intent i = new Intent(getContext(), TeamManagementLiveStatsManager.class);
-				//allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent
-				if (true){
-
+				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent){
 					Toast.makeText(getContext(),"The game will start with the chosen players",Toast.LENGTH_SHORT).show();
-					//intent.putExtra("KEY_NAME", myObject);
-					startActivity(i);
+					FragmentTeamManagementLiveStatsManager newFragment = FragmentTeamManagementLiveStatsManager.newInstance(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes,
+						selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
+
+					FragmentActivity parentActivity = currentFragment.getActivity();
+					parentActivity.getSupportFragmentManager()
+						.beginTransaction()
+						.replace(R.id.frameLayout_start_lineup_statsManager, newFragment)
+						.commit();
 				}
 				else
 					Toast.makeText(getContext(),"Teams cannot contain duplicate players!",Toast.LENGTH_SHORT).show();

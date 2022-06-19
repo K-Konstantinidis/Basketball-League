@@ -7,6 +7,7 @@
     android:layout_height="fill_parent">
 
     <FrameLayout
+		android:id="@+id/frameLayout_live_lineup_statsManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".FragmentTeamManagementStatsManager">
@@ -49,9 +50,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_playing_statsManager"
                 app:layout_constraintVertical_bias="0">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="768dp">
 
 					<Spinner
 						android:id="@+id/spinnerLive1_1"
@@ -67,125 +68,134 @@
 						app:layout_constraintTop_toTopOf="parent"
 						app:layout_constraintVertical_bias="0"
 						tools:ignore="DuplicateSpeakableTextCheck" />
-                    <Spinner
-                        android:id="@+id/spinnerLive1_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive1_1"
-                        app:layout_constraintVertical_bias="0.1" />
-                    <Spinner
-                        android:id="@+id/spinnerLive1_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive1_2"
-                        app:layout_constraintVertical_bias="0.15" />
-                    <Spinner
-                        android:id="@+id/spinnerLive1_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive1_3"
-                        app:layout_constraintVertical_bias="0.25" />
-                    <Spinner
-                        android:id="@+id/spinnerLive1_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        android:layout_marginTop="25dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive1_4"/>
-                    <Spinner
-                        android:id="@+id/spinnerLive2_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0" />
-                    <Spinner
-                        android:id="@+id/spinnerLive2_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive2_1"
-                        app:layout_constraintVertical_bias="0.1" />
-                    <Spinner
-                        android:id="@+id/spinnerLive2_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive2_2"
-                        app:layout_constraintVertical_bias="0.15" />
-                    <Spinner
-                        android:id="@+id/spinnerLive2_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive2_3"
-                        app:layout_constraintVertical_bias="0.25" />
-                    <Spinner
-                        android:id="@+id/spinnerLive2_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/spinner"
-                        android:minHeight="48dp"
-                        android:spinnerMode="dropdown"
-                        android:layout_marginTop="25dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/spinnerLive2_4"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+
+					<Spinner
+						android:id="@+id/spinnerLive1_2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.099"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive1_1"
+						app:layout_constraintVertical_bias="0.146" />
+
+					<Spinner
+						android:id="@+id/spinnerLive1_3"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.099"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive1_2"
+						app:layout_constraintVertical_bias="0.204" />
+
+					<Spinner
+						android:id="@+id/spinnerLive1_4"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.099"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive1_3"
+						app:layout_constraintVertical_bias="0.287" />
+
+					<Spinner
+						android:id="@+id/spinnerLive1_5"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="25dp"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.1"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive1_4" />
+
+					<Spinner
+						android:id="@+id/spinnerLive2_1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.9"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintVertical_bias="0" />
+
+					<Spinner
+						android:id="@+id/spinnerLive2_2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.9"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive2_1"
+						app:layout_constraintVertical_bias="0.145" />
+
+					<Spinner
+						android:id="@+id/spinnerLive2_3"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.9"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive2_2"
+						app:layout_constraintVertical_bias="0.204" />
+
+					<Spinner
+						android:id="@+id/spinnerLive2_4"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.9"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive2_3"
+						app:layout_constraintVertical_bias="0.287" />
+
+					<Spinner
+						android:id="@+id/spinnerLive2_5"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="25dp"
+						android:contentDescription="@string/spinner"
+						android:minHeight="48dp"
+						android:spinnerMode="dropdown"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintHorizontal_bias="0.9"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/spinnerLive2_4" />
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>

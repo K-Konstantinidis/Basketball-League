@@ -43,9 +43,7 @@ public class HomeActivity extends AppCompatActivity {
 
 		homeSmList = Lr.getMatches();
 
-		adapter = new HomeSmAdapter(this, homeSmList);
+		adapter = new HomeSmAdapter(this, homeSmList, homeSmList.get(0).getGameweek());
 		recyclerView.setAdapter(adapter);
-
-
     }
 }

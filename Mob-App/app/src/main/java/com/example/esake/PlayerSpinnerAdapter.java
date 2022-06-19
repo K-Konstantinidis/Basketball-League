@@ -64,4 +64,9 @@ public class PlayerSpinnerAdapter extends ArrayAdapter<Player> {
 
 		return label;
 	}
+
+
+	public int getPosition(Player player) {
+		return players.indexOf(player);
+	}
 }

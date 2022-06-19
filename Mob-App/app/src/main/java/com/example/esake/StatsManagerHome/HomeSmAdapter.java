@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.esake.GameWeek;
 import com.example.esake.R;
 import com.example.esake.Tabbed_Stats_Manager;
-import com.example.esake.Tabbed_User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -27,10 +26,12 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 
 	private Context mCtx;
 	private List<GameWeek> homeSmList;
+	private String round_id;
 
-	public HomeSmAdapter(Context mCtx, List<GameWeek> homeSmList) {
+	public HomeSmAdapter(Context mCtx, List<GameWeek> homeSmList, String round_id) {
 		this.mCtx = mCtx;
 		this.homeSmList = homeSmList;
+		this.round_id = round_id;
 	}
 
 	@NonNull
@@ -74,6 +75,11 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 					@Override
 					public void onClick(View view) {
 						Intent intent = new Intent(mCtx, Tabbed_Stats_Manager.class);
+						intent.putExtra("homeLogo", gameWeek.getHomeLogo());
+						intent.putExtra("awayLogo", gameWeek.getAwayLogo());
+						intent.putExtra("gameStatus", game_status);
+
+
 						mCtx.startActivity(intent);
 					}
 				});
