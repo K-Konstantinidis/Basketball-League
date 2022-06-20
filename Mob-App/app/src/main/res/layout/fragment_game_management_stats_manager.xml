@@ -66,7 +66,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Langford"
 						android:textSize="14sp"
 						tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -75,10 +75,11 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
+						android:minWidth="120dp"
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Mitrou-Long"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -92,7 +93,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Koniaris"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -101,9 +102,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Zoumpos"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -117,7 +119,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Pappas"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -126,9 +128,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Molfetas"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -142,7 +145,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Fillipakos"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -151,9 +154,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Papafotiou"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -167,7 +171,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Kouzeloglou"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -176,9 +180,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Tsalmpouris"
 						android:textSize="14sp" />
 				</TableRow>
 			</com.example.esake.ToggleButtonGroupTableLayout>
@@ -432,7 +437,7 @@
 						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Mitrou-Long"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -442,7 +447,7 @@
 						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Zoumpos"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -452,7 +457,7 @@
 						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Molfetas"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -466,7 +471,7 @@
 						android:ellipsize="end"
 						android:maxEms="8"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Papafotiou"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -477,7 +482,7 @@
 						android:ellipsize="end"
 						android:maxEms="8"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Tsalmpouris"
 						android:textSize="14sp" />
 				</TableRow>
 			</com.example.esake.ToggleButtonGroupTableLayout>
