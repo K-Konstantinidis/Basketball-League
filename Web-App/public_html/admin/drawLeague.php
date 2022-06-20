@@ -60,17 +60,20 @@ else {
 	try {
 		$num_days = count($days);
 		for($i = 0; $i < $num_days; ++$i) {
+			$round_id = $i + 1;
+
 			// Create the round
 			$sql = "INSERT INTO round (id, championship_id) VALUES (:rid, :cid)";
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindParam(':cid', $new_cid,	PDO::PARAM_INT);
-			$stmt->bindParam(':rid', $i,		PDO::PARAM_INT);
+			$stmt->bindParam(':rid', $round_id,	PDO::PARAM_INT);
 			$stmt->execute();
 
 			// Create the round's games
 			$num_matches = count($days[$i]);
 			for($j = 0; $j < $num_matches; ++$j) {
+				$game_id = $j + 1;
 				$sql =
 				"INSERT INTO game (championship_id, round_id, id, home_team_id, away_team_id, game_status)
 				VALUES (:cid, :rid, :gid, :htid, :atid, 2)";
@@ -78,8 +81,8 @@ else {
 				$stmt = $dbh->prepare($sql);
 				
 				$stmt->bindParam(':cid',	$new_cid,			PDO::PARAM_INT);
-				$stmt->bindParam(':rid',	$i,					PDO::PARAM_INT);
-				$stmt->bindParam(':gid',	$j,					PDO::PARAM_INT);
+				$stmt->bindParam(':rid',	$round_id,			PDO::PARAM_INT);
+				$stmt->bindParam(':gid',	$game_id,			PDO::PARAM_INT);
 				$stmt->bindParam(':htid',	$days[$i][$j][0],	PDO::PARAM_INT);
 				$stmt->bindParam(':atid',	$days[$i][$j][1],	PDO::PARAM_INT);
 
@@ -100,7 +103,7 @@ else {
 	unset($_SESSION['teams_in_league']);
 
 	// Display the newly created league
-	header('Location: ' . AREF_ADMIN_DISPLAY_LEAGUE . '?id=' . $new_cid . '&nl');
+	header('Location: ' . AREF_ADMIN_DISPLAY_LEAGUE . '?cid=' . $new_cid . '&nl');
 }
 
 /**
