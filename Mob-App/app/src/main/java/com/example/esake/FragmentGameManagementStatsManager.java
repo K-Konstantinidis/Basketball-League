@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -19,8 +21,8 @@ public class FragmentGameManagementStatsManager extends Fragment {
 	private static final String ARG_PARAM1 = "param1";
 	private static final String ARG_PARAM2 = "param2";
 
-//    private String mParam1;
-//    private String mParam2;
+    private String mParam1;
+    private String mParam2;
 
 	public FragmentGameManagementStatsManager() {
 		// Required empty public constructor
@@ -38,10 +40,10 @@ public class FragmentGameManagementStatsManager extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
 	}
 
 	@SuppressLint("InflateParams")
@@ -53,6 +55,47 @@ public class FragmentGameManagementStatsManager extends Fragment {
 		ToggleButtonGroupTableLayout rdg1 = root.findViewById(R.id.radGroup_player);
 		//Get the radio group with the 5 opponents
 		ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
+		//Show team images
+		ImageView homeTeamImg = root.findViewById(R.id.home_team_game_statsmanager);
+		ImageView awayTeamImg = root.findViewById(R.id.away_team_game_statsmanager);
+		Picasso.with(getContext()).load(mParam1).fit().into(homeTeamImg);
+		Picasso.with(getContext()).load(mParam2).fit().into(awayTeamImg);
+
+		String[] homePlayers = new String[]{"Bohoridis", "Avdalas", "Meikon", "Nedovic", "Sant-Ros"};
+
+		String[] awayPlayers = new String[]{"Cowan", "Netzipogloy", "Poyliantis", "Hanlan", "Sxizas"};
+
+		RadioButton rd1 = root.findViewById(R.id.playerHome1);
+		RadioButton rd2 = root.findViewById(R.id.playerHome2);
+		RadioButton rd3 = root.findViewById(R.id.playerHome3);
+		RadioButton rd4 = root.findViewById(R.id.playerHome4);
+		RadioButton rd5 = root.findViewById(R.id.playerHome5);
+		RadioButton rd6 = root.findViewById(R.id.playerAway1);
+		RadioButton rd7 = root.findViewById(R.id.playerAway2);
+		RadioButton rd8 = root.findViewById(R.id.playerAway3);
+		RadioButton rd9 = root.findViewById(R.id.playerAway4);
+		RadioButton rd10 = root.findViewById(R.id.playerAway5);
+
+		ArrayList<RadioButton> radioHomeTeam = new ArrayList<>();
+
+		radioHomeTeam.add(rd1);
+		radioHomeTeam.add(rd2);
+		radioHomeTeam.add(rd3);
+		radioHomeTeam.add(rd4);
+		radioHomeTeam.add(rd5);
+
+		RadioButton rdo1 = root.findViewById(R.id.opponent1);
+		RadioButton rdo2 = root.findViewById(R.id.opponent2);
+		RadioButton rdo3 = root.findViewById(R.id.opponent3);
+		RadioButton rdo4 = root.findViewById(R.id.opponent4);
+		RadioButton rdo5 = root.findViewById(R.id.opponent5);
+
+		rd1.setText(homePlayers[0]);rd2.setText(homePlayers[1]);
+		rd3.setText(homePlayers[2]);rd4.setText(homePlayers[3]);
+		rd5.setText(homePlayers[4]);rd6.setText(awayPlayers[0]);
+		rd7.setText(awayPlayers[1]);rd8.setText(awayPlayers[2]);
+		rd9.setText(awayPlayers[3]);rd10.setText(awayPlayers[4]);
+
 		ArrayList<Button> buttonsList = new ArrayList<>();
 
 		buttonsList.add(root.findViewById(R.id.button_2points));
@@ -73,9 +116,31 @@ public class FragmentGameManagementStatsManager extends Fragment {
 			b.setOnClickListener(view -> {
 				String text = (String) b.getText();
 				RadioButton player = root.findViewById(rdg1.getCheckedRadioButtonId());
-				setVisibility(radioOpp, text.equals("STL"));
 
-				if(player.isChecked()) {
+				boolean flag = false;
+
+				if(player != null && player.isChecked()) {
+					setVisibility(radioOpp, text.equals("STL"));
+					for (RadioButton rd : radioHomeTeam) {
+						if(player.getText().equals(rd.getText())) {
+							flag = true;
+							break;
+						}
+					}
+					if(flag){
+						rdo1.setText(awayPlayers[0]);
+						rdo2.setText(awayPlayers[1]);
+						rdo3.setText(awayPlayers[2]);
+						rdo4.setText(awayPlayers[3]);
+						rdo5.setText(awayPlayers[4]);
+					}
+					else{
+						rdo1.setText(homePlayers[0]);
+						rdo2.setText(homePlayers[1]);
+						rdo3.setText(homePlayers[2]);
+						rdo4.setText(homePlayers[3]);
+						rdo5.setText(homePlayers[4]);
+					}
 					switch (text) {
 						case "+2 \nPTS":
 							Toast.makeText(getContext(), "Ο " + player.getText() + " ευστοχεί σε σουτ 2 πόντων", Toast.LENGTH_SHORT).show();
@@ -127,11 +192,13 @@ public class FragmentGameManagementStatsManager extends Fragment {
 							break;
 						case "STL":
 							RadioButton opponent = root.findViewById(radioOpp.getCheckedRadioButtonId());
-							if (opponent != null) {
+							if (opponent != null && opponent.isChecked()) {
 								Toast.makeText(getContext(), "Ο " + player.getText() + " κλέβει την μπάλα από τον " + opponent.getText(), Toast.LENGTH_SHORT).show();
 								player.setChecked(false);
 								opponent.setChecked(false);
-							} else
+								radioOpp.setVisibility(View.GONE);
+							}
+							else
 								Toast.makeText(getContext(), "You must select an opponent before the action", Toast.LENGTH_SHORT).show();
 							break;
 					}

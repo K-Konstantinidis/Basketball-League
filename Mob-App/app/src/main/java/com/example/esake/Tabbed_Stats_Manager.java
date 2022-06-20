@@ -36,9 +36,8 @@ public class Tabbed_Stats_Manager extends AppCompatActivity {
 		String homeTeamId = getTeamId(homeLogo);
 		String awayTeamId = getTeamId(awayLogo);
 
-
 		FragmentMatchOverviewStatsManager viewSM = FragmentMatchOverviewStatsManager.newInstance(homeTeamId,awayTeamId);
-		FragmentGameManagementStatsManager playerS = FragmentGameManagementStatsManager.newInstance(homeTeamId,awayTeamId);
+		FragmentGameManagementStatsManager playerS = FragmentGameManagementStatsManager.newInstance(homeLogo,awayLogo);
 		FragmentTeamManagementStatsManager teamS = FragmentTeamManagementStatsManager.newInstance(homeTeamId,awayTeamId);
 
 		/*Text for tabs*/
