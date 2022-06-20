@@ -246,7 +246,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						name="name_gr"
 						class="form-control <?php echo ($teamNameGR_err) ? ' is-invalid' : '' ?>"
 						id="teamNameGR"
-						placeholder=""
+						placeholder="Name_Greek"
 						value="<?php echo (isset($_POST['name_gr'])) ? htmlspecialchars($_POST['name_gr']) : '' ?>"
 					>
 					<label for="teamNameGR">Όνομα Ομάδας (Ελληνικά)</label>
@@ -259,7 +259,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						name="name_en"
 						class="form-control <?php echo ($teamNameEN_err) ? ' is-invalid' : '' ?>"
 						id="teamNameEN"
-						placeholder=""
+						placeholder="Name_English"
 						value="<?php echo (isset($_POST['name_en'])) ? htmlspecialchars($_POST['name_en']) : '' ?>"
 					>
 					<label for="teamNameEN">Όνομα Ομάδας (Αγγλικά)</label>
@@ -273,7 +273,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						name="short_name_gr"
 						class="form-control <?php echo ($teamCodeGR_err) ? ' is-invalid' : '' ?>"
 						id="teamCodeGR"
-						placeholder=""
+						placeholder="Team_Code_Greek"
 						value="<?php echo (isset($_POST['short_name_gr'])) ? htmlspecialchars($_POST['short_name_gr']) : '' ?>"
 					>
 					<label for="teamCodeGR">Κωδικός ομάδας (Ελληνικά)</label>
@@ -286,7 +286,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						name="short_name_en"
 						class="form-control <?php echo ($teamCodeEN_err) ? ' is-invalid' : '' ?>"
 						id="teamCodeEN"
-						placeholder=""
+						placeholder="Team_Code_English"
 						value="<?php echo (isset($_POST['short_name_en'])) ? htmlspecialchars($_POST['short_name_en']) : '' ?>"
 					>
 					<label for="teamCodeEN">Κωδικός ομάδας (Αγγλικά)</label>
@@ -340,7 +340,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								name="newCity_gr"
 								class="newCity form-control <?php echo ($newCity_err) ? ' is-invalid' : '' ?>"
 								id="newCity_nameGR"
-								placeholder=""
+								placeholder="NewCity_NameGR"
 								value="<?php echo (isset($_POST['newCity_gr'])) ? htmlspecialchars($_POST['newCity_gr']) : '' ?>"
 							>
 							<label for="newCity_nameGR">Όνομα Νέας Πόλης (Ελληνικά)</label>
@@ -352,7 +352,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								name="newCity_en"
 								class="newCity form-control <?php echo ($newCity_err) ? ' is-invalid' : '' ?>"
 								id="newCity_nameEN"
-								placeholder=""
+								placeholder="NewCity_NameEN"
 								value="<?php echo (isset($_POST['newCity_en'])) ? htmlspecialchars($_POST['newCity_en']) : '' ?>"
 							>
 							<label for="newCity_nameEN">Όνομα Νέας Πόλης (Αγγλικά)</label>

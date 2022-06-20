@@ -107,7 +107,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 								name="championship_name"
 								class="form-control ' . (($championshipNameErr) ? ' is-invalid' : '') . '"
 								id="champ_name"
-								placeholder=""
+								placeholder="Championship Name"
 								value="' . ((isset($_POST['championship_name'])) ? filter_data($_POST['championship_name']) : '') . '"
 							>
 							<label for="champ_name">Όνομα Πρωταθλήματος</label>' . "\n";

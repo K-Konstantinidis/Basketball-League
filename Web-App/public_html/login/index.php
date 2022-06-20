@@ -126,12 +126,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			<h1 class="h3 mb-3 fw-normal">Παρακαλώ συνδεθείτε</h1>
 
 			<div class="form-floating">
-				<input type="text" class="form-control" id="username" name="username" placeholder="">
+				<input type="text" class="form-control" id="username" name="username" placeholder="Username">
 				<label for="username">Όνομα χρήστη</label>
 			</div>
 
 			<div class="form-floating">
-				<input type="password" class="form-control" id="password" name="password" placeholder="">
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 				<label for="password">Συνθηματικό</label>
 			</div>
 

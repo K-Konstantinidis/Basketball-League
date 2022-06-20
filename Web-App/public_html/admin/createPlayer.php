@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 						name="name_gr"
 						class="form-control <?php echo ($playerNameGR_err) ? ' is-invalid' : '' ?>"
 						id="playerNameGR"
-						placeholder=""
+						placeholder="Name_Greek"
 						value="<?php echo (isset($_POST['name_gr'])) ? filter_data($_POST['name_gr']) : '' ?>"
 					>
 					<label for="playerNameGR">Όνομα Παίκτη (Ελληνικά)</label>
@@ -208,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 						name="surname_gr"
 						class="form-control <?php echo ($playerSurnameGR_err) ? ' is-invalid' : '' ?>"
 						id="playerSurnameGR"
-						placeholder=""
+						placeholder="Surname_Greek"
 						value="<?php echo (isset($_POST['surname_gr'])) ? filter_data($_POST['surname_gr']) : '' ?>"
 					>
 					<label for="playerSurnameGR">Επώνυμο Παίκτη (Ελληνικά)</label>
@@ -222,7 +222,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 						name="name_en"
 						class="form-control <?php echo ($playerNameEN_err) ? ' is-invalid' : '' ?>"
 						id="playerNameEN"
-						placeholder=""
+						placeholder="Name_English"
 						value="<?php echo (isset($_POST['name_en'])) ? filter_data($_POST['name_en']) : '' ?>"
 					>
 					<label for="playerNameEN">Όνομα Παίκτη (Αγγλικά)</label>
@@ -235,7 +235,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 						name="surname_en"
 						class="form-control <?php echo ($playerSurnameEN_err) ? ' is-invalid' : '' ?>"
 						id="playerSurnameEN"
-						placeholder=""
+						placeholder="Surname_English"
 						value="<?php echo (isset($_POST['surname_en'])) ? filter_data($_POST['surname_en']) : '' ?>"
 					>
 					<label for="playerSurnameEN">Επώνυμο Παίκτη (Αγγλικά)</label>
