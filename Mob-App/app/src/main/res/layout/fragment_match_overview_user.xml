@@ -327,6 +327,80 @@
                     app:layout_constraintVertical_bias="1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+		<androidx.cardview.widget.CardView
+			android:id="@+id/cardWithLogs"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="10dp"
+			android:layout_marginLeft="10dp"
+			android:layout_marginEnd="10dp"
+			android:layout_marginRight="10dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/teamCardViewUser"
+			app:layout_constraintVertical_bias="0.2"
+			app:cardElevation="0dp">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/log1"
+					android:layout_width="match_parent"
+					android:layout_height="65dp"
+					android:text=""
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					android:clickable="false"
+					android:enabled="false"
+					android:gravity="center"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintVertical_bias="0.0"/>
+
+				<TextView
+					android:id="@+id/log2"
+					android:layout_width="match_parent"
+					android:layout_height="65dp"
+					android:layout_marginTop="10dp"
+					android:text=""
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					android:clickable="false"
+					android:enabled="false"
+					android:gravity="center"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/log1"
+					app:layout_constraintVertical_bias="0.0"/>
+
+				<TextView
+					android:id="@+id/log3"
+					android:layout_width="match_parent"
+					android:layout_height="65dp"
+					android:layout_marginTop="10dp"
+					android:text=""
+					android:textColor="@color/black"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					android:clickable="false"
+					android:enabled="false"
+					android:gravity="center"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/log2"
+					app:layout_constraintVertical_bias="0.0"/>
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.esake.GameWeek;
 import com.example.esake.R;
 import com.example.esake.Tabbed_Stats_Manager;
-import com.example.esake.Tabbed_User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -27,10 +26,12 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 
 	private Context mCtx;
 	private List<GameWeek> homeSmList;
+	private String round_id;
 
-	public HomeSmAdapter(Context mCtx, List<GameWeek> homeSmList) {
+	public HomeSmAdapter(Context mCtx, List<GameWeek> homeSmList, String round_id) {
 		this.mCtx = mCtx;
 		this.homeSmList = homeSmList;
+		this.round_id = round_id;
 	}
 
 	@NonNull
@@ -56,7 +57,7 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 		setScoreText(holder.textViewScore2, gameWeek, game_status, false);
 		switch(game_status){
 			case 0:
-				holder.button.setText("Game Summary");
+				holder.button.setText("Game Finished");
 				holder.button.setEnabled(false);
 				holder.button.setClickable(false);
 
@@ -66,14 +67,19 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 				holder.button.setText("Live Game");
 				holder.button.setEnabled(false);
 				holder.button.setClickable(false);
-				holder.button.setBackgroundColor(Color.RED);
+				holder.button.setBackgroundColor(Color.DKGRAY);
 				break;
 			case 2:
-				holder.button.setText("Start Game");
+				holder.button.setText("Manage Game");
 				holder.button.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
 						Intent intent = new Intent(mCtx, Tabbed_Stats_Manager.class);
+						intent.putExtra("homeLogo", gameWeek.getHomeLogo());
+						intent.putExtra("awayLogo", gameWeek.getAwayLogo());
+						intent.putExtra("gameStatus", game_status);
+
+
 						mCtx.startActivity(intent);
 					}
 				});
@@ -85,7 +91,7 @@ public class HomeSmAdapter extends RecyclerView.Adapter<HomeSmAdapter.HomeSmHold
 		textViewScore.setText(getStringScore(gameWeek,isHomeTeam, gameStatus));
 		textViewScore.setTypeface(Typeface.DEFAULT_BOLD);
 		if (gameStatus==1)
-			textViewScore.setTextColor(Color.RED);
+			textViewScore.setTextColor(Color.DKGRAY);
 	}
 
 	@NonNull

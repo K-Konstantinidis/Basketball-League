@@ -7,134 +7,216 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import com.squareup.picasso.Picasso;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentGameManagementStatsManager#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentGameManagementStatsManager extends Fragment{
+import java.util.ArrayList;
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class FragmentGameManagementStatsManager extends Fragment {
+
+	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+	private static final String ARG_PARAM1 = "param1";
+	private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
-    private boolean flag;
 
-    public FragmentGameManagementStatsManager() {
-        // Required empty public constructor
-    }
+	public FragmentGameManagementStatsManager() {
+		// Required empty public constructor
+	}
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentGameManagementStatsManager.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentGameManagementStatsManager newInstance(String param1, String param2) {
-        FragmentGameManagementStatsManager fragment = new FragmentGameManagementStatsManager();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+	public static FragmentGameManagementStatsManager newInstance(String param1, String param2) {
+		FragmentGameManagementStatsManager fragment = new FragmentGameManagementStatsManager();
+		Bundle args = new Bundle();
+		args.putString(ARG_PARAM1, param1);
+		args.putString(ARG_PARAM2, param2);
+		fragment.setArguments(args);
+		return fragment;
+	}
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+	}
 
-    @SuppressLint("InflateParams")
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Get the view
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_game_management_stats_manager, null);
-        //Get the radio group with the 10 players (5 home + 5 away)
+	@SuppressLint("InflateParams")
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		//Get the view
+		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_game_management_stats_manager, null);
+		//Get the radio group with the 10 players (5 home + 5 away)
 		ToggleButtonGroupTableLayout rdg1 = root.findViewById(R.id.radGroup_player);
-        //Get the buttons
-        Button btn2pts = root.findViewById(R.id.button_2points);
-        Button btn2ptsM = root.findViewById(R.id.button_2pointsMissed);
-        Button btn3pts = root.findViewById(R.id.button_3points);
-        Button btn3ptsM = root.findViewById(R.id.button_3pointsMissed);
-        Button btnFT = root.findViewById(R.id.button_freeThrow);
-        Button btnFTM = root.findViewById(R.id.button_freeThrowMissed);
-        Button btnAssist = root.findViewById(R.id.button_assist);
-        Button btnFoul = root.findViewById(R.id.button_foul);
-        Button btnRebound = root.findViewById(R.id.button_rebound);
-        Button btnTurnOver = root.findViewById(R.id.button_turnover);
-        Button btnBlock = root.findViewById(R.id.button_block);
-        Button btnSteal = root.findViewById(R.id.button_steal);
-        //Get the radio group with the 5 opponents
-        ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
-        flag = false;
+		//Get the radio group with the 5 opponents
+		ToggleButtonGroupTableLayout radioOpp = root.findViewById(R.id.radGroup_choose_opponent);
+		//Show team images
+		ImageView homeTeamImg = root.findViewById(R.id.home_team_game_statsmanager);
+		ImageView awayTeamImg = root.findViewById(R.id.away_team_game_statsmanager);
+		Picasso.with(getContext()).load(mParam1).fit().into(homeTeamImg);
+		Picasso.with(getContext()).load(mParam2).fit().into(awayTeamImg);
 
-        //Add a click listener for each button action and hide
-        //the radio group with the 5 opponents, or show it
-        //if the steal button was clicked
-        btn2pts.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btn2ptsM.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btn3pts.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btn3ptsM.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnFT.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnFTM.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnAssist.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnFoul.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnRebound.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnTurnOver.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnBlock.setOnClickListener(view -> {
-            if(flag)
-                radioOpp.setVisibility(View.GONE);
-        });
-        btnSteal.setOnClickListener(view -> {
-            radioOpp.setVisibility(View.VISIBLE);
-            flag = true;
-        });
+		String[] homePlayers = new String[]{"Bohoridis", "Avdalas", "Meikon", "Nedovic", "Sant-Ros"};
 
-        return root;
-    }
+		String[] awayPlayers = new String[]{"Cowan", "Netzipogloy", "Poyliantis", "Hanlan", "Sxizas"};
+
+		RadioButton rd1 = root.findViewById(R.id.playerHome1);
+		RadioButton rd2 = root.findViewById(R.id.playerHome2);
+		RadioButton rd3 = root.findViewById(R.id.playerHome3);
+		RadioButton rd4 = root.findViewById(R.id.playerHome4);
+		RadioButton rd5 = root.findViewById(R.id.playerHome5);
+		RadioButton rd6 = root.findViewById(R.id.playerAway1);
+		RadioButton rd7 = root.findViewById(R.id.playerAway2);
+		RadioButton rd8 = root.findViewById(R.id.playerAway3);
+		RadioButton rd9 = root.findViewById(R.id.playerAway4);
+		RadioButton rd10 = root.findViewById(R.id.playerAway5);
+
+		ArrayList<RadioButton> radioHomeTeam = new ArrayList<>();
+
+		radioHomeTeam.add(rd1);
+		radioHomeTeam.add(rd2);
+		radioHomeTeam.add(rd3);
+		radioHomeTeam.add(rd4);
+		radioHomeTeam.add(rd5);
+
+		RadioButton rdo1 = root.findViewById(R.id.opponent1);
+		RadioButton rdo2 = root.findViewById(R.id.opponent2);
+		RadioButton rdo3 = root.findViewById(R.id.opponent3);
+		RadioButton rdo4 = root.findViewById(R.id.opponent4);
+		RadioButton rdo5 = root.findViewById(R.id.opponent5);
+
+		rd1.setText(homePlayers[0]);rd2.setText(homePlayers[1]);
+		rd3.setText(homePlayers[2]);rd4.setText(homePlayers[3]);
+		rd5.setText(homePlayers[4]);rd6.setText(awayPlayers[0]);
+		rd7.setText(awayPlayers[1]);rd8.setText(awayPlayers[2]);
+		rd9.setText(awayPlayers[3]);rd10.setText(awayPlayers[4]);
+
+		ArrayList<Button> buttonsList = new ArrayList<>();
+
+		buttonsList.add(root.findViewById(R.id.button_2points));
+		buttonsList.add(root.findViewById(R.id.button_2pointsMissed));
+		buttonsList.add(root.findViewById(R.id.button_3points));
+		buttonsList.add(root.findViewById(R.id.button_3pointsMissed));
+		buttonsList.add(root.findViewById(R.id.button_freeThrow));
+		buttonsList.add(root.findViewById(R.id.button_freeThrowMissed));
+		buttonsList.add(root.findViewById(R.id.button_assist));
+		buttonsList.add(root.findViewById(R.id.button_foul));
+		buttonsList.add(root.findViewById(R.id.button_turnover));
+		buttonsList.add(root.findViewById(R.id.button_rebound));
+		buttonsList.add(root.findViewById(R.id.button_reboundDefensive));
+		buttonsList.add(root.findViewById(R.id.button_block));
+		buttonsList.add(root.findViewById(R.id.button_steal));
+
+		for(Button b : buttonsList) {
+			b.setOnClickListener(view -> {
+				String text = (String) b.getText();
+				RadioButton player = root.findViewById(rdg1.getCheckedRadioButtonId());
+
+				boolean flag = false;
+
+				if(player != null && player.isChecked()) {
+					setVisibility(radioOpp, text.equals("STL"));
+					for (RadioButton rd : radioHomeTeam) {
+						if(player.getText().equals(rd.getText())) {
+							flag = true;
+							break;
+						}
+					}
+					if(flag){
+						rdo1.setText(awayPlayers[0]);
+						rdo2.setText(awayPlayers[1]);
+						rdo3.setText(awayPlayers[2]);
+						rdo4.setText(awayPlayers[3]);
+						rdo5.setText(awayPlayers[4]);
+					}
+					else{
+						rdo1.setText(homePlayers[0]);
+						rdo2.setText(homePlayers[1]);
+						rdo3.setText(homePlayers[2]);
+						rdo4.setText(homePlayers[3]);
+						rdo5.setText(homePlayers[4]);
+					}
+					switch (text) {
+						case "+2 \nPTS":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " ευστοχεί σε σουτ 2 πόντων", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "2 PTS Miss":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " αστοχεί σε σουτ 2 πόντων", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "+3 \nPTS":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " ευστοχεί σε σουτ 3 πόντων", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "3 PTS Miss":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " αστοχεί σε σουτ 3 πόντων", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "Free Throw":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " βάζει μία ελεύθερη βολή", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "FT Miss":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " χάνει μία ελεύθερη βολή", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "AST":
+							Toast.makeText(getContext(), "Η ασσίστ ανήκει στον " + player.getText(), Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "Foul":
+							Toast.makeText(getContext(), "Υπάρχει σφύριγμα για φάουλ που χρεώνεται στον " + player.getText(), Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "TO":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " υποπίπτει σε λάθος και χάνει την κατοχή της μπάλας", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "OFFENSIVE REB":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " μαζεύει το επιθετικό ριμπάουντ", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "DEFENSIVE REB":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " μαζεύει το αμυντικό ριμπάουντ", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "BLK":
+							Toast.makeText(getContext(), "Ο " + player.getText() + " κόβει τον αντίπαλό του", Toast.LENGTH_SHORT).show();
+							player.setChecked(false);
+							break;
+						case "STL":
+							RadioButton opponent = root.findViewById(radioOpp.getCheckedRadioButtonId());
+							if (opponent != null && opponent.isChecked()) {
+								Toast.makeText(getContext(), "Ο " + player.getText() + " κλέβει την μπάλα από τον " + opponent.getText(), Toast.LENGTH_SHORT).show();
+								player.setChecked(false);
+								opponent.setChecked(false);
+								radioOpp.setVisibility(View.GONE);
+							}
+							else
+								Toast.makeText(getContext(), "You must select an opponent before the action", Toast.LENGTH_SHORT).show();
+							break;
+					}
+				} else
+					selectPlayer();
+			});
+		}
+		return root;
+	}
+
+	private void setVisibility(ToggleButtonGroupTableLayout radioOpp, boolean flag) {
+		if(flag)
+			radioOpp.setVisibility(View.VISIBLE);
+		else
+			radioOpp.setVisibility(View.GONE);
+	}
+
+	private void selectPlayer() {
+		Toast.makeText(getContext(), "You must select a player before the action", Toast.LENGTH_SHORT).show();
+	}
 }

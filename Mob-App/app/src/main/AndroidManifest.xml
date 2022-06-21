@@ -3,20 +3,20 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	package="com.example.esake">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Esake"
-        android:usesCleartextTraffic="true"
+	<application
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:networkSecurityConfig="@xml/network_security_config"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/Theme.Esake"
+		android:usesCleartextTraffic="true"
 		tools:targetApi="n">
-<!--	Run index page (Official Main) -->
+		<!-- Run index page (Official Main) -->
 		<activity
 			android:name=".IndexPage"
 			android:exported="true">
@@ -25,29 +25,24 @@
 
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		</activity>
-<!--	Run login page -->
-        <activity
-            android:name=".Login"
-            android:exported="false" />
-<!--	Run home pages -->
+		</activity> <!-- Run login page -->
+		<activity
+			android:name=".Login"
+			android:exported="false" /> <!-- Run home pages -->
 		<activity
 			android:name=".StatsManagerHome.HomeActivity"
 			android:exported="false" />
 		<activity
 			android:name=".MainActivity"
-			android:exported="false" >
-		</activity>
-<!--	Run tabbed pages -->
+			android:exported="false"></activity> <!-- Run tabbed pages -->
 		<activity
 			android:name=".Tabbed_User"
 			android:exported="false"
-			android:theme="@style/Theme.Esake.NoActionBar">
-		</activity>
+			android:theme="@style/Theme.Esake.NoActionBar"></activity>
 		<activity
 			android:name=".Tabbed_Stats_Manager"
 			android:exported="false"
-			android:theme="@style/Theme.Esake.NoActionBar" >
-		</activity>
-    </application>
+			android:theme="@style/Theme.Esake.NoActionBar"></activity>
+	</application>
+
 </manifest>

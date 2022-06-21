@@ -20,6 +20,7 @@
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_home_user.xml" value="0.4" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_league_table.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_lineups_user.xml" value="0.2210144927536232" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_finished_user.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_stats_manager.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_user.xml" value="0.264" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_player_stats.xml" value="0.1" />
@@ -168,6 +169,7 @@
         <entry key="..\:/Users/iosif/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/iosif/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_login_admin.xml" value="0.296195652173913" />
         <entry key="..\:/Users/iosif/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
+        <entry key="..\:/Users/iosif/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/fragment_match_overview_user.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/stavr/AndroidStudioProjects/Basketball-League/app/src/main/res/drawable/custom_mail_icon.xml" value="0.3625" />
         <entry key="..\:/Users/stavr/AndroidStudioProjects/Basketball-League/app/src/main/res/drawable/custom_password_icon.xml" value="0.3625" />
         <entry key="..\:/Users/stavr/AndroidStudioProjects/Basketball-League/app/src/main/res/drawable/custom_username_icon.xml" value="0.3625" />

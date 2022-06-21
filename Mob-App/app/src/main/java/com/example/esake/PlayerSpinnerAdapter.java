@@ -20,7 +20,6 @@ public class PlayerSpinnerAdapter extends ArrayAdapter<Player> {
 		super(context, textViewResourceId, players);
 		this.context=context;
 		this.players=players;
-
 	}
 
 	@Override
@@ -64,5 +63,10 @@ public class PlayerSpinnerAdapter extends ArrayAdapter<Player> {
 		label.setText(players.get(position).getName());
 
 		return label;
+	}
+
+
+	public int getPosition(Player player) {
+		return players.indexOf(player);
 	}
 }

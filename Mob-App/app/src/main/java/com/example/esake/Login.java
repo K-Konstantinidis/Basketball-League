@@ -42,21 +42,23 @@ public class Login extends AppCompatActivity {
 				TextView username = (TextView) findViewById(R.id.username);
 				TextView password = (TextView) findViewById(R.id.password);
 
-				startActivity(new Intent(Login.this, HomeActivity.class));
-
 				//Try to log in
 				int status = login(username.getText().toString(), password.getText().toString());
 
-				switch (status) {
-					case -1:
-						Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
-						break;
-					case 0:
-						Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
-						break;
-					case 1:
-						startActivity(new Intent(Login.this, HomeActivity.class));
-						break;
+				if(username.getText().toString().isEmpty() && password.getText().toString().isEmpty())
+					Toast.makeText(getApplicationContext(), "You must insert both a username and a password before login", Toast.LENGTH_SHORT).show();
+				else {
+					switch (status) {
+						case -1:
+							Toast.makeText(getApplicationContext(), R.string.server_error, Toast.LENGTH_SHORT).show();
+							break;
+						case 0:
+							Toast.makeText(getApplicationContext(), R.string.invalid_credentials, Toast.LENGTH_SHORT).show();
+							break;
+						case 1:
+							startActivity(new Intent(Login.this, HomeActivity.class));
+							break;
+					}
 				}
 			}
 		});

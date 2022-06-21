@@ -1,37 +1,31 @@
 package com.example.esake;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.esake.ui.tabbedView_statsManager.SectionsPagerAdapter;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentTeamManagementStatsManager#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentTeamManagementStatsManager extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -39,23 +33,14 @@ public class FragmentTeamManagementStatsManager extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentTeamManagementStatsManager.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentTeamManagementStatsManager newInstance(String param1, String param2) {
-        FragmentTeamManagementStatsManager fragment = new FragmentTeamManagementStatsManager();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+	public static FragmentTeamManagementStatsManager newInstance(String param1, String param2) {
+		FragmentTeamManagementStatsManager fragment = new FragmentTeamManagementStatsManager();
+		Bundle args = new Bundle();
+		args.putString(ARG_PARAM1, param1);
+		args.putString(ARG_PARAM2, param2);
+		fragment.setArguments(args);
+		return fragment;
+	}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,25 +51,26 @@ public class FragmentTeamManagementStatsManager extends Fragment {
         }
     }
 
-    private Connector homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", "2");
+    private Connector homeTeamPlayerConnector;
     private List<Player> allHomeTeamPlayers = new ArrayList<>();
 	private Player[] selectedHomeTeamPlayers = new Player[]{null,null,null,null,null};
 	private Player[] selectedHomeTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
 
-	private Connector awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", "5");
+	private Connector awayTeamPlayerConnector;
 	private List<Player> allAwayTeamPlayers = new ArrayList<>();
 	private Player[] selectedAwayTeamPlayers = new Player[]{null,null,null,null,null};
 	private Player[] selectedAwayTeamSubstitutes = new Player[]{null,null,null,null,null,null,null};
 
 	private Spinner[] homeTeamSpinners, awayTeamSpinners, homeTeamSubsSpinners, awayTeamSubsSpinners;
 
-	private Team homeTeam, awayTeam;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 		//Get the view
-		ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
+		View root = inflater.inflate(R.layout.fragment_team_management_startingteam_stats_manager, null);
+
+		homeTeamPlayerConnector = new Connector(myIP.getIp(),"players", mParam1);
+		awayTeamPlayerConnector = new Connector(myIP.getIp(),"players", mParam2);
 
 		homeTeamSpinners = new Spinner[]{
 			(Spinner) root.findViewById(R.id.spinner1_1),
@@ -147,9 +133,13 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 
 		//Get the start game button
 		Button startGameBtn = root.findViewById(R.id.startGameButton);
+
+		final FragmentTeamManagementStatsManager currentFragment = this;
+		//View f = root.findViewById(R.id.scrollView_start_lineup_statsManager);
+
 		startGameBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view) {
+			public void onClick(View v) {
 				if (selectedTeamPlayersContainsEmptyElement(selectedHomeTeamPlayers)
 				|| selectedTeamPlayersContainsEmptyElement(selectedAwayTeamPlayers)
 				|| selectedTeamPlayersContainsEmptyElement(selectedHomeTeamSubstitutes)
@@ -161,8 +151,17 @@ public class FragmentTeamManagementStatsManager extends Fragment {
 				boolean allHomeTeamPlayersDifferent = checkForAllUniquePlayers(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes);
 				boolean allAwayTeamPlayersDifferent = checkForAllUniquePlayers(selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
 
-				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent)
+				if (allHomeTeamPlayersDifferent && allAwayTeamPlayersDifferent){
 					Toast.makeText(getContext(),"The game will start with the chosen players",Toast.LENGTH_SHORT).show();
+					FragmentTeamManagementLiveStatsManager newFragment = FragmentTeamManagementLiveStatsManager.newInstance(selectedHomeTeamPlayers, selectedHomeTeamSubstitutes,
+						selectedAwayTeamPlayers, selectedAwayTeamSubstitutes);
+
+					FragmentActivity parentActivity = currentFragment.getActivity();
+					parentActivity.getSupportFragmentManager()
+						.beginTransaction()
+						.replace(R.id.frameLayout_start_lineup_statsManager, newFragment)
+						.commit();
+				}
 				else
 					Toast.makeText(getContext(),"Teams cannot contain duplicate players!",Toast.LENGTH_SHORT).show();
 			}

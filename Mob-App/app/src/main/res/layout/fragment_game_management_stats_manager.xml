@@ -66,7 +66,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Langford"
 						android:textSize="14sp"
 						tools:ignore="DuplicateSpeakableTextCheck" />
 
@@ -75,10 +75,11 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
+						android:minWidth="120dp"
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Mitrou-Long"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -92,7 +93,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Koniaris"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -101,9 +102,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Zoumpos"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -117,7 +119,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Pappas"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -126,9 +128,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Molfetas"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -142,7 +145,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Fillipakos"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -151,9 +154,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Papafotiou"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -167,7 +171,7 @@
 						android:ellipsize="end"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Kouzeloglou"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -176,9 +180,10 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="end"
 						android:ellipsize="end"
+						android:minWidth="120dp"
 						android:maxEms="9"
 						android:maxLines="1"
-						android:text="Someone Someonidis"
+						android:text="Tsalmpouris"
 						android:textSize="14sp" />
 				</TableRow>
 			</com.example.esake.ToggleButtonGroupTableLayout>
@@ -205,7 +210,7 @@
                         android:layout_width="80dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button_2points"
-                        android:text="+2 \nPts"
+                        android:text="@string/Plus2points"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -222,7 +227,7 @@
                         android:layout_height="150dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button_2missed"
-                        android:text="2 PTS Miss"
+                        android:text="@string/Missed2points"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -238,7 +243,7 @@
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_free_throw"
-                        android:text="Free Throw"
+                        android:text="@string/FreeThrowButton"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="20sp"
@@ -255,7 +260,7 @@
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_button_free_throwmissed"
-                        android:text="FT Miss"
+                        android:text="@string/FreeThrowMissButton"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="20sp"
@@ -272,7 +277,7 @@
                         android:layout_width="80dp"
                         android:layout_height="150dp"
                         android:background="@drawable/rounded_button_3points"
-                        android:text="+3 \nPts"
+                        android:text="@string/PlusThreePoints"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -289,7 +294,7 @@
                         android:layout_height="150dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button_3missed"
-                        android:text="3 Pts Miss"
+                        android:text="@string/MissedThreePoints"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -305,7 +310,7 @@
 						android:layout_width="130dp"
 						android:layout_height="wrap_content"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="AST"
+						android:text="@string/AssistButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintBottom_toBottomOf="parent"
@@ -320,7 +325,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="Foul"
+						android:text="@string/FoulButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintBottom_toBottomOf="parent"
@@ -335,7 +340,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="TO"
+						android:text="@string/TurnoverButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintBottom_toBottomOf="parent"
@@ -350,7 +355,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="OFFENSIVE REB"
+						android:text="@string/OffensiveReboundButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintBottom_toBottomOf="parent"
@@ -366,7 +371,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="DEFENSIVE REB"
+						android:text="@string/DefensiveReboundButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintBottom_toBottomOf="parent"
@@ -383,7 +388,7 @@
 						android:layout_marginTop="20dp"
 						android:layout_marginBottom="10dp"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="blk"
+						android:text="@string/BlockButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintHorizontal_bias="0.1"
@@ -400,7 +405,7 @@
 						android:layout_marginTop="20dp"
 						android:layout_marginBottom="10dp"
 						android:background="@drawable/rounded_button_other_actions"
-						android:text="STL"
+						android:text="@string/StealButton"
 						android:textSize="16sp"
 						android:textStyle="bold"
 						app:layout_constraintHorizontal_bias="0.9"
@@ -432,7 +437,7 @@
 						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Mitrou-Long"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -442,7 +447,7 @@
 						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Zoumpos"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -452,7 +457,7 @@
 						android:layout_weight="1"
 						android:ellipsize="end"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Molfetas"
 						android:textSize="14sp" />
 				</TableRow>
 
@@ -466,7 +471,7 @@
 						android:ellipsize="end"
 						android:maxEms="8"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Papafotiou"
 						android:textSize="14sp" />
 
 					<RadioButton
@@ -477,7 +482,7 @@
 						android:ellipsize="end"
 						android:maxEms="8"
 						android:maxLines="1"
-						android:text="Sloukidis Stauros"
+						android:text="Tsalmpouris"
 						android:textSize="14sp" />
 				</TableRow>
 			</com.example.esake.ToggleButtonGroupTableLayout>

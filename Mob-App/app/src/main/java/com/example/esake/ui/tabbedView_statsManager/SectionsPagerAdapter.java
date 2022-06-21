@@ -14,10 +14,15 @@ import com.example.esake.FragmentMatchOverviewStatsManager;
 import com.example.esake.FragmentTeamManagementStatsManager;
 import com.example.esake.R;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
+/*
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
@@ -54,4 +59,39 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Show 3 total pages.
         return 3;
     }
+}*/
+
+/**
+ * A [FragmentPagerAdapter] that returns a fragment corresponding to
+ * one of the sections/tabs/pages.
+ */
+public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+	private final List<Fragment> listFragment = new ArrayList<>();
+	private final List<String> listTitle = new ArrayList<>();
+
+	public SectionsPagerAdapter(FragmentManager fm) {
+		super(fm);
+	}
+
+
+	public Fragment getItem(int position) {
+		return listFragment.get(position);
+	}
+
+	@Override
+	public int getCount() {
+		return listTitle.size();
+	}
+
+	@Override
+	public CharSequence getPageTitle(int position) {
+		return listTitle.get(position);
+	}
+
+
+	public void AddFragment (Fragment fragment, String title){
+		listFragment.add(fragment);
+		listTitle.add(title);
+	}
 }
