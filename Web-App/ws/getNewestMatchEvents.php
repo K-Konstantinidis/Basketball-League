@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Web service which returns the 3 most recent events in a game.
+ * Web service which returns the 3 most recent events in a given match.
  * The data is returned as a JSON file.
  * 
  * As parameters, it requires:

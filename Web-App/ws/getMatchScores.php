@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Web service which returns the detailed score given match.
+ * Web service which returns the total scores of a given match.
  * The data is returned as a JSON file.
  * 
  * As parameters, it requires:

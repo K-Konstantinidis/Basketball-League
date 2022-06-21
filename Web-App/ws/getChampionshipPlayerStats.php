@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Comment needed.
+ * Web service which returns the individual stats of all players 
+ * in the given championship.
  * 
  * As parameters, it requires:
  * 		lang	-> The language in which the results will be returned.

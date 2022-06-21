@@ -85,47 +85,53 @@ $err_msg = '';
 						die();
 					}
 
-					// Get the individual games
-					$sql =
-					'SELECT g.round_id AS round, h_team.name_gr AS home_team, a_team.name_gr AS away_team
-					FROM game g
-					JOIN team h_team on h_team.id = g.home_team_id
-					JOIN team a_team on a_team.id = g.away_team_id
-					WHERE g.championship_id = :cid
-					ORDER BY g.round_id;';
+					// A valid championship ID was given
+					if($num_games) {
+						// Get the individual games
+						$sql =
+						'SELECT g.round_id AS round, h_team.name_gr AS home_team, a_team.name_gr AS away_team
+						FROM game g
+						JOIN team h_team on h_team.id = g.home_team_id
+						JOIN team a_team on a_team.id = g.away_team_id
+						WHERE g.championship_id = :cid
+						ORDER BY g.round_id;';
 
-					try {
-						$stmt = $dbh->prepare($sql);
-						$stmt->bindParam(':cid', $championship_id, PDO::PARAM_INT);
-						$stmt->execute();
+						try {
+							$stmt = $dbh->prepare($sql);
+							$stmt->bindParam(':cid', $championship_id, PDO::PARAM_INT);
+							$stmt->execute();
 
-						$results = array_values($stmt->fetchAll());
-					}
-					catch(PDOException $ex) {
-						echo 'ERROR while fetching the results. Reason: ' . $ex->getMessage();
-						die();
-					}
-
-					$matches_per_round = count($results) / $num_games;
-
-					echo "\n" . '<div class="row align-self-center mb-5">' . "\n";
-
-					for($i = 0; $i < $num_games; ++$i) {
-						echo '<div class="col-lg-4 text-center">' . "\n";
-						echo '	<div class="border p-3 m-3">' . "\n";
-						echo '		<h5>Αγωνιστική ' . ($i + 1) . '</h5>' . "\n";
-						echo '		<hr>' . "\n";
-
-						for($j = 0; $j < $matches_per_round; ++$j) {
-						echo '		<span> ' . $results[$j + $i*$matches_per_round]['home_team'] .
-									' - ' . $results[$j + $i*$matches_per_round]['away_team'] . "<br>\n";
+							$results = array_values($stmt->fetchAll());
+						}
+						catch(PDOException $ex) {
+							echo 'ERROR while fetching the results. Reason: ' . $ex->getMessage();
+							die();
 						}
 
-						echo '	</div>' . "\n";
+						$matches_per_round = count($results) / $num_games;
+
+						echo "\n" . '<div class="row align-self-center mb-5">' . "\n";
+
+						for($i = 0; $i < $num_games; ++$i) {
+							echo '<div class="col-lg-4 text-center">' . "\n";
+							echo '	<div class="border p-3 m-3">' . "\n";
+							echo '		<h5>Αγωνιστική ' . ($i + 1) . '</h5>' . "\n";
+							echo '		<hr>' . "\n";
+
+							for($j = 0; $j < $matches_per_round; ++$j) {
+							echo '		<span> ' . $results[$j + $i*$matches_per_round]['home_team'] .
+										' - ' . $results[$j + $i*$matches_per_round]['away_team'] . "<br>\n";
+							}
+
+							echo '	</div>' . "\n";
+							echo '</div>' . "\n";
+						}
+
 						echo '</div>' . "\n";
 					}
-
-					echo '</div>' . "\n";
+					else {
+						displayErrorBanner('Δεν βρέθηκε πρωτάθλημα με το δοθέν αναγνωριστικό.');
+					}
 				}
 				else {
 					displayWarningBanner('Δεν ορίσθηκε αγωνιστική προς εμφάνιση.');

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Web service which returns all the matches of a given game week.
+ * Web service which returns all the matches of a given gameweek.
  * The data is returned as a JSON file.
  * 
  * As parameters, it requires:

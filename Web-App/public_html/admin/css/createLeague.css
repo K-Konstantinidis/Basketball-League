@@ -4,6 +4,16 @@
 	}
 }
 
+.border-danger {
+	border: 1em;
+	border-color: #dc3545;
+}
+
+.invalid-team-selection {
+	font-size: .875em !important;
+	color: #dc3545 !important;
+}
+
 /*!
  * Bootstrap Image Checkbox v0.1.0 (https://iqbalfn.github.io/bootstrap-image-checkbox/)
  * Copyright 2019 Iqbal Fauzi

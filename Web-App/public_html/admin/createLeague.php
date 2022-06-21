@@ -1,7 +1,5 @@
 <?php
 
-// TODO: Display the image from DB at the team selection
-
 session_start();
 require_once '../../resources/config.php';
 
@@ -15,24 +13,27 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in'] === true) {
 }
 
 $warn = $err = '';
-$championshipNameErr = '';
+$championshipNameErr = $teamSelectionErr = '';
 
 // Create the league
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
+	// Number of correct fields
+	$count = 0;
+
 	// Invalid parameters were passed
 	if(!isset($_POST['t']) || !is_array($_POST['t'])) {
-		$warn = 'Δεν ορίσθηκαν σωστά οι παράμετροι για τη δημιουργία του πρωταθλήματος.<br>Προσπαθήστε ξανά αργότερα.';
+		$teamSelectionErr = 'Παρακαλώ, επιλέξτε ομάδες για να συμμετάσχουν στο πρωτάθλημα.';
 	}
 	else {
 		// To create a league, at least 4 teams must participate and the number of
 		//  participating teams must be an even number.
 		if(count($_POST['t']) % 2 != 0 || count($_POST['t']) < 4) {
-			$err = 'Πρέπει να επιλέξετε τουλάχιστον 4 ομάδες, και το πλήθος των ομάδων να είναι ζυγός αριθμός.';
+			$teamSelectionErr = 'Πρέπει να επιλέξετε τουλάχιστον 4 ομάδες, και το πλήθος των ομάδων να είναι ζυγός αριθμός.';
 		}
 		else {
 			// Serialize the participating teams array, and display the loading page
 			$_SESSION['teams_in_league'] = serialize($_POST['t']);
-			header('Location: '. AREF_ADMIN_LOADING_LEAGUE);
+			$count++;
 		}
 	}
 
@@ -41,6 +42,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	else {
 		$_SESSION['new_championship_name'] = $_POST['championship_name'];
+		$count++;
+	}
+
+	// All fields were properly filled
+	if($count == 2) {
+		header('Location: '. AREF_ADMIN_LOADING_LEAGUE);
 	}
 }
 
@@ -74,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<div class="container">
 			<br>
 			<h1 class="mt-5">Δημιουργία Πρωταθλήματος</h1>
-			<p class="lead">Επιλέξτε τις ομάδες για να συμμετάσχουν στο πρωτάθλημα.</p>
+			<p class="lead">Ορίστε το όνομα του πρωταθλήματος, και επιλέξτε τις ομάδες για να συμμετάσχουν στο πρωτάθλημα.</p>
 			<br>
 
 			<?php
@@ -85,26 +92,32 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 				if($warn) {
 					displayWarningBanner($warn);
 				}
+				if($teamSelectionErr) {
+					displayErrorBanner($teamSelectionErr);
+				}
 
 				$conn = connectDB();
 				$data = $conn->query('SELECT id, name_gr, logo_path FROM team')->fetchAll();
 					
 				if($data != null) {
-					echo '<form class="row" method="POST" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . '">' . "\n";
-					echo '<div class="form-floating mb-5">
+					echo '<form method="POST" action="'. htmlspecialchars($_SERVER['PHP_SELF']) . '">' . "\n";
+					echo '<div class="form-floating mb-3">
 							<input
 								type="text"
 								name="championship_name"
-								class="form-control"
+								class="form-control ' . (($championshipNameErr) ? ' is-invalid' : '') . '"
 								id="champ_name"
-								placeholder=""
-								value=""
+								placeholder="Championship Name"
+								value="' . ((isset($_POST['championship_name'])) ? filter_data($_POST['championship_name']) : '') . '"
 							>
-							<label for="champ_name">Όνομα Πρωταθλήματος</label>
-						 </div>';
+							<label for="champ_name">Όνομα Πρωταθλήματος</label>' . "\n";
+					if($championshipNameErr) formInvalidFeedback($championshipNameErr);
+					
+					echo '</div>' . "\n";
+					echo '<div class="row ' . (($teamSelectionErr) ? 'border border-danger' : ''). '">' . "\n";
 					
 					foreach($data as $row) {
-						echo '<div class="col-xl-2 mb-3">' . "\n";
+						echo '<div class="col-xl-2 mt-2 mb-2">' . "\n";
 						echo '	<div class="border pb-3 m-1 text-center">' . "\n";
 						echo '		<div class="custom-control custom-checkbox image-checkbox">' . "\n";
 						echo '			<input type="checkbox" name="t[]" value="' . $row['id'] . '" class="custom-control-input" id=' . $row['id'] . '>' . "\n";
@@ -117,11 +130,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 						echo '</div>' . "\n";
 					}
 
+					echo '</div>' . "\n";
+					
 					echo '<div class="d-flex flex-grow-1 justify-content-center align-items-center">' . "\n";
 					echo '	<a href="./" class="btn btn-secondary mt-5 me-3 btn-single-line" role="button">Αρχική</a>' . "\n";
 					echo '	<button type="reset" class="btn btn-danger mt-5 me-3">Εκκαθάριση Φόρμας</button>' . "\n";
 					echo '	<button type="submit" class="btn btn-success mt-5 me-3">Δημιουργία Πρωταθλήματος</button>' . "\n";
 					echo '</div>' . "\n";
+					echo '</form>' . "\n";
 				}
 				else { // There are no teams in the database
 					displayWarningBanner('Δεν βρέθηκαν ομάδες για να συμπεριληφθούν στο πρωτάθλημα.' .
@@ -131,7 +147,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$conn = null;
 			?>
 
-			</form>
 			<br><br>
 		</div>
 

@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Web service which returns the league's ranking.
+ * Web service which returns all rounds where the top 5 of the round can be deduced.
+ * Only rounds whose matches are all completed are eligible.
  * The data is returned as a JSON file.
  * 
  * As parameters, it requires:
