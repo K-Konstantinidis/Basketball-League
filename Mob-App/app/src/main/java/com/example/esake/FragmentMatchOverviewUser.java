@@ -132,10 +132,17 @@ public class FragmentMatchOverviewUser extends Fragment {
 			homeName = view.findViewById(R.id.homeTeamName_user);
 			awayName = view.findViewById(R.id.awayTeamName_user);
 
+			homeName.setText("ΠΑΟΚ");
+			awayName.setText("ΑΠΟΛ");
+
 			scoreHome = view.findViewById(R.id.SHomeScore_user);
-			scoreHome.setTextColor(Color.BLACK);
+			scoreHome.setTextColor(
+				Color.BLACK
+			);
 			scoreAway = view.findViewById(R.id.SAwayScore_user);
-			scoreAway.setTextColor(Color.BLACK);
+			scoreAway.setTextColor(
+				Color.BLACK
+			);
 
 			Q1Home = view.findViewById(R.id.Q1HomeScore_user);
 			Q2Home = view.findViewById(R.id.Q2HomeScore_user);
@@ -151,19 +158,33 @@ public class FragmentMatchOverviewUser extends Fragment {
 			recentEventViews[1] = view.findViewById(R.id.log2);
 			recentEventViews[2] = view.findViewById(R.id.log3);
 
-			scoreHome.setText("—");
-			scoreAway.setText("—");
-			Q1Home.setText("—");
-			Q2Home.setText("—");
-			Q3Home.setText("—");
-			Q4Home.setText("—");
-			Q4Home.setTextColor(Color.BLACK);
+			scoreHome.setText("38");
+			scoreAway.setText("42");
 
-			Q1Away.setText("—");
-			Q2Away.setText("—");
-			Q3Away.setText("—");
-			Q4Away.setText("—");
-			Q4Away.setTextColor(Color.BLACK);
+			scoreHome.setTextColor(
+				Color.RED
+			);
+			scoreAway.setTextColor(
+				Color.RED
+			);
+
+
+			Q1Home.setText("12");
+			Q2Home.setText("8");
+			Q3Home.setText("11");
+			Q4Home.setText("7");
+			Q4Home.setTextColor(
+				Color.RED
+			);
+
+
+			Q1Away.setText("15");
+			Q2Away.setText("10");
+			Q3Away.setText("12");
+			Q4Away.setText("5");
+			Q4Away.setTextColor(
+				Color.RED
+			);
 
 			this.running = true;
 			populateRecentEventViews(recentEventViews, liveUpdateUrl);
@@ -183,7 +204,7 @@ public class FragmentMatchOverviewUser extends Fragment {
 						// Get the recent events
 						mostRecentEvents = new Connector(myIP.getIp(), "newest-events",liveUpdateUrl).getMostRecentEvents();
 
-						// Update the thextViews
+						// Update the the textViews
 						for (int i = 0; i < mostRecentEvents.length ; ++i) {
 							recentEventViews[i].setText(mostRecentEvents[i]);
 						}

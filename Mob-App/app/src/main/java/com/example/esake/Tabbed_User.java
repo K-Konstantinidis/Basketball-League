@@ -42,7 +42,6 @@ public class Tabbed_User extends AppCompatActivity {
 		tabUser = new Connector(myIP.getIp(),"tabbed-User",url);
 
 		url = "getOngoingMatchTime.php?cid=1&round="+round+"&gid="+gameID;
-		//timeTracker = new Connector(myIP.getIp(),"ongoing-match-minute", url);
 
 		FragmentMatchOverviewUser viewUser = FragmentMatchOverviewUser.newInstance(round,
 			String.valueOf(gameStatus),gameID);
@@ -69,7 +68,19 @@ public class Tabbed_User extends AppCompatActivity {
 		awayTeamScore.setText(String.valueOf(tabUser.getFinishedGame().getScore2()));
 
 		//timer.setText(timeTracker.getCurrentMinute(gameStatus));
-		timer.setText("40'");
+		//timer.setText(tabUser.getCurrentMinute(gameStatus));
+
+		switch (gameStatus) {
+			case 2:
+				timer.setText("—");
+				break;
+			case 1:
+				timer.setText("35'");
+				break;
+			case 0:
+				timer.setText("40'");
+				break;
+		}
 
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getHomeTeamLogo()).fit().into(homeTeamImage);
 		Picasso.with(getApplicationContext()).load(tabUser.getFinishedGame().getAwayTeamLogo()).fit().into(awayTeamImage);
