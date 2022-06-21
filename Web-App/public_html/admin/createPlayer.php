@@ -109,9 +109,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		// No errors were encountered, procceed
 		if($img_error == 0) {
 			// Get the max number that exists
-			$max_img_num_db = $conn
-				->query("SELECT MAX(CAST(SUBSTRING(img_path,27,4) AS INT)) AS MAX_NUM FROM player")
-				->fetch();
+			// $max_img_num_db = $conn
+			// 	->query("SELECT MAX(CAST(SUBSTRING(img_path,27,4) AS INT)) AS MAX_NUM FROM player")
+			// 	->fetch();
 
 			// The following line of code may cause problems.
 			// It fetches the database to find the largest image number.
