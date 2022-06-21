@@ -2,7 +2,7 @@
 
 /**
  * Web service which prepares the "ongoing_game_player_stats" table
- * for a game that is starting and the "team_scores_per_quarter".
+ * and the "team_scores_per_quarter" table for a game that is starting.
  * It also updates the status field in the "game" table.
  * 
  * As parameters, it requires:

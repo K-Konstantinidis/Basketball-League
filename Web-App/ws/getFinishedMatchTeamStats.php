@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Web service which returns the statistics of a given match that has ended.
+ * Web service which returns the team statistics of a given finished match.
  * The data is returned as a JSON file.
  * 
  * As parameters, it requires:

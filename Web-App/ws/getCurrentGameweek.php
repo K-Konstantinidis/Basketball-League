@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Web service which returns the league's ranking.
- * The data is returned as a JSON file.
+ * Web service which gets the current gameweek (numerically) 
+ * and redirects to getGameweekMatches.php
  * 
  * As parameters, it requires:
  * 		cid		-> The championship's ID in the database
