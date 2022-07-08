@@ -5,9 +5,7 @@ import android.os.StrictMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class OkHttpHandler {
 
 			while(keys.hasNext()) {
 				String id = keys.next();
-				String round = json.getJSONObject(id).getString("id").toString();
+				String round = json.getJSONObject(id).getString("id");
 
 				round = changeString(round);
 
@@ -61,7 +59,7 @@ public class OkHttpHandler {
 
 	//code for League Table
 	ArrayList<LeagueRank> getDataforLeague(String url) throws Exception {
-		ArrayList<LeagueRank> Ranking = new ArrayList<LeagueRank>();
+		ArrayList<LeagueRank> Ranking = new ArrayList<>();
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
 		Request request = new Request.Builder().url(url).method("POST", body).build();
@@ -363,7 +361,6 @@ public class OkHttpHandler {
 
 	//function for Finished Matches Score and team emblems
 	Game getDataForFinishedMatchTeams(String url) throws Exception {
-		Game g;
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
 		Request request = new Request.Builder().url(url).method("POST", body).build();
@@ -374,8 +371,7 @@ public class OkHttpHandler {
 			Iterator<String> keys = json.keys();
 
 			//Getting json from WS
-
-			while (keys.hasNext()) {
+			if(keys.hasNext()){
 				String homeTeamId = keys.next();
 				String homeTeamLogo = json.getJSONObject(homeTeamId).getString("logo");
 				String homeTeamScore = json.getJSONObject(homeTeamId).getString("total_score");
@@ -384,11 +380,9 @@ public class OkHttpHandler {
 				String awayTeamLogo = json.getJSONObject(awayTeamId).getString("logo");
 				String awayTeamScore = json.getJSONObject(awayTeamId).getString("total_score");
 
-
 				//Code to add from Json to Screen
 				return new Game(Integer.parseInt(homeTeamId),homeTeamLogo,Integer.parseInt(homeTeamScore),
 					Integer.parseInt(awayTeamId),awayTeamLogo,Integer.parseInt(awayTeamScore));
-
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -426,7 +420,6 @@ public class OkHttpHandler {
 	}
 
 	Game getDataForFinishedScores(String url) throws Exception {
-		Game game;
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
 		Request request = new Request.Builder().url(url).method("POST", body).build();
@@ -435,7 +428,8 @@ public class OkHttpHandler {
 		try {
 			JSONObject json = new JSONObject(data);
 			Iterator<String> keys = json.keys();
-			while(keys.hasNext()) {
+
+			if(keys.hasNext()) {
 				String id = keys.next();
 				String homeTeamName = json.getJSONObject(id).getString("name");
 				int homeTeamTotalScore = Integer.parseInt(json.getJSONObject(id).getString("total_score"));
@@ -448,7 +442,6 @@ public class OkHttpHandler {
 
 				return new Game(homeTeamName, homeTeamTotalScore, homeTeamTotalscores,
 					awayTeamName, awayTeamTotalScore, awayTeamTotalscores);
-
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -456,22 +449,20 @@ public class OkHttpHandler {
 		return null;
 	}
 
-	String getCurrentMinute(String url) throws Exception {
-		ArrayList<Player> players = new ArrayList<>();
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-		Request request = new Request.Builder().url(url).method("POST", body).build();
-		Response response = client.newCall(request).execute();
-		String data = response.body().string();
-		try {
-			JSONObject json = new JSONObject(data);
-			String currentMinute = json.getString("current_minute");
-			return currentMinute;
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+//	String getCurrentMinute(String url) throws Exception {
+//		OkHttpClient client = new OkHttpClient().newBuilder().build();
+//		RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+//		Request request = new Request.Builder().url(url).method("POST", body).build();
+//		Response response = client.newCall(request).execute();
+//		String data = response.body().string();
+//		try {
+//			JSONObject json = new JSONObject(data);
+//			return json.getString("current_minute");
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 
     public String[] getNewestEvents(String url) throws Exception {
 		String[] newestEvents = {"","",""};
@@ -534,9 +525,9 @@ public class OkHttpHandler {
 	private List<Integer> locateSeparators(String templateText) {
 		List<Integer> separatorIndexes = new ArrayList<>();
 		int offset = 0;
-		int index = 0;
+		int index;
 		if (!templateText.contains(",")) return null;
-		while (true) {
+		while(true) {
 			index = templateText.indexOf(',', offset);
 			if (index==-1) break;
 			separatorIndexes.add(index);
