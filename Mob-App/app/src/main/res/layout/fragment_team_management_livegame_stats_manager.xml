@@ -6,7 +6,7 @@
 	android:id="@+id/frameLayout_live_lineup_statsManager"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	tools:context=".FragmentTeamManagementStatsManager">
+	tools:context=".StatsManagerFragments.FragmentSmTeamManage">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"

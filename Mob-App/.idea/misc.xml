@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/back_arrow.xml" value="0.247" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/bottom_nav_menu.xml" value="0.131" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/bottom_nav_menu_rounded.xml" value="0.131" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/custom_mail_icon.xml" value="0.119" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/gameweek_game_layout_border.xml" value="0.2595" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/ic_baseline_emoji_events_24.xml" value="0.247" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/ic_baseline_looks_5_24.xml" value="0.247" />
+        <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/ic_trophy_24.xml" value="0.247" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/drawable/signinup_buttons_border.xml" value="0.1525" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout-v21/fragment_team_management_startingteam_stats_manager.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/30698/AndroidStudioProjects/Basketball-League/Mob-App/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />

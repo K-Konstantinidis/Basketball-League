@@ -2,9 +2,7 @@ package com.example.esake;
 
 public class Top5 {
 
-	private String name;
-	private String pos;
-	private String image;
+	private String name, pos, image;
 	private int rating;
 
 	//Constructor
@@ -16,11 +14,8 @@ public class Top5 {
 	}
 
 	//Getters
-	public String getLogoPath() { return "http://"+myIP.getIp()+image;};
-
+	public String getLogoPath() { return "http://"+ MyIP.getIp()+image;}
 	public String getName() { return name; }
-
 	public String getPos() { return pos; }
-
 	public String getRating() { return String.valueOf(rating); }
 }

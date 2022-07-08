@@ -2,8 +2,7 @@ package com.example.esake;
 
 public class TeamStats {
 
-	private String logo;
-	private String name;
+	private String logo, name;
 	private double total_points;
 	private double shots_made;
 	private double perc_2_in;
@@ -41,16 +40,13 @@ public class TeamStats {
 	}
 
 	//Getters
-	public String getLogo() {return "http://"+myIP.getIp()+logo;}
+	public String getLogo() {return "http://"+ MyIP.getIp()+logo;}
 	public String getName() {return name;}
 	public String getTotal_points() {return String.valueOf(total_points);}
-	public String getShots_made() {return String.valueOf(shots_made);}
 	public String getPerc_2_in() {return String.valueOf(perc_2_in);}
 	public String getPerc_3_in() {return String.valueOf(perc_3_in);}
 	public String getPerc_freethrows_in() {return String.valueOf(perc_freethrows_in);}
 	public String getTotal_rebounds() {return String.valueOf(total_rebounds);}
-	public String getTotal_offensive_rebounds() {return String.valueOf(total_offensive_rebounds);}
-	public String getTotal_defensive_rebounds() {return String.valueOf(total_defensive_rebounds);}
 	public String getTotal_assists() {return String.valueOf(total_assists);}
 	public String getTotal_blocks() {return String.valueOf(total_blocks);}
 	public String getTotal_steals() {return String.valueOf(total_steals);}
@@ -67,5 +63,4 @@ public class TeamStats {
 	public String getIntTotal_steals() {return String.valueOf((int) total_steals);}
 	public String getIntTotal_turnovers() {return String.valueOf((int) total_turnovers);}
 	public String getIntTotal_fouls() {return String.valueOf((int) total_fouls);}
-
 }

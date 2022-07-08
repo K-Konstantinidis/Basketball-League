@@ -18,7 +18,7 @@
 		tools:targetApi="n">
 		<!-- Run index page (Official Main) -->
 		<activity
-			android:name=".IndexPage"
+			android:name=".Login_Index.IndexPage"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -27,22 +27,22 @@
 			</intent-filter>
 		</activity> <!-- Run login page -->
 		<activity
-			android:name=".Login"
+			android:name=".Login_Index.Login"
 			android:exported="false" /> <!-- Run home pages -->
 		<activity
-			android:name=".StatsManagerHome.HomeActivity"
+			android:name=".StatsManagerFragments.HomeSmActivity"
 			android:exported="false" />
 		<activity
 			android:name=".MainActivity"
-			android:exported="false"></activity> <!-- Run tabbed pages -->
+			android:exported="false" /> <!-- Run tabbed pages -->
 		<activity
-			android:name=".Tabbed_User"
+			android:name=".TabbedView.Tabbed_User"
 			android:exported="false"
-			android:theme="@style/Theme.Esake.NoActionBar"></activity>
+			android:theme="@style/Theme.Esake.NoActionBar" />
 		<activity
-			android:name=".Tabbed_Stats_Manager"
+			android:name=".TabbedView.Tabbed_Stats_Manager"
 			android:exported="false"
-			android:theme="@style/Theme.Esake.NoActionBar"></activity>
+			android:theme="@style/Theme.Esake.NoActionBar" />
 	</application>
 
 </manifest>

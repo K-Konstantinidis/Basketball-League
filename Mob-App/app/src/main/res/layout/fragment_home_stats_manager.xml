@@ -5,7 +5,7 @@
     android:id="@+id/fraghome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsManagerHome.HomeActivity">
+    tools:context=".StatsManagerFragments.HomeSmActivity">
 
 	<TextView
 		android:id="@+id/GameWeekSm_"

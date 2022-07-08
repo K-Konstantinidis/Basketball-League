@@ -5,7 +5,7 @@
     android:id="@+id/top_5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentTop5">
+    tools:context=".MainMenu.FragmentTop5">
 
 	<androidx.cardview.widget.CardView
 		android:id="@+id/cardViewSelectGameweek"

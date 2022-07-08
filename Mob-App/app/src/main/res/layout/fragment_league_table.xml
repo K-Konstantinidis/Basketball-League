@@ -5,7 +5,7 @@
     android:id="@+id/league_table"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentLeagueTable" >
+    tools:context=".MainMenu.FragmentLeagueTable" >
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/league_table_header"

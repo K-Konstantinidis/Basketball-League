@@ -11,7 +11,7 @@
 		android:id="@+id/frameLayout_start_lineup_statsManager"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		tools:context=".FragmentTeamManagementStatsManager"
+		tools:context=".StatsManagerFragments.FragmentSmTeamManage"
 		android:visibility = "visible" >
 
 		<androidx.constraintlayout.widget.ConstraintLayout

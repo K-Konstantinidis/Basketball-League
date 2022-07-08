@@ -9,18 +9,16 @@ public class PlayerStats {
 	private int two_points_out;
 
 	private int three_points_in;
-	private int three_points_out;*/
+	private int three_points_out;
 	
 	// Miscellaneous points
-/*	private int offensive_rebounds;
-	private int defensive_rebounds;*/
-/*	private int assists;
+	private int offensive_rebounds;
+	private int defensive_rebounds;
+	private int assists;
 	private int blocks;
 	private int steals;
 	private int turnovers;
 	private int fouls;*/
-	
-	private Game played_game;
 
 	private String logo;
 	private String surname;
@@ -53,11 +51,6 @@ public class PlayerStats {
 	private double avgSteals;
 	private double avgTurnovers;
 	private double avgFouls;
-
-	//first Constructor
-	public PlayerStats(Game played_game) {
-		this.played_game = played_game;
-	}
 
 	public PlayerStats(String logo, String surname, int total_points, int rating,
 					   int perc_2_in, int perc_3_in, int perc_freethrows_in, int total_rebounds, int total_assists,
@@ -102,8 +95,7 @@ public class PlayerStats {
 	}
 
 	//Getters for Data
-	public String getLogo() {return "http://"+myIP.getIp()+logo;}
-
+	public String getLogo() {return "http://"+ MyIP.getIp()+logo;}
 	public String getSurname() {return surname;}
 	public String getTotal_points() {return String.valueOf(total_points);}
 	public String getPRating() {return String.valueOf(rating);}
@@ -117,25 +109,17 @@ public class PlayerStats {
 	public String getTotal_turnovers() {return String.valueOf(total_turnovers);}
 	public String getTotal_fouls() {return String.valueOf(total_fouls);}
 
-	public String getAvgRating() {	return String.valueOf(avgRating); }
-	public String getAvgFreethrowsOut() {	return String.valueOf(avgFreethrowsOut); }
-	public String getAvgFreethrowsIn() {	return String.valueOf(avgFreethrowsIn); }
-	public String getAvgTwoPointsOut() {	return String.valueOf(avgTwoPointsOut); }
-	public String getAvgTwoPointsIn() {	return String.valueOf(avgTwoPointsIn); }
-	public String getAvgThreePointsOut() {	return String.valueOf(avgThreePointsOut); }
-	public String getAvgThreePointsIn() {	return String.valueOf(avgThreePointsIn); }
-	public String getAvgTotalShots() {	return String.valueOf(avgTotalShots); }
-	public String getAvgTotalRebounds() {	return String.valueOf(avgTotalRebounds); }
-	public String getAvgOffensiveRebounds() {	return String.valueOf(avgOffensiveRebounds); }
-	public String getAvgDefensiveRebounds() {	return String.valueOf(avgDefensiveRebounds); }
-	public String getAvgAssists() {	return String.valueOf(avgAssists); }
-	public String getAvgBlocks() {	return String.valueOf(avgBlocks); }
-	public String getAvgSteals() {	return String.valueOf(avgSteals); }
-	public String getAvgTurnovers() {	return String.valueOf(avgTurnovers); }
-	public String getAvgFouls() {	return String.valueOf(avgFouls); }
-
-
-
+	public String getAvgRating() {return String.valueOf(avgRating); }
+	public String getAvgFreethrowsIn() {return String.valueOf(avgFreethrowsIn); }
+	public String getAvgTwoPointsIn() {return String.valueOf(avgTwoPointsIn); }
+	public String getAvgThreePointsIn() {return String.valueOf(avgThreePointsIn); }
+	public String getAvgTotalShots() {return String.valueOf(avgTotalShots); }
+	public String getAvgTotalRebounds() {return String.valueOf(avgTotalRebounds); }
+	public String getAvgAssists() {return String.valueOf(avgAssists); }
+	public String getAvgBlocks() {return String.valueOf(avgBlocks); }
+	public String getAvgSteals() {return String.valueOf(avgSteals); }
+	public String getAvgTurnovers() {return String.valueOf(avgTurnovers); }
+	public String getAvgFouls() {return String.valueOf(avgFouls); }
 
 	// Point adding functions
 /*	public void addFreeThrowIn() 	{ ++freethrows_in; }
@@ -148,17 +132,17 @@ public class PlayerStats {
 	public void addThreePointOut()	{ ++three_points_out; }
 
 	public void addOffensiveRebound() { ++offensive_rebounds; }
-	public void addDefensiveRebound() { ++defensive_rebounds; }*/
+	public void addDefensiveRebound() { ++defensive_rebounds; }
 	
-	/*public void addAssist()		{ ++assists; }
+	public void addAssist()		{ ++assists; }
 	public void addBlock()		{ ++blocks; }
 	public void addSteal()		{ ++steals; }
 	public void addTurnover()	{ ++turnovers; }
-	public void addFoul()		{ ++fouls; }*/
+	public void addFoul()		{ ++fouls; }
 	
 	// Point removing functions, used for corrections.
 	// They return false if the player already has 0 points.
-	/*public boolean rmFreeThrowIn() {
+	public boolean rmFreeThrowIn() {
 		if(freethrows_in > 0) {
 			--freethrows_in;
 			return true;
@@ -189,8 +173,7 @@ public class PlayerStats {
 		}
 		return false;
 	}
-	
-	
+
 	public boolean rmThreePointIn() {
 		if(three_points_in > 0) {
 			--three_points_in;
@@ -261,27 +244,5 @@ public class PlayerStats {
 			return true;
 		}
 		return false;
-	}
-	
-	public int getPoints() {
-		return two_points_in + three_points_in + freethrows_in;
-	}
-	
-	public int getRebounds() {
-		return offensive_rebounds + defensive_rebounds;
-	}
-
-	//Ftiaxte me kapou ta percentages pvw ta vriskei
-	//Gia na ta pername sthn PlayerStatsFinishedAdapter.java
-	//Ayto paizei na einai teleiow lathos apla to evala gia na mhn
-	//me petaei error oti den exv perasei kati
-	public int getPlayerPercentFg() {
-		return (perc_2_in + perc_3_in + perc_freethrows_in) / 3;
 	}*/
-
-
-
-	/*
-	public String get3ptsin() {return String.valueOf(three_points_in);}
-*/
 }

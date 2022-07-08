@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/navigation_home_user"
-        android:name="com.example.esake.FragmentUserHome"
+        android:name="com.example.esake.MainMenu.FragmentUserHome"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_user" />
     <fragment
         android:id="@+id/navigation_leagueTable"
-        android:name="com.example.esake.FragmentLeagueTable"
+        android:name="com.example.esake.MainMenu.FragmentLeagueTable"
         android:label="@string/title_league_table"
         tools:layout="@layout/fragment_league_table" />
     <fragment
         android:id="@+id/navigation_teamStats"
-        android:name="com.example.esake.FragmentTeamStats"
+        android:name="com.example.esake.MainMenu.FragmentTeamStats"
         android:label="@string/title_team_stats"
         tools:layout="@layout/fragment_team_stats" />
     <fragment
         android:id="@+id/navigation_playerStats"
-        android:name="com.example.esake.FragmentPlayerStats"
+        android:name="com.example.esake.MainMenu.FragmentPlayerStats"
         android:label="@string/title_player_stats"
         tools:layout="@layout/fragment_player_stats" />
     <fragment
         android:id="@+id/navigation_top5"
-        android:name="com.example.esake.FragmentTop5"
+        android:name="com.example.esake.MainMenu.FragmentTop5"
         android:label="@string/title_top5"
         tools:layout="@layout/fragment_top5" />
 </navigation>
