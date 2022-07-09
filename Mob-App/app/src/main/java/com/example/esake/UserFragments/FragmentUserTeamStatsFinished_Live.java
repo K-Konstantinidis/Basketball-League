@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.R;
 import com.example.esake.TeamStats;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,11 +51,11 @@ public class FragmentUserTeamStatsFinished_Live extends Fragment {
 		}
 	}
 
-	private Connector teamFnStatsCn, team_live_stats;
+	private Connector cn, team_live_stats;
 	private ArrayList<TeamStats> teamFnStats = new ArrayList<>();
 	private ImageView imgHomeTeam, imgAwayTeam;
 	private TextView homeName, awayName,homePts, awayPts, homeFg, awayFg, home2Fg, away2Fg, home3Fg, away3Fg,
-		homePercentft, awayPercentft, homeReb, awayReb, homeAst, awayAst, homeStl, awayStl, homeBlock, awayBlock,
+		homePercentFt, awayPercentFt, homeReb, awayReb, homeAst, awayAst, homeStl, awayStl, homeBlk, awayBlk,
 		homeOffReb, awayOffReb, homeDefReb, awayDefReb, homeFls, awayFls, homeTurnover, awayTurnover;
 
     @Override
@@ -75,13 +75,13 @@ public class FragmentUserTeamStatsFinished_Live extends Fragment {
 			homeFg = view.findViewById(R.id.fieldGoalsMadeHome);
 			home2Fg = view.findViewById(R.id.twoPtsPercentHome);
 			home3Fg = view.findViewById(R.id.threePtsPercentHome);
-			homePercentft = view.findViewById(R.id.freeThrowsHome);
+			homePercentFt = view.findViewById(R.id.freeThrowsHome);
 			homeReb = view.findViewById(R.id.totalReboundsHome);
 			homeOffReb = view.findViewById(R.id.offensiveReboundsHome);
 			homeDefReb = view.findViewById(R.id.defensiveReboundsHome);
 			homeAst = view.findViewById(R.id.assistsHome);
 			homeStl = view.findViewById(R.id.stealsHome);
-			homeBlock = view.findViewById(R.id.blocksHome);
+			homeBlk = view.findViewById(R.id.blocksHome);
 			homeFls = view.findViewById(R.id.foulsHome);
 			homeTurnover = view.findViewById(R.id.turnoverHome);
 
@@ -91,51 +91,51 @@ public class FragmentUserTeamStatsFinished_Live extends Fragment {
 			awayFg = view.findViewById(R.id.fieldGoalsMadeAway);
 			away2Fg = view.findViewById(R.id.twoPtsPercentAway);
 			away3Fg = view.findViewById(R.id.threePtsPercentAway);
-			awayPercentft = view.findViewById(R.id.freeThrowsLAway);
+			awayPercentFt = view.findViewById(R.id.freeThrowsLAway);
 			awayReb = view.findViewById(R.id.totalReboundsAway);
 			awayOffReb = view.findViewById(R.id.offensiveReboundsAway);
 			awayDefReb = view.findViewById(R.id.defensiveReboundsAway);
 			awayAst = view.findViewById(R.id.assistsAway);
 			awayStl = view.findViewById(R.id.stealsAway);
-			awayBlock = view.findViewById(R.id.blocksAway);
+			awayBlk = view.findViewById(R.id.blocksAway);
 			awayFls = view.findViewById(R.id.foulsAway);
 			awayTurnover = view.findViewById(R.id.turnoversAway);
 
 			try {
-				teamFnStatsCn = new Connector(MyIP.getIp(), url);
-				teamFnStats = teamFnStatsCn.teamFinishedStats();
+				cn = new Connector(MyIP.getIp(), url);
+				teamFnStats = cn.teamFinishedStats();
 
 				//homeName.setText(team_finished_stats.getfinishedTeamName(0));
-				Picasso.with(getContext()).load(teamFnStatsCn.getfinishedTeamLogo(teamFnStats, 0)).fit().into(imgHomeTeam);
-				homePts.setText(teamFnStatsCn.getfinishedTeamTotal_points(teamFnStats, 0));
-				homeFg.setText(teamFnStatsCn.getfinishedTeamShots_made(teamFnStats,0));
-				home2Fg.setText(teamFnStatsCn.getfinishedTeamPerc_2_in(teamFnStats,0));
-				home3Fg.setText(teamFnStatsCn.getfinishedTeamPerc_3_in(teamFnStats,0));
-				homePercentft.setText(teamFnStatsCn.getfinishedTeamPerc_freethrows_in(teamFnStats,0));
-				homeOffReb.setText(teamFnStatsCn.getfinishedTeamTotal_offensive_rebounds(teamFnStats,0));
-				homeDefReb.setText(teamFnStatsCn.getfinishedTeamTotal_defensive_rebounds(teamFnStats,0));
-				homeReb.setText(teamFnStatsCn.getfinishedTeamTotal_rebounds(teamFnStats,0));
-				homeAst.setText(teamFnStatsCn.getfinishedTeamTotal_assists(teamFnStats,0));
-				homeStl.setText(teamFnStatsCn.getfinishedTeamTotal_steals(teamFnStats,0));
-				homeBlock.setText(teamFnStatsCn.getfinishedTeamTotal_blocks(teamFnStats,0));
-				homeFls.setText(teamFnStatsCn.getfinishedTeamTotal_fouls(teamFnStats,0));
-				homeTurnover.setText(teamFnStatsCn.getfinishedTeamTotal_turnovers(teamFnStats,0));
+				Picasso.with(getContext()).load(teamFnStats.get(0).getLogo()).fit().into(imgHomeTeam);
+				homePts.setText(teamFnStats.get(0).getIntTotal_points());
+				homeFg.setText(teamFnStats.get(0).getIntShots_made());
+				home2Fg.setText(teamFnStats.get(0).getPerc_2_in());
+				home3Fg.setText(teamFnStats.get(0).getPerc_3_in());
+				homePercentFt.setText(teamFnStats.get(0).getPerc_freethrows_in());
+				homeOffReb.setText(teamFnStats.get(0).getIntTotal_offensive_rebounds());
+				homeDefReb.setText(teamFnStats.get(0).getIntTotal_defensive_rebounds());
+				homeReb.setText(teamFnStats.get(0).getIntTotal_rebounds());
+				homeAst.setText(teamFnStats.get(0).getIntTotal_assists());
+				homeStl.setText(teamFnStats.get(0).getIntTotal_steals());
+				homeBlk.setText(teamFnStats.get(0).getIntTotal_blocks());
+				homeFls.setText(teamFnStats.get(0).getIntTotal_fouls());
+				homeTurnover.setText(teamFnStats.get(0).getIntTotal_turnovers());
 
 				//awayName.setText(team_finished_stats.getfinishedTeamName(0));
-				Picasso.with(getContext()).load(teamFnStatsCn.getfinishedTeamLogo(teamFnStats,1)).fit().into(imgAwayTeam);
-				awayPts.setText(teamFnStatsCn.getfinishedTeamTotal_points(teamFnStats,1));
-				awayFg.setText(teamFnStatsCn.getfinishedTeamShots_made(teamFnStats,1));
-				away2Fg.setText(teamFnStatsCn.getfinishedTeamPerc_2_in(teamFnStats,1));
-				away3Fg.setText(teamFnStatsCn.getfinishedTeamPerc_3_in(teamFnStats,1));
-				awayPercentft.setText(teamFnStatsCn.getfinishedTeamPerc_freethrows_in(teamFnStats,1));
-				awayOffReb.setText(teamFnStatsCn.getfinishedTeamTotal_offensive_rebounds(teamFnStats,1));
-				awayDefReb.setText(teamFnStatsCn.getfinishedTeamTotal_defensive_rebounds(teamFnStats,1));
-				awayReb.setText(teamFnStatsCn.getfinishedTeamTotal_rebounds(teamFnStats,1));
-				awayAst.setText(teamFnStatsCn.getfinishedTeamTotal_assists(teamFnStats,1));
-				awayStl.setText(teamFnStatsCn.getfinishedTeamTotal_steals(teamFnStats,1));
-				awayBlock.setText(teamFnStatsCn.getfinishedTeamTotal_blocks(teamFnStats,1));
-				awayFls.setText(teamFnStatsCn.getfinishedTeamTotal_fouls(teamFnStats,1));
-				awayTurnover.setText(teamFnStatsCn.getfinishedTeamTotal_turnovers(teamFnStats,1));
+				Picasso.with(getContext()).load(teamFnStats.get(1).getLogo()).fit().into(imgAwayTeam);
+				awayPts.setText(teamFnStats.get(1).getIntTotal_points());
+				awayFg.setText(teamFnStats.get(1).getIntShots_made());
+				away2Fg.setText(teamFnStats.get(1).getPerc_2_in());
+				away3Fg.setText(teamFnStats.get(1).getPerc_3_in());
+				awayPercentFt.setText(teamFnStats.get(1).getPerc_freethrows_in());
+				awayOffReb.setText(teamFnStats.get(1).getIntTotal_offensive_rebounds());
+				awayDefReb.setText(teamFnStats.get(1).getIntTotal_defensive_rebounds());
+				awayReb.setText(teamFnStats.get(1).getIntTotal_rebounds());
+				awayAst.setText(teamFnStats.get(1).getIntTotal_assists());
+				awayStl.setText(teamFnStats.get(1).getIntTotal_steals());
+				awayBlk.setText(teamFnStats.get(1).getIntTotal_blocks());
+				awayFls.setText(teamFnStats.get(1).getIntTotal_fouls());
+				awayTurnover.setText(teamFnStats.get(1).getIntTotal_turnovers());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
