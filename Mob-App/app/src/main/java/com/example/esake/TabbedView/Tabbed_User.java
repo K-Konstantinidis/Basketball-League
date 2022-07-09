@@ -8,13 +8,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.R;
 import com.example.esake.UserFragments.FragmentUserGameOverview;
 import com.example.esake.UserFragments.FragmentUserPlayerStatsFinished_Live;
 import com.example.esake.UserFragments.FragmentUserTeamStatsFinished_Live;
 import com.example.esake.databinding.ActivityTabbedUserBinding;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 import com.example.esake.TabbedView.TabbedViewUser.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;

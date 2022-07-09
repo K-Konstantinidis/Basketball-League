@@ -13,11 +13,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.Player;
 import com.example.esake.Adapters.PlayerSpinnerAdapter;
 import com.example.esake.R;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 
 import java.util.ArrayList;
 import java.util.List;

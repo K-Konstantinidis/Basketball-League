@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.R;
 
 public class FragmentSmGameOverview extends Fragment {

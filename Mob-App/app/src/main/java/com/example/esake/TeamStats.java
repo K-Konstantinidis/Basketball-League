@@ -1,5 +1,7 @@
 package com.example.esake;
 
+import com.example.esake.DatabasePHP.MyIP;
+
 public class TeamStats {
 
 	private String logo, name;

@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.esake.MainActivity;
 import com.example.esake.R;
 import com.example.esake.StatsManagerFragments.HomeSmActivity;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 
 import org.json.JSONException;
 import org.json.JSONObject;

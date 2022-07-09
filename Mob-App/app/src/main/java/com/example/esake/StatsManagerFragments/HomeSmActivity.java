@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.esake.Adapters.HomeSmAdapter;
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.GameWeek;
 import com.example.esake.R;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 
 import java.util.List;
 

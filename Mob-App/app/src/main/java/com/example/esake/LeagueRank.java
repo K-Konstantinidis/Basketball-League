@@ -1,5 +1,7 @@
 package com.example.esake;
 
+import com.example.esake.DatabasePHP.MyIP;
+
 public class LeagueRank {
 	private String Logo_path, name;
 	private int MatchesPlayed, Points, Wins, Losses;

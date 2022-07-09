@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.R;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 
 public class FragmentUserGameOverview extends Fragment {
 

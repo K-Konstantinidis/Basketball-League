@@ -1,5 +1,7 @@
 package com.example.esake;
 
+import com.example.esake.DatabasePHP.MyIP;
+
 public class Top5 {
 
 	private String name, pos, image;

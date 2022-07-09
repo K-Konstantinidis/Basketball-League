@@ -1,5 +1,7 @@
 package com.example.esake;
 
+import com.example.esake.DatabasePHP.MyIP;
+
 public class PlayerStats {
 	// Points
 /*	private int freethrows_in;

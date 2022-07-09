@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.esake.Connector;
+import com.example.esake.DatabasePHP.Connector;
 import com.example.esake.R;
 import com.example.esake.TeamStats;
 import com.example.esake.Adapters.TeamStatsAdapter;
-import com.example.esake.MyIP;
+import com.example.esake.DatabasePHP.MyIP;
 
 import java.util.ArrayList;
 
